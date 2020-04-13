@@ -1,4 +1,4 @@
-# List of rest-discuss posting by Roy Fielding\n\n
+# List of rest-discuss posting by Roy Fielding
 - [Re: [rest-discuss] REST clarifications...](https://htmlpreview.github.io/?https://raw.githubusercontent.com/algermissen/rest-discuss-archive/master/posts/4725.html)
   > ... Josh, while that may be your theory (and you are welcome to it), the notion that there are two levels of REST is completely false.  There are different
 - [Re: [rest-discuss] 30x Status codes](https://htmlpreview.github.io/?https://raw.githubusercontent.com/algermissen/rest-discuss-archive/master/posts/9678.html)
