@@ -1,0 +1,99 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 91363 invoked from network); 3 May 2006 08:55:29 -0000
+Received: from unknown (66.218.67.33)
+  by m27.grp.scd.yahoo.com with QMQP; 3 May 2006 08:55:29 -0000
+Received: from unknown (HELO picanmix.dev.day.com) (212.249.34.130)
+  by mta7.grp.scd.yahoo.com with SMTP; 3 May 2006 08:55:28 -0000
+Received: from deliverix.day.com (deliverix.day.com [10.0.0.7])
+        by picanmix.dev.day.com (DAY) with ESMTP id k438rKt16955;
+        Wed, 3 May 2006 10:53:21 +0200 (MEST)
+Received: from [127.0.0.1] ([10.0.0.8])
+          by deliverix.day.com (Lotus Domino Release 6.5.1)
+          with ESMTP id 2006050310531783-203 ;
+          Wed, 3 May 2006 10:53:17 +0200 
+In-Reply-To: &lt;4424975A.4050902@...&gt;
+References: &lt;EED355D2-254F-4777-9F50-0BDC3953265E@...&gt; &lt;87zmjgjegy.fsf@...&gt; &lt;929FCF3F-3EF6-43A5-8E1A-F5878EC675F4@...&gt; &lt;4423DCFF.6090401@...&gt; &lt;C4F29735-370B-40CF-B92B-8E0581454DD5@...&gt; &lt;4423E115.3060108@...&gt; &lt;3DF1CB76-8D3A-4DD7-B191-21D915D76313@...&gt; &lt;44241657.9060805@...&gt; &lt;84C4F4F4-650A-41D5-B374-CA7BB9478DB2@...&gt; &lt;4424975A.4050902@...&gt;
+Mime-Version: 1.0 (Apple Message framework v749.3)
+Message-Id: &lt;8E1DF16A-01E2-433C-9DDC-78095B1F07D6@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Date: Wed, 3 May 2006 01:53:25 -0700
+To: bill@...
+X-Mailer: Apple Mail (2.749.3)
+X-MIMETrack: Itemize by SMTP Server on dmail/Day(Release 6.5.1|January 21, 2004) at 05/03/2006
+ 10:53:17,
+	Serialize by Router on dmail/Day(Release 6.5.1|January 21, 2004) at 05/03/2006
+ 10:53:21,
+	Serialize complete at 05/03/2006 10:53:21
+X-TM-AS-Product-Ver: &lt;SMD&gt;-&lt;3.0.0.3227&gt;-&lt;3.52.1006&gt;-&lt;14422&gt;
+X-TM-AS-Result: &lt;No&gt;-&lt;-9.290&gt;-&lt;4.5&gt;-&lt;99000&gt;
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=ISO-8859-1; delsp=yes; format=flowed
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] 418 Invalid [was HTTP Status code question]
+X-Yahoo-Group-Post: member; u=175757792; y=ZysSRiRT453piECBhgC4r7QEyRp5N-D1NOe6AQyLAGxOEoxymKH4
+X-Yahoo-Profile: roy_fielding
+
+On Mar 24, 2006, at 5:05 PM, Bill de h=D3ra wrote:
+&gt; Roy T. Fielding wrote:=
+
+&gt;&gt; On Mar 24, 2006, at 7:55 AM, Bill de h=D3ra wrote:
+&gt;&gt;
+&gt;&gt;&gt; 418 Invalid
+&gt;=
+&gt;&gt;
+&gt;&gt;&gt; The request could not be completed due to a validation failing  
+&gt;&gt;&gt;=
+ against
+&gt;&gt;&gt; the sent entity. This code is only allowed in situations where=
+ it is
+&gt;&gt;&gt; expected that the user might be able to resubmit the request wit=
+h  
+&gt;&gt;&gt; valid
+&gt;&gt;&gt; content and where the sent content was syntactically corr=
+ect  
+&gt;&gt;&gt; according
+&gt;&gt;&gt; to its media type. The response body SHOULD include=
+ enough  
+&gt;&gt;&gt; information
+&gt;&gt;&gt; for the user to recognize the source of the c=
+onflict.  
+&gt;&gt;&gt; Invalidations are
+&gt;&gt;&gt; most likely to occur in response to a =
+PUT or POST request.
+&gt;&gt;
+&gt;&gt; Yep, that&#39;s what I would do, though a properly s=
+pecified response  
+&gt;&gt; code
+&gt;&gt; would never include that second sentence &quot;Th=
+is code is only  
+&gt;&gt; allowed ...&quot;
+&gt;&gt; since servers are always right (and ne=
+ver omnipotent).  And the last
+&gt;&gt; sentence is kind of goofy -- request payl=
+oad is unlikely to be
+&gt;&gt; invalid when it isn&#39;t present.
+&gt;&gt;
+&gt;&gt; Do you want m=
+e to standardize it?
+&gt;
+&gt; Yes please.
+
+Actually, Julian just pointed out to =
+me that WebDAV already
+defined a 422 (Unprocessable Entity) status code whi=
+ch is
+probably sufficient
+
+    http://greenbytes.de/tech/webdav/rfc2518.htm=
+l#STATUS_422
+
+so I guess I don&#39;t need to write that I-D after all.
+Unless t=
+here is some reason that you can&#39;t use 422?
+
+....Roy
+

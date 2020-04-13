@@ -1,0 +1,67 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 69567 invoked from network); 30 Dec 2009 03:40:53 -0000
+X-Received: from unknown (98.137.34.44)
+  by m14.grp.re1.yahoo.com with QMQP; 30 Dec 2009 03:40:53 -0000
+X-Received: from unknown (HELO hapkido.dreamhost.com) (66.33.216.122)
+  by mta1.grp.sp2.yahoo.com with SMTP; 30 Dec 2009 03:40:53 -0000
+X-Received: from spaceymail-a4.g.dreamhost.com (caibbdcaaaaf.dreamhost.com [208.113.200.5])
+	by hapkido.dreamhost.com (Postfix) with ESMTP id A15B5187417
+	for &lt;rest-discuss@yahoogroups.com&gt;; Tue, 29 Dec 2009 19:40:53 -0800 (PST)
+X-Received: from [192.168.0.133] (ip72-211-202-154.oc.oc.cox.net [72.211.202.154])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id 5D5211614B6;
+	Tue, 29 Dec 2009 19:40:35 -0800 (PST)
+Mime-Version: 1.0 (Apple Message framework v1077)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;20091229145635.aaca0d50.eric@...&gt;
+Date: Tue, 29 Dec 2009 19:40:34 -0800
+Cc: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Message-Id: &lt;E9505D9E-F026-483C-BF33-3D986166C69E@...&gt;
+References: &lt;499888440912210607q317e2d8i479a3656f4125bea@...&gt; &lt;20091221193640.9c693a9a.eric@...&gt; &lt;4B3100A4.1050001@...&gt; &lt;20091223131510.83c3b872.eric@...&gt; &lt;4B32BBAA.2080907@...&gt; &lt;20091223183349.cf92cb91.eric@...&gt; &lt;D9076737-E3CD-44DE-AFAB-5064582027C1@...&gt; &lt;20091223195258.c0a99e11.eric@...&gt; &lt;2fa554470912240404k3c67bbfcof77d81298983dabf@...&gt; &lt;20091224181709.09695f38.eric@...&gt; &lt;3915c69d0912290916y6d466f13m9a9ecb458f05f037@...&gt; &lt;20091229145635.aaca0d50.eric@...&gt;
+To: Eric J.Bowman &lt;eric@...&gt;
+X-Mailer: Apple Mail (2.1077)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: Methods and the uniform interface [was: Re: [rest-discuss] REST isn&#39;t hard to learn, it&#39;s just taught wrong.
+X-Yahoo-Group-Post: member; u=175757792; y=r2_p-ZOohD0azvGE2hFUGG_mnlsYp-mbVxfmfzjiLtWTcXILUU6H
+X-Yahoo-Profile: roy_fielding
+
+On Dec 29, 2009, at 1:56 PM, Eric J. Bowman wrote:
+
+&gt; No, the presence of DELETE in an Allow: header informs the client that
+&gt; a DELETE is possible, but that is all.
+&gt; 
+&gt; A self-documenting, hypertext-driven REST API may instruct the client
+&gt; to do a HEAD request on each URL appearing in a &lt;form&gt; listing
+&gt; deletable resources, and further instruct the client that it must
+&gt; perform a conditional DELETE (to avoid deleting a resource that someone
+&gt; else just altered, always consider time and multi-user).  If the Allow:
+&gt; header is implemented, the hypertext may instruct the client to exclude
+&gt; any resource from the deletable collection that didn&#39;t explicitly
+&gt; Allow: DELETE when the HEAD request was made.
+&gt; 
+&gt; Yes, DELETE results in success or failure, however it&#39;s up to DELETE&#39;s
+&gt; implementation for a given resource to determine the failure mode...
+&gt; perhaps 401 to initiate challenge-response.  Informing the user as to
+&gt; why the DELETE failed differentiates the uniform REST interface from
+&gt; the generic HTTP interface.  Calling the DELETE method of a resource
+&gt; out-of-band of the hypertext application may even have caused the
+&gt; failure, as we shall see...
+&gt; 
+&gt; (I haven&#39;t checked RFC 2616bis lately, but AFAIK the Allow: header may
+&gt; be sent with GET and HEAD requests, not just as part of a 405 response.)
+
+Yes.
+
+BTW, &quot;Allow: DELETE&quot; in HTTP is a form of hypertext, as are all of
+the resource metadata fields (data-embedded control information).
+That is why they were considered part of the representation, though
+I think we are making Allow just a response-header in httpbis.
+
+....Roy
+
+
+

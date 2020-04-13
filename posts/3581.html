@@ -1,0 +1,64 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 16 Apr 2003 02:40:46 -0000
+Received: (qmail 28963 invoked from network); 16 Apr 2003 02:40:46 -0000
+Received: from unknown (66.218.66.218)
+  by m11.grp.scd.yahoo.com with QMQP; 16 Apr 2003 02:40:46 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta3.grp.scd.yahoo.com with SMTP; 16 Apr 2003 02:40:46 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.8/8.12.8) with ESMTP id h3G0t5dl003753;
+	Tue, 15 Apr 2003 17:55:05 -0700 (PDT)
+Date: Tue, 15 Apr 2003 17:55:05 -0700
+Subject: Re: [rest-discuss] DELETE container?
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: Chuck Hinson &lt;cmhinson@...&gt;
+In-Reply-To: &lt;3E97778F.7010008@...&gt;
+Message-Id: &lt;0FCFC6A2-6FA6-11D7-831E-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt;&gt; Theoretically, you simply PUT something that needs containment,
+&gt;&gt; as evidenced by the slash in the path.  However, most webdav
+&gt;&gt; implementers believed that a collection should exist prior to
+&gt;&gt; a PUT within it, since that makes it easier to catch user mistakes
+&gt;&gt; such as mistyping a long URI.  Hence, MKCOL.
+&gt;&gt;
+&gt;&gt; REST will happily accept either alternative, providing that the
+&gt;&gt; method is standardized (has the same meaning) for all resources
+&gt;&gt; (even if some may not allow it).
+&gt;
+&gt; But does HTTP happily accept either alternative?  Or does HTTP
+&gt; standarize on one or the other method?
+
+HTTP doesn&#39;t tell applications how to do a sequence of actions.
+It only defines what each action means and how the client should
+interpret the response to each action.  WebDAV is a little more
+explicit about sequences, which is why it prefers MKCOL and would
+probably reject a deep PUT.
+
+&gt;&gt; If you delete the container, it may have adverse effects on other
+&gt;&gt; links.  For example, if the server automatically maintains links,
+&gt;&gt; then you should not delete the container unless you want all of
+&gt;&gt; those links to go away.  So, delete each resource individually.
+&gt;
+&gt; What do you mean by &quot;the server automatically maintains links?&quot;
+
+Many content management products (like Day Software&#39;s Communique)
+include an automatic link maintenance function that will recognize
+a delete on a resource and either note all links to it as being
+broken (and thus scheduled for review) or simply deactivate those
+links so that they don&#39;t show up on the published pages until someone
+either changes the destination or restores the deleted resource.
+
+....Roy
+
+
+

@@ -1,0 +1,72 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 43807 invoked from network); 7 Aug 2007 21:31:54 -0000
+Received: from unknown (66.218.67.36)
+  by m53.grp.scd.yahoo.com with QMQP; 7 Aug 2007 21:31:54 -0000
+Received: from unknown (HELO spaceymail-a3.g.dreamhost.com) (208.97.132.207)
+  by mta10.grp.scd.yahoo.com with SMTP; 7 Aug 2007 21:31:54 -0000
+Received: from [10.2.8.55] (wsip-70-183-62-251.oc.oc.cox.net [70.183.62.251])
+	by spaceymail-a3.g.dreamhost.com (Postfix) with ESMTP id B2FE4195271;
+	Tue,  7 Aug 2007 14:31:16 -0700 (PDT)
+In-Reply-To: &lt;f99scd+nr7i@...&gt;
+References: &lt;f99scd+nr7i@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;2B3CC1C6-1233-42EA-ACC2-206332E2227F@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Tue, 7 Aug 2007 14:31:12 -0700
+To: k_mccarthy &lt;k_mccarthy@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: Changing State on two resources at once
+X-Yahoo-Group-Post: member; u=175757792; y=aGFJyKEvC1G6Nu3vK3akUddpZTqdWOW0RIpyIh1LbDWPrk28UncK
+X-Yahoo-Profile: roy_fielding
+
+On Aug 7, 2007, at 6:34 AM, k_mccarthy wrote:
+&gt; --- In rest-discuss@yahoogroups.com, &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+&gt; wrote:
+&gt; &gt;
+&gt; &gt; Umm, all REST theory that I know about prevents you from knowing
+&gt; &gt; the extent to which one resource state is overlapped with other
+&gt; &gt; resources. In other words, the normal case is for many resources
+&gt; &gt; to share the same or overlapping state
+&gt;
+&gt; I don&#39;t quite get this. Do you make a distinction between two
+&gt; resources whose state happens to have the same value, and two
+&gt; resources who share the same state?
+
+Yes, but not in that example.
+
+&gt; If I have two clocks, A and B, I can set them to have the same time.
+&gt; Maybe A is simulating traveling at the speed of light, so gradually A
+&gt; and B no longer have the same time. So initially the state happened to
+&gt; have the same value.
+&gt;
+&gt; Or I can synchronize A and B to the same time. And by this I want to
+&gt; mean that if I reset B, A will be reset too. This sounds like shared
+&gt; state. But then I would think that there is a third resource, C. I
+&gt; have set C to a particular time, and set A and B to refer to C. Which
+&gt; means there is no shared state at all.
+&gt;
+&gt; Or maybe I am completely missing the point.
+
+I think you missed the point.  You can have a single clock resource.
+A single &quot;minute-hand&quot; resource.  A single &quot;minutes-in-decimal&quot;
+resource.  A single &quot;hour-hand&quot; resource. ...  The state that
+is being shared is the common time model.  If you change the
+&quot;minute-hand&quot; resource, it will have a side-effect on the
+&quot;minutes-in-decimal&quot; resource state and the &quot;clock&quot; state.
+If you change the clock state, it will probably result in changes
+to all the other resource states.  This is all normal and expected
+by the REST model, even though REST only talks about one resource
+at a time.  The interconnected states are not visible to the client
+because it doesn&#39;t need to know they exist (and not knowing is
+the best way to avoid coupling between implementations).
+
+....Roy
+
+

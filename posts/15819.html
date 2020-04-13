@@ -1,0 +1,164 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 1362 invoked from network); 8 Jul 2010 23:18:51 -0000
+X-Received: from unknown (66.196.94.107)
+  by m3.grp.sp2.yahoo.com with QMQP; 8 Jul 2010 23:18:51 -0000
+X-Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.113.200.5)
+  by mta3.grp.re1.yahoo.com with SMTP; 8 Jul 2010 23:18:51 -0000
+X-Received: from di-524.corp.day.com (wsip-98-189-13-228.oc.oc.cox.net [98.189.13.228])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id A5D5816151B;
+	Thu,  8 Jul 2010 16:18:50 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1081)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;B1DBEEA4-E39E-4CC2-AB04-1F626819284D@...&gt;
+Date: Thu, 8 Jul 2010 16:18:50 -0700
+Cc: Bryan Taylor &lt;bryan_w_taylor@...&gt;,
+	rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: quoted-printable
+Message-Id: &lt;9D80DC9F-E7A2-4AD9-8B2F-5108525325A7@...&gt;
+References: &lt;147834.3705.qm@...&gt; &lt;36993887-61F4-4758-95AB-FEA8BE37B3A6@...&gt; &lt;B1DBEEA4-E39E-4CC2-AB04-1F626819284D@...&gt;
+To: Jan Algermissen &lt;algermissen1971@...&gt;
+X-Mailer: Apple Mail (2.1081)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Restful Approaches to some Enterprise Integration Problems
+X-Yahoo-Group-Post: member; u=175757792; y=gJMaBAAquTeOxO8bZ7NxpQDrtwLF_l9O5D4W9Z6aN99ITLNh7vAt
+X-Yahoo-Profile: roy_fielding
+
+On Jul 6, 2010, at 1:00 AM, Jan Algermissen wrote:
+
+&gt; Roy,
+&gt; 
+&gt; On Jul 6, 2=
+010, at 3:03 AM, Roy T. Fielding wrote:
+&gt; 
+&gt; &gt; Reliable upload of multiple =
+files can be
+&gt; &gt; performed using a single zip file, but the assumption bein=
+g made
+&gt; &gt; here is that the client has a shared understanding of what the
+&gt;=
+ &gt; server is intending to do with those files. That&#39;s coupling.
+&gt; 
+&gt; Trying=
+ to test my understanding:
+&gt; 
+&gt; By &#39;client&#39; you are refering to &#39;user agent=
+&#39;?
+
+In this case, yes, though it is true for any client.
+
+&gt; My understandin=
+g is that the user agent has no shared understanding beyond how to construc=
+t the submission resquest upon the activation of a hypermedia control. (Web=
+ browsers know how to create a POST request from a user&#39;s submission of a f=
+orm)
+
+which it gets from the media type definition, yes.
+
+&gt; The user howeve=
+r does have an understanding (expectation) of what the server is intending =
+to do with those files. This expectation is the basis for choosing to activ=
+ate the hypermedia control in the first place.
+
+A user (or configured robot=
+) will understand their own intent,
+yes, but not necessarily how the server=
+ intends to accomplish that
+functionality.  A user is unlikely to know that=
+ a given service
+needs guaranteed delivery, since best-effort delivery is t=
+he norm.
+One would have to add that to the interaction requirements, which
+=
+means standardizing that kind of interaction through additional
+definitions=
+ in the media type or link relations and sending
+enough information with th=
+e request to enable the recipient to
+verify the received message integrity,=
+ and both sides need to
+know that the request needs to be repeated automati=
+cally if
+the checks fail.  And that still doesn&#39;t tell us what to put in
+th=
+e representations being sent.  That&#39;s why this kind of
+functionality is mor=
+e likely found in javascript or a
+browser extension.
+
+There is also no need=
+ to limit yourself to one interface.
+Look at all the interfaces on Apache A=
+ctiveMQ, for example
+
+  http://activemq.apache.org/protocols.html
+
+The so-c=
+alled REST protocol calls for POST to a given
+queue URI, which I&#39;ll just as=
+sume isn&#39;t guaranteed delivery.
+Guaranteed delivery could probably be added=
+ with a simple
+message integrity check if the messages are unique, but I
+wo=
+uld prefer a more explicit pattern.
+
+For example, we might define a message=
+ sink with a URI such
+that each client knows (by definition) that it should=
+ append
+its own client-id (perhaps set by cookie) and a message counter
+to =
+the request URI, as in
+
+   PUT URI/client-id/count HTTP/1.1
+   MIC: a162b17=
+f
+
+and then the client can send as many messages as it wants,
+provided the =
+count is incremented for each new message, and
+the server must verify (and =
+store) the MIC before responding
+with a success code.  Each message can the=
+refore be logged,
+verified, etc., just like a message queue with guarantees=
+.
+
+We could try to standardize something like what I describe above,
+but it=
+ would require multiple independent implementations and a
+lot more free tim=
+e than it probably deserves.  In any case, it also
+begs the question of why=
+ would we want to do this using HTTP
+[aside from just avoiding firewall blo=
+cks, which is not a
+rational rationale].
+
+The fact is that most people writ=
+e message queues for systems
+that are more operational than informational -=
+- i.e., they are
+doing something, usually at a high rate of speed, that isn=
+&#39;t
+intended to be viewed as an information service, except in
+the form of a=
+n archive or summary of past events.  Would a
+more RESTful message queue ha=
+ve significant architectural
+properties that outweigh the trade-off on perf=
+ormance, or
+would it be better to use a tightly coupled eventing protocol
+a=
+nd merely provide the resulting archive and summaries via
+normal RESTful in=
+teraction?  That kind of question needs to
+be answered by an architect fami=
+liar with all of the design
+contraints for the proposed system.
+
+....Roy
+

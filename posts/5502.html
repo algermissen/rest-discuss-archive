@@ -1,0 +1,82 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 85311 invoked from network); 19 Nov 2005 21:02:43 -0000
+Received: from unknown (66.218.66.217)
+  by m25.grp.scd.yahoo.com with QMQP; 19 Nov 2005 21:02:43 -0000
+Received: from unknown (HELO fed1rmmtao09.cox.net) (68.230.241.30)
+  by mta2.grp.scd.yahoo.com with SMTP; 19 Nov 2005 21:02:42 -0000
+Received: from [192.168.0.102] (really [70.187.185.205])
+          by fed1rmmtao09.cox.net
+          (InterMail vM.6.01.05.02 201-2131-123-102-20050715) with ESMTP
+          id &lt;20051119210239.IEFO25099.fed1rmmtao09.cox.net@[192.168.0.102]&gt;
+          for &lt;rest-discuss@yahoogroups.com&gt;;
+          Sat, 19 Nov 2005 16:02:39 -0500
+Mime-Version: 1.0 (Apple Message framework v623)
+In-Reply-To: &lt;437F06AC.3070506@...&gt;
+References: &lt;BAY101-DAV64A998BAB9CCF3F942ED8D85E0@...&gt;	 &lt;DA6DF1D0-2C1B-4A82-B94C-2C80F024ADBB@...&gt;	 &lt;1132340157.30459.66.camel@phoenix&gt;	 &lt;39D4718C-D807-4B51-B618-F54B0DB6C22C@...&gt;	 &lt;1132343648.10282.16.camel@phoenix&gt;	 &lt;B2C52A48-614A-4F9B-BDEA-AD328976D00B@...&gt; &lt;1132368216.12497.128.camel@phoenix&gt; &lt;437F06AC.3070506@...&gt;
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;c53f661a40959b596c1a47dd3e27f56e@...&gt;
+Content-Transfer-Encoding: 7bit
+Date: Sat, 19 Nov 2005 13:02:37 -0800
+To: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+X-Mailer: Apple Mail (2.623)
+X-eGroups-Msg-Info: 1:12:0:0
+From: Roy T. Fielding &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Resources and URIs
+X-Yahoo-Group-Post: member; u=175757792; y=cXg5JpONjwx02bZ1LspRS3DaK3TYIYiT-MCFKQ8grpGD4y1FeU-v
+X-Yahoo-Profile: roy_fielding
+
+On Nov 19, 2005, at 3:04 AM, Elias Sinderson wrote:
+&gt; -- one simply cannot build reliable distributed applications upon 
+&gt; &#39;perhaps&#39;, &#39;guesses&#39; and &#39;maybe&#39;s...
+
+Of course one can. Independent evolvability of components can only
+be achieved if the client is prevented from knowing what exactly
+will happen as the result of its requests. If it knows, then client
+developers build into the system an expectation of the server
+implementation that simply will not hold true over time.  Likewise,
+a server doesn&#39;t understand why a client has requested X or what
+sequence of requests will come next -- it just knows the current
+intention of the client as expressed in the message.
+
+Do you think that strong typing is good for a distributed system
+that crosses organizational boundaries?
+
+&gt; Further possible interpretations include deleting an /instance/ of part
+&gt; 00345 from the current inventory and deleting part 00345 from the
+&gt; catalogue as a whole. OTOH, the semantics of DELETE /parts/00345 is
+&gt; bothclear and unambiguous;  deleting the resource identified by the 
+&gt; URI.
+
+What makes you think that /parts/00345 is not a query for part
+numbers that contain the string &quot;00345&quot;?  Did the server tell you?
+
+All servers have an infinite resource space (if we ignore URI length
+limitations of some components).  Some of those resources will allow
+DELETE and others will not.  When I write a server application, the
+resources that I want to be authorable are a very small subset of
+those that are GETable.  If you try to author a negotiated, query,
+or computed resource, then I give the client an appropriate error or
+redirect to the source resource.  Naturally, the source resource
+is defined such that the client&#39;s intent can be unambiguously
+expressed via an HTTP method.
+
+In interface design, if you don&#39;t want users to push a button, then
+placing a big note next to it that says &quot;Don&#39;t push this button&quot; is
+not a good solution.  It is better to just remove the button.
+
+In REST, a client only expresses an intent within a message.
+A server is given leeway (within the scope of the method semantics)
+to choose a response that fits the nature of that resource.
+It doesn&#39;t need to satisfy every request with a successful response.
+
+People who are used to distributed file system protocols get
+very worried by HTTP, but it works just fine.  You just have to
+relax and leave the details to late binding.
+
+....Roy
+
+
+

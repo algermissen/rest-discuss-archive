@@ -1,0 +1,154 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 50564 invoked from network); 21 Feb 2010 06:03:56 -0000
+X-Received: from unknown (98.137.34.45)
+  by m2.grp.sp2.yahoo.com with QMQP; 21 Feb 2010 06:03:56 -0000
+X-Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.113.200.5)
+  by mta2.grp.sp2.yahoo.com with SMTP; 21 Feb 2010 06:03:56 -0000
+X-Received: from [192.168.1.66] (99-21-208-82.lightspeed.irvnca.sbcglobal.net [99.21.208.82])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id BA1971614FB;
+	Sat, 20 Feb 2010 22:03:51 -0800 (PST)
+Mime-Version: 1.0 (Apple Message framework v1077)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;F1962646D3B64642B7C9A06068EE1E6418B437@...&gt;
+Date: Sat, 20 Feb 2010 22:03:51 -0800
+Cc: &quot;Eric J. Bowman&quot; &lt;eric@...&gt;,
+	Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: quoted-printable
+Message-Id: &lt;CDAB4E8C-1F06-4CDA-AD31-B1E13095A79C@...&gt;
+References: &lt;hlbgc5+krnh@...&gt;&lt;20100215232457.a7bc29ae.eric@...&gt;&lt;28F51815-0B8D-4873-BCF4-827A9C7D2D6D@...&gt;&lt;20100217133410.34b1a952.eric@...&gt;&lt;7B44855B-5ACA-4C70-998A-A2F58CAACCF3@...&gt;&lt;581bf6161002171422he42b5ci8c182a9d6a14c067@...&gt; &lt;20100217185144.c33c7b2c.eric@...&gt; &lt;F1962646D3B64642B7C9A06068EE1E6418B437@...&gt;
+To: Robert Brewer &lt;fumanchu@...&gt;
+X-Mailer: Apple Mail (2.1077)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Content Negotiation
+X-Yahoo-Group-Post: member; u=175757792; y=Q_awCcA9wBBYQGbKKmacQPHw3fpRX7M2WMiJFzJi5auL6VYKBXv3
+X-Yahoo-Profile: roy_fielding
+
+On Feb 18, 2010, at 10:21 AM, Robert Brewer wrote:
+&gt; Eric J. Bowman wrote:
+=
+&gt; &gt; I contend that the format of a representation is part of a
+&gt; &gt; system&#39;s=
+ hierarchical data.  The proof is right there in curl,
+&gt; &gt; which sees no hi=
+erarchy when it&#39;s saving &#39;resource&#39; and
+&gt; &gt; &#39;resource.1&#39; to disk, while obv=
+iously recognizing .pdf
+&gt; &gt; and .html as part of a hierarchy of representat=
+ions, whether
+&gt; &gt; by direct dereferencing or by presence in a Content-Locat=
+ion
+&gt; &gt; response header.
+&gt; 
+&gt; That&#39;s an odd way to look at it. The &quot;format =
+of a representation
+&gt; is part of a system&#39;s hierarchical data&quot; if and only =
+if the path
+&gt; portion of the URI contains information to that effect. If no=
+t,
+&gt; it doesn&#39;t. The fact that some domains specifically do this does
+&gt; not=
+ require them all to do so. Curl is suboptimal in this respect
+&gt; since it d=
+oes not differentiate responses based on the query
+&gt; string component.
+
+Mor=
+e to the point, one implementation doesn&#39;t &quot;prove&quot; anything.
+
+&gt; &gt; But it&#39;s =
+still treating URIs opaquely -- links are derived from
+&gt; &gt; the link relatio=
+ns in the source documents, which are read from
+&gt; &gt; @href&#39;s. There is no an=
+alysis of those @href contents by keyword
+&gt; &gt; or filename extension to dete=
+rmine &quot;resource type&quot;.  Clients
+&gt; &gt; aren&#39;t required to know any specifics o=
+f a URI&#39;s pattern.  That
+&gt; &gt; would be coupling, which is diametrically oppo=
+sed to the notion
+&gt; &gt; of URI opacity in REST.
+&gt; 
+&gt; Absolutely correct. That=
+ behavior should be extended to query string
+&gt; components of the URI as wel=
+l.
+&gt; 
+&gt; &gt; Don&#39;t get carried away by saying that my treating URIs as
+&gt; &gt; hie=
+rarchical or testing whether they have fragments or not,
+&gt; &gt; amounts to a f=
+ailure to treat URIs as opaque.  Can you point
+&gt; &gt; to some constraint in RE=
+ST that I&#39;m breaking?  Can you find any
+&gt; &gt; support from Roy to back up thi=
+s notion that URI opacity means
+&gt; &gt; that query and filename extension are t=
+he same?
+&gt; 
+&gt; Sure. I used to take your position but corrected myself [1] b=
+ack
+&gt; in 2005, complete with Fielding quotes and RFC 3986 references ;)
+&gt; 
+=
+&gt; &gt; Are there any
+&gt; &gt; generic URI parsers you can point me to, which treat =
+query
+&gt; &gt; strings opaquely?  Or do they all consider &#39;?&#39; to be a reserved
+&gt;=
+ &gt; character?
+&gt; 
+&gt; The &#39;?&#39; character does have a special meaning: it separa=
+tes the
+&gt; hierarchical portion of the URI from the opaque part. But the
+&gt; o=
+paque part is still part of the identifier.
+&gt; 
+&gt; &gt; So the onus is not on me=
+ to prove that Roy isn&#39;t being clear
+&gt; &gt; as daylight when he says that &quot;que=
+ry is not a substitute for
+&gt; &gt; identification of resources&quot;, but on you who=
+ think it could
+&gt; &gt; possibly mean any different to support *your* arguments=
+.  :-)
+&gt; 
+&gt; When I read that statement from Roy [2], I don&#39;t see any indica=
+tion
+&gt; that it&#39;s about &quot;query&quot; as a URI component; instead, it is regarding=
+
+&gt; &quot;query&quot; as a means of fetching a list of resources. Roy&#39;s point
+&gt; seems =
+to be that returning 38 items in a list within a single
+&gt; response is no su=
+bstitute for having distinct URI&#39;s for each of
+&gt; those 38 individual resour=
+ces.
+&gt; 
+&gt; 
+&gt; Robert Brewer
+&gt; fumanchu@...
+&gt; 
+&gt; [1] http://groups.goo=
+gle.com/group/cherrypy-devel/msg/0fcc62df334bc9ed
+&gt; [2] http://roy.gbiv.com=
+/untangled/2008/rest-apis-must-be-hypertext-driven#comment-720
+
+
+Right, I w=
+asn&#39;t talking about URI syntax at all.  Any server developer
+would know tha=
+t the URI syntax of the request-target (URI path and query)
+has absolutely =
+no correlation to any specific &quot;kind&quot; of resource mapping
+or implementation=
+.  Things like mod_rewrite make that impossible.
+
+...Roy
+
+
+

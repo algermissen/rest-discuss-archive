@@ -1,0 +1,73 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_3_0); 11 Jan 2003 00:38:46 -0000
+Received: (qmail 41113 invoked from network); 11 Jan 2003 00:38:46 -0000
+Received: from unknown (66.218.66.218)
+  by m3.grp.scd.yahoo.com with QMQP; 11 Jan 2003 00:38:46 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta3.grp.scd.yahoo.com with SMTP; 11 Jan 2003 00:38:45 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.2/8.12.2) with ESMTP id h0B0bIj7000643;
+	Fri, 10 Jan 2003 16:37:18 -0800 (PST)
+Date: Fri, 10 Jan 2003 16:37:17 -0800
+Subject: opaqueness of URI
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: &lt;rest-discuss@yahoogroups.com&gt;
+To: Gary Shea &lt;shea@...&gt;
+In-Reply-To: &lt;Pine.LNX.4.33L2.0301101030040.5840-100000@...&gt;
+Message-Id: &lt;D6666632-24FC-11D7-B1C1-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; So, which method is more ReSTful?  To me the first one is ReSTful, the
+&gt; second one isn&#39;t, but Mike obviously has been thinking about ReST 
+&gt; longer
+&gt; than I have... so I accept that I&#39;m probably missing something.
+
+Maybe I am missing something, but since several people have said that
+REST implies opaqueness in the URI, my guess is that a legend
+has somehow begun and I need to put it to rest (no pun intended).
+
+REST does not require that a URI be opaque.  The only place where
+the word opaque occurs in my dissertation is where I complain about the
+opaqueness of cookies.  In fact, RESTful applications are, at all times,
+encouraged to use human-meaningful, hierarchical identifiers in order
+to maximize the serendipitous use of the information beyond what is
+anticipated by the original application.
+
+It is still necessary for the server to construct the URIs and for the
+client to initially discover those URIs via hypertext responses, either
+in the normal course of creating the resource or by some form of query
+that results in a hypertext list.  However, once that list is provided,
+people can and do anticipate the names of other/future resources in
+that name space, just as I would often directly type URIs into the
+location bar rather than go through some poorly designed interactive
+multi-page interface for stock charts.
+
+Sites that rely on interstitial advertising (like the annoying yahoo
+groups interface) do not like it when user&#39;s avoid the indirect path,
+but the social network-effect of the Web is enhanced by meaningful URI.
+In general, sites that give meaningful URI are used more often.
+
+It also helps prevent the &quot;lost in hyperspace&quot; syndrome, but that&#39;s
+a separate issue.
+
+
+Cheers,
+
+Roy T. Fielding, co-founder, The Apache Software Foundation
+                  (fielding@...)  &lt;http://www.apache.org/&gt;
+
+                  Chief Scientist, Day Software
+                  2 Corporate Plaza, Suite 150
+                  Newport Beach, CA 92660-7929   fax:+1.949.644.5064
+                  (roy.fielding@...) &lt;http://www.day.com/&gt;
+
+
+

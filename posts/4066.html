@@ -1,0 +1,60 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 61860 invoked from network); 14 Dec 2003 03:45:17 -0000
+Received: from unknown (66.218.66.167)
+  by m15.grp.scd.yahoo.com with QMQP; 14 Dec 2003 03:45:17 -0000
+Received: from unknown (HELO fed1mtao04.cox.net) (68.6.19.241)
+  by mta6.grp.scd.yahoo.com with SMTP; 14 Dec 2003 03:45:17 -0000
+Received: from mac.wakasoft.com ([68.5.5.20]) by fed1mtao04.cox.net
+          (InterMail vM.5.01.06.05 201-253-122-130-105-20030824) with ESMTP
+          id &lt;20031214034518.RGTD3905.fed1mtao04.cox.net@...&gt;;
+          Sat, 13 Dec 2003 22:45:18 -0500
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id hBE3ixBC000979;
+	Sat, 13 Dec 2003 19:44:59 -0800 (PST)
+Date: Sat, 13 Dec 2003 19:44:58 -0800
+Subject: Re: [rest-discuss] PUT question
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Mime-Version: 1.0 (Apple Message framework v553)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: Seairth Jacobs &lt;seairth@...&gt;
+In-Reply-To: &lt;3FDB77ED.5060105@...&gt;
+Message-Id: &lt;E38A4729-2DE7-11D8-9E42-000393753936@...&gt;
+Content-Transfer-Encoding: quoted-printable
+X-Mailer: Apple Mail (2.553)
+X-eGroups-Remote-IP: 68.6.19.241
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; Just how useful does PUT end up being if the end result is &quot;anything 
+&gt; g=
+oes&quot;?=A0
+
+A better way to think about it is that the request expresses the =
+intent
+of the client but the server is responsible for mapping that back in=
+to
+the state of the resource (the client is not supposed to have a clue as
+=
+to how the resource is implemented, and usually doesn&#39;t even know what
+defi=
+nes it as a resource).  Most of the time it just ends up being the
+same as =
+a flat file store, but the flexibility is there when you need it
+because it=
+ allows the server to evolve independent of the clients.
+
+We don&#39;t need to =
+require that the server do something sensible, since
+whatever it does shoul=
+d be in the best interests of the resource.
+
+This is also why the Web does =
+not support write-back caching.
+
+....Roy
+
+

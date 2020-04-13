@@ -1,0 +1,92 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 73880 invoked from network); 9 Jan 2007 02:36:31 -0000
+Received: from unknown (66.218.66.166)
+  by m38.grp.scd.yahoo.com with QMQP; 9 Jan 2007 02:36:31 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta5.grp.scd.yahoo.com with SMTP; 9 Jan 2007 02:36:31 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.55])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1H46sf-0000ge-U3; Mon, 08 Jan 2007 18:38:29 -0800
+In-Reply-To: &lt;1168257507.6449.50.camel@...&gt;
+References: &lt;060501c72fd4$c67de4a0$2102fea9@...&gt; &lt;797BC3DE-A059-414C-ACC6-50E7B2D3F4A6@...&gt; &lt;E5CD3209-A032-46D3-9122-F83EA5AB07D4@...&gt; &lt;1168001777.23586.23.camel@...&gt; &lt;006b01c73127$bd190e90$6601a8c0@WALDENDESKTOP&gt; &lt;1168145534.31772.56.camel@...&gt; &lt;000501c73272$c67845e0$6601a8c0@WALDENDESKTOP&gt; &lt;1168257507.6449.50.camel@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;D3BC94A7-0A95-4430-8D3D-1FB8F5147D67@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Mon, 8 Jan 2007 18:36:33 -0800
+To: Benjamin Carlyle &lt;benjamincarlyle@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: Request for feedback: REST for the Rest	of	Us
+X-Yahoo-Group-Post: member; u=175757792; y=dpTCRvTAK7tXqaZm1buRiEeYLV13p4McIB7YaaojQCYALb5Ysvfe
+X-Yahoo-Profile: roy_fielding
+
+On Jan 8, 2007, at 3:58 AM, Benjamin Carlyle wrote:
+&gt; I see identity as the rock of vocabulary that allows unambigous
+&gt; conversations to be had about what resources are and how we should
+&gt; interact with them. You can then move on to definitions of resources
+&gt; that help express the meaning of the classic HTTP methods:
+...
+&gt; This set of definitions defines the resource concept in a different  
+&gt; way
+&gt; to REST, and I think forms a subset of theoretical REST that can form
+&gt; the basis of discussion about which methods a particular architecture
+&gt; should have. It lies somewhere between the real web and REST theory  
+&gt; as a
+&gt; practical bridge of good web style.
+
+Perhaps you should consider what the purpose of these definitions
+may be, and what it is you are trying to describe.
+
+REST is a model of an idealized Web application that attempts to
+maximize a particular set of properties that I consider to be
+the &quot;most important properties&quot; of the Web as a whole.  Its purpose
+is to guide architecture decisions in light of that model, so that
+I can avoid breaking the important bits while developing the
+architecture and so that developers can understand the
+important bits when developing applications.
+
+The problem with your model is that it doesn&#39;t respect reality.
+By axiomatizing away the notion of resource equivalence you simplify
+the model, but then your model is incapable of explaining the
+information theoretic properties of the Web that I just finished
+describing.  In your model, URI aliases are not an issue because
+they don&#39;t exist.  In the REST model, URI aliases are an issue
+because they reduce the perceived importance of a given resource
+and reduce the efficiency of caching resource representations.
+
+REST teaches the architect that reducing aliases will result in a
+more efficient system, whereas your model just assumes such a
+reduction is impossible.  Google search ranking and duplicate result
+presentation emphasize the same characteristics as the REST model
+because those are characteristics of the information space
+as we know it (the Web).  And you say that your model is somewhere
+between the &quot;real Web&quot; and REST theory?  Wrong.  The Web is a lot
+more than the sum of client-server interaction.
+
+So, the question then isn&#39;t how you might define resources.  The
+question is what do you intend to accomplish by doing so?  There
+are many ways to look at any given system, particularly when
+focusing on only one of the components.  An abstraction like REST
+is supposed to help the designer identify mismatches in the
+architecture.  Perhaps you don&#39;t see the problem because you
+aren&#39;t applying your model to the Web as a whole, but rather
+something more limited (such as a server-side development
+framework)?
+
+....Roy
+
+

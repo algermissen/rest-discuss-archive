@@ -1,0 +1,138 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 16047 invoked from network); 3 Oct 2003 00:50:04 -0000
+Received: from unknown (66.218.66.166)
+  by m10.grp.scd.yahoo.com with QMQP; 3 Oct 2003 00:50:04 -0000
+Received: from unknown (HELO mac.wakasoft.com) (65.208.153.194)
+  by mta5.grp.scd.yahoo.com with SMTP; 3 Oct 2003 00:50:03 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id h930nrvh026001;
+	Thu, 2 Oct 2003 17:49:53 -0700 (PDT)
+Date: Thu, 2 Oct 2003 17:49:52 -0700
+Subject: Re: [rest-discuss] REST&#39;s Definition of Resource
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: algermissen@..., rest-discuss@yahoogroups.com
+To: Walden Mathews &lt;waldenm@...&gt;
+In-Reply-To: &lt;004401c388ef$93af5b10$0902a8c0@ATTIC56COVE&gt;
+Message-Id: &lt;7FF83CCF-F53B-11D7-BD07-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+On Thursday, October 2, 2003, at 07:15  AM, Walden Mathews wrote:
+
+&gt; I don&#39;t think it would ever be correct to say that &quot;REST [or
+&gt; any architectural style, for that matter] is only about the technical
+&gt; aspects...&quot;.  The purpose of studying architectural styles is so
+&gt; that we can reason about the properties of the system.
+&gt;
+&gt; In this case, there are two properties driving the definition of
+&gt; &quot;resource&quot; within the REST style:
+&gt;
+&gt; (1) consistency of reference.  When you say &quot;GET the algorithm
+&gt; for computing the area of a circle&quot; or &quot;GET the current weather
+&gt; in Norwalk&quot;, you want those requests to have consistent semantics
+&gt; over time.  Even if the particular answers vary.
+&gt;
+&gt; (2) scaleability.  One way to achieve that consistency is to let
+&gt; identifiers identify representations, and rely on centralized link
+&gt; services to
+&gt; track state changes.  Every time the current weather in Norwalk
+&gt; changed, a new document and a new identifier would have to be
+&gt; minted, and all existing documents with a reference to Norwalk
+&gt; weather would need their links updated, the overall cost of the 
+&gt; operation
+&gt; being commensurate with the total number of such links.  The other,
+&gt; more scaleable, way to achieve that is to do what REST does:
+&gt;
+&gt; &quot;&quot;&quot;
+&gt; Traditional hypertext systems [61], which typically operate in a 
+&gt; closed or
+&gt; local environment, use unique node or document identifiers that change 
+&gt; every
+&gt; time the information changes, relying on link servers to maintain 
+&gt; references
+&gt; separately from the content [135]. Since centralized link servers are 
+&gt; an
+&gt; anathema to the immense scale and multi-organizational domain 
+&gt; requirements
+&gt; of the Web, REST relies instead on the author choosing a resource 
+&gt; identifier
+&gt; that best fits the nature of the concept being identified. Naturally, 
+&gt; the
+&gt; quality of an identifier is often proportional to the amount of money 
+&gt; spent
+&gt; to retain its validity, which leads to broken links as ephemeral (or 
+&gt; poorly
+&gt; supported) information moves or disappears over time.
+&gt; &quot;&quot;&quot;
+&gt;
+&gt; I don&#39;t think REST seeks to be a framework for knowledge
+&gt; representation or semantics.  I think the requirements above led
+&gt; to its definition being inevitably &quot;conceptual&quot;.
+
+That&#39;s an excellent summary, Walden.  REST does not seek to be a
+framework for KR, but it is a framework for communication.  The KR
+systems that I am familiar with are primarily based on models of
+facts/claims/reality instead of perceptions, since building a
+reasoning system with multiple perspectives is a bit like
+working with a schizophrenic.  However, since communication is
+at the heart of learning, they end up with similar challenges.
+and similar terminology.
+
+&gt; REST &quot;resource&quot; is unlike any other architectural component
+&gt; I am aware of in this sense.  A &quot;filter&quot; component in a pipe &
+&gt; filter style makes promises about the consistency and relative
+&gt; statelessness of the transform, but not any semantic consistency
+&gt; of the output.
+
+Yep, I struggled with that in writing the dissertation -- is
+each resource a datum, a connector, a component, or something
+else that just hasn&#39;t been talked about in the literature?
+I think of it as an abstract goal, more than anything else,
+but classified it as data because it didn&#39;t fit elsewhere.
+It is, essentially, data that is only used by reference.
+
+&gt; In modeling REST formally, you can remove &quot;resource&quot; from
+&gt; the picture without harming the purely technical aspects of the
+&gt; system.  What you then end up with is a many-to-many relation
+&gt; from URI to representations.  Perhaps that&#39;s all the Web *really*
+&gt; is, but it&#39;s hard to find any guidance in the building of useful
+&gt; systems in that.  Put another way, it&#39;s hard to decide what value
+&gt; such a system might be providing.
+
+And that is the key, really, since the main reason we know that a
+conceptual resource must exist is because of the number of ways
+that a link can fail.  It is only when people complain bitterly
+about the lack of an expected sameness that you realize the goal
+of the link has nothing to do with the listener at the end of
+the HTTP address, but rather the expectation that it identifies
+(indirectly, as there is no such thing as direct HTTP
+identification) something other than the address.
+
+People don&#39;t create links to server software; they create links to
+information.  If the system pretends that the target of a link is
+nothing more than a communication point, then the system cannot
+anticipate and correct for the kinds of information failures that
+people actually care about.  Or, more to the point, people won&#39;t
+design the system (which doesn&#39;t care either way) such that it
+detects such failures when possible and includes the features
+necessary for indirection, redirection, etc.
+
+BTW, the definition of resource in REST applies only to information
+systems.  The one that applies to all uses of URI is in the
+rfc2396bis draft, which has larger scope but ends up being less
+useful as a result.  There are no other generally agreed upon
+definitions of resource for the Web technologies, though many people
+still think of it as a &quot;document&quot; and simply change the definition
+of document to have the same properties as a resource.
+
+....Roy
+
+
+

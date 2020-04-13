@@ -1,0 +1,64 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_3_0); 18 Dec 2002 00:22:02 -0000
+Received: (qmail 79281 invoked from network); 18 Dec 2002 00:22:02 -0000
+Received: from unknown (66.218.66.216)
+  by m3.grp.scd.yahoo.com with QMQP; 18 Dec 2002 00:22:02 -0000
+Received: from unknown (HELO dhcp-sna-73.wakasoft.com) (64.60.92.50)
+  by mta1.grp.scd.yahoo.com with SMTP; 18 Dec 2002 00:22:02 -0000
+Received: from dhcp-sna-73.day.com (localhost.day.com [127.0.0.1] (may be forged))
+	by localhost.wakasoft.com (8.12.4/8.12.4) with ESMTP id gBI0JTMA002231;
+	Tue, 17 Dec 2002 16:19:29 -0800 (PST)
+Date: Tue, 17 Dec 2002 16:19:02 -0800
+Subject: Re: [rest-discuss] Representation format as part of URIs?
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v482)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: Jan Algermissen &lt;algermissen@...&gt;
+In-Reply-To: &lt;3DFCCB34.F452592A@...&gt;
+Message-Id: &lt;4FE72A39-121E-11D7-8E9F-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.482)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; Does that mean that I don&#39;t have to rely on content negotiation for
+&gt; choosing the format of the response? So, it would be RESTful to have
+&gt; those two URIs for example
+&gt;
+&gt; http://www.physicists.org/html/list-of-physicists
+&gt; http://www.physicists.org/xml/list-of-physicists
+&gt;
+&gt; although the representations they return are
+&gt; representations of the same resource (concept) and only differ
+&gt; in the markup language used ?
+
+Those are two different resources.  If a person wishes to identify
+the XML representation of a concept, an HTML response to that resource
+would not be a valid representation even though it may have essentially
+the same content.  If the resource is a concept independent of
+representation format, then its URI must not have any aspect
+that is specific to the representation format.  Having that aspect
+in the URI (as interpreted by the origin server) implies that the
+resource semantics includes the format.
+
+BTW, for server-contructed URI, there is no effective difference
+between query and path info -- both distinguish a resource.  It is
+only when the URI is client-constructed (as in GET forms or ISINDEX
+or the old server-side image maps) that the client has any way to
+distinguish the non-query path as a resource, and even then the
+various URI with the query info tagged-onto the end identify separate
+resources.
+
+A resource is defined not by its implementation, but by a user&#39;s
+expectation of results from future actions on that resource.
+If two URI are expected to respond to GET differently, then they
+must identify different resources.
+
+....Roy
+
+
+

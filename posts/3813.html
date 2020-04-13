@@ -1,0 +1,65 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 47842 invoked from network); 31 Jul 2003 05:30:42 -0000
+Received: from unknown (66.218.66.216)
+  by m6.grp.scd.yahoo.com with QMQP; 31 Jul 2003 05:30:42 -0000
+Received: from unknown (HELO fed1mtao03.cox.net) (68.6.19.242)
+  by mta1.grp.scd.yahoo.com with SMTP; 31 Jul 2003 05:30:41 -0000
+Received: from mac.wakasoft.com ([68.5.5.20]) by fed1mtao03.cox.net
+          (InterMail vM.5.01.04.05 201-253-122-122-105-20011231) with ESMTP
+          id &lt;20030731053038.BZOY10286.fed1mtao03.cox.net@...&gt;;
+          Thu, 31 Jul 2003 01:30:38 -0400
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id h6UMXwbT000818;
+	Wed, 30 Jul 2003 15:33:58 -0700 (PDT)
+Date: Wed, 30 Jul 2003 15:33:57 -0700
+Subject: Re: [rest-discuss] Re: MoST - Model State Transfer (was Pure-REST Wiki experiment)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: rest-discuss@yahoogroups.com
+To: Alex Jacobson &lt;alex@...&gt;
+In-Reply-To: &lt;1793459258.1059563546@localhost&gt;
+Message-Id: &lt;E86DBCF0-C2DD-11D7-BF88-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; MoST is either ReST with additional constraints to achieve much greater
+&gt; levels of visibility or MoST supercedes ReST because ReST is useful 
+&gt; only
+&gt; for web publishing and we want more.
+&gt;
+&gt; I don&#39;t have a huge stake in defining ReST one way or another.  My 
+&gt; personal
+&gt; view is that ReST is sufficiently semantically incoherent so you can 
+&gt; go in
+&gt; whatever direction you like.  Try reading Roy&#39;s dissertation and 
+&gt; figuring
+&gt; out the exact meaning of resource and representation in his paper and
+&gt; you&#39;ll see what I mean.
+
+Well, now that&#39;s a completely clueless statement.  The point of the
+definitions is that the interface does not define the exact meaning,
+leaving meaning to be defined by the nature of the links between
+the information.  A server does the interpolation between the contents
+of a PUT and the model hidden behind the server -- saying that isn&#39;t
+defined by REST is just goofy.  I have no problems building PUT,
+containers, or any of the other things that you claim are not defined
+by REST, since those are implementation details that are defined within
+HTTP by the origin server and not by the client.  I don&#39;t even need to
+use webdav, though it has its definitions as well.  The only problems
+I run into are buggy browsers that never managed to implement basic
+HTTP correctly, let alone the advanced features.
+
+If you don&#39;t like the generic interface, then just implement a
+distributed file system.  That has all the features you are looking
+for in a concrete model.
+
+....Roy
+
+
+

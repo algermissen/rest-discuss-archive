@@ -1,0 +1,111 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 32588 invoked from network); 13 Feb 2004 01:11:42 -0000
+Received: from unknown (66.218.66.172)
+  by m5.grp.scd.yahoo.com with QMQP; 13 Feb 2004 01:11:42 -0000
+Received: from unknown (HELO bsl-540.wakasoft.com) (65.208.153.194)
+  by mta4.grp.scd.yahoo.com with SMTP; 13 Feb 2004 01:11:42 -0000
+Received: from gbiv.com (localhost [127.0.0.1])
+	by bsl-540.wakasoft.com (8.12.9/8.12.9) with ESMTP id i1D1CnFf006826;
+	Thu, 12 Feb 2004 17:12:49 -0800 (PST)
+Date: Thu, 12 Feb 2004 17:12:48 -0800
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v553)
+Cc: &lt;rest-discuss@yahoogroups.com&gt;
+To: Jeff Bone &lt;jbone@...&gt;
+In-Reply-To: &lt;1EE967FA-5DB5-11D8-BE3D-000A95CFE9DE@...&gt;
+Message-Id: &lt;BCB676E3-5DC1-11D8-A8A3-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.553)
+X-eGroups-Remote-IP: 65.208.153.194
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: sessions and infinite URIs
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+On Thursday, February 12, 2004, at 03:42  PM, Jeff Bone wrote:
+&gt; On Feb 12, 2004, at 2:57 PM, Roy T. Fielding wrote:
+&gt;
+&gt;&gt;&gt; Does that mean that session cookies are okay, as long as I use
+&gt;&gt;&gt; URI syntax for the session key and the session state is
+&gt;&gt;&gt; persisted?
+&gt;&gt;
+&gt;&gt; Yes and no.
+&gt;
+&gt; That means &quot;no,&quot; right? ;-)
+
+I meant that, if the session is defined as an aspect of the resource
+that is being acted upon (the effect of placing it in the URI instead
+of in the cookie header fields), then it does not violate the
+stateless constraint.  However, that doesn&#39;t mean it is &quot;okay&quot;, because
+doing so makes the URI worthless for later reference (infinite URIs
+due to session id being in the URI).  The set of URIs can be reduced
+to a more natural, finite set by inserting the user id instead.
+Better yet, when possible, avoid placing temporary state on the
+server and thus keep the URI free of any user state information.
+That is easy to do for new architectures -- much harder when dealing
+with legacy browsers.
+
+In any case, the problem with cookies in the header is *not* that
+they violate statelessness, but rather that they violate visibility
+(because nobody knows why they are there) and reliability (because
+they are associated with the site rather than the current state of
+the user&#39;s interface).  A message containing cookie headers is still
+stateless, assuming that the cookie isn&#39;t specified relative to
+some prior state (which would be very weird).
+
+&gt; But a serious question.  You say:
+&gt;
+&gt;&gt; They [session cookies w/ URI syntax session keys and persisted state] 
+&gt;&gt; satisfy the stateless constraint, but they lose by
+&gt;&gt; creating an infinite resource space.
+&gt;
+&gt; Not challenging the assertion at all, but looking for a bit more 
+&gt; clarity in the abstract.  Sounds like there might be one of those 
+&gt; mind-blowing gestalts lurking here.  I&#39;d really like to understand:
+&gt;
+&gt; (1)  What you mean by an infinite resource space...
+&gt; (2)  How it is that (session) cookies create an infinite resource 
+&gt; space...
+
+I meant session cookies placed within the URI.
+
+&gt; (3)  Why an infinite resource space is a bad thing...
+
+At any instant in time, the web consists of a space of nodes defined
+by all referenced resources (resources with defined URI).  If some part
+of the URI corresponds to a random id, then that space is effectively
+infinite and short-lived, which in turn means that people can&#39;t share
+those resources even when they are equivalent.
+
+Metcalfe&#39;s Law refers to the value of a network of connected nodes.
+When two or more URI exist for the same resource, that resource&#39;s
+connected neighbors are partitioned among them.  In effect, the
+Web reaches a point of disjunction rather than conjunction, which
+affects the value of the neighbor relations.  Hmmm, just a minute...
+googling...I knew there would be a theory somewhere:
+
+    &lt;http://powerlaws.media.mit.edu/&gt;
+
+That looks like a valuable resource.
+
+&gt; PS - Roy, since you went to all the trouble to get gbiv.com, why do 
+&gt; you go by fielding@... when clearly roy@gbiv is the intended and 
+&gt; admirably-groanable pun? :-)
+
+Because, when I tried that, I quickly found out that some portion of
+the Internet has been using that address in the same way as Mickey Mouse
+for those marketing sites that demand a non-verified e-mail address.
+So much for my grand plan to reduce typing by grabbing a four-letter
+domain.  I decided it would be better to reject that address, at least
+for a few more years.  The pun still works for my personal home page.
+
+Actually, it isn&#39;t a pun -- G. Biv is my basketball nickname from
+the dorms at UCI.
+
+....Roy    &lt;http://roy.gbiv.com/&gt;
+
+
+

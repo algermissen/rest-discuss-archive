@@ -1,0 +1,45 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 56754 invoked from network); 6 Aug 2007 21:24:34 -0000
+Received: from unknown (66.218.67.33)
+  by m55.grp.scd.yahoo.com with QMQP; 6 Aug 2007 21:24:34 -0000
+Received: from unknown (HELO spaceymail-a2.g.dreamhost.com) (208.97.132.83)
+  by mta7.grp.scd.yahoo.com with SMTP; 6 Aug 2007 21:24:33 -0000
+Received: from [10.2.8.55] (wsip-70-183-62-251.oc.oc.cox.net [70.183.62.251])
+	by spaceymail-a2.g.dreamhost.com (Postfix) with ESMTP id 45B96109FBC;
+	Mon,  6 Aug 2007 14:20:08 -0700 (PDT)
+In-Reply-To: &lt;f97c4f+c4ao@...&gt;
+References: &lt;f97c4f+c4ao@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;6430E71C-9A42-4DF8-B758-2A4252164A73@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Mon, 6 Aug 2007 14:20:03 -0700
+To: k_mccarthy &lt;k_mccarthy@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Changing State on two resources at once
+X-Yahoo-Group-Post: member; u=175757792; y=U8J_boBBZRGkRrzbg8UjCiveegrQF2Z9KUngCiKdhv57LCrIm3jf
+X-Yahoo-Profile: roy_fielding
+
+On Aug 6, 2007, at 7:44 AM, k_mccarthy wrote:
+&gt; Most(all?) of the REST theory I&#39;ve read, and maybe all the examples,
+&gt; discusses altering the state of one resource when hitting a URL. But I
+&gt; keep bumping into cases where it looks like I need to alter the state
+&gt; on more than one resource in one hit.
+
+Umm, all REST theory that I know about prevents you from knowing
+the extent to which one resource state is overlapped with other
+resources.  In other words, the normal case is for many resources
+to share the same or overlapping state, just as there can be
+many different views of a clock and each clock can be separated
+into subresources (hours, minutes, seconds, etc.) that have an
+overlapped state with the clock.
+
+....Roy
+
+

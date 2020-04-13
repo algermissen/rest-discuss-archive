@@ -1,0 +1,121 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 98536 invoked from network); 27 Aug 2012 22:07:24 -0000
+X-Received: from unknown (98.137.34.45)
+  by m7.grp.sp2.yahoo.com with QMQP; 27 Aug 2012 22:07:24 -0000
+X-Received: from unknown (HELO homiemail-a24.g.dreamhost.com) (208.97.132.177)
+  by mta2.grp.sp2.yahoo.com with SMTP; 27 Aug 2012 22:07:23 -0000
+X-Received: from homiemail-a24.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a24.g.dreamhost.com (Postfix) with ESMTP id 711F62C806B;
+	Mon, 27 Aug 2012 15:07:23 -0700 (PDT)
+X-Received: from 42-2-1-052.static.netvigator.com (unknown [174.46.147.5])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: fielding@...)
+	by homiemail-a24.g.dreamhost.com (Postfix) with ESMTPSA id 1CD212C807A;
+	Mon, 27 Aug 2012 15:07:23 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1278)
+Content-Type: text/plain; charset=iso-8859-1
+In-Reply-To: &lt;CALcoZirqB7ARvS2hgM0gxg9x=k5EmFxcaCyrLV+1LoySqRiLXA@...&gt;
+Date: Mon, 27 Aug 2012 18:07:24 -0400
+Cc: Bob &lt;bhaugen32@...&gt;,
+ rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: quoted-printable
+Message-Id: &lt;BF16ECC1-9BBA-4920-80BF-5EE049098F6F@...&gt;
+References: &lt;44571FB3-1238-480C-BAE0-0703E96E8745@...&gt; &lt;k1ci5r+iq4h@...&gt; &lt;CALcoZirqB7ARvS2hgM0gxg9x=k5EmFxcaCyrLV+1LoySqRiLXA@...&gt;
+To: Mark Baker &lt;distobj@...&gt;
+X-Mailer: Apple Mail (2.1278)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Self-descriptive messages
+X-Yahoo-Group-Post: member; u=175757792; y=ZcJ4x6A-44KNI2KP1f3X6V32Kusgr8vdOCDlPijMPmiOmxYNZo_G
+X-Yahoo-Profile: roy_fielding
+
+On Aug 27, 2012, at 11:26 AM, Mark Baker wrote:
+
+&gt; On Sun, Aug 26, 2012 at =
+3:10 AM, Bob &lt;bhaugen32@...&gt; wrote:
+&gt;&gt; However, I thought of another =
+reason that convinced me even more of the correctness of Mark&#39;s argument fr=
+om a business standpoint, and that is non-repudiation: http://en.wikipedia.=
+org/wiki/Non-repudiation
+&gt;&gt; 
+&gt;&gt; That is, if both parties to an electronic a=
+greement send, receive and sign each of the full messages exchanged in the =
+dialog, maybe even exchanging the whole built-up sequence each time, they h=
+ave a record of the agreement that would be difficult for either party to r=
+epudiate.
+&gt; 
+&gt; Right. That was always in the back of my mind too, though as=
+ one
+&gt; possible consequence of capturing the full meaning in a single digit=
+al
+&gt; package.
+
+Well, that would only argue for a signature being exchanged =
+instead
+of an etag (or just put the signature in the etag).  IOW, it doesn&#39;=
+t
+resolve the theoretical question.
+
+&gt;&gt; This reason may not have been Roy&#39;s=
+ reason for including self-descriptive messages as a REST constraint, but i=
+t would be important in business contract situations.
+&gt; 
+&gt; I can&#39;t remember=
+ when or where, but I recall Roy talking about how
+&gt; HTML documents needed =
+their stylesheets and images in order to fully
+&gt; reflect the intent of the =
+publisher in a legal context. Not sure if
+&gt; that was based on conjecture or=
+ actual case law though.
+
+Conjecture ... fidelity of reproduction is the es=
+sential element for
+legal documents, which is why certain forms of TIFF and=
+ PDF are
+officially recognized standards for archival forms.  However, peop=
+le
+in lawsuits present HTML all the time -- they just have to provide
+it in=
+ both rendered and plain text forms, and then call some witness
+to establis=
+h that the HTML would have matched the printed format
+when rendered by a ty=
+pical browser at the time.
+
+
+No, I am not going to &quot;settle&quot; the philosophic=
+al question with an
+authoritative answer.  I wouldn&#39;t learn anything if I d=
+id.
+
+I suggest folks worry less about that constraint (of visibility during=
+
+a POST, which we already know isn&#39;t visible by nature) and more about
+what=
+ properties are lost by representation-by-reference.  Most of the
+value cas=
+es for REST apply to repeatable responses, not an application
+that can&#39;t be=
+ reused, can&#39;t be transformed, and can&#39;t be shared.
+I do not believe in try=
+ing to apply all of REST&#39;s constraints unless
+there is a reason for doing s=
+o (aside from buzzword compatibility).
+
+My guess is that coupling would be =
+more of a hazard than loss of
+visibility, but maybe even that wouldn&#39;t matt=
+er if the application is
+entirely driven via hypertext.  It is really hard =
+to get excited
+about the finer points of API design when the chosen method =
+already
+says &quot;do whatever you like with this&quot;.
+
+....Roy
+

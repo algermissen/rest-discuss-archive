@@ -1,0 +1,139 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 23549 invoked from network); 5 Nov 2007 03:25:09 -0000
+X-Received: from unknown (66.218.67.96)
+  by m57.grp.scd.yahoo.com with QMQP; 5 Nov 2007 03:25:09 -0000
+X-Received: from unknown (HELO spaceymail-a2.g.dreamhost.com) (208.97.132.66)
+  by mta17.grp.scd.yahoo.com with SMTP; 5 Nov 2007 03:25:09 -0000
+X-Received: from [10.2.8.60] (wsip-70-183-62-251.oc.oc.cox.net [70.183.62.251])
+	by spaceymail-a2.g.dreamhost.com (Postfix) with ESMTP id 153C9EE37A;
+	Sun,  4 Nov 2007 19:25:10 -0800 (PST)
+In-Reply-To: &lt;7ac0fa1d0711031657n4291f639s9cb4d87122b459d@...&gt;
+References: &lt;7ac0fa1d0711031657n4291f639s9cb4d87122b459d@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;E16F7156-94A0-4284-AFE5-33963BA55215@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Sun, 4 Nov 2007 19:25:24 -0800
+To: Dmitriy Kopylenko &lt;dmitriy.kopylenko@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Need some advise
+X-Yahoo-Group-Post: member; u=175757792; y=V2u53qAMw1cjkMYpJ_jIKr8jhCytm_qDG8vvVymdifQXXgnxEHrr
+X-Yahoo-Profile: roy_fielding
+
+On Nov 3, 2007, at 4:57 PM, Dmitriy Kopylenko wrote:
+&gt; Hello REST crowd. I&#39;ve just discovered this group few days ago and  
+&gt; immediately found it interesting.
+&gt;
+&gt; I&#39;m new to REStful architectural style approach of building loosely  
+&gt; coupled ROA services, but as I learn it, I find it very compelling...
+&gt;
+&gt; Enough prose... I face a real world design issue, and I&#39;d like to  
+&gt; seek an advise from a group of subject matter experts.
+&gt;
+&gt; At our organization (a state university) we have built a central  
+&gt; &quot;grading and class rosters&quot; web based system for exposing class  
+&gt; rosters to professors of different courses and allowing them to  
+&gt; &quot;grade&quot; their classes online during so called grading periods. The  
+&gt; data that is persisted into the relational DB, eventually gets into  
+&gt; the mainframe &quot;student record&quot; system using overnight batch  
+&gt; processes, etc. - pretty standard architecture. As part of this  
+&gt; online grading system, we have built a capability for professors to  
+&gt; download their respective class rosters (as excel spread sheets),  
+&gt; do their thing (grading) off line, and later on, &quot;upload&quot; their  
+&gt; final grades into the system (first saving the excel as CSV and  
+&gt; accepting it as a multi part file upload). The rules of such an  
+&gt; upload is that:
+&gt;
+&gt; 1) It&#39;s supposed to be done during the open grading period
+&gt; 2) Any students who already have a grade will be ignored with any  
+&gt; new grade values
+&gt; 3) Any invalid grade values for any student (for the course) will  
+&gt; be ignored
+&gt; 4) Students with &quot;empty&quot; grades will be ignored and would be  
+&gt; &quot;eligible&quot; to receive a valid grade in a subsequent upload
+&gt; 5) A course upload contains multiple sections of a course (class  
+&gt; rosters) e.g. course 123 contains sections 12, 23, 44 (with  
+&gt; multiple students in each)
+&gt; 6) Each grading period is based on the &quot;semester&quot; (year and term  
+&gt; values e.g. 2007 01 - for Winter term of 2007, etc.)
+&gt;
+&gt; Now, there is a need to expose that kind of functionality to &quot;3rd  
+&gt; party&quot; course management systems which have their own grade book  
+&gt; type of applications, which would allow them programmatically post  
+&gt; final grades into our &quot;central&quot; grading system. Our immediate  
+&gt; thoughts were to expose a RESTful resource for submitting grades  
+&gt; using the same CVS representation that is currently being used on  
+&gt; the &quot;human web&quot; system. That would actually work pretty well, as we  
+&gt; will be able to reuse close to a 100% of our existing infrastructure.
+
+Yes, I see no problem with that -- just use POST on the collection
+URI that represents the class for which grades are being posted.
+A CSV format is good enough to do the job.
+
+&gt; Now actually comes the design question in terms of RESTful design.  
+&gt; The current business rules for the &quot;human web&quot; grades upload allow  
+&gt; for &quot;partial submission of the course&#39;s grades (good ones will go  
+&gt; and bad ones (invalid, duplicates will be just skipped and reported  
+&gt; as such to the user). No atomic &quot;all or nothing&quot;. So we are facing  
+&gt; two design choices for RESTful resources:
+&gt;
+&gt; 1) Coarse-grained &quot;grade-upload&quot; resource which will take a  
+&gt; representation (CSV) of all the  sections (students) within a given  
+&gt; course for a  given semester:
+&gt;
+&gt; PUT /grade-upload/{year}/{term}/{course}
+&gt;
+&gt; ...
+&gt;
+&gt; &quot;section&quot;,student-id&quot;,&quot;grade&quot;
+&gt;
+&gt; In this case how do we communicate  the  partial  submission  (in  
+&gt; terms of proper HTTP codes) and  also how  do we  convey  the  
+&gt; troubled records back to the client?
+
+Use POST instead of PUT.  The response format would depend on what the
+sender is able to accept (HTML for browsers, CSV for excel, etc.).
+
+&gt; 2) Fine-grained &quot;grade-posting&quot; resource for each student for any  
+&gt; given course, section and semester:
+&gt;
+&gt; PUT /grade-posting/{year}/{term}/{course}/{section}/{student-id}
+&gt;
+&gt; ...
+&gt;
+&gt; &quot;grade&quot;
+&gt;
+&gt; In the second case, we should be able to clearly communicate any  
+&gt; error conditions with standard HTTP codes and the client software  
+&gt; should be able to build any kind of &quot;mashups&quot; on top of it.
+
+I would make that an additional interface.
+
+&gt; One &quot;blank stare&quot; I get from my management when I actually proposed  
+&gt; the second solution was that the actual functionality requested  
+&gt; from the 3rd party course management systems was the &quot;batch grade  
+&gt; upload&quot; and the fine-grained resource for each student would be  
+&gt; &quot;wasteful&quot; in terms of multiple HTTP requests, etc.
+&gt;
+&gt; So, what would be the optimal and &quot;true RESTful&quot; solution in this  
+&gt; situation?
+
+Both.  Use POST for the batch grade upload and PUT to provide a
+more fine-grained resource interface.  The POST interface can be
+described by a form when the user browses to the course section
+using the GET interface.
+
+You could also use PATCH instead of POST, assuming you define a
+media type for overlapping CSV records, but that would only be
+advantageous if the differencing mechanism (valid/invalid/skipped
+grades) was somehow generic enough to apply to other resources.
+
+....Roy
+
+

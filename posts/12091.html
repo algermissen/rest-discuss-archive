@@ -1,0 +1,59 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 93993 invoked from network); 6 Feb 2009 05:54:16 -0000
+X-Received: from unknown (66.218.67.94)
+  by m53.grp.scd.yahoo.com with QMQP; 6 Feb 2009 05:54:16 -0000
+X-Received: from unknown (HELO spaceymail-a5.g.dreamhost.com) (208.113.200.5)
+  by mta15.grp.scd.yahoo.com with SMTP; 6 Feb 2009 05:54:16 -0000
+X-Received: from [192.168.0.132] (ip72-211-202-154.oc.oc.cox.net [72.211.202.154])
+	by spaceymail-a5.g.dreamhost.com (Postfix) with ESMTP id D490E8703C;
+	Thu,  5 Feb 2009 21:54:15 -0800 (PST)
+In-Reply-To: &lt;498B964C.6020403@...&gt;
+References: &lt;20090203223443.GA7166@...&gt;	 &lt;gmd2p0+sted@...&gt; &lt;5037b6e40902041430l3e053493nf6375b7bf104b017@...&gt; &lt;498B964C.6020403@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;4614FCA9-96BE-4582-8711-20C17CB8EB5D@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Thu, 5 Feb 2009 21:54:23 -0800
+To: Bill de hOra &lt;bill@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: RESTful URLs?
+X-Yahoo-Group-Post: member; u=175757792; y=4Y4ftEGUwmItI7TROX0IxjOU0w8MKrgpGincuGxwW28eS6PFhY6O
+X-Yahoo-Profile: roy_fielding
+
+On Feb 5, 2009, at 5:45 PM, Bill de hOra wrote:
+&gt; Assaf Arkin wrote:
+&gt;
+&gt;&gt; On the other hand, in my experience it&#39;s easier to build code  
+&gt;&gt; around a
+&gt;&gt; fixed URL structure, and if you only imagine having one (or few)  
+&gt;&gt; clients
+&gt;&gt; to a single service, hypermedia might be an overkill.
+&gt;
+&gt; Also, hypertext for simple case tends to need two calls, one the
+&gt; bootstrap document to find the link, and two, to the actual link you
+&gt; care about. Whereas a fixed url scheme on the client means one call.
+
+Yes, a RESTful system is at least one level of indirection away
+from a strongly coupled system.  A fixed URL scheme is essentially
+the same as baking the first representation into each client.
+
+Is that surprising?
+
+Likewise, a RESTful system is always going to be less efficient
+than a system designed for a static set of clients accessing
+a small set of services that never change.
+
+A lot of people think of systems as static things.  Dead things.
+REST is not going to appeal to those people.  All of its constraints
+are designed to keep systems living longer than we are willing
+or able to anticipate.
+
+....Roy
+
+

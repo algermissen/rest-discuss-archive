@@ -1,0 +1,64 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 83767 invoked from network); 31 Dec 2004 06:29:22 -0000
+Received: from unknown (66.218.66.172)
+  by m23.grp.scd.yahoo.com with QMQP; 31 Dec 2004 06:29:22 -0000
+Received: from unknown (HELO fed1rmmtao09.cox.net) (68.230.241.30)
+  by mta4.grp.scd.yahoo.com with SMTP; 31 Dec 2004 06:29:22 -0000
+Received: from [192.168.0.100] (really [68.4.71.218])
+          by fed1rmmtao09.cox.net
+          (InterMail vM.6.01.04.00 201-2131-117-20041022) with ESMTP
+          id &lt;20041231062857.COSK2638.fed1rmmtao09.cox.net@[192.168.0.100]&gt;;
+          Fri, 31 Dec 2004 01:28:57 -0500
+In-Reply-To: &lt;41D48951.2090602@...&gt;
+References: &lt;cqrrt3+8dlm@...&gt; &lt;1104275921.23578.30.camel@phoenix&gt; &lt;C5106884-5942-11D9-B3AF-000D93324AD6@...&gt; &lt;1104331678.23563.23.camel@phoenix&gt; &lt;7EBCED3F-5A0A-11D9-B3AF-000D93324AD6@...&gt; &lt;BAY101-DAV1645BF2289FFCBE2118FFDD89C0@...&gt; &lt;41D42376.80605@...&gt; &lt;E88B1B4B-5AB0-11D9-B3AF-000D93324AD6@...&gt; &lt;41D48951.2090602@...&gt;
+Mime-Version: 1.0 (Apple Message framework v619)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;4003B4EC-5AF5-11D9-B3AF-000D93324AD6@...&gt;
+Content-Transfer-Encoding: 7bit
+Cc: rest discuss &lt;rest-discuss@yahoogroups.com&gt;,
+ &quot;S. Mike Dierken&quot; &lt;mdierken@...&gt;
+Date: Thu, 30 Dec 2004 22:28:57 -0800
+To: Julian Reschke &lt;julian.reschke@...&gt;
+X-Mailer: Apple Mail (2.619)
+X-eGroups-Remote-IP: 68.230.241.30
+From: Roy T. Fielding &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] REST and the design of HTTP methods
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+&gt;&gt; PROPFIND, PROPPATCH, LOCK, and UNLOCK do not have identifiable 
+&gt;&gt; resources
+&gt;&gt; (they all operate by way of a third party).  Is PROPPATCH always
+&gt;
+&gt; Could you please expand on what you mean by &quot;they operate by way of a
+&gt; third party&quot; (is this about the Depth request header?)? For instance,
+&gt; the results for a PROPFIND applied to the same Request-URI will vary 
+&gt; for
+&gt; Depth 0 (just the Request-URI), 1 (+ internal members) and infinity (+
+&gt; all descendants).
+
+That wasn&#39;t what I meant, though depth is certainly another can of 
+worms.
+I guess that is another reason why PROPFIND is not cacheable.
+
+I meant that the client is using the resource URI to access other
+resources that just happen to be properties of the resource URI.  The
+indirection means that the client has no way to identify those 
+properties
+as resources, apply access control to them as resources, version them as
+resources, etc.
+
+&gt;&gt; idempotent?
+&gt;
+&gt; I would think so. PROPPATCH can either set (&quot;PUT&quot;) or remove (aka
+&gt; &quot;DELETE&quot;) a property.
+
+okay.
+
+....Roy
+
+
+

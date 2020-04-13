@@ -1,0 +1,78 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 41235 invoked from network); 27 Oct 2009 04:32:10 -0000
+X-Received: from unknown (98.137.34.46)
+  by m5.grp.re1.yahoo.com with QMQP; 27 Oct 2009 04:32:10 -0000
+X-Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.113.200.5)
+  by mta3.grp.sp2.yahoo.com with SMTP; 27 Oct 2009 04:32:10 -0000
+X-Received: from [192.168.0.132] (ip72-211-202-154.oc.oc.cox.net [72.211.202.154])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id 335A61614D4;
+	Mon, 26 Oct 2009 21:32:10 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1076)
+Content-Type: text/plain; charset=us-ascii; format=flowed; delsp=yes
+In-Reply-To: &lt;3915c69d0910261019o1d812691y9ce52c8ea690e7a9@...&gt;
+Date: Mon, 26 Oct 2009 21:32:04 -0700
+Cc: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Message-Id: &lt;FFFE3585-2F3D-4BC5-AA3D-D45DC7E4183B@...&gt;
+References: &lt;3915c69d0910261019o1d812691y9ce52c8ea690e7a9@...&gt;
+To: Will Hartung &lt;willh@...&gt;
+X-Mailer: Apple Mail (2.1076)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Representations
+X-Yahoo-Group-Post: member; u=175757792; y=1d6v5MIgTXG4yfbGMw8gzpXaAqk8Jws3CP_PHPzn0Ry7KHd_IVsn
+X-Yahoo-Profile: roy_fielding
+
+On Oct 26, 2009, at 10:19 AM, Will Hartung wrote:
+
+&gt; Thinking about this a little more, I have a question I&#39;d like  
+&gt; clarified.
+&gt;
+&gt; We talked about unique naming and how there shouldn&#39;t be /resource.xml
+&gt; and /resource.json, but rather /resource and two representations based
+&gt; on the Accept header.
+
+Actually, there should be all three if you want a negotiated resource.
+It is important to understand that these are three *different*
+resources (resource != file).  Each identifier corresponds to a
+unique semantic and mapping over time.
+
+&gt; But in hindsight, what&#39;s the difference between
+&gt;
+&gt; GET /resource.xml
+&gt; GET /resource.json
+&gt;
+&gt; and
+&gt;
+&gt; GET /resource
+&gt; Accept: application/xml
+&gt;
+&gt; GET /resource
+&gt; Accept: application/json
+&gt;
+&gt; Semantically, the queries can be identical. Logically, one would
+&gt; ASSUME they&#39;re identical.
+
+The former are requests on two different resources.  The latter
+are two varying requests on one resource.  The only difference,
+in my opinion, is that the single varying resource makes for a
+better bookmark because it is less susceptible to both
+differences in user agent capabilities (different accept lists)
+and changes in supported media types over time.  It is not,
+however, a replacement for the media-specific resources and
+their corresponding URIs.
+
+A better protocol would tell the client the available variants
+and how to get them, preferably in a way that doesn&#39;t impact
+latency (trailers).  Yes, that was in HTTP/1.1&#39;s original design.
+
+The media-specific resources are also useful for the apps
+that don&#39;t want to negotiate, especially those performing
+remote authoring or versioning.
+
+....Roy
+
+

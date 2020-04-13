@@ -1,0 +1,122 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 40103 invoked from network); 10 May 2007 15:58:43 -0000
+Received: from unknown (66.218.67.36)
+  by m51.grp.scd.yahoo.com with QMQP; 10 May 2007 15:58:43 -0000
+Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.97.132.202)
+  by mta10.grp.scd.yahoo.com with SMTP; 10 May 2007 15:58:41 -0000
+Received: from [10.0.0.110] (bsl-rtr.day.com [62.192.10.254])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id 22DA5161537;
+	Thu, 10 May 2007 08:58:03 -0700 (PDT)
+In-Reply-To: &lt;1178804269.16366.346.camel@phoenix&gt;
+References: &lt;f14uuu+h1hc@...&gt; &lt;20070430151411.GY20785@klangraum&gt; &lt;BFEA2E12-3952-47BB-B62F-F82C53F78B62@...&gt; &lt;9C7DBAFE-CB95-408E-A37F-3A864B18D3DE@...&gt; &lt;1178804269.16366.346.camel@phoenix&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;BC3440FE-B59C-4245-92BC-D9F076DA09F6@...&gt;
+Cc: Steve Bjorg &lt;steveb@...&gt;,
+	REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Thu, 10 May 2007 08:58:15 -0700
+To: Josh Sled &lt;jsled@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: REST intro slides
+X-Yahoo-Group-Post: member; u=175757792; y=E6r5VKOSNfCzB8MExE9xc4aKiV8MLrTXND9O4J_QHtgAbEls614M
+X-Yahoo-Profile: roy_fielding
+
+On May 10, 2007, at 6:37 AM, Josh Sled wrote:
+&gt; On Thu, 2007-05-10 at 05:53 -0700, Roy T. Fielding wrote:
+&gt;&gt; On May 9, 2007, at 12:54 PM, Steve Bjorg wrote:
+&gt;&gt;
+&gt;&gt;&gt; Thanks to everyone for your great feedback. It helped a lot!
+&gt;&gt;&gt;
+&gt;&gt;&gt; The final slides are uploaded here:
+&gt;&gt;&gt; http://doc.opengarden.org/REST/Introduction_to_REST
+&gt;&gt;
+&gt;&gt; It is missing one slide. I&#39;d point out which one, but I am curious
+&gt;&gt; if anyone else can figure out what is missing from the description.
+&gt;
+&gt; What is &quot;Hypermedia is the engine of application state&quot;?
+
+Yep.
+
+&gt;&gt; I am especially curious because almost every presentation that
+&gt;&gt; tries to describe REST leaves the same bits out, and I am wondering
+&gt;&gt; if it is because I explained it poorly in my dissertation or if it
+&gt;&gt; is simply hard to understand why it is essential to the style.
+&gt;
+&gt; It&#39;s hard to apply in the machine-to-machine, replacement-for-RPC  
+&gt; case,
+&gt; which is where many people really want to use REST.  If the client  
+&gt; isn&#39;t
+&gt; a user-agent, but is instead a knowledgeable actor in the domain,  
+&gt; it can
+&gt; be out of place for the server to tell it what links to traverse, and
+&gt; what forms look like, rather than the client just constructing the  
+&gt; links
+&gt; and building the &quot;form-response&quot; from out-of-band knowledge.  It&#39;s  
+&gt; extra
+&gt; overhead.  While essential in the large-scale, evolutionary-web
+&gt; situation, it&#39;s wasted on the smaller-scale &quot;I know that I want to  
+&gt; make
+&gt; a version 1.1 &#39;POST shoppingCartItemAddition&#39; request of
+&gt; ShoppingCartFormat 2.7&quot;.
+
+Umm, no, it is essential to eliminate the coupling between client
+and server.  If the application doesn&#39;t follow the workflow defined
+by the representations that are received, then the application isn&#39;t
+using the REST style.  Not even a little bit.  It is using RPC plus
+streaming, with a rather inefficient syntax, and the client will
+break each time the server&#39;s application evolves because the client
+must be anticipating the server&#39;s state based on its own assumptions.
+In other words, the two are coupled by their original design.
+
+REST simplifies applications because it rips apart the million
+potential states inherent in any serious application and presents
+to the client only one at a time, with every single transition
+from that state described in a format that can be understood by
+the client as a potential transition.  The client is completely
+decoupled from the server aside from the shared agreement on what
+each media type means.  The entire application only needs to be
+understood (and can be completely tested) one state at a time.
+
+The only difference between machine-to-machine interaction and
+human-browser interaction is the choice of media types and the
+degree to which the potential transitions are described by those
+types. A browser knows the difference between an anchor and an
+in-line image because the media type standard defines that difference.
+It doesn&#39;t have to ask the user each time whether they want a
+given relationship to be treated as an in-line image, stylesheet,
+javascript, atom subscription, or any of the other relationships
+that are automated with even browser-based hypermedia.  A pure
+machine-to-machine simply automates all transitions based on
+some predefined (or adaptive) criteria that is evaluated for
+each representation received.
+
+Hypermedia means the placement of controls within the presentation
+of information -- it is not just a GUI paradigm.
+
+&gt; As for the slides, I&#39;d not label it a &quot;design pattern&quot;.  As I
+&gt; understand, architecture sets up the constraints of a solution  
+&gt; space in
+&gt; a context, and design expresses a more specific class of technical
+&gt; solution within those constraints.
+
+Pattern is, unfortunately, an overused term.  There are some
+architectural patterns which are essentially the same as styles,
+but most of the design patterns are simply language idioms.  The
+software research folks call the former styles, whereas the
+OOPL research folks chose to call just about everything a design
+pattern.  The funny thing is that Christopher Alexander&#39;s work
+defined patterns based on common living patterns (more like our
+view of software data flows over time), not recipes for builders,
+so OOPL design patterns have always been a bit of an oddity.
+They are both important, but architecture should be about how
+the system works when it is running, not how to structure code.
+
+....Roy
+
+

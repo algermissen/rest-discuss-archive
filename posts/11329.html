@@ -1,0 +1,68 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 33020 invoked from network); 27 Sep 2008 20:39:55 -0000
+X-Received: from unknown (66.218.67.96)
+  by m50.grp.scd.yahoo.com with QMQP; 27 Sep 2008 20:39:55 -0000
+X-Received: from unknown (HELO spaceymail-a6.g.dreamhost.com) (208.113.200.5)
+  by mta17.grp.scd.yahoo.com with SMTP; 27 Sep 2008 20:39:55 -0000
+X-Received: from [192.168.0.137] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a6.g.dreamhost.com (Postfix) with ESMTP id 8991FCA7AD;
+	Sat, 27 Sep 2008 13:39:54 -0700 (PDT)
+In-Reply-To: &lt;a6a6df360809261624x3861b7dfo32a080765210c30@...&gt;
+References: &lt;a6a6df360809261624x3861b7dfo32a080765210c30@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;968921E3-A215-41BA-A157-532995F3E92B@...&gt;
+Cc: &quot;Rest Discussion Group&quot; &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Sat, 27 Sep 2008 13:39:49 -0700
+To: Nick Gall &lt;nick.gall@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] What REST constraint forbids centralized link servers?
+X-Yahoo-Group-Post: member; u=175757792; y=5Vrq9xOvA61UadlvXodA2RdiVO4xprbpHxvLsZzHf48DWhskugVi
+X-Yahoo-Profile: roy_fielding
+
+On Sep 26, 2008, at 4:24 PM, Nick Gall wrote:
+&gt; &quot;Since centralized link servers are an anathema to the immense scale
+&gt; and multi-organizational domain requirements of the Web, REST relies
+&gt; instead on the author choosing a resource identifier that best fits
+&gt; the nature of the concept being identified.&quot; p.90
+&gt;
+&gt; I&#39;ve been doing a VERY close reading of Roy&#39;s thesis (ie searching for
+&gt; every use of key terms used in the thesis), and I can&#39;t find any
+&gt; constraint articulated in either the chart (mapping styles to
+&gt; properties) or the graph (showing the derivation of REST from the null
+&gt; architecture) that directly addresses link dereferencing issues.
+&gt;
+&gt; Certainly the composite style known as LCODC$SS does not constrain
+&gt; link dereferencing. And the Uniform Interface constraint (composed of
+&gt; the constraints identification of resources, manipulation of resources
+&gt; through representations, self-descriptive messages, and HATEOAS) also
+&gt; does not rule out centralized link servers.
+&gt;
+&gt; So is this actually an implicit constraint that should be made
+&gt; explicit, or is there some existing constraint in the thesis the
+&gt; clearly forbids centralized link servers.
+&gt;
+
+Don&#39;t confuse architectural constraints (the choices we make as
+designers) with environmental constraints (the forces imposed on
+us by context).  The set of REST constraints only includes the former.
+
+REST designs around the fact that centralized link servers do not
+work across multiple organizations because they are too expensive
+to maintain and create a significant entry-hurdle to deploying
+independent content.  That doesn&#39;t prevent people from deploying
+their own link servers and making use of them on the Web.  For example,
+see the work on Hyper-G and HyperWave in the 90s.  They claimed that
+a p-flood algorithm for distributing link changes was enough to
+handle the scalability problem, but I never saw an installation of
+Hyper-G that was even one-millionth the size of the Web/Intranets.
+
+....Roy
+
+

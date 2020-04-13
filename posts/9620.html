@@ -1,0 +1,95 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 78809 invoked from network); 18 Aug 2007 19:37:42 -0000
+Received: from unknown (66.218.67.35)
+  by m37.grp.scd.yahoo.com with QMQP; 18 Aug 2007 19:37:42 -0000
+Received: from unknown (HELO sumo.dreamhost.com) (66.33.216.29)
+  by mta9.grp.scd.yahoo.com with SMTP; 18 Aug 2007 19:37:42 -0000
+Received: from spaceymail-a2.g.dreamhost.com (balanced.mail.policyd.dreamhost.com [208.97.132.119])
+	by sumo.dreamhost.com (Postfix) with ESMTP id 1A05517829F
+	for &lt;rest-discuss@yahoogroups.com&gt;; Sat, 18 Aug 2007 12:32:58 -0700 (PDT)
+Received: from [192.168.0.116] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a2.g.dreamhost.com (Postfix) with ESMTP id C53AD10DF36;
+	Sat, 18 Aug 2007 12:27:57 -0700 (PDT)
+In-Reply-To: &lt;46C6FBA4.7080706@...&gt;
+References: &lt;46C621E6.9000406@...&gt; &lt;1C730A4A-8091-41E5-849D-6EE06FF56ABE@...&gt; &lt;46C6FBA4.7080706@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;C9AD3CA4-BAB8-46C2-AB55-4CE87C0CEA1B@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Sat, 18 Aug 2007 12:27:55 -0700
+To: Scott Chapman &lt;scott_list@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Work-arounds for RESTful use of unsupported PUT and DELETE?
+X-Yahoo-Group-Post: member; u=175757792; y=B7Q0sE8I001e0ggeX1bXepJX5E6SZkJFgJnZ-oBKBp0fYNcBamsV
+X-Yahoo-Profile: roy_fielding
+
+On Aug 18, 2007, at 7:01 AM, Scott Chapman wrote:
+&gt; Are you saying that XHR should not be allowed to do DELETE/PUT/POST
+&gt; without human intervention?
+
+Yes, when it is part of the script received in browser context
+(i.e., part of the content received from another site, as opposed
+to javascript running within an installed browser extension).
+GET is the only method that can be safely used without explicit
+agreement by the user.  Part of that agreement can be a user-defined
+configuration, such as &quot;okay to use these methods to the same domain
+as their source&quot; (the applet security model), and part can be reasonable
+confirmation dialogs &quot;are you sure you want to delete {URL}?&quot;.
+
+&gt; What do you mean? Should the browser have a popup each time Google&#39;s
+&gt; search wants to do it&#39;s assist, for instance? ...or a configurable  
+&gt; that
+&gt; has to be set, saying &quot;foo.google.com&quot; is &quot;safe&quot;?
+
+There are many ways to do that, including reasonable defaults that
+can be overridden for more (or less) secure environments.
+
+Keep in mind that content received via the Web cannot be trusted, ever,
+and the more software-as-a-service sites grow, the more vulnerable that
+real people&#39;s data will become to actions hidden within scripts and
+forms and any other mechanism capable of unsafe actions.  Would you
+allow any script to delete files on your local hard drive?  What makes
+your web-based iDisk or S3 or whatever any less important?
+
+&gt; Regardless of the need for human intervention, if the browser XHR
+&gt; doesn&#39;t support the protocol, where are we?
+&gt;
+&gt; It seems to me that you designed the HTTP protocol to work this way.
+&gt; It&#39;s 2007 and they still don&#39;t &quot;get it&quot;. &#39;Seems ridiculous to me!
+
+I am past that.  There are browsers out there with known network
+read errors (they can&#39;t see CRLF if it occurs on 512 byte boundaries,
+for example).  It really is astonishing how few developers care about
+the communication layer -- all they care about is the GUI.
+
+&gt; XHR does these things behind the scenes all the time, with no explicit
+&gt; action on the part of the user. I simply want all the HTTP protocol to
+&gt; be supported this way, rather than a subset. I should have  
+&gt; clarified in
+&gt; my original post that this was only intended in an XHR context. Safari
+&gt; still doesn&#39;t do XHR PUT/DELETE as far as I know and I&#39;m interested in
+&gt; XHR workarounds that work.
+
+I want a pony too.  The point is that people complain about this all
+the time, yet I&#39;ve never seen one person take the time to actually
+specify what would be safe behavior for all browsers to implement as
+a standard.  Mark is the only one I&#39;ve seen even bother to try to
+get the standards fixed, aside from my repeated expressions when
+I was on the TAG (that went nowhere).  Essentially, this runs core
+to the failure of the W3C to do what it was originally created to do:
+get the non-IETF parts of the Web in standard agreement.
+
+Sure, that won&#39;t solve the implementation issue right away, but I can
+guarantee that those issues will not be solved until the lack of
+specification excuse is gone.  Right now, the HTML &quot;standard&quot; claims
+those methods don&#39;t even exist (a known bug).
+
+....Roy
+
+

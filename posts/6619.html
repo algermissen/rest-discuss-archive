@@ -1,0 +1,82 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 86635 invoked from network); 3 Oct 2006 02:22:39 -0000
+Received: from unknown (66.218.67.35)
+  by m34.grp.scd.yahoo.com with QMQP; 3 Oct 2006 02:22:39 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta9.grp.scd.yahoo.com with SMTP; 3 Oct 2006 02:22:38 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.53])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1GUZvx-0001PB-EB; Mon, 02 Oct 2006 19:23:01 -0700
+In-Reply-To: &lt;68fba5c50610021816wc26e379iaea619dc747d33e4@...&gt;
+References: &lt;a373dc740609252215t7873f84eof0ddd6fb334959af@...&gt; &lt;490201DC-8CD9-4192-A5D3-D061D982A8B5@...&gt; &lt;a373dc740609281244h1ad3b271s2599871582034dbb@...&gt; &lt;1159599633.7305.35.camel@...&gt; &lt;EDE8063D-534B-426B-A42F-CC3930858FB8@...&gt; &lt;1159684320.15188.30.camel@...&gt; &lt;4520F0CA.90602@...&gt; &lt;82CBABBF-6DF3-4C4F-A73A-1DC61F345A72@...&gt; &lt;68fba5c50610021816wc26e379iaea619dc747d33e4@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;306FE476-4046-4DBF-BD6F-6CEAB1588CE9@...&gt;
+Cc: &quot;Elliotte Harold&quot; &lt;elharo@...&gt;,
+ &quot;REST Discuss&quot; &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Mon, 2 Oct 2006 19:22:19 -0700
+To: Robert Sayre &lt;sayrer@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: A community for REST Content Type deevelopment, Was: [rest-discuss] Seeking feedback on the Blinksale API
+X-Yahoo-Group-Post: member; u=175757792; y=ILNZ0Y7l4_u8zWo5-DtTtaTXtuPDS54LjKPM3BIbVfR-hw7PniOn
+X-Yahoo-Profile: roy_fielding
+
+On Oct 2, 2006, at 6:16 PM, Robert Sayre wrote:
+&gt; On 10/2/06, Roy T. Fielding &lt;fielding@...&gt; wrote:
+&gt; &gt;
+&gt; &gt; It would have been nice if the W3C had used its influence in the
+&gt; &gt; browser space to define standards for browser UI. Things like
+&gt; &gt; session logout, usable login dialogs, and the lack of standard
+&gt; &gt; affordances for PUT, DELETE, etc., are all left undone because
+&gt; &gt; &quot;that&#39;s how Mosaic did it&quot; was the only standard that mattered.
+&gt; &gt;
+&gt; &gt; I thought that WHATWG was going to pick up the slack on some of
+&gt; &gt; those undefined standards-in-waiting, but apparently not.
+&gt;
+&gt; WHAT-WG specs are really big, so you have to look closely. It doesn&#39;t
+&gt; help that they are breaking off chunks and taking them to W3C. For
+&gt; example, here is what&#39;s they&#39;ve done for PUT/DELETE in forms:
+&gt;
+&gt; http://www.w3.org/TR/web-forms-2/#for-http
+
+Yikes.  Looks like they need a clue-stick about security.
+
+Standard UI affordances are like &quot;hypertext = GET, button = POST,
+fancy-red-X = DELETE, upload-arrow = PUT, ... basically, common idioms
+that represent the action and allow the user to be aware of the type
+of action being requested before it is selected.  (One of the more
+commonly cited examples was a Boeing design for an airplane&#39;s
+landing gear control, which is shaped like landing gear so that
+it is distinguished from all of the other controls.  It doesn&#39;t
+really matter what they are -- they just have to be different for
+each one and used consistently within a given browser.  Such affordances
+were actually required by HTML back when I was involved.
+
+&gt; I&#39;d be curious to hear the history on session logout, usable login
+&gt; dialogs. Have any pointers or information?
+
+Nothing specific off-hand.  All you need to logout of an HTTP session
+is a UI for telling the browser to stop sending its cached credential,
+which was obvious to everyone except the browser developers.  Likewise,
+if the browser displayed the HTTP message sent with a 401 response, then
+application developers could easily define their own custom login
+dialogs.  That is all part of the design of URI+HTTP+HTML -- the only
+bit missing was one implementation to show all the others how to do it.
+
+....Roy
+
+

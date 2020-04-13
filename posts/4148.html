@@ -1,0 +1,52 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 16033 invoked from network); 12 Feb 2004 01:57:14 -0000
+Received: from unknown (66.218.66.218)
+  by m14.grp.scd.yahoo.com with QMQP; 12 Feb 2004 01:57:14 -0000
+Received: from unknown (HELO bsl-540.wakasoft.com) (65.208.153.194)
+  by mta3.grp.scd.yahoo.com with SMTP; 12 Feb 2004 01:57:14 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by bsl-540.wakasoft.com (8.12.9/8.12.9) with ESMTP id i1C1uTFf006673;
+	Wed, 11 Feb 2004 17:56:29 -0800 (PST)
+Date: Wed, 11 Feb 2004 17:56:27 -0800
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v553)
+Cc: Donald Strong &lt;dstrong@...&gt;,
+   rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;S. Alexander Jacobson&quot; &lt;alex@...&gt;
+In-Reply-To: &lt;Pine.WNT.4.53.0402101857070.2624@philo&gt;
+Message-Id: &lt;ABB88950-5CFE-11D8-A8FB-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.553)
+X-eGroups-Remote-IP: 65.208.153.194
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Restful URIs
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; To execute a join, REST seems to require that you
+
+No, if you are trying to do a join then you have already escaped REST&#39;s
+constraints.  REST does not allow the client to know that the server
+is a relational database.  Therefore, it only allows requests on
+resources established by the server via its defined URIs (any resource
+can be crafted similar to a stored procedure) or queries.  Naturally,
+a query can be constructed to pass all of the information for a
+SELECT statement, but it would still separate the client from the
+server implementation by not allowing the client to send arbitrary SQL.
+
+Day Software&#39;s Communique (my employer) does that by providing both
+the table cell addressing hierarchy and URI mappings to stored
+procedures/queries.
+
+The rationale for REST being different from RDA, aside from greater
+flexibility of implementation, is that remote data access interfaces
+are extremely susceptible to abuse by rogue clients.  DBs are simply
+not designed for anarchic scalability -- only friendly scalability.
+
+....Roy
+
+
+

@@ -1,0 +1,135 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 87319 invoked from network); 10 Sep 2006 07:56:18 -0000
+Received: from unknown (66.218.67.36)
+  by m35.grp.scd.yahoo.com with QMQP; 10 Sep 2006 07:56:18 -0000
+Received: from unknown (HELO fed1rmmtao06.cox.net) (68.230.241.33)
+  by mta10.grp.scd.yahoo.com with SMTP; 10 Sep 2006 07:56:18 -0000
+Received: from fed1rmimpo01.cox.net ([70.169.32.71])
+          by fed1rmmtao06.cox.net
+          (InterMail vM.6.01.06.01 201-2131-130-101-20060113) with ESMTP
+          id &lt;20060910075614.TQNP6235.fed1rmmtao06.cox.net@...&gt;;
+          Sun, 10 Sep 2006 03:56:14 -0400
+Received: from [192.168.0.100] ([70.187.185.205])
+	by fed1rmimpo01.cox.net with bizsmtp
+	id LXw21V00Y4SKAP20000000
+	Sun, 10 Sep 2006 03:56:05 -0400
+In-Reply-To: &lt;W4704429223309831156847800@...&gt;
+References: &lt;W4704429223309831156847800@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;4FB171C1-515D-4A8C-B1D9-D27B514DD337@...&gt;
+Cc: &quot;Dave Pawson&quot; &lt;dave.pawson@...&gt;,
+ rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Sun, 10 Sep 2006 00:56:10 -0700
+To: eric@...
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Resources as Orange Apples
+X-Yahoo-Group-Post: member; u=175757792; y=X0TW9zMCByjA2RqLOoyJqlnHhfLsgYdq3KMIw3HIRBKhbcO_6yBS
+X-Yahoo-Profile: roy_fielding
+
+On Aug 29, 2006, at 3:36 AM, Eric J. Bowman wrote:
+&gt; &gt;&gt;
+&gt; &gt;&gt; &quot;[A] resource... maps to a set of entities...&quot;
+&gt; &gt;
+&gt; &gt;The correct quote is
+&gt; &gt;
+&gt;
+&gt; I hope I haven&#39;t given offense by editing your words. :-(
+
+Editing is fine if you don&#39;t change the meaning in the process.
+
+&gt; &gt;A resource is a membership function. A membership function is not  
+&gt; a set.
+&gt; &gt;The value of that function for a given time t is a set. The  
+&gt; resource is
+&gt; &gt;the continuity of those values over time, not the value at any given
+&gt; &gt;instant in time.
+&gt; &gt;
+&gt;
+&gt; You know this, I know this, everyone here should know this, but my  
+&gt; audience
+&gt; consists of people who do not know this. The problem I have here,  
+&gt; is how to
+&gt; lead into _any_ analogy in a way which doesn&#39;t stop people here at  
+&gt; the first
+&gt; paragraph, yet also doesn&#39;t stop my intended audience at the very  
+&gt; first
+&gt; paragraph. Your dissertation and your analogy are &quot;whole&quot;, but  
+&gt; that&#39;s not
+&gt; always the best strategy for teaching difficult concepts to those  
+&gt; with only
+&gt; an intermediate level of knowledge.
+&gt;
+&gt; What I&#39;m trying for is &quot;whole-part-whole&quot;, since everyone&#39;s  
+&gt; starting place is
+&gt; the dissertation. I don&#39;t think those who fail to grasp it are  
+&gt; incapable of
+&gt; learning REST, I think they need some help, by breaking resource/
+&gt; representation down into a simplified &quot;part&quot; which may be modeled  
+&gt; using Venn
+&gt; diagrams, which may then be used to build the knowledge level of  
+&gt; the target
+&gt; audience back up to &quot;whole&quot;.
+
+I don&#39;t think you were even close.  If you want to teach someone about
+web architecture, then you can give concrete examples that some people
+may find easier to understand.  If you want to teach someone about REST,
+then you have to at least be consistent with the principles of REST
+as they have been defined.  All you are teaching people is a very
+confused model of fruit placement, and there is zero chance that they
+will learn anything meaningful about REST when your whole example
+ignores time.
+
+Time is the single most important aspect of REST as an architectural
+style.  All of the constraints are designed to moderate the effects
+of a changing environment over time, enable independent evolution,
+and reduce latency.  All of the benefits from REST-based design can
+only be seen when a system is exposed to change over time.
+
+REST is not about design-in-the-small.  It can&#39;t be taught by looking
+at a single implementation at an instant in time any more than you can
+teach swimming without talking about the nature of water.  The analogy
+has to be representative of the subject being taught.
+
+&gt; Yes, it does, by design. With a copy of &quot;How to Keep Your  
+&gt; Volkswagen Alive:
+&gt; A Manual of Step-by-Step Procedures for the Compleat Idiot&quot;, some  
+&gt; tools and a
+&gt; VW Beetle I can teach a 16-year-old how to set the timing on any  
+&gt; vehicle with
+&gt; a mechanical points-and-condenser ignition system, even a Zamboni.  
+&gt; He&#39;d be
+&gt; helpless faced with a modern electronic ignition system with computer-
+&gt; controlled variable timing -- that takes some advanced study.
+&gt;
+&gt; The book I mention explains the concept of &quot;internal-combustion  
+&gt; automobile
+&gt; engine&quot; by considering one simplistic implementation, an air-cooled  
+&gt; VW boxer
+&gt; four. The procedures and explanations fundamentally apply to modern  
+&gt; internal-
+&gt; combustion auto engines, even the ones which seem laughable by today&#39;s
+&gt; standards -- like setting the timing with a timing light, a wrench,  
+&gt; and a
+&gt; feeler guage for the &quot;points&quot;. The marginalia cartoons are a  
+&gt; classic touch.
+
+That&#39;s because a VW Beetle contains an implementation of an internal
+combustion engine.  You can learn a lot by looking at an example of
+an abstract concept.  However, as I was saying, a resource is not a
+box of apples.  It isn&#39;t even close.  At most you could say that a
+resource is a store where you can expect to buy apples.  At least then
+the student will understand the value of it being a resource: a source
+of future representations, not a specific set of representations at
+any given instant in time.
+
+....Roy
+
+
+

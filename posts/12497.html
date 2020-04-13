@@ -1,0 +1,59 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 39014 invoked from network); 26 Apr 2009 18:57:08 -0000
+X-Received: from unknown (69.147.108.201)
+  by m3.grp.re1.yahoo.com with QMQP; 26 Apr 2009 18:57:08 -0000
+X-Received: from unknown (HELO spaceymail-a6.g.dreamhost.com) (208.113.200.5)
+  by mta2.grp.re1.yahoo.com with SMTP; 26 Apr 2009 18:57:08 -0000
+X-Received: from [192.168.0.101] (ip72-211-202-154.oc.oc.cox.net [72.211.202.154])
+	by spaceymail-a6.g.dreamhost.com (Postfix) with ESMTP id DEF43CA7DD;
+	Sun, 26 Apr 2009 11:56:58 -0700 (PDT)
+In-Reply-To: &lt;49F49C1D.9000208@...&gt;
+References: &lt;49F49758.2010605@...&gt; &lt;927441b30904261026l15c4eb8fgfea7a7ec4d38e4a8@...&gt; &lt;49F49C1D.9000208@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;A4271567-8329-4449-8FA4-F4F874546DD6@...&gt;
+Cc: Hugh Winkler &lt;hughw@...&gt;,
+	REST-Discuss Discussion Group &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Sun, 26 Apr 2009 11:57:21 -0700
+To: Bill Burke &lt;bburke@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] HATEOAS isn&#39;t linking
+X-Yahoo-Group-Post: member; u=175757792; y=m2FzI6wh8jY8wlcuK47ZyC1ikQqyTGv20vl6vaukyUahLVdKih-Q
+X-Yahoo-Profile: roy_fielding
+
+On Apr 26, 2009, at 10:38 AM, Bill Burke wrote:
+&gt; So the &quot;application&quot; in Engine of Application State is really your
+&gt; browser. Links provide a way to change the state of your browser.
+&gt; Forms provide a way to change the state of your resource.
+&gt;
+
+Most of the time, with some caveats:
+
+The &quot;application&quot; is what the user is trying to accomplish,
+such as &quot;buy a book&quot; or &quot;transfer money from one account
+to another&quot; or &quot;watch some monty python episode&quot;.  The browser
+is just the software that presents and operates upon the
+application state.
+
+Forms usually change the state of the browser as well.
+
+Links and forms are specific UI mechanisms in HTML that teach
+the browser how to construct the request upon activation.
+A more elaborate media type could have more elaborate
+mechanisms, and non-browser clients are even less restricted
+in how they interact with media.
+
+Although GET requests are not requesting a state change, it is
+still possible for some resource states to change in response
+to a GET.  For example, there may be some other resource that
+counts the number of GETs, or the most recent user agent.
+
+....Roy
+
+

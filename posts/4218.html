@@ -1,0 +1,73 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 93730 invoked from network); 18 Feb 2004 01:15:03 -0000
+Received: from unknown (66.218.66.217)
+  by m18.grp.scd.yahoo.com with QMQP; 18 Feb 2004 01:15:03 -0000
+Received: from unknown (HELO bsl-540.wakasoft.com) (65.208.153.194)
+  by mta2.grp.scd.yahoo.com with SMTP; 18 Feb 2004 01:15:01 -0000
+Received: from gbiv.com (localhost [127.0.0.1])
+	by bsl-540.wakasoft.com (8.12.9/8.12.9) with ESMTP id i1I1EthV000826;
+	Tue, 17 Feb 2004 17:14:55 -0800 (PST)
+Date: Tue, 17 Feb 2004 17:14:54 -0800
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v553)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: Seairth Jacobs &lt;seairth@...&gt;
+In-Reply-To: &lt;40312A5B.7050106@...&gt;
+Message-Id: &lt;DC0F0EA4-61AF-11D8-BBA1-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.553)
+X-eGroups-Remote-IP: 65.208.153.194
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: REST Transaction Process
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+&gt;&gt; For example, do you want a wire transfer
+&gt;&gt; deposit to fail just because you happen to be using your ATM card
+&gt;&gt; at the same time?
+&gt;
+&gt; Sorry, I don&#39;t get the analogy.
+
+Is your entire account locked (prevented from changing) during the
+ATM transaction, or does the bank merely prevent the available funds
+from dipping below $400 during the transaction?  That is the essential
+difference between forcing the server to implement isolation versus
+letting the server figure it out how to implement its own resources.
+
+&gt;&gt; The right thing to do is tell the server
+&gt;&gt; what you are doing and let it figure out the right implementation
+&gt;&gt; according to the types of resources it is trying to protect.
+&gt;
+&gt; True.  If the server &quot;knew&quot; that the transaction was going to be short,
+&gt; devoid of GETs (at least of updated resources), limited to X number of
+&gt; requests, etc., then the server may instead choose to follow a 
+&gt; different
+&gt; approach.
+
+A good server isn&#39;t going to support arbitrarily long transactions
+unless the state is held on the client side.
+
+&gt; However, in my prior post, I had a concern that simultaneous access to
+&gt; the same resource via the same URI (where one was outside of a
+&gt; transaction and the other was inside the transaction) didn&#39;t fit my
+&gt; understanding resource state.  Am I just misunderstanding it all?  For
+&gt; instance, is it enough for a server to return  a response that includes
+&gt; something like the following headers for a GET request within the
+&gt; context of the transaction?
+&gt;
+&gt; Vary: X-Transaction-URI
+&gt; X-Transaction-URI: http://example.com/t/123
+
+If the state of the resource is not isolated, then there is no need.
+If they are isolated, then all of the within-transaction responses
+will have to be marked as cache-control private or no-cache.
+
+Please, never prefix a header with &quot;X-&quot;.
+
+....Roy
+
+
+

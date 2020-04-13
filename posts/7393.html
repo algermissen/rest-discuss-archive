@@ -1,0 +1,57 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 37698 invoked from network); 3 Jan 2007 01:47:17 -0000
+Received: from unknown (66.218.66.172)
+  by m20.grp.scd.yahoo.com with QMQP; 3 Jan 2007 01:47:17 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta4.grp.scd.yahoo.com with SMTP; 3 Jan 2007 01:47:16 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.55])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1H1uSG-00053Z-UX; Tue, 02 Jan 2007 16:58:09 -0800
+In-Reply-To: &lt;c70bc85d0701021642l7845af6cvd2304de21f767e26@...&gt;
+References: &lt;20070102115702.GA28032@...&gt; &lt;1167747592.18362.24.camel@...&gt; &lt;20070102151500.GA19087@...&gt; &lt;880048EB-ED63-4246-B311-260A95D22CBD@...&gt; &lt;008d01c72ec5$f50e0440$6601a8c0@WALDENDESKTOP&gt; &lt;c70bc85d0701021642l7845af6cvd2304de21f767e26@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;B244C654-A109-48AA-9CD7-B8CAFD3AA84D@...&gt;
+Cc: &quot;Walden Mathews&quot; &lt;waldenm@...&gt;,
+ &quot;REST Discuss&quot; &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Tue, 2 Jan 2007 16:56:18 -0800
+To: Mark Baker &lt;distobj@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] More on versioned resources
+X-Yahoo-Group-Post: member; u=175757792; y=AUXHgHOkzRUkVoLjhncOnVVc4gitFPxm1uuYRUYbC7nor5nZ2gpZ
+X-Yahoo-Profile: roy_fielding
+
+On Jan 2, 2007, at 4:42 PM, Mark Baker wrote:
+&gt; I think the answer you&#39;re looking for is found in the explanation
+&gt; often given about GET and side-effects; that the client didn&#39;t request
+&gt; them and so can&#39;t be held accountable. Similarly, from the POV of
+&gt; this thread, if a server non-idempotently &quot;versions&quot; a resource on a
+&gt; PUT, the client isn&#39;t requesting that action, the server just decided
+&gt; to do it, and therefore it&#39;s not a violation of PUT semantics ... as
+&gt; long as the server also sets the state of the targetted resource to
+&gt; that represented in the request, of course.
+&gt;
+&gt; I&#39;ve understood this distinction for some time, but it still catches
+&gt; me on occasion...
+
+Yes, that&#39;s it.  We have to keep dancing around that bush because
+terminology is a committee-driven process.  Everyone has an opinion
+and so no opinion is spec&#39;d consistently.
+
+....Roy
+
+

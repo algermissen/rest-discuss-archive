@@ -1,0 +1,40 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_3_0); 24 Jan 2003 18:12:28 -0000
+Received: (qmail 86009 invoked from network); 24 Jan 2003 18:12:28 -0000
+Received: from unknown (66.218.66.217)
+  by m4.grp.scd.yahoo.com with QMQP; 24 Jan 2003 18:12:28 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta2.grp.scd.yahoo.com with SMTP; 24 Jan 2003 18:12:28 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.2/8.12.2) with ESMTP id h0OICt4v008127;
+	Fri, 24 Jan 2003 10:12:55 -0800 (PST)
+Date: Fri, 24 Jan 2003 10:12:54 -0800
+Subject: Re: [rest-discuss] Nifty REST T-Shirts
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss@yahoogroups.com
+To: Walden Mathews &lt;waldenm@...&gt;
+In-Reply-To: &lt;000801c2c343$3a2abde0$1702a8c0@WorkGroup&gt;
+Message-Id: &lt;7571CADE-2FC7-11D7-ACF9-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; I noticed that while idempotence seems an important
+&gt; distinguishing property of some HTTP methods, it&#39;s not
+&gt; mentioned at all in REST.  Or did I miss it?
+
+The reason it is important to HTTP/1.1 is for pipelining requests
+and knowing when it should be safe to repeat the same request without
+user intervention.  The only part where I briefly touch on it is when
+mentioning Waldo&#39;s paper on partial failures in RPC systems.
+
+....Roy
+
+
+

@@ -1,0 +1,68 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 4600 invoked from network); 20 Feb 2004 03:30:57 -0000
+Received: from unknown (66.218.66.216)
+  by m17.grp.scd.yahoo.com with QMQP; 20 Feb 2004 03:30:57 -0000
+Received: from unknown (HELO fed1mtao07.cox.net) (68.6.19.124)
+  by mta1.grp.scd.yahoo.com with SMTP; 20 Feb 2004 03:30:57 -0000
+Received: from mac.wakasoft.com ([68.5.5.20]) by fed1mtao07.cox.net
+          (InterMail vM.5.01.06.05 201-253-122-130-105-20030824) with ESMTP
+          id &lt;20040220033055.OFFF11482.fed1mtao07.cox.net@...&gt;;
+          Thu, 19 Feb 2004 22:30:55 -0500
+Received: from gbiv.com (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id i1K2woGl001024;
+	Thu, 19 Feb 2004 18:58:50 -0800 (PST)
+Date: Thu, 19 Feb 2004 18:58:49 -0800
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v553)
+Cc: &quot;rest-discuss&quot; &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;Justin Sampson&quot; &lt;justin.sampson@...&gt;
+In-Reply-To: &lt;D489B7711CE7B8428618EA6BEDF084F91BB303@...&gt;
+Message-Id: &lt;B50A6AD4-6350-11D8-B60D-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.553)
+X-eGroups-Remote-IP: 68.6.19.124
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: REST Transaction Process
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+&gt; If the transaction-as-a-whole is to have ACID semantics, and the
+&gt; client sends some POST, PUT, or DELETE requests based on the
+&gt; responses to some GET requests, such that the client would not
+&gt; have performed the same sequence of POST, PUT, or DELETE requests
+&gt; given different responses to those GET requests, then the fact of
+&gt; having sent those GET requests is an important part of the
+&gt; transaction&#39;s state. If another client in another transaction
+&gt; sends some sequence of POST, PUT, or DELETE requests such that
+&gt; the GET requests sent by the first client would have resulted in
+&gt; different responses, then those two client transactions are in
+&gt; conflict: If both transactions commit, the state of all the
+&gt; resources together will not be what either transaction intended.
+
+So, what you are saying is that a transaction via HTTP will only
+have ACID semantics if actions that are dependent on prior GETs
+include the etag in If-Match (or an equivalent precondition).
+I&#39;ll buy that -- it is the only sensible implementation even
+when transactions are not involved.
+
+&gt; Such conflicts are commonly prevented by acquiring non-exclusive
+&gt; locks on queried data or detected by remembering what data was
+&gt; queried and verifying that it has not changed at commit time.
+
+Yep.
+
+&gt; Standard stuff, and stateful either way.
+
+Huh?  It is only stateful (by the common meaning in architecture)
+if the server is tracking what requests the client makes and
+answers accordingly.  The transaction resource is building state on
+the server and the client is holding state in the form of entity
+tags, but the individual interactions are stateless.
+
+....Roy
+
+
+

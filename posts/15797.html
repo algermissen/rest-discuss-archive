@@ -1,0 +1,141 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 43683 invoked from network); 6 Jul 2010 01:03:11 -0000
+X-Received: from unknown (98.137.34.44)
+  by m11.grp.re1.yahoo.com with QMQP; 6 Jul 2010 01:03:11 -0000
+X-Received: from unknown (HELO spaceymail-a2.g.dreamhost.com) (208.113.200.5)
+  by mta1.grp.sp2.yahoo.com with SMTP; 6 Jul 2010 01:03:11 -0000
+X-Received: from [192.168.1.66] (99-21-208-82.lightspeed.irvnca.sbcglobal.net [99.21.208.82])
+	by spaceymail-a2.g.dreamhost.com (Postfix) with ESMTP id 074A9EE3AB;
+	Mon,  5 Jul 2010 18:03:02 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1081)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;147834.3705.qm@...&gt;
+Date: Mon, 5 Jul 2010 18:03:02 -0700
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: quoted-printable
+Message-Id: &lt;36993887-61F4-4758-95AB-FEA8BE37B3A6@...&gt;
+References: &lt;147834.3705.qm@...&gt;
+To: Bryan Taylor &lt;bryan_w_taylor@...&gt;
+X-Mailer: Apple Mail (2.1081)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Restful Approaches to some Enterprise Integration Problems
+X-Yahoo-Group-Post: member; u=175757792; y=PueMBd5Yw3WJeAI478sXxDRGzBZ02j_DW-h_jZ5UUFvNeQkvk8Ap
+X-Yahoo-Profile: roy_fielding
+
+On Jun 30, 2010, at 9:41 AM, Bryan Taylor wrote:
+
+&gt; My company is examining=
+ adopting a RESTful model to its enterprise architecture. Part of the discu=
+ssion comes down to finding RESTful idioms, standards, and/or tools to appl=
+y to certain recurring enterprise integration problems.
+
+Umm, the integrati=
+on problems you describe are mostly architectural
+properties of very specif=
+ic architectures.  Generally speaking,
+you don&#39;t want to replicate the same=
+ architecture when redesigning
+a system to be more RESTful -- that would be=
+ counterproductive.
+You should instead be looking for ways to design the sy=
+stem such
+that these are no longer problems that need to be solved.
+
+Think =
+of it like locking/concurrency issues.  One can design a
+system such that e=
+very concurrent access is protected by some
+deadlock-proof locking scheme, =
+or one can design a system that
+isolates all concurrent processing in a sha=
+red-nothing architecture
+that doesn&#39;t need any locking whatsoever.
+
+You are=
+ essentially asking how to avoid deadlocks in a
+shared nothing architecture=
+.   The appropriate answer,
+therefore, is ... huh?
+
+&gt; Specifically, we are =
+trying to find RESTful solutions to:
+&gt; 
+&gt; 1) Guaranteed Delivery - we need =
+a paradigm to follow so that one service can transfer a sequence of resourc=
+e representations to another reliably even though both services and the net=
+work suffer temporary unreliability
+
+That doesn&#39;t sound like a problem enco=
+untered by RESTful
+architectures.  Reliable upload of multiple files can be=
+
+performed using a single zip file, but the assumption being made
+here is t=
+hat the client has a shared understanding of what the
+server is intending t=
+o do with those files.  That&#39;s coupling.
+
+Applications like that are usuall=
+y accomplished via code-on-demand.
+The problem you will run into here is im=
+plementation issues
+regarding current browsers, not architectural issues an=
+d
+certainly not a style issue.  Most such tools are developed
+as browser ex=
+tensions or app-specific clients, mostly because
+they need unfettered acces=
+s to the filesystem and because
+browsers (for some unknown reason) don&#39;t in=
+clude integrity checks
+in normal file uploads.
+
+&gt; 2) Distributed Transactio=
+ns - we need a paradigm to allow state changes on multiple services to happ=
+en so that the changes succeed or fail as a unit
+
+Again, not a characterist=
+ic of RESTful architectures.  If the
+client knows the transaction is distri=
+buted, you have failed.
+There are lots of ways to solve this kind of proble=
+m on the
+back-end of services interfaces, behind the resource abstraction,
+=
+but none of those are relevant to the REST architectural style
+that might a=
+pply on the front-end of the service interface.
+
+&gt; 3) Long running operatio=
+ns - we need asynchronous invocations between services and a mechanism for =
+the invoking service to find out when the invoked service is done given tha=
+t this work may take indefinitely long
+
+Any resource can behave as a long-r=
+unning service.  Just program it that way.
+
+&gt; 4) Workflow Orchestration - w=
+e would like to have orchestration services that define business processes =
+via standardized representations (eg BPMN), then execute instances of those=
+ processes and build up an process instance execution data resource by inte=
+racting with other RESTful resources using message exchange patterns that c=
+ould specify the above behaviors.
+
+That is a system, not an integration pro=
+blem.  If you want to
+solve it, buy a full-featured WCM system like Day&#39;s C=
+Q5.
+
+http://www.day.com/day/en/products/web_content_management.html
+
+(sorry=
+, I don&#39;t have a way to answer that one without sounding
+like a sales plug =
+-- it is, after all, why I work for a WCM vendor).
+
+....Roy
+

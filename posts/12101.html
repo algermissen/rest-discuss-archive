@@ -1,0 +1,139 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 43801 invoked from network); 6 Feb 2009 23:28:56 -0000
+X-Received: from unknown (66.218.67.97)
+  by m50.grp.scd.yahoo.com with QMQP; 6 Feb 2009 23:28:56 -0000
+X-Received: from unknown (HELO spaceymail-a3.g.dreamhost.com) (208.113.200.5)
+  by mta18.grp.scd.yahoo.com with SMTP; 6 Feb 2009 23:28:56 -0000
+X-Received: from [10.2.8.56] (wsip-70-183-62-251.oc.oc.cox.net [70.183.62.251])
+	by spaceymail-a3.g.dreamhost.com (Postfix) with ESMTP id 6AF0E194E55;
+	Fri,  6 Feb 2009 15:28:56 -0800 (PST)
+In-Reply-To: &lt;a6a6df360902060403o6f886784ycf6560fd4f22b642@...&gt;
+References: &lt;20090203223443.GA7166@...&gt; &lt;gmd2p0+sted@...&gt; &lt;5037b6e40902041430l3e053493nf6375b7bf104b017@...&gt; &lt;498B964C.6020403@...&gt; &lt;4614FCA9-96BE-4582-8711-20C17CB8EB5D@...&gt; &lt;a6a6df360902060403o6f886784ycf6560fd4f22b642@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;3C101111-920C-44EF-90B4-06940CB7B585@...&gt;
+Cc: Bill de hOra &lt;bill@...&gt;, rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Fri, 6 Feb 2009 15:29:08 -0800
+To: Nick Gall &lt;nick.gall@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: RESTful URLs?
+X-Yahoo-Group-Post: member; u=175757792; y=vtTK8a_Sl9IFh10VV39o3E9N4D0uOO9EZVmmk8WJtXTFqlMFVFcY
+X-Yahoo-Profile: roy_fielding
+
+On Feb 6, 2009, at 4:03 AM, Nick Gall wrote:
+&gt; But you didn&#39;t address the (apparent) tension between bookmarking/ 
+&gt; deep-linking and REST, which was my original question. Bookmarking  
+&gt; takes a dynamically generated bookmark and effectively makes it  
+&gt; static -- at least it&#39;s static (persisted) on the client side. As  
+&gt; more and more clients bookmark more and more of the URIs they  
+&gt; receive, the more they are incrementally &quot;fixing&quot; the original URI  
+&gt; space.
+&gt;
+&gt; Hence my point: encouraging promiscuous bookmarking of (deep) links  
+&gt; seems to be at odds with REST&#39;s desire to minimize &quot;entry point&quot;  
+&gt; URIs. Do you see the tension as well, or am I missing something  
+&gt; that resolves the tension?
+
+Why do you think that there is a desire in REST to minimize the
+number of entry points?
+
+&gt; Devdatta makes the excellent point earlier in the thread about &quot;how  
+&gt; blogs require you to permalink instead of the page you are  
+&gt; viewing.&quot; It seems that perhaps there is an implicit REST  
+&gt; constraint that is beginning to become more explicit. Roughly, REST  
+&gt; distinguishes two types of URIs:
+&gt;
+&gt; &quot;entry point&quot; type URIs, which may be bookmarked indefinitely.  
+&gt; These are Cool URIs.
+&gt; &quot;transitional&quot; type URIs, which may not be bookmarked indefinitely.  
+&gt; These are unCool URIs. I call then &quot;transitional&quot; given that their  
+&gt; role is typically to enable transition to the next state.
+
+No.  There are some crappy web applications that expose what you would
+call a transitional (partial web state) URI to the client because
+they are badly written to expose an old terminal screen interface
+as intermediate HTML forms, but I would not call such a system RESTful.
+Those URIs are not identifying resources.
+
+Permalinks provide a URI to the article resource that is independent
+of its current representation (usually, the representation of some feed,
+which is not the same resource and hence requires the provision of a
+permalink URI for people to bookmark).  It is just hypertext and has
+the same role in REST as the list of summaries that Google returns
+in response to a search.
+
+&gt; I&#39;m not wedded to the names (you could call them internal/ 
+&gt; external), but I do think this distinction between types of URIs is  
+&gt; an important aspect of REST that, so far, has not been clearly  
+&gt; outlined. It certainly seems to be in play in the permathread  
+&gt; debates regarding whether &quot;URIs should be RESTful or not&quot; (and  
+&gt; whether that designation is even a meaningful one). I also think  
+&gt; the distinction is a bit at odds with the common understanding of  
+&gt; URIs on the Web that ANY URIshould be a bookmarkable URI, ie that  
+&gt; ALL URIs should strive to be Cool.
+
+I won&#39;t repeat my opinion about opaque URIs.  If there is a
+tension between the desire to bookmark and the fact that REST
+encourages folks to break up an application into a state
+machine of reusable resource states, then I would consider it to be
+more like sexual tension.  Just because you have it doesn&#39;t mean
+it is bad, and one way to improve things is to make the more
+important resource links look sexier than the less important ones.
+
+   http://www.bootstrap.org/augdocs/augment-132082.htm#11J
+
+&gt; I think it&#39;s a pretty major change in Web architectural thinking  
+&gt; (or at least emphasis) to now say (effectively) that a significant  
+&gt; class of URIs should NOT be cool, ie one should NOT expect them to  
+&gt; be useable indefinitely. In a way, this harks all the way back to  
+&gt; Parnas&#39;s admonition that we hide information that is likely to  
+&gt; change. Using modern web-speak, REST seems to admonish us to &quot;hide&quot;  
+&gt; the URIs that are likely to change (unCool URIs) and &quot;expose&quot; only  
+&gt; those URIs that are likely to stay the same (Cool URIs). But  
+&gt; nothing I&#39;ve seen in the desciptions of Web Architecture (eg  
+&gt; AWWWv1) remotely suggests that some URIs should effectively be  
+&gt; hidden, or per my previous point, not bookmarked. If anything, Web  
+&gt; Architecture descriptions at least imply that all URIs SHOULD be  
+&gt; &quot;exposed&quot; and bookmarkable.
+
+&quot;All important resources should be identifiable by URI.&quot;
+
+I think you should look at each of those words in turn and
+consider why they were chosen.  That particular quote is from
+
+    http://www.w3.org/2001/tag/2002/01-uriMediaType-9
+and
+    http://www.w3.org/2002/04/22-tag-summary
+
+but it was also in the first drafts of the TAG&#39;s webarch.  That
+principle was not new -- I remember TimBL mentioning it during his
+keynote in Geneva, May 1994, and it dates from Engelbart&#39;s work:
+
+   http://www.bootstrap.org/augdocs/augment-132082.htm#11K
+
+which in turn influenced my design when HTTP/1.0 needed finishing.
+By definition, working on improving the Web Project meant increasing
+the number of Web-accessible resources.
+
+Here is a more recent variation on the same theme that I just ran
+across while doing a search:
+
+http://derivadow.com/2007/12/28/web-design-20-its-all-about-the- 
+resource-and-its-url/
+
+Other things that might be worth keeping in mind is that REST is
+designed for reuse, not just use.  The notion that anyone has control
+over a successful application&#39;s reuse is pure fantasy, as described in
+
+&lt;http://www.w3.org/mid/E6416F61-E40C-4DE6-8B7A-D8A94EE8537B@...&gt;
+
+....Roy
+
+
+

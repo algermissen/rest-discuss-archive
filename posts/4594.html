@@ -1,0 +1,82 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 47416 invoked from network); 22 Oct 2004 07:54:17 -0000
+Received: from unknown (66.218.66.166)
+  by m10.grp.scd.yahoo.com with QMQP; 22 Oct 2004 07:54:17 -0000
+Received: from unknown (HELO fed1rmmtao09.cox.net) (68.230.241.30)
+  by mta5.grp.scd.yahoo.com with SMTP; 22 Oct 2004 07:54:17 -0000
+Received: from [192.168.0.100] (really [68.4.71.218])
+          by fed1rmmtao09.cox.net
+          (InterMail vM.6.01.03.04 201-2131-111-106-20040729) with ESMTP
+          id &lt;20041022075418.GLWV21535.fed1rmmtao09.cox.net@[192.168.0.100]&gt;;
+          Fri, 22 Oct 2004 03:54:18 -0400
+In-Reply-To: &lt;20041021172916.GH24058@...&gt;
+References: &lt;EF54D9AD09E7324581D1E9D0C708001A021654CB@...&gt; &lt;20041021152300.GF24058@...&gt; &lt;4177E3F4.21F982E9@...&gt; &lt;20041021172916.GH24058@...&gt;
+Mime-Version: 1.0 (Apple Message framework v619)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;90651854-23FF-11D9-BBD4-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+Cc: rest-discuss@yahoogroups.com
+Date: Fri, 22 Oct 2004 00:54:13 -0700
+To: Mark Baker &lt;distobj@...&gt;
+X-Mailer: Apple Mail (2.619)
+X-eGroups-Remote-IP: 68.230.241.30
+From: Roy T. Fielding &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Querying with POST
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+&gt; Because it requires a non-uniform expectation.  Roy&#39;s right that
+&gt; declaring it with a mandatory extension would alleviate the problem of
+&gt; resources processing the request when they shouldn&#39;t, but IMO the
+&gt; request still needs to have uniform semantics in order to be RESTful.
+
+We&#39;ve had this kind of discussion before, Mark.  You have invented
+a constraint that does not exist in either the Web or my dissertation,
+and are saying it defines RESTful.  Sorry, you simply cannot say that.
+You can say that REST + Mark&#39;s constraint is a better design, but
+you can&#39;t say that REST contains a restriction unless it actually
+appeared in my dissertation (because REST is the name given to the
+architectural style described there, not some general philosophy
+of design that changes over time). Otherwise, you&#39;ll drive me insane.
+
+The expectation in REST is defined by the user agent&#39;s current
+application state, which comes from the current set of representations
+that created that state (e.g., the current Web page), the type
+of user agent being used, and the specific configuration for
+that user.  Browsers know how to traverse Web pages because HTML
+and URIs tell them how to do so.  Browsers will know how to
+traverse super-duper-query resources because the representation type
+that links to those resources, along with URIs, will presumably tell
+them how to do so in the same way that &lt;img src=&quot;..&quot;&gt; tells them
+how to process in-line images.
+
+In any case, 201 with a Location header field is a generic response
+that doesn&#39;t require any special expectation to process.  Retrieving
+that URI using a GET will give the browser a representation of the
+newly identified resource (it might even have multiple representations
+that are negotiated via Accept).  Assuming that there isn&#39;t any special
+metadata provided along with that resource, the only one who will
+know that it represents the query results of the previous POST is
+the user, which is fine because nobody else needs to know!
+Everyone else just thinks of it as a new resource.
+
+It is still REST because all of REST&#39;s constraints are being obeyed:
+the application state remains on the browser, the messages are
+self-descriptive and stateless, and the representations (eventually)
+have standardized media types.  Using POST does have the drawback
+that external caching is not possible for the initial query, but
+such things are rarely cached right now anyway.  In any case,
+lack of GET-based caching does not mean it is less RESTful --
+it only means that it is less efficient.
+
+REST is, first and foremost, a way to understand and communicate
+the properties of the Web circa 1999 or so.  It could not do so
+if it somehow excluded things like HTML forms and POST.
+
+....Roy
+
+
+

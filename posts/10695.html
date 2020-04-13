@@ -1,0 +1,97 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 8778 invoked from network); 1 May 2008 21:03:00 -0000
+X-Received: from unknown (66.218.67.96)
+  by m57.grp.scd.yahoo.com with QMQP; 1 May 2008 21:03:00 -0000
+X-Received: from unknown (HELO spaceymail-a3.g.dreamhost.com) (208.113.200.5)
+  by mta17.grp.scd.yahoo.com with SMTP; 1 May 2008 21:03:00 -0000
+X-Received: from [192.168.0.160] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a3.g.dreamhost.com (Postfix) with ESMTP id 860E01953F4;
+	Thu,  1 May 2008 14:02:59 -0700 (PDT)
+In-Reply-To: &lt;1209632617.8734.18.camel@linna&gt;
+References: &lt;a6a6df360804301352p2e77c395hb02f88b75cfd8b4b@...&gt; &lt;a6a6df360804301428meebbcc2vfe3245e6d3e5bda9@...&gt; &lt;e9dffd640804302112r64a893fftc96bf88b4528e4f1@...&gt; &lt;a6a6df360804302220h7efbe0f2ib3230b5c74095087@...&gt; &lt;7B575242-F332-4265-AB10-DAB2FF9E73D2@...&gt; &lt;1209632617.8734.18.camel@linna&gt;
+Mime-Version: 1.0 (Apple Message framework v753)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;D0E2C4FD-B80E-4FBD-9085-8E8E14250E65@...&gt;
+Cc: Nick Gall &lt;nick.gall@...&gt;,
+	Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Thu, 1 May 2008 14:03:01 -0700
+To: Andrew S.Townley &lt;ast@...&gt;
+X-Mailer: Apple Mail (2.753)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: The Use of Metadata in URIs: How long does a FORM assertion last?
+X-Yahoo-Group-Post: member; u=175757792; y=rZ7XjvyvU2P7sI-JEXRE9WEzoFqEnK0C6zhxPUYR80iMBggO7ikC
+X-Yahoo-Profile: roy_fielding
+
+On May 1, 2008, at 2:03 AM, Andrew S. Townley wrote:
+&gt; On Thu, 2008-05-01 at 00:20 -0700, Roy T. Fielding wrote:
+&gt; &gt; Don&#39;t read too much into what is obviously a poor choice of words.
+&gt; &gt; What they meant to say is that some services correspond to a range
+&gt; &gt; (template) of URIs for which guessing the potential values in that
+&gt; &gt; range is a perfectly reasonable thing to do, even if there turns
+&gt; &gt; out to be no resource for a given guess. There are no guarantees
+&gt; &gt; on the Web.
+&gt;
+&gt; If you have a hypermedia application client/agent that interprets the
+&gt; resources it receives and then uses that resource as the basis for
+&gt; determining the available state transitions supported by the  
+&gt; server, why
+&gt; would you need to bother with guessing (or relying on a URI template)
+&gt; for an automated agent?
+&gt;
+
+For the same reason that you would bother using Google search.
+Look in the HTTP spec for the phrase &quot;all modern information  
+systems ...&quot;.
+
+&gt; Maybe I&#39;m wrong, but I see URI templates as a pragmatic shortcut so  
+&gt; that
+&gt; agent authors don&#39;t need to bother with interpreting the hypermedia  
+&gt; they
+&gt; receive. This makes writing agents more in line with standard modes of
+&gt; thinking about software design and implementation, e.g. to  
+&gt; accomplish a
+&gt; task, you make calls to functions with known parameters in an order
+&gt; determined by the caller to trigger state transitions and/or receive
+&gt; some expected output.
+&gt;
+
+That&#39;s one way to use them, yes.  The other way is computed links.
+
+&gt; However, if that&#39;s the way you approach development of a hypermedia
+&gt; application where the service has the opportunity - by design - to  
+&gt; tell
+&gt; you about the available state transitions and the location of other
+&gt; resources that it thinks are related/relevant to the current resource,
+&gt; how is your agent really part of a hypermedia application?
+&gt;
+
+Again, the other way is computed links (see hypertext research).
+
+&gt; As Nick pointed out, there aren&#39;t many systems out there that do this
+&gt; (interactive Web browsers being a notable exception). I think this is
+&gt; one of the drivers for the sem-web initiatives, but I also think  
+&gt; there&#39;s
+&gt; value in trying to leverage this approach today to build more robust
+&gt; software systems that can gracefully handle changes in the service
+&gt; implementation.
+&gt;
+
+There are many systems that use computed links.  Almost all of the
+closed-world hypertext systems had automated dictionary lookup
+(click on any non-linked word and it retrieves the dictionary
+entry for that word).  Programming IDEs do much the same.  A template
+is just a way for a server to tell a client that there is a range
+of resources available -- just like server-side image maps, HTML
+forms, and (in less visible ways) javascript.  As long as the template
+is defined by the server, they are still links.  As long as the template
+is defined by the server in a recent representation, it is RESTful.
+
+....Roy
+
+
+

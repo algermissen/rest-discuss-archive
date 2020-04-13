@@ -1,0 +1,53 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 71049 invoked from network); 23 Jan 2007 00:00:02 -0000
+Received: from unknown (66.218.66.68)
+  by m39a.grp.scd.yahoo.com with QMQP; 23 Jan 2007 00:00:02 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta11.grp.scd.yahoo.com with SMTP; 23 Jan 2007 00:00:02 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.55])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1H994z-00031o-Nw; Mon, 22 Jan 2007 16:00:01 -0800
+In-Reply-To: &lt;6fb173f50701221459x60e8e8cbncfed32001c84bb8f@...&gt;
+References: &lt;6fb173f50701221429h4caa3defx97140396792a0ee2@...&gt; &lt;ep3er6+fag6@...&gt; &lt;6fb173f50701221459x60e8e8cbncfed32001c84bb8f@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;8541AD6B-2790-481A-A929-243D88123885@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Mon, 22 Jan 2007 15:59:58 -0800
+To: &quot;Alan Dean&quot; &lt;alan.dean@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: ETag and PUT
+X-Yahoo-Group-Post: member; u=175757792; y=sBCST9DSsApPRDcDe9k-twHmMpnF6HR9T0GGUj7hCJvm_a3ClcfK
+X-Yahoo-Profile: roy_fielding
+
+On Jan 22, 2007, at 2:59 PM, Alan Dean wrote:
+&gt; As it happens, I write in .net and the runtime sinks ETag headers if
+&gt; they are set because a 201 response is not cacheable.
+
+That&#39;s dumb.  Which version of the runtime?
+
+...
+&gt; I have to admit it seems odd to send an ETag along with a response
+&gt; marked no-cache, but it is permitted by the spec if you wish to do so.
+
+ETag is not an entity-header. ETag provides information about the
+resource, not the current message, so it is orthogonal to cache
+control.
+
+....Roy
+
+

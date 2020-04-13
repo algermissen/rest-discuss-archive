@@ -1,0 +1,84 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 16 Apr 2003 05:04:41 -0000
+Received: (qmail 1513 invoked from network); 16 Apr 2003 05:04:41 -0000
+Received: from unknown (66.218.66.216)
+  by m5.grp.scd.yahoo.com with QMQP; 16 Apr 2003 05:04:41 -0000
+Received: from unknown (HELO mac.wakasoft.com) (68.5.84.242)
+  by mta1.grp.scd.yahoo.com with SMTP; 16 Apr 2003 05:04:41 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.8/8.12.8) with ESMTP id h3G4Judl003924;
+	Tue, 15 Apr 2003 21:19:56 -0700 (PDT)
+Date: Tue, 15 Apr 2003 21:19:55 -0700
+Subject: Re: [rest-discuss] DELETE container?
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: Chuck Hinson &lt;cmhinson@...&gt;
+In-Reply-To: &lt;3E977C4B.2070503@...&gt;
+Message-Id: &lt;AD98E82E-6FC2-11D7-831E-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; So if I PUT to /foo/bar/xyz, there now exists a resource with that name
+&gt; (assuming all goes well).  Does that necessarily imply that there is 
+&gt; now
+&gt; also a resource named /foo/bar?  That is, if I start with an empty
+&gt; hierarchy and no resources, then do a PUT to /foo/bar/xyz, is there
+&gt; anything about REST or HTTP that dictates that  I now have three
+&gt; resources rather than one?
+
+What is a resource?  What makes you think it didn&#39;t exist before the 
+PUT?
+
+Yeah, I know that&#39;s an annoying answer, but it is quite pointless to be
+discussing these things if we aren&#39;t even clear on what is a resource.
+
+A resource is a source for *future* responses to future requests.  Thus,
+the resource will already exist by virtue of you eventually doing the 
+PUT,
+and what you are doing with those requests is changing the responses
+to future requests.  Whether or not those ancestral names, or any other
+names that might have been created by the usual side-effects, are
+accessible to future requests (and hence are resources) is defined by
+the server and not by the protocol (or even the style).
+
+The server might choose to reject the PUT request simply because it
+wants access control to be specified first.  Interoperability is
+obtained not by restricting the behavior of the server, but by
+requiring that the server respond according to its desires and
+enabling the client to understand that response.
+
+One of the keys to understanding how REST works is to understand that
+the implementations have no clue what the resource is or how it is
+defined or what, in fact, makes it a resource.  That is just too hard
+a concept for the implementations to handle.  Even the human beings
+maintaining the site have a hard time figuring that one out, because
+we just aren&#39;t very good at predicting the future.  In contrast,
+it is relatively easy to talk about representations, storing them
+and mapping them to names that are resources, since those are
+operations that manipulate bits in the &quot;now&quot; and are easy for
+server mechanisms to understand and implement.
+
+Thus, it is not necessary to know what the fate of /foo/bar/ might
+be after a
+
+    PUT /foo/bar/thing
+
+even though we do know what its fate will be after a
+
+    DELETE /foo/
+
+has successfully completed.  Note, however, that the success of the
+first request does not imply that the server must allow the second
+request.  It may choose to forbid it (for any reason).
+
+....Roy
+
+
+

@@ -1,0 +1,113 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 1034 invoked from network); 1 Jan 2007 21:59:36 -0000
+Received: from unknown (66.218.66.167)
+  by m24.grp.scd.yahoo.com with QMQP; 1 Jan 2007 21:59:36 -0000
+Received: from unknown (HELO fed1rmmtao07.cox.net) (68.230.241.32)
+  by mta6.grp.scd.yahoo.com with SMTP; 1 Jan 2007 21:59:35 -0000
+Received: from fed1rmimpo01.cox.net ([70.169.32.71])
+          by fed1rmmtao07.cox.net
+          (InterMail vM.6.01.06.03 201-2131-130-104-20060516) with ESMTP
+          id &lt;20070101215823.IKSL3976.fed1rmmtao07.cox.net@...&gt;;
+          Mon, 1 Jan 2007 16:58:23 -0500
+Received: from [192.168.0.133] ([70.187.176.185])
+	by fed1rmimpo01.cox.net with bizsmtp
+	id 5xxc1W00R40NznJ0000000; Mon, 01 Jan 2007 16:57:37 -0500
+In-Reply-To: &lt;45996d6b.37bc200c.760a.ffffa85f@...&gt;
+References: &lt;45996d6b.37bc200c.760a.ffffa85f@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;2979288E-AAE3-4B17-9D64-55DD6B5D05B6@...&gt;
+Cc: &quot;&#39;Julian Reschke&#39;&quot; &lt;julian.reschke@...&gt;,
+  &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Mon, 1 Jan 2007 13:58:22 -0800
+To: S. Mike Dierken &lt;dierken@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Atom, &#39;process-this&#39;-POST and rockets
+X-Yahoo-Group-Post: member; u=175757792; y=k2dZx-p-uzioGXshVHtnXtyMj_hxIzSpIkr0-tKUYkDKJHD_Z28u
+X-Yahoo-Profile: roy_fielding
+
+On Jan 1, 2007, at 12:22 PM, S. Mike Dierken wrote:
+
+&gt; &gt; With respect to the original topic: can anybody point out why having
+&gt; &gt; *more* verbs would not be REST-ful? For instance, consider
+&gt; &gt; PATCH and COPY/MOVE...
+&gt;
+&gt; &gt;From the RTF Dissertation:
+&gt; http://www.ics.uci.edu/~fielding/pubs/webarch_icse2000.pdf
+&gt;
+&gt; =====
+&gt; Connectors
+&gt; REST uses various connector types to encapsulate the
+&gt; activities of accessing resources and transferring resource
+&gt; representations. The connectors present an abstract interface
+&gt; for component communication, enhancing simplicity by
+&gt; providing a clean separation of concerns and hiding the
+&gt; underlying implementation of resources and communication
+&gt; mechanisms. The generality of the interface also enables
+&gt; substitutability: if the users&#39; only access to the system is via
+&gt; an abstract interface, the implementation can be replaced
+&gt; without impacting the users. Since a connector manages
+&gt; network communication for a component, information can
+&gt; be shared across multiple interactions in order to improve
+&gt; efficiency and responsiveness.
+&gt; ======
+&gt;
+&gt; My view is that the &#39;generality of the interface&#39; is decreased when
+&gt; additional verbs are used.
+
+I disagree.  The generality refers to all resources having the same
+interface, not all resources having an artificially limited interface.
+It isn&#39;t even necessary for all resources to support the same set of
+methods -- only that, when supported, they mean the same thing to all
+resources.
+
+PATCH was in my original HTTP/1.1 proposal and, assuming it is
+implemented the way I described, is just as RESTful as PUT.
+
+The limiting factor of only a few methods is a side-effect of the
+architectural constraint.  Given that all methods have to mean the
+same thing to all resources, there are a very limited number of
+semantics that can usefully fit within a method.
+
+&gt; Another concern is that if there are several different approaches  
+&gt; for any
+&gt; given task, an application has to deal with each of the approaches  
+&gt; and this
+&gt; can be costly. If a particular verb could be re-phrased in terms of  
+&gt; other
+&gt; verbs, then those other verbs are more &#39;primitive&#39;. With only a few
+&gt; &#39;primitive&#39; ways of doing many things there is less need to adapt  
+&gt; to many
+&gt; different approaches - a cheaper way to conduct business.
+&gt; For example, it&#39;s hard to argue that DELETE could be rephrased as  
+&gt; GET and
+&gt; vice-versa. It&#39;s easier to argue that PATCH could be rephrased as a  
+&gt; PUT or
+&gt; POST to a related &#39;metadata&#39; resource.
+
+So can DELETE.  PATCH has very specific semantics and a very specific
+goal of reducing bits on updates.  It is a separate method because it
+needs access to the same (generic) conditional mechanisms as PUT and
+because POST (when applied to an authorable resource) means append.
+
+MOVE and COPY are namespace operations.  The problem with the
+WebDAV definitions are that they target the wrong resource and then
+stick another URI in an arbitrary header field.  That is due to trying
+to squeeze a multitarget operation into a protocol (HTTP) that simply
+wasn&#39;t designed for multiple targets.  The target should be the
+collection that is being changed.  This is an architecture detail,
+not a question of architectural style.
+
+REPORT, on the other hand, is just plain evil.  It is bad architecture,
+violates REST, avoids giving a URI to important resources, and tunnels
+arbitrary methods through HTTP.
+
+....Roy
+
+

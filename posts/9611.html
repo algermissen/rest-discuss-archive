@@ -1,0 +1,65 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 28461 invoked from network); 18 Aug 2007 02:01:23 -0000
+Received: from unknown (66.218.67.33)
+  by m44.grp.scd.yahoo.com with QMQP; 18 Aug 2007 02:01:23 -0000
+Received: from unknown (HELO spaceymail-a1.g.dreamhost.com) (208.97.132.74)
+  by mta7.grp.scd.yahoo.com with SMTP; 18 Aug 2007 02:01:23 -0000
+Received: from [10.2.8.55] (wsip-70-183-62-251.oc.oc.cox.net [70.183.62.251])
+	by spaceymail-a1.g.dreamhost.com (Postfix) with ESMTP id 8D6818177A;
+	Fri, 17 Aug 2007 19:01:15 -0700 (PDT)
+In-Reply-To: &lt;46C621E6.9000406@...&gt;
+References: &lt;46C621E6.9000406@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;1C730A4A-8091-41E5-849D-6EE06FF56ABE@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Fri, 17 Aug 2007 19:01:14 -0700
+To: Scott Chapman &lt;scott_list@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Work-arounds for RESTful use of unsupported PUT and DELETE?
+X-Yahoo-Group-Post: member; u=175757792; y=cTjZG7HHlY9glpVj5i70L2PQ_Wgc1lOv41UFrexLnbNmigUI0reA
+X-Yahoo-Profile: roy_fielding
+
+On Aug 17, 2007, at 3:32 PM, Scott Chapman wrote:
+&gt; In my desire to make RESTful web applications I&#39;ve been very unhappy
+&gt; with the lack of full support for PUT and DELETE methods by todays
+&gt; browsers. (Is there any light visible in the tunnel on that?) I&#39;ve  
+&gt; been
+&gt; looking at work-arounds.
+
+This seems to come up quite often.  I fail to understand what
+people are complaining about.  Javascript running within a browser
+context is inherently untrusted.  Untrusted scripts should not be
+allowed to perform unsafe actions without user intervention, period.
+The only reason POST is allowed (and only to the host where the
+script came from, hopefully) is because there is no other method
+for sending payload-driven safe queries.
+
+It&#39;s like the farm kids I met once in Germany, who thought they
+could trick us suburban visitors into pissing on an electric fence.
+I don&#39;t know what they were trying to say to convince us it would
+be okay (not having much grasp of the language at age 12), but it
+sure didn&#39;t take much imagination to figure out the right answer.
+
+Instead of railing against the browser developers for their common
+sense restriction, we should be designing a framework under which
+a browser can know which methods are allowed silently, which methods
+are allowed with user confirmation, and which methods are not allowed
+at all.  Then the framework can be defined with configurable defaults
+for browser context versus extension context, and with the ability
+to override those defaults under certain conditions.  If someone
+takes the time to do all that, just as other people previously took
+the time to define security contexts for applets and related things,
+then I am sure the browser vendors will be happy to standardize
+on one security framework for XHR.
+
+....Roy
+
+
+

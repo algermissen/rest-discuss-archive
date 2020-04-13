@@ -1,0 +1,59 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 12045 invoked from network); 27 Apr 2006 14:41:06 -0000
+Received: from unknown (66.218.66.167)
+  by m31.grp.scd.yahoo.com with QMQP; 27 Apr 2006 14:41:06 -0000
+Received: from unknown (HELO picanmix.dev.day.com) (212.249.34.130)
+  by mta6.grp.scd.yahoo.com with SMTP; 27 Apr 2006 14:41:06 -0000
+Received: from deliverix.day.com (deliverix.day.com [10.0.0.7])
+        by picanmix.dev.day.com (DAY) with ESMTP id k3REf0r25894;
+        Thu, 27 Apr 2006 16:41:00 +0200 (MEST)
+Received: from [10.0.0.55] ([10.0.0.55])
+          by deliverix.day.com (Lotus Domino Release 6.5.1)
+          with ESMTP id 2006042716405822-82115 ;
+          Thu, 27 Apr 2006 16:40:58 +0200 
+In-Reply-To: &lt;4450D546.2040707@...&gt;
+References: &lt;711a73df0604270719o71335687xf06f41c0ee0172f3@...&gt; &lt;4450D546.2040707@...&gt;
+Mime-Version: 1.0 (Apple Message framework v749.3)
+Message-Id: &lt;5914B995-1801-4BFB-8C6F-D0C4B8864F76@...&gt;
+Cc: Dave Pawson &lt;dave.pawson@...&gt;, rest-discuss@yahoogroups.com
+Date: Thu, 27 Apr 2006 07:40:59 -0700
+To: Elliotte Harold &lt;elharo@...&gt;
+X-Mailer: Apple Mail (2.749.3)
+X-MIMETrack: Itemize by SMTP Server on dmail/Day(Release 6.5.1|January 21, 2004) at 04/27/2006
+ 16:40:58,
+	Serialize by Router on dmail/Day(Release 6.5.1|January 21, 2004) at 04/27/2006
+ 16:41:00,
+	Serialize complete at 04/27/2006 16:41:00
+X-TM-AS-Product-Ver: &lt;SMD&gt;-&lt;3.0.0.3227&gt;-&lt;3.52.1006&gt;-&lt;14410&gt;
+X-TM-AS-Result: &lt;No&gt;-&lt;-3.100&gt;-&lt;4.5&gt;-&lt;99000&gt;
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] PUT, 201 response post parse?
+X-Yahoo-Group-Post: member; u=175757792; y=QUAgDlogrMxDv9lWUYdO2PRP4NrtNz5jyv3182PDgfYkY_jEb7fN
+X-Yahoo-Profile: roy_fielding
+
+On Apr 27, 2006, at 7:29 AM, Elliotte Harold wrote:
+
+&gt; If you write it to the disk and make it available then it&#39;s a 201.
+&gt;
+&gt; If you don&#39;t write it to the disk and make it available, then its an
+&gt; error code in the 400 range.
+&gt;
+&gt; HTTP doesn&#39;t care about XML level errors. However it doesn&#39;t say you
+&gt; have to accept bad XML either. The choice is with your app. HTTP never
+&gt; obligates you to accept a PUT request. All it requires is that you
+&gt; return the right response code to indicate what you did. The choice of
+&gt; what to do is up to you.
+
+One of these days I&#39;ll find the time to write an I-D that
+describes the 418 status code we discussed on March 24.
+
+....Roy
+
+
+

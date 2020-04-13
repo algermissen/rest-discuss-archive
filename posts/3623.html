@@ -1,0 +1,65 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 23 Apr 2003 21:28:45 -0000
+Received: (qmail 18688 invoked from network); 23 Apr 2003 21:28:45 -0000
+Received: from unknown (66.218.66.218)
+  by m10.grp.scd.yahoo.com with QMQP; 23 Apr 2003 21:28:45 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta3.grp.scd.yahoo.com with SMTP; 23 Apr 2003 21:28:45 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.8) with ESMTP id h3NLUrlB005799;
+	Wed, 23 Apr 2003 14:30:53 -0700 (PDT)
+Date: Wed, 23 Apr 2003 14:30:52 -0700
+Subject: Re: [rest-discuss] Hybrid interface - Advantage of REST?
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: Taisuke Yamada &lt;tai@...&gt;,
+   rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: Berend de Boer &lt;berend@...&gt;
+In-Reply-To: &lt;u4r4pc736.fsf@...&gt;
+Message-Id: &lt;DC06EF25-75D2-11D7-8BE6-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt;     Taisuke&gt; Hi. I&#39;ve been following this REST vs. &quot;document style&quot;
+&gt;     Taisuke&gt; SOAP debate (I assume RPC style is dead on both sides),
+&gt;     Taisuke&gt; and I&#39;m starting to think one of the advantages of REST
+&gt;     Taisuke&gt; is that you can actually create a hybrid web service that
+&gt;     Taisuke&gt; both human and machine can handle.
+&gt;
+&gt; 1. RPC is not dead, REST and SOAP are forms of RPC.
+
+He said &quot;document style&quot; SOAP, which is a reference to the interaction
+style described in the SOAP 1.2 specs.  SOAP 1.1 is RPC.  SOAP 1.2 is
+a bunch of things.  REST is not a form of RPC.
+
+&gt; 2. REST is about server holds state is stateless, with SOAP you can do
+&gt;    that, but its not a dogma.
+
+REST is an architectural style that is only present when all of its
+constraints are met.  SOAP is a protocol.
+
+&gt; 3. So REST versus SOAP is a meaningless distinction.
+
+Yes, but he wasn&#39;t talking about SOAP.  He was talking about one of
+the interaction styles described by the SOAP specifications.
+
+&gt; 4. REST is about resources that you can access by an URI. No
+&gt;    implication that it is better or easier human or machine readable.
+
+Having the URI makes it possible for both human and machine-driven
+interaction.  He is right -- that is one of the advantages of REST-style
+applications, and it is used every day in the form of bookmarks.
+However, the document-style interactions in SOAP 1.2 do allow for
+the server to provide a URI, so the advantage only exists over those
+SOAP 1.2 resources that are poorly implemented (i.e., all of them).
+
+....Roy
+
+
+

@@ -1,0 +1,60 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_3_0); 23 Jan 2003 18:18:40 -0000
+Received: (qmail 23740 invoked from network); 23 Jan 2003 18:18:39 -0000
+Received: from unknown (66.218.66.218)
+  by m8.grp.scd.yahoo.com with QMQP; 23 Jan 2003 18:18:39 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta3.grp.scd.yahoo.com with SMTP; 23 Jan 2003 18:18:39 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.2/8.12.2) with ESMTP id h0NIJF4v008045;
+	Thu, 23 Jan 2003 10:19:15 -0800 (PST)
+Date: Thu, 23 Jan 2003 10:19:14 -0800
+Subject: Re: [rest-discuss] REST Resource Discovery
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: &quot;Seairth Jacobs&quot; &lt;seairth@...&gt;,
+   &quot;rest-discuss&quot; &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;Jeffrey Winter&quot; &lt;JeffreyWinter@...&gt;
+In-Reply-To: &lt;3A9933B568A24543B6AD9E02C7E6ADA0C15C74@...&gt;
+Message-Id: &lt;2DA80C0D-2EFF-11D7-BFE5-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; I noticed in your WAKA ApacheCon presentation that you discuss the
+&gt; ability to include metadata about the resource and representation along
+&gt; with the response.  Could that assume the form of a link to another
+&gt; document?  Either way would be the moral equivalent of what Roger is
+&gt; proposing it seems to me.
+
+Yes, it includes external links with role attributes.  It also allows
+metadata to be interleaved with the response data, thus removing the
+issue regarding overhead latency.
+
+&gt; Would there be any equivalent of the OPTIONS method?  Or is that sort 
+&gt; of
+&gt; functionality deprecated?
+
+Yes.  At least one form of OPTIONS request was always intended to
+contain the desired (later) request in the OPTIONS body (excluding the
+body of the desired request itself), thus allowing the server to know
+exactly what options should be described.  It couldn&#39;t be standardized
+because I didn&#39;t have time to implement it, and without that nobody
+else was willing to implement.
+
+&gt; RFC2616 mentions that and further specification of OPTIONS is left for
+&gt; future versions of HTTP. Is there any work currently underway to 
+&gt; further
+&gt; refine that method?
+
+Always.  No implementations yet, though.
+
+....Roy
+
+
+

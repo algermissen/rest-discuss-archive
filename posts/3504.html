@@ -1,0 +1,75 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 28 Mar 2003 01:32:52 -0000
+Received: (qmail 59016 invoked from network); 28 Mar 2003 01:32:52 -0000
+Received: from unknown (66.218.66.217)
+  by m6.grp.scd.yahoo.com with QMQP; 28 Mar 2003 01:32:52 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta2.grp.scd.yahoo.com with SMTP; 28 Mar 2003 01:32:52 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.8/8.12.8) with ESMTP id h2S0wKt0001069;
+	Thu, 27 Mar 2003 16:58:20 -0800 (PST)
+Date: Thu, 27 Mar 2003 16:58:20 -0800
+Subject: Re: [rest-discuss] Anyone interested? (long)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: Seairth Jacobs &lt;seairth@...&gt;,
+   rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;S. Alexander Jacobson&quot; &lt;alex@...&gt;
+In-Reply-To: &lt;Pine.WNT.4.43.0303270407100.1076-100000@fanatic&gt;
+Message-Id: &lt;5E4808C6-60B8-11D7-B7C3-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; 2. Use a parametrized URL, like:
+&gt;
+&gt;   GET /getNewNotifications?since=UID
+&gt;
+&gt; where UID is the unique identifier of the last
+&gt; message retrieved, but this seems unRESTful in
+&gt; that this URL is not really opaque (In the
+&gt; Wiki Jeff Bone appears to argue that this is ok,
+&gt; so I am not really sure, but to me it feels
+&gt; unRESTful)
+
+It is not unRESTful.  Every resource should have a URI.  That is a
+resource, even if it is ephemeral in content.
+
+&gt; 3. Use a single range headers against a single
+&gt; mailbox URL, but that prohibits you from changing
+&gt; the representation of the underlying mailbox.  If
+&gt; we want the server periodically to check
+&gt; availability of actual messages and update on that
+&gt; basis, we can&#39;t use range headers.
+&gt;
+&gt; 4. Use multipart-byteranges.
+&gt; I think this is the best option, but a. most
+&gt; clients don&#39;t suppport it and b. it verges on
+&gt; specification abuse.
+
+It also ties the client and server implementations together,
+which is definitely contrary to REST.
+
+&gt; A much more useful way to go would be for the HTTP
+&gt; authors not to have used bytes as the only units
+&gt; for range headers.  If HTTP allowed range headers
+&gt; to be specified in application units e.g. records,
+&gt; then this would all be very easy.  Unfortunately,
+&gt; they didn&#39;t and we have HTTP as it currently
+&gt; stands.
+
+Sorry, but you are wrong on both accounts. Read section 3.12
+of RFC 2616.  In any case, a range request is not an appropriate
+solution to this problem because it ties the client and server
+implementations together.  If you don&#39;t care about that, then
+just use rsync as your protocol.  It is more efficient.
+
+....Roy
+
+
+

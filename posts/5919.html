@@ -1,0 +1,95 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 57134 invoked from network); 12 Apr 2006 20:46:02 -0000
+Received: from unknown (66.218.67.33)
+  by m34.grp.scd.yahoo.com with QMQP; 12 Apr 2006 20:46:02 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta7.grp.scd.yahoo.com with SMTP; 12 Apr 2006 20:46:02 -0000
+Received: from wsip-70-183-59-151.oc.oc.cox.net ([70.183.59.151] helo=[10.2.8.57])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1FTmDx-0001E4-Vt; Wed, 12 Apr 2006 13:46:02 -0700
+In-Reply-To: &lt;443C38A9.2060008@...&gt;
+References: &lt;e1fhc4+1q6v@...&gt;	&lt;87mzesp92d.fsf@...&gt;	&lt;443BD49E.8080808@...&gt; &lt;87r744t5wr.fsf@...&gt; &lt;443BFCCB.9040406@...&gt; &lt;0D24C73A-CE63-44EE-BDAD-C285D953390E@...&gt; &lt;443C0A11.7080002@...&gt; &lt;D292C927-B30F-4728-9D57-4D5B222E15B4@...&gt; &lt;443C38A9.2060008@...&gt;
+Mime-Version: 1.0 (Apple Message framework v749.3)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;DC2A0B63-F897-4110-AB98-60FE51103BFE@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Wed, 12 Apr 2006 13:46:00 -0700
+To: Julian Reschke &lt;julian.reschke@...&gt;
+X-Mailer: Apple Mail (2.749.3)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] WebDAV = REST?
+X-Yahoo-Group-Post: member; u=175757792; y=O3DNei45FrZxsH6C13MGqpdHu2BNw4Z9_BmA5LA_UViyrsfVTRcf
+X-Yahoo-Profile: roy_fielding
+
+On Apr 11, 2006, at 4:15 PM, Julian Reschke wrote:
+
+&gt; Well, in the last years I went through the archives several times, and
+&gt; never found a complete proposal that would actually cover those use
+&gt; cases that PROPFIND and PROPPATCH try to solve (and do solve, for that
+&gt; matter). So if anybody can provide a pointer, I&#39;d be really be  
+&gt; interested.
+
+The only thing that recursive PROPFIND is used for within actual
+webdav applications is directory listings.  Those are better implemented
+as a single resource that is defined by the collection itself, and
+whose representation(s) are available at a distinct URI.
+
+The most recent reference you are looking for is
+
+   http://xent.com/pipermail/fork/2001-August/003191.html
+
+with particular attention to the second-to-last paragraph.
+
+Most of the other discussion was at the Xerox PARC and UCI f2f
+meetings.  WebDAV made certain choices and is limited to Save As
+dialogs because of them.  WebDAV discussions are hopeless because
+the WebDAV specifications redefined the meaning of resource to be
+the same as file, thereby failing to handle the interesting cases
+of Web authoring in favor of duplicating FTP.
+
+&gt;&gt;&gt; That seems to be a problem with the concept of moving resources
+&gt;&gt;&gt; around, not with the actual definition of the MOVE method, right?
+&gt;&gt;
+&gt;&gt; No, it is a problem with specifying multiple arguments when both the
+&gt;&gt; syntax and the access control mechanism assume there is only one.
+&gt;&gt; It doesn&#39;t quite fit in the original HTTP syntax.
+&gt;
+&gt; That&#39;s correct. So are you suggesting that there&#39;s a way to model a  
+&gt; move
+&gt; operation without specifying two arguments that should have been  
+&gt; used to
+&gt; define a MOVE-like method?
+
+No.  It is possible to do so by exchanging representations of the
+before and after hierarchy, but I am not saying it should have been
+done that way.  I was only saying that WebDAV failed to consider the
+implications of how that change in method semantics impacts the rest
+of the HTTP model (particularly, access control and how to express
+partial failure conditions).
+
+WebDAV is history.  The only interesting discussion is how much,
+if anything, should be recovered from it when a replacement is
+designed.  Almost all of WebDAV&#39;s design rationales -- so-called
+performance issues -- are obsolete as soon as the message syntax
+is no longer MIME.  What is the actual design rationale for locking
+(hint: it isn&#39;t the lost update problem)?  What resource is it
+that WebDAV clients are actually looking for when they do recursive
+PROPFIND requests?  Where should namespace operations be targeted?
+Those are interesting questions.
+
+....Roy
+
+

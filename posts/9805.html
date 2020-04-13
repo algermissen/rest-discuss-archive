@@ -1,0 +1,177 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 90237 invoked from network); 11 Nov 2007 21:47:54 -0000
+X-Received: from unknown (66.218.67.94)
+  by m50.grp.scd.yahoo.com with QMQP; 11 Nov 2007 21:47:54 -0000
+X-Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.97.132.119)
+  by mta15.grp.scd.yahoo.com with SMTP; 11 Nov 2007 21:47:54 -0000
+X-Received: from [192.168.0.160] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id D2C54161826;
+	Sun, 11 Nov 2007 13:47:55 -0800 (PST)
+In-Reply-To: &lt;f5f5e0730711091527r1172d119x72df6f77b19bfc6a@...&gt;
+References: &lt;f5f5e0730711091527r1172d119x72df6f77b19bfc6a@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;24713E19-9C1A-4A18-B2C1-83A458CC7FC6@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Sun, 11 Nov 2007 13:47:38 -0800
+To: Rajith Attapattu &lt;rajith77@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Questions regarding REST
+X-Yahoo-Group-Post: member; u=175757792; y=u-P_jKvnBa2abi9wOaQqU6CdMMQEh039ybyqcGC7fN9CAeXtkQ40
+X-Yahoo-Profile: roy_fielding
+
+On Nov 9, 2007, at 3:27 PM, Rajith Attapattu wrote:
+&gt; After closely following all the disucssion around REST I have a few  
+&gt; questions on would like to clear my doubts.
+&gt;
+&gt; 1) One of the questions I have seen floating around is &quot;how can I  
+&gt; do a shopping cart application in a RESTFul way&quot;.
+
+By defining a client-side cart that can be directly manipulated
+on the client with products identified by the mark-up in catalog
+sites, each with links to the cashier.  That is the truly RESTful
+way to do a shopping cart.
+
+&gt; Most people realize that you shouldn&#39;t use sessions bcos it  
+&gt; violates the Stateless constraint.
+&gt;
+&gt; Now what some folks suggest is that when you do a PUThttp://abc.com/ 
+&gt; customer/1235/basket/
+&gt; (where the body contains a document that describes the items and  
+&gt; quantities to add), you service that request and then you return a  
+&gt; URL with the state encoded.
+
+&quot;some folks&quot; don&#39;t know what they are talking about.  Such a site
+would use POST and message bodies, not state-specific URLs, and
+plain old HTTP authentication for identifying the customer.
+
+&gt; I have the following questions on that.
+&gt; a) Now is this RESTful?
+
+Only if the site told the client to do that.
+
+&gt; b) Also there so much information that can be encoded since a URL  
+&gt; has a maximum length
+
+There is no maximum length on a URL, but nobody would do that anyway.
+
+&gt; c) Anybody intercepting this URL may be able to decode information  
+&gt; (if SSL is not used)
+
+Irrelevant, the same is true of any solution.
+
+&gt; 2) Most people do RPC over HTTP (Ex. some of the examples given in  
+&gt; JSR 311 looks more RPC and not RESTful)
+
+Nonsense.  Most people use HTTP to follow links in hypertext.
+
+&gt; What constraints in general does RPC/HTTP violate?
+
+Hypertext as the engine of application state.  There are other things
+that RPC mechansisms are traditionally bad for (streaming, coupling,
+etc.) but those are not constraints.
+
+&gt; Most RPC operations are stateful, so u can think they violate the  
+&gt; stateless constraint. What else?
+
+That is orthogonal (anyone can build a stateless RPC).
+
+&gt; Consider the following examples
+&gt;
+&gt; doAddition(int x, int y) -  POST http://abc.com/doAdittion/  (body  
+&gt; contains x & y)
+&gt; this simply does an addition, but it is stateless. However  
+&gt; intuition tells me it&#39;s not RESTful.
+&gt; Why is that?? What have I misunderstood here?
+
+How does the client learn what to do?  That is hypertext.
+
+&gt; Here is another example that I don&#39;t understand.
+&gt; increaseLuminosity(x) POST http://abc.com/increaseLuminosity (body  
+&gt; contains x)
+&gt; {
+&gt;     I get the bulbs&#39; state from a data base.
+&gt;     I increase it.
+&gt;     I persist the new state.
+&gt; }
+&gt; Now my service is stateless, however the database contains the state.
+&gt; Again I don&#39;t understand exactly what constraints are violated but  
+&gt; intuition tells me it&#39;s not RESTful
+
+It may be RESTful, but it is still a stupid design if it doesn&#39;t
+respond with a representation of the new state.  Feedback is good.
+
+&gt; 3) Reliability with RESTful interactions.
+&gt; Forgetting the security concerns for the time being consider the  
+&gt; following example.
+&gt;
+&gt; I am trying to create a service account for a customer.
+&gt; PUT http://abc.com/customer/{id}/savings
+
+That assumes you know the service URI for new savings accounts,
+which means it isn&#39;t RESTful.  A POST to /customer/ would be more
+accurate, though in reality a new account service is not something
+that the client would participate in --- try opening a bank account
+at citibank for example.  All the client does is provide information
+for the account -- only the server needs to know why that information
+is being provided, and they deliberately do not want it automated.
+
+&gt; Now the server process the request, but goes down before it can  
+&gt; send the response. Since PUT is idempotent, the client will retry  
+&gt; again until it gets a response.
+&gt; However when the server comes back up, there is no reconciliation  
+&gt; process like you would get with WS-RM. So the client will always  
+&gt; retry until it is successful.
+
+Well, if you create a stupid design, it will do stupid things ...
+
+Think of it instead as a series of individual POST requests that are
+building up a combined resource that will eventually be a savings
+account when finished.  Each of those requests can include parameters
+that perform the same role as an ETag -- basically, identifying the
+client&#39;s view of the current state of the resource.  Then, when a
+request is repeated or a state-change lost, the server would see
+that in the next request and tell the client to refresh its view
+of the form before continuing to the next step.
+
+&gt; But if you do the following, where u want to add some money to your  
+&gt; account.
+&gt; POST http://abc.com/customer/{id}/savings/ - the body contains the  
+&gt; amount.
+&gt;
+&gt; Now if the server crashes after processing but before sending the  
+&gt; response, or if the client crashes before getting the response, the  
+&gt; client will retry again.
+&gt; Now POST is not idempotent and each retry will keep on adding money.
+
+So don&#39;t write it that way.  Automated recovery from missing responses
+is a trivial problem -- just include a request number in the form.
+
+&gt; Is this a category of applications that REST is not suitable for?  
+&gt; or else what is the correct form to use when building such  
+&gt; application in a RESTful way.
+&gt;
+&gt; 4) Security with RESTful interactions.
+&gt; a) The above example naturally raise questions about security.
+&gt; b) SSL is only point-to-point, so if you have to go through  
+&gt; multiple intermediaries, how would you ensure privacy, non  
+&gt; repudiation ..etc ?
+
+SSL tunnels through intermediaries.  However, there is nothing stopping
+anyone from defining an encrypted message exchange within RESTful
+communication (it is just another media type) aside from the fact
+that shared secret keys are not effective with the general public.
+Likewise, HTTP authentication is completely extensible (witness the
+most recently defined AWS auth scheme).  So the answer to your question
+is that it has nothing to do with REST.
+
+....Roy
+
+
+

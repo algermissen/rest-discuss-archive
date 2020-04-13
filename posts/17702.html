@@ -1,0 +1,57 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 59977 invoked from network); 28 Aug 2011 20:53:10 -0000
+X-Received: from unknown (98.137.34.45)
+  by m9.grp.sp2.yahoo.com with QMQP; 28 Aug 2011 20:53:10 -0000
+X-Received: from unknown (HELO homiemail-a74.g.dreamhost.com) (208.97.132.177)
+  by mta2.grp.sp2.yahoo.com with SMTP; 28 Aug 2011 20:53:10 -0000
+X-Received: from homiemail-a74.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a74.g.dreamhost.com (Postfix) with ESMTP id 0E3A467C072;
+	Sun, 28 Aug 2011 13:53:10 -0700 (PDT)
+X-Received: from [192.168.1.84] (99-21-208-82.lightspeed.irvnca.sbcglobal.net [99.21.208.82])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: fielding@...)
+	by homiemail-a74.g.dreamhost.com (Postfix) with ESMTPSA id EA3E267C06D;
+	Sun, 28 Aug 2011 13:53:09 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1084)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;j3d03v+arpg@...&gt;
+Date: Sun, 28 Aug 2011 13:53:09 -0700
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: quoted-printable
+Message-Id: &lt;D0F866C1-881D-4692-8D8F-205C9749F148@...&gt;
+References: &lt;j3d03v+arpg@...&gt;
+To: Jakob Strauch &lt;jakob.strauch@...&gt;
+X-Mailer: Apple Mail (2.1084)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Are URI-Templates really coupling clients and server?
+X-Yahoo-Group-Post: member; u=175757792; y=d8ifnp3VE42yLLftVvB-f03gIj4sFoUO-eunlK6uhP4lWDu-pkNH
+X-Yahoo-Profile: roy_fielding
+
+On Aug 28, 2011, at 2:00 AM, Jakob Strauch wrote:
+
+&gt; In different resources=
+ on the web, i found different opinions about URI Templating. Some say, the=
+y are coupling clients and server (e.g. Erik Wilde). Some propose their usa=
+ge (e.g. subbu).
+
+That actually has nothing to do with templates themselves=
+.  Coupling depends
+on when the client receives the template and how it kno=
+ws the variable values
+to use in the template.  You can send both from the =
+server on the fly and it
+has no more coupling than any hypertext form, or y=
+ou can bake them into the
+client code and it is fully coupled.  So, it has =
+the same properties as URIs
+in general.
+
+....Roy
+
+
+

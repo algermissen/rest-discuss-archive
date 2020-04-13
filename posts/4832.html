@@ -1,0 +1,82 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 28292 invoked from network); 4 Feb 2005 03:26:04 -0000
+Received: from unknown (66.218.66.172)
+  by m14.grp.scd.yahoo.com with QMQP; 4 Feb 2005 03:26:04 -0000
+Received: from unknown (HELO picanmix.dev.day.com) (212.249.34.130)
+  by mta4.grp.scd.yahoo.com with SMTP; 4 Feb 2005 03:26:04 -0000
+Received: from eu-mail.day.com (eu-mail.dev.day.com [10.0.0.30])
+        by picanmix.dev.day.com (DAY) with ESMTP id j143Q1l26401;
+        Fri, 4 Feb 2005 04:26:02 +0100 (MET)
+Received: from [10.2.8.58] ([10.2.8.58])
+          by eu-mail.day.com (Lotus Domino Release 5.0.8)
+          with ESMTP id 2005020404255978:27298 ;
+          Fri, 4 Feb 2005 04:25:59 +0100 
+In-Reply-To: &lt;1107446104.4907.214251109@...&gt;
+References: &lt;1107446104.4907.214251109@...&gt;
+Mime-Version: 1.0 (Apple Message framework v619.2)
+Message-Id: &lt;176f85f272b066328b02b726f5a758bd@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Date: Thu, 3 Feb 2005 19:25:59 -0800
+To: &quot;Vincent D Murphy&quot; &lt;vdm@...&gt;
+X-Mailer: Apple Mail (2.619.2)
+X-MIMETrack: Itemize by SMTP Server on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 02/04/2005
+ 04:26:00 AM,
+	Serialize by Router on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 02/04/2005
+ 04:26:01 AM,
+	Serialize complete at 02/04/2005 04:26:01 AM
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+X-eGroups-Remote-IP: 212.249.34.130
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] RESTful Shopping Cart -- Client Side Implementation
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+On Feb 3, 2005, at 7:55 AM, Vincent D Murphy wrote:
+
+&gt; If anybody asks on rest-discuss about how to do a shopping
+&gt; cart in future, this is the URL to show them:
+&gt;
+&gt; http://www.panic.com/goods/
+&gt; (found at http://del.icio.us/url/894a7a9e057590ca902ce9b266f3802c )
+
+Heh, well, it&#39;s a nice example even with the cookies -- sometimes
+just having the UI to show is enough.  I was asked the question
+(for the 100th time) a few weeks ago --- how to build a shopping
+cart that follows REST constraints --- and was a bit surprised
+that I couldn&#39;t find any of my old e-mails on the subject.  I used
+it as one the primary examples in talks about the style.
+
+&lt;http://www.ics.uci.edu/~fielding/pubs/dissertation/ 
+evaluation.htm#sec_6_3_4_2&gt;
+
+I did find a related discussion on www-talk
+
+&lt;http://www.webhistory.org/www.lists/www-talk.1995q3/0348.html&gt;
+
+and, lo and behold, there is a response from James Gosling
+that is very close
+
+&lt;http://www.webhistory.org/www.lists/www-talk.1995q3/0354.html&gt;
+
+     - behaviour and state needs to be pushed out. Things like
+       shopping baskets are easy to do as Java applets. Since
+       there&#39;s no shared state between the client and server,
+       everything is cacheable. The server gets one &quot;put&quot;
+       when the customer pushes &quot;buy&quot;.
+
+And the message I sent about it here:
+
+&lt;http://groups.yahoo.com/group/rest-discuss/message/3583&gt;
+
+
+Cheers,
+
+Roy T. Fielding                            &lt;http://roy.gbiv.com/&gt;
+Chief Scientist, Day Software              &lt;http://www.day.com/&gt;
+
+
+

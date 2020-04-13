@@ -1,0 +1,59 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 72389 invoked from network); 7 Aug 2008 04:17:24 -0000
+X-Received: from unknown (66.218.67.94)
+  by m44.grp.scd.yahoo.com with QMQP; 7 Aug 2008 04:17:24 -0000
+X-Received: from unknown (HELO spaceymail-a3.g.dreamhost.com) (208.113.200.5)
+  by mta15.grp.scd.yahoo.com with SMTP; 7 Aug 2008 04:17:24 -0000
+X-Received: from [192.168.0.137] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a3.g.dreamhost.com (Postfix) with ESMTP id A53C1195550;
+	Wed,  6 Aug 2008 21:17:23 -0700 (PDT)
+In-Reply-To: &lt;20080806031805.466c029b.eric@...&gt;
+References: &lt;C0E6652C-3A03-415D-A53F-FA87A839EC58@...&gt; &lt;20080806031805.466c029b.eric@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;B847A019-1C19-4C4E-AE7A-050507C284FA@...&gt;
+Cc: Griffin Caprio &lt;griffin.caprio@...&gt;,
+	rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Wed, 6 Aug 2008 21:17:21 -0700
+To: Eric J.Bowman &lt;eric@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Different resource &#39;views&#39;
+X-Yahoo-Group-Post: member; u=175757792; y=K8I0AkaqMvo-pDdHEHX6HsO1c0hOj3CNlR0_Ix7reiXqFmcSAxYo
+X-Yahoo-Profile: roy_fielding
+
+On Aug 6, 2008, at 2:18 AM, Eric J. Bowman wrote:
+&gt; I agree with the others, that you use content negotiation but allow  
+&gt; URI
+&gt; parameters to override it, directly returning the desired variant.  
+&gt; This
+&gt; works really well to test the output of conneg systems, without having
+&gt; to muck about with browser settings or use curl. I say parameter, not
+&gt; query, because your URIs don&#39;t represent queries -- the output format
+&gt; has always seemed a parameter to me:
+&gt;
+&gt; /team/cubs;view=csv
+&gt; /team/cubs;view=json
+&gt;
+
+I don&#39;t know of any sane system that uses the query portion to
+distinguish format-specific resources.  Everybody uses name
+extensions for that purpose.  There is absolutely no good reason
+to do the above instead of
+
+    /team/cubs.csv
+    /team/cubs.json
+
+and plenty of reasons to avoid using query syntax.
+
+Have a look at Apache Sling for an example.
+
+....Roy
+
+
+

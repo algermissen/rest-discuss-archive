@@ -1,0 +1,77 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_6); 5 May 2003 21:43:20 -0000
+Received: (qmail 76886 invoked from network); 5 May 2003 21:43:16 -0000
+Received: from unknown (66.218.66.218)
+  by m6.grp.scd.yahoo.com with QMQP; 5 May 2003 21:43:16 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta3.grp.scd.yahoo.com with SMTP; 5 May 2003 21:43:16 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.8) with ESMTP id h45LjpIm001910;
+	Mon, 5 May 2003 14:45:51 -0700 (PDT)
+Date: Mon, 5 May 2003 14:45:50 -0700
+Subject: Re: [rest-discuss] Why do I care about visibility?
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: Tyler Close &lt;tyler@...&gt;
+In-Reply-To: &lt;E19BLqT-0000GF-00@canteen&gt;
+Message-Id: &lt;EFF0597A-7F42-11D7-93DF-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; I am wondering how much thought you have put into application
+&gt; security and how it fits in with REST.
+
+Bunches.
+
+&gt; Do you have a model for how
+&gt; application security should be done? Has there been an exploration
+&gt; of how application security affects other REST guidelines? It
+&gt; seems like supporting access control has ramifications for many
+&gt; parts of REST, the most well-known effect being the interplay of
+&gt; HTTP Auth and caching. It seems that if not done carefully,
+&gt; access control could negate many of the benefits of REST. What are
+&gt; your thoughts?
+
+Even if it is done carefully, access control does negate some goals
+of REST (shared caching in particular).  However, it doesn&#39;t negate
+the benefits of the model: a given security model can be analyzed
+to see how it affects applications that are attempting to communicate
+using the REST model, and then improved based on those observations.
+Likewise, security models can learn from the lessons of REST in order
+to improve their efficiency.
+
+I think it is very important to note that the REST model is not ideal
+for all applications, and that various aspects of security (access
+control, authentication, authorization, accounting, and privacy of
+communication) will place requirements on the architecture that need
+to be addressed in the interaction model.
+
+Most sites address this issue by separating secure services from the
+services that need higher scalability.  This is hampered somewhat by
+the goofy way that WWW browsers warn about &quot;secure&quot; sites containing
+&quot;insecure&quot; embedded content.  Likewise, just about every variation on
+securing web sites is damaged in one way or another by browser
+behavior, which is why sites currently use cookies as authenticators.
+
+I should note that the big conflict between REST and security models
+is the fact that REST does not allow for sessions.  What needs to be
+understood is that sessions are bad for security models too -- they
+cause most of the denial-of-service and man-in-the-middle attacks
+to be possible.  What is needed is an efficient, session-free means
+of authenticating that is more secure than username/password, which
+is actually an easy problem to solve if you don&#39;t try to solve all
+of the security problems at once.  What is blocking that is the need
+to negotiate security mechanisms before engaging in secure
+communication, which is currently done within a session.
+
+....Roy
+
+
+

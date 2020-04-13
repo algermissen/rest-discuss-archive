@@ -1,0 +1,70 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 46447 invoked from network); 2 Jan 2007 21:13:03 -0000
+Received: from unknown (66.218.67.36)
+  by m36.grp.scd.yahoo.com with QMQP; 2 Jan 2007 21:13:03 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta10.grp.scd.yahoo.com with SMTP; 2 Jan 2007 21:13:03 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.55])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1H1q51-0008Uv-9E; Tue, 02 Jan 2007 12:17:51 -0800
+In-Reply-To: &lt;20070102151500.GA19087@...&gt;
+References: &lt;20070102115702.GA28032@...&gt; &lt;1167747592.18362.24.camel@...&gt; &lt;20070102151500.GA19087@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;880048EB-ED63-4246-B311-260A95D22CBD@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Tue, 2 Jan 2007 12:16:00 -0800
+To: Chris Burdess &lt;dog@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] More on versioned resources
+X-Yahoo-Group-Post: member; u=175757792; y=3JRJ0okGRdX7MPGVF7DekSPTojTv7GxlZoPR_9EXrQ6_bAwAXvaH
+X-Yahoo-Profile: roy_fielding
+
+On Jan 2, 2007, at 7:15 AM, Chris Burdess wrote:
+&gt; Benjamin Carlyle wrote:
+&gt; &gt; If I PUT several times to &lt;http://example.com/mydocument&gt;, is it
+&gt; &gt; important to me that the &lt;http://example.com/mydocument;1&gt;,
+&gt; &gt; &lt;http://example.com/mydocument;2&gt;, and &lt;http://example.com/ 
+&gt; mydocument;3&gt;
+&gt; &gt; resources are created? My operation has succeeded. Whatever else the
+&gt; &gt; server chooses to do with my submission is up to it. I don&#39;t see any
+&gt; &gt; need to redirect a client to a specific new document version in  
+&gt; order to
+&gt; &gt; allow their PUT operation to proceed.
+&gt;
+&gt; It does seem to be a bit of a bone of contention. If we assume that
+&gt; /mydocument *does* change, i.e. that it is equivalent to
+&gt; /mydocument;current or maybe /mydocument?revision=current , and always
+&gt; reflects the state of the last change, then the PUT to /mydocument is
+&gt; only idempotent with respect to /mydocument and not to the entire
+&gt; namespace. This is a problem since RFC 2616 defines an idempotent  
+&gt; method
+&gt; in terms of its side-effects not its direct effects, if you see what I
+&gt; mean.
+
+*sigh*
+
+Just ignore the definition of idempotent in RFC 2616.  Anything
+specified in HTTP that defines how the server shall implement the
+semantics of an interface method is wrong, by definition.  What
+matters is the effect on the interface as expected by the client,
+not what actually happens on the server to implement that effect.
+
+....Roy
+
+
+

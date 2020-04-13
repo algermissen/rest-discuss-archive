@@ -1,0 +1,161 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 43011 invoked from network); 5 Dec 2006 09:07:43 -0000
+Received: from unknown (66.218.67.33)
+  by m36.grp.scd.yahoo.com with QMQP; 5 Dec 2006 09:07:43 -0000
+Received: from unknown (HELO fed1rmmtao06.cox.net) (68.230.241.33)
+  by mta7.grp.scd.yahoo.com with SMTP; 5 Dec 2006 09:07:43 -0000
+Received: from fed1rmimpo01.cox.net ([70.169.32.71])
+          by fed1rmmtao06.cox.net
+          (InterMail vM.6.01.06.03 201-2131-130-104-20060516) with ESMTP
+          id &lt;20061205090738.NHEA5465.fed1rmmtao06.cox.net@...&gt;;
+          Tue, 5 Dec 2006 04:07:38 -0500
+Received: from [192.168.0.133] ([70.187.176.185])
+	by fed1rmimpo01.cox.net with bizsmtp
+	id ux731V00640NznJ0000000; Tue, 05 Dec 2006 04:07:03 -0500
+In-Reply-To: &lt;026801c7182f$2771d6d0$6601a8c0@...&gt;
+References: &lt;026801c7182f$2771d6d0$6601a8c0@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;1378319B-0C01-4CA1-BB82-194C52639EDA@...&gt;
+Cc: &quot;&#39;Jan Algermissen&#39;&quot; &lt;algermissen1971@...&gt;,
+  &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Tue, 5 Dec 2006 01:07:34 -0800
+To: &lt;orchard@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Dynamic Evolvability
+X-Yahoo-Group-Post: member; u=175757792; y=7EumcgKhWmqHzS91_4FTrxHk8SFfXtzJY2ic2kxEs2XIpn_ScOZ0
+X-Yahoo-Profile: roy_fielding
+
+On Dec 4, 2006, at 9:35 PM, Dave Orchard wrote:
+
+&gt; Roy asks about a stateful server evolving when the new server has  
+&gt; no idea
+&gt; what stage the client is at.  This is a great question, but most  
+&gt; stateful
+&gt; servers today do the right thing.  They provide for the old version  
+&gt; and the
+&gt; new version, with a mapping between them.  Thus stateful server  
+&gt; evolution is
+&gt; fine if the server has been built for evolution, and most of the  
+&gt; &quot;real&quot;
+&gt; systems do.   Heck, we do side-by-side deployment too with a ton of
+&gt; variables to control how to direct.
+
+Er, sometimes they do, yes, and other times they are just a checkbox
+on a marketing pamphlet.  I have yet to see an instance of one
+vendor&#39;s server be replaced with a different vendor&#39;s server and
+not have the whole house of cards collapse.  That is, except on
+the Web, which handles that change without any problem whatsoever
+if the identifiers do not change.
+
+In any case, the kind of evolution you are talking about there is
+very restricted and well planned.  The statefulness, for example, has
+to be limited to session tickets or pointers to back-end systems
+that remain available during the process, and a bunch of money has
+to be thrown at the system to make even that possible.
+
+The kind of evolution I was talking about includes both small-scale
+planned evolution on the server and the wild whack-a-mole style of
+evolution that happens when one company absorbs another or an entire
+service shifts from a centralized architecture to edge-based Akamai.
+
+The important thing is not just that stateful-client architecture
+is evolvable, but that it is evolvable for free.  We can indeed
+deploy an evolvable stateful system, but only if it is planned and
+budgeted as such by the likes of Bill Gates.  A poor snot-nose
+grad student doesn&#39;t have that option, so in order for the vast
+multitude of services to be evolvable the solution has to be cheap
+and on by default.  That is what we hope for when we architect the
+system for independent evolvability across multiple organizations.
+
+&gt; Properly built stateful servers are often higher user-perceived  
+&gt; performance
+&gt; in versioning when the server side state is migrated to a new  
+&gt; version in
+&gt; between client requests, rather than at run-time as the client  
+&gt; request with
+&gt; the old state comes in.
+&gt;
+&gt; The question can be turned around a bit, and consider what happens  
+&gt; when a
+&gt; stateful client is replaced in the middle of a conversation with a  
+&gt; server by
+&gt; a new client which is just like the old one but has no idea what  
+&gt; state the
+&gt; server is within its application.
+
+A better example is a user operating on the same server with two  
+different
+clients (e.g., desktop and blackberry) and expecting the state on both
+to remain synchronized.  That is much easier to implement with a  
+stateful
+server and that may be the more appropriate architecture to choose after
+considering all of the other requirements.  Yep, there are lots of  
+tradeoffs.
+Likewise, real-time monitoring systems are usually better architected
+as a distributed object or event-based system, with only the management
+console projecting a simpler interface.
+
+&gt; I think the question of location of client vs server state and
+&gt; versioning/evolvability is a very complicated decision, and some of  
+&gt; the
+&gt; factors include how much the client is &quot;trusted&quot;, how much
+&gt; time/processing/resource usage is on the client vs the server, the  
+&gt; data set
+&gt; between the two, etc.
+
+And let&#39;s not forget the question of how much money you are willing
+to spend on server complexity to make up for the other trade-offs.
+
+&gt; The Web works in many ways because the time on the
+&gt; client is long compared to on the server (sub x second response  
+&gt; time for
+&gt; those humans), the client can go away at any time (ie not trusted  
+&gt; to do
+&gt; garbage collection properly), and the data sets are small  
+&gt; (typically you
+&gt; just need to handle the amount of data that the client has entered to
+&gt; reconstruct the state).  The more you change those (and other)  
+&gt; factors, the
+&gt; more you lean towards server-side state.  There&#39;s trade-offs in  
+&gt; network
+&gt; performance, user-perceived performance, and other network and  
+&gt; application
+&gt; properties that get adjusted.  There&#39;s just no way that large data  
+&gt; sets on
+&gt; the server communicating a small data set to well behaved (from a gcol
+&gt; perspective) clients where the server does most of the computing  
+&gt; are going
+&gt; to be made client-side stateful.
+
+Yeah, that&#39;s why stored procedures exist, and also why one thing a
+resource can be is (effectively) a stored procedure.  But it&#39;s also
+interesting to consider other architectures that have more flexibility,
+such as mobile code.
+
+It is core to the Web design principles that the clients cannot be
+trusted, but that certainly isn&#39;t true of every system.  Most times.
+Postscript printing, for example, is an excellent case study in the
+use of mostly-safe mobile code to enable independent evolution of
+printing applications from printer hardware.
+
+&gt; To paraphrase somebody, you&#39;ve got to do the analysis for yourself and
+&gt; figure out which architectural style makes sense given your  
+&gt; applications
+&gt; requirements.
+
+Yep, that&#39;s the key.  And there is usually more than one valid
+architecture for any given application, with both positive and
+negative trade-offs in the short term and long.  In the end, though,
+simplicity usually works better.
+
+....Roy
+
+
+

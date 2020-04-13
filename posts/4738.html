@@ -1,0 +1,87 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 85468 invoked from network); 30 Dec 2004 22:19:45 -0000
+Received: from unknown (66.218.66.217)
+  by m7.grp.scd.yahoo.com with QMQP; 30 Dec 2004 22:19:45 -0000
+Received: from unknown (HELO fed1rmmtao07.cox.net) (68.230.241.32)
+  by mta2.grp.scd.yahoo.com with SMTP; 30 Dec 2004 22:19:45 -0000
+Received: from [192.168.0.100] (really [68.4.71.218])
+          by fed1rmmtao07.cox.net
+          (InterMail vM.6.01.04.00 201-2131-117-20041022) with ESMTP
+          id &lt;20041230221945.DFZQ21886.fed1rmmtao07.cox.net@[192.168.0.100]&gt;;
+          Thu, 30 Dec 2004 17:19:45 -0500
+In-Reply-To: &lt;41D42376.80605@...&gt;
+References: &lt;cqrrt3+8dlm@...&gt; &lt;1104275921.23578.30.camel@phoenix&gt; &lt;C5106884-5942-11D9-B3AF-000D93324AD6@...&gt; &lt;1104331678.23563.23.camel@phoenix&gt; &lt;7EBCED3F-5A0A-11D9-B3AF-000D93324AD6@...&gt; &lt;BAY101-DAV1645BF2289FFCBE2118FFDD89C0@...&gt; &lt;41D42376.80605@...&gt;
+Mime-Version: 1.0 (Apple Message framework v619)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;E88B1B4B-5AB0-11D9-B3AF-000D93324AD6@...&gt;
+Content-Transfer-Encoding: 7bit
+Cc: rest discuss &lt;rest-discuss@yahoogroups.com&gt;,
+ &quot;S. Mike Dierken&quot; &lt;mdierken@...&gt;
+Date: Thu, 30 Dec 2004 14:19:44 -0800
+To: Julian Reschke &lt;julian.reschke@...&gt;
+X-Mailer: Apple Mail (2.619)
+X-eGroups-Remote-IP: 68.230.241.32
+From: Roy T. Fielding &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] REST and the design of HTTP methods
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+On Dec 30, 2004, at 7:49 AM, Julian Reschke wrote:
+&gt; OK, I have filled out what I think the properties of the WebDAV methods
+&gt; are (feedback appreciated):
+&gt;
+&gt;
+&gt;      method     safe    idempotent   semantics    resource     
+&gt; cacheable
+&gt;               
+&gt; -----------------------------------------------------------
+&gt;     GET       |  X          X            X           X             X   
+&gt;  |
+&gt;     HEAD      |  X          X            X           X             X   
+&gt;  |
+&gt;     PUT       |             X            X           X                 
+&gt;  |
+&gt;     POST(a)   |                          /                             
+&gt;  |
+&gt;     POST(p)   |                                                        
+&gt;  |
+&gt;     DELETE    |             X            X           X                 
+&gt;  |
+&gt;     OPTIONS   |  X          X            X                         O   
+&gt;  |
+&gt;               
+&gt; -----------------------------------------------------------
+&gt;     PROPFIND  |  X          X            X           X                 
+&gt;  |
+&gt;     PROPPATCH |             X            X           X                 
+&gt;  |
+&gt;     MKCOL     |             X            X           X                 
+&gt;  |
+&gt;     COPY      |                          X           X                 
+&gt;  |
+&gt;     MOVE      |                          X           X                 
+&gt;  |
+&gt;     LOCK      |                          X           X                 
+&gt;  |
+&gt;     UNLOCK    |                          X           X                 
+&gt;  |
+&gt;               
+&gt; -----------------------------------------------------------
+
+PROPFIND, PROPPATCH, LOCK, and UNLOCK do not have identifiable resources
+(they all operate by way of a third party).  Is PROPPATCH always 
+idempotent?
+COPY and MOVE are a bit weird due to HTTP&#39;s limitation of the target 
+URI.
+
+I think we should add all of the webdav methods, not just 2518.  Most 
+people
+have no idea what has been added/proposed for versioning and bindings.
+
+....Roy
+
+
+

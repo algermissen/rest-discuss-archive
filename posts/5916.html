@@ -1,0 +1,78 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 13383 invoked from network); 12 Apr 2006 19:47:26 -0000
+Received: from unknown (66.218.66.166)
+  by m28.grp.scd.yahoo.com with QMQP; 12 Apr 2006 19:47:26 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta5.grp.scd.yahoo.com with SMTP; 12 Apr 2006 19:47:26 -0000
+Received: from wsip-70-183-59-151.oc.oc.cox.net ([70.183.59.151] helo=[10.2.8.57])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1FTlJE-00062W-4T; Wed, 12 Apr 2006 12:47:24 -0700
+In-Reply-To: &lt;ab76badc0604112232qf955864pe0c8832af7cf884@...&gt;
+References: &lt;ab76badc0604060919h7d4f8604t927f7d41b17c1d08@...&gt; &lt;3f1451f50604061944p3b090f52mda8a133e6ac51d49@...&gt; &lt;ab76badc0604070121w2466160bw70ff988d51bf036c@...&gt; &lt;57A27523-4584-4CD8-852D-ECFE49E38089@...&gt; &lt;ab76badc0604070935o7cf7b1ddw9b1417587effa81e@...&gt; &lt;F4CEBC6C-E73B-4A0C-9228-40783D0181C4@...&gt; &lt;ab76badc0604080822h37c48fcfq5db030441acc884@...&gt; &lt;7BFF457F-A795-438E-85D3-72B7EBA4672C@...&gt; &lt;725B39AF-51C1-4CF3-8C42-B93B4482BE74@...&gt; &lt;ab76badc0604112232qf955864pe0c8832af7cf884@...&gt;
+Mime-Version: 1.0 (Apple Message framework v749.3)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;CBDCAF51-0DE2-446B-A447-0898C1851949@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Wed, 12 Apr 2006 12:47:22 -0700
+To: Sandeep Shetty &lt;sandeep.shetty@...&gt;
+X-Mailer: Apple Mail (2.749.3)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Request Header vs. Query String
+X-Yahoo-Group-Post: member; u=175757792; y=nJUNnNJXzUwn_lCyKWd1KvtEhiJDFCE-LoavbLe8-k9cez0LjtK1
+X-Yahoo-Profile: roy_fielding
+
+On Apr 11, 2006, at 10:32 PM, Sandeep Shetty wrote:
+&gt; On 4/11/06, Roy T. Fielding &lt;fielding@...&gt; wrote:
+&gt;&gt; Whoa, I think this is a case of reading too much into my  
+&gt;&gt; dissertation.
+&gt;&gt; The sites that I produce *always* separate languages into separate
+&gt;&gt; URI trees.
+&gt;
+&gt; Are you saying that this is the right way to do it or are you saying
+&gt; that we need to do it this way because we dont have much of an option
+&gt; given the current infrastructure?
+
+I am saying that server-driven negotiation doesn&#39;t work very well
+because different language editions are different resources and
+deserve their own URIs.  It results in the problems that were already
+described and quoted by Bill.
+
+Agent-driven negotiation is far more effective, but there was a huge
+disagreement between myself and the chair of the HTTP working group
+and my original agent-driven design for HTTP/1.1 was effectively
+buried in committee.
+
+To do negotiation right, the client needs to be aware of all the
+alternatives *and* what it should use as a bookmark.  In HTTP/1.1,
+all we managed to standardize is 300 and Vary.  We needed Alternates
+and Link to make it work.
+
+&gt;&gt; the fact is that different languages do not produce equivalents.
+&gt;&gt; There are hundreds of nuances, colloquialisms, and shared social
+&gt;&gt; norms that simply do not translate.  We encourage resource owners
+&gt;&gt; to only use true content negotiation (without redirects) when the
+&gt;&gt; only difference between formats is mechanical in nature.
+&gt;
+&gt; Are you saying that true content negotiation should only be done for
+&gt; stuff like changing formats (like when you have a base XML and you
+&gt; convert it into PDF, HTML, etc.) and not for languages?
+
+I am saying that all important resources must have URIs.
+
+....Roy
+
+
+

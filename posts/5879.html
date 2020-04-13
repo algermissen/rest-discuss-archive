@@ -1,0 +1,70 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 17650 invoked from network); 11 Apr 2006 20:48:02 -0000
+Received: from unknown (66.218.66.166)
+  by m30.grp.scd.yahoo.com with QMQP; 11 Apr 2006 20:48:02 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta5.grp.scd.yahoo.com with SMTP; 11 Apr 2006 20:48:02 -0000
+Received: from wsip-70-183-59-151.oc.oc.cox.net ([70.183.59.151] helo=[10.2.8.57])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1FTPmJ-000335-Dh; Tue, 11 Apr 2006 13:47:59 -0700
+In-Reply-To: &lt;443C0A11.7080002@...&gt;
+References: &lt;e1fhc4+1q6v@...&gt;	&lt;87mzesp92d.fsf@...&gt;	&lt;443BD49E.8080808@...&gt; &lt;87r744t5wr.fsf@...&gt; &lt;443BFCCB.9040406@...&gt; &lt;0D24C73A-CE63-44EE-BDAD-C285D953390E@...&gt; &lt;443C0A11.7080002@...&gt;
+Mime-Version: 1.0 (Apple Message framework v749.3)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;D292C927-B30F-4728-9D57-4D5B222E15B4@...&gt;
+Cc: Elias Sinderson &lt;elias@...&gt;,
+ Nic &lt;nferrier@...&gt;,
+ rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Tue, 11 Apr 2006 13:47:58 -0700
+To: Julian Reschke &lt;julian.reschke@...&gt;
+X-Mailer: Apple Mail (2.749.3)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] WebDAV = REST?
+X-Yahoo-Group-Post: member; u=175757792; y=078QqJA-xFZck-jDxrAE4fMjqZ80X5HQ9_8dPuY9yA9QhsVrB3xP
+X-Yahoo-Profile: roy_fielding
+
+On Apr 11, 2006, at 12:57 PM, Julian Reschke wrote:
+
+&gt; As for the remainder, I&#39;m really not sure what you&#39;re talking about  
+&gt; (more details, please). For instance, RFC3253 (Versioning)  
+&gt; introduces separate URIs for version histories and versions (basic  
+&gt; versioning).
+
+They are all in the archives Julian.  WebDAV is history and my only
+interest in it is for legacy support.
+
+&gt;&gt; ...
+&gt;&gt; The problem with MOVE is that it is actually an operation on two
+&gt;&gt; independent namespaces (the source collection and destination
+&gt;&gt; collection).  The user must have permission to remove from the
+&gt;&gt; source collection and add to the destination collection, which
+&gt;&gt; can be a bit of a problem if they are in different authentication
+&gt;&gt; realms.  COPY has a similar problem, but at least in that case
+&gt;&gt; only one namespace is modified.  I don&#39;t think either of them map
+&gt;&gt; very well to HTTP.
+&gt;&gt; ...
+&gt;
+&gt; That seems to be a problem with the concept of moving resources  
+&gt; around, not with the actual definition of the MOVE method, right?
+
+No, it is a problem with specifying multiple arguments when both the
+syntax and the access control mechanism assume there is only one.
+It doesn&#39;t quite fit in the original HTTP syntax.
+
+....Roy
+
+
+

@@ -1,0 +1,70 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 79678 invoked from network); 1 Oct 2006 22:06:42 -0000
+Received: from unknown (66.218.66.216)
+  by m36.grp.scd.yahoo.com with QMQP; 1 Oct 2006 22:06:42 -0000
+Received: from unknown (HELO fed1rmmtao07.cox.net) (68.230.241.32)
+  by mta1.grp.scd.yahoo.com with SMTP; 1 Oct 2006 22:06:42 -0000
+Received: from fed1rmimpo01.cox.net ([70.169.32.71])
+          by fed1rmmtao07.cox.net
+          (InterMail vM.6.01.06.01 201-2131-130-101-20060113) with ESMTP
+          id &lt;20061001220614.BIOH21457.fed1rmmtao07.cox.net@...&gt;;
+          Sun, 1 Oct 2006 18:06:14 -0400
+Received: from [192.168.0.133] ([70.187.176.185])
+	by fed1rmimpo01.cox.net with bizsmtp
+	id VA681V00V40NznJ0000000
+	Sun, 01 Oct 2006 18:06:09 -0400
+In-Reply-To: &lt;87ven4e194.fsf@...&gt;
+References: &lt;a373dc740609252215t7873f84eof0ddd6fb334959af@...&gt; &lt;490201DC-8CD9-4192-A5D3-D061D982A8B5@...&gt; &lt;a373dc740609281244h1ad3b271s2599871582034dbb@...&gt; &lt;1159599633.7305.35.camel@...&gt; &lt;EDE8063D-534B-426B-A42F-CC3930858FB8@...&gt; &lt;87y7s0e9ig.fsf@...&gt; &lt;F04F5B63-4792-44F2-B588-133CE745562A@...&gt; &lt;87ven4e194.fsf@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;20C6ED3C-96BA-4E9D-AFB1-A197FC9F2307@...&gt;
+Cc: Jan Algermissen &lt;jalgermissen@...&gt;,
+ Stefan Tilkov &lt;stefan.tilkov@...&gt;,
+ rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Sun, 1 Oct 2006 15:06:17 -0700
+To: Nic James Ferrier &lt;nferrier@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Seeking feedback on the Blinksale API
+X-Yahoo-Group-Post: member; u=175757792; y=cj9l4vxV1TkyVlWcqU0GBsm9sTbbeIQbHyHWBIx4V9DYRzNPIDpP
+X-Yahoo-Profile: roy_fielding
+
+On Oct 1, 2006, at 4:14 AM, Nic James Ferrier wrote:
+&gt; Jan Algermissen &lt;jalgermissen@...&gt; writes:
+&gt;
+&gt; &gt; Hmm...no, Mark is completely right about that. Message self-
+&gt; &gt; descriptiveness is an
+&gt; &gt; architectural constraint of REST and thus, if your messages are not
+&gt; &gt; self-descriptive
+&gt; &gt; (aka standardized all the way through) your system does not comply
+&gt; &gt; with REST.
+&gt;
+&gt; I strongly disagree with this assertion. I don&#39;t have a link to Mark&#39;s
+&gt; article where he makes a claim that &quot;self-descriptive&quot; means
+&gt; &quot;standardized&quot; so I can&#39;t really refute it. But I do refute the
+&gt; assertion.
+
+Well, so do I.  Self-descriptive means that the type is registered and
+the registry points to a specification and the specification explains
+how to process the data according to its intent.  The specification does
+not need to be a standard (a.k.a., a measure that everyone agrees to).
+It would help, but most useful standards are defined through use.
+Whoever starts sending the data first should define the specification
+according to what is being sent, not try to get everyone to agree first.
+
+My question about the API was one of practicality.  Given a space that
+has been extensively explored, why do people choose to abandon the
+available standards?  And the answer was the one I was expecting: the
+standards are too complex and it seemed better to start with something
+simple that is a better fit for the immediate need.  There is absolutely
+nothing wrong with that choice when it is made with eyes wide open.
+You never know what will become the next HTML.
+
+....Roy
+
+

@@ -1,0 +1,81 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 30187 invoked from network); 2 Sep 2008 15:08:17 -0000
+X-Received: from unknown (66.218.67.95)
+  by m45.grp.scd.yahoo.com with QMQP; 2 Sep 2008 15:08:17 -0000
+X-Received: from unknown (HELO spaceymail-a3.g.dreamhost.com) (208.113.200.5)
+  by mta16.grp.scd.yahoo.com with SMTP; 2 Sep 2008 15:08:17 -0000
+X-Received: from [192.168.0.137] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a3.g.dreamhost.com (Postfix) with ESMTP id A3237195031;
+	Tue,  2 Sep 2008 08:08:53 -0700 (PDT)
+In-Reply-To: &lt;48BD480C.1050605@...&gt;
+References: &lt;77E9BA5A-0BFB-42FB-8643-4B38DEE7960D@...&gt; &lt;f950954e0809020207o59de717o8f58969ad094230d@...&gt; &lt;A1C2FF1A-0754-4BF6-BC5F-128FF3B44F88@...&gt; &lt;8714E6C9-0C04-44CF-B356-20CDA5DF8280@...&gt; &lt;48BD480C.1050605@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;F48863DB-1B8E-4F49-A3C8-4C64F27F1822@...&gt;
+Cc: Jan Algermissen &lt;algermissen1971@...&gt;,
+	rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Tue, 2 Sep 2008 08:08:14 -0700
+To: Ralf Bommersbach &lt;ralf.bommersbach@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Terminology: &quot;Resource Types&quot;?
+X-Yahoo-Group-Post: member; u=175757792; y=xrj14kJj-oH8ScYi5DKbNvKxM6-99HaPLaqFoXVGH5TIBltR4IKc
+X-Yahoo-Profile: roy_fielding
+
+On Sep 2, 2008, at 7:05 AM, Ralf Bommersbach wrote:
+&gt; IMHO
+&gt; It&#39;s not about the user of the facade. Yes the user just discovers at
+&gt; runtime the representation-types and possible next application states
+&gt; and always uses the same uniform interface and so on etc pp. For him
+&gt; _everything_ is just a resource (representation).
+&gt;
+
+Yes.
+
+&gt; It&#39;s a different thing when we talk about the design of the system.  
+&gt; The
+&gt; developer view. Clearly in any RESTful application you _will_ have
+&gt; different types of resources, no matter how you call it: A resource of
+&gt; type &quot;article&quot; _will_ have different underlying business logic /
+&gt; properties / behaviors etc than for example a resource of type
+&gt; &quot;customer&quot;. These different resource types must be implemented in  
+&gt; _some_
+&gt; way. What representations does it serve? What methods does this  
+&gt; resource
+&gt; type allow? With which adressing-schema (URI-templates) is it  
+&gt; adressable?
+&gt; For example you might use a java-class ArticleResource to implement a
+&gt; resource of type article. At runtime these class can manifest  
+&gt; itself in
+&gt; many different resource instances. Anyways - however you do it, you  
+&gt; have
+&gt; to have some notion of resource types. I don&#39;t see why not just  
+&gt; call it
+&gt; &quot;resource types&quot;?
+&gt;
+
+Because those implementations behind the interface are not the same
+as the resources exposed through the interface.  Even in the simple
+case, where an http URI template maps to a filesystem hierarchy, we
+do not say that the individual files are the resources.  (They are
+resources of their own accord, but they are not the resources exposed
+via HTTP.)  They are just storage mechanisms that supply representations
+when mapped from a URI.
+
+I think I misunderstood Stefan&#39;s original question, though.
+URI templates describe a naming pattern, not a resource type
+or even set of resources.  Templates define a set of names.
+And, yes, RDF (or anything that defines link relations) could
+describe an assertion that some resource has some defined type, and
+might even be extended some day to support templates in place
+of URIs, but it is wrong to think of RDF descriptions as being
+definitive of resources.  They are usually wrong in the long run.
+
+....Roy
+
+

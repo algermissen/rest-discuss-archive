@@ -1,0 +1,75 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 33281 invoked from network); 10 Mar 2010 00:53:47 -0000
+X-Received: from unknown (98.137.34.46)
+  by m1.grp.sp2.yahoo.com with QMQP; 10 Mar 2010 00:53:47 -0000
+X-Received: from unknown (HELO spaceymail-a1.g.dreamhost.com) (208.113.200.5)
+  by mta3.grp.sp2.yahoo.com with SMTP; 10 Mar 2010 00:53:47 -0000
+X-Received: from rtf.corp.day.com (wsip-98-189-13-228.oc.oc.cox.net [98.189.13.228])
+	by spaceymail-a1.g.dreamhost.com (Postfix) with ESMTP id 4484520135;
+	Tue,  9 Mar 2010 16:53:46 -0800 (PST)
+Mime-Version: 1.0 (Apple Message framework v1077)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;758784.52142.qm@...&gt;
+Date: Tue, 9 Mar 2010 16:53:42 -0800
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: quoted-printable
+Message-Id: &lt;614F7570-EB02-4246-AFA2-BE2DDC17B18C@...&gt;
+References: &lt;758784.52142.qm@...&gt;
+To: &lt;jumeier@...&gt; &lt;jumeier@...&gt;
+X-Mailer: Apple Mail (2.1077)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] HTTP request and &quot;type safety&quot;
+X-Yahoo-Group-Post: member; u=175757792; y=-AF-1shsAWTcHeB1RFNqAQR333KZQzKGYNzSQeb3NC3OYsUU89bY
+X-Yahoo-Profile: roy_fielding
+
+On Mar 9, 2010, at 9:48 AM, &lt;jumeier@...&gt; &lt;jumeier@...&gt; wrote:
+=
+
+&gt; I have a customer who raised a concern about REST &quot;type safety&quot;. What he=
+ means may be best explained by a simple example.
+&gt; 
+&gt; Assume we have a res=
+ource that represents a folder, and by issueing a POST request, I can attac=
+h a file. What, however, if that post request wrongly goes to, let&#39;s say, a=
+nother document resource instead of our folder, and the document resource a=
+lso accepts POST (for some reason)?
+&gt; 
+&gt; In a RPC world, the document type =
+would not understand an &quot;addDocument()&quot; call, and consequently return an ex=
+ception. But what about REST? Of course, the POST&#39;s attributes most likely =
+wouldn&#39;t be understood and something like 400 Bad Request returned. But wha=
+t if they were understood?
+
+Ah, yes, a similar thing happens all the time w=
+hen
+flaying frisbee in the park with my dog.  When I throw
+the frisbee and =
+the dog tries to catch it in his teeth,
+everyone seems to be happy.  Howeve=
+r, when the dog tries
+to throw the frisbee and I try to catch it in my teet=
+h,
+it just doesn&#39;t seem to work well for either of us.
+
+&gt; So, are there mea=
+ns or patterns, to achieve (some sort) of type safety?
+
+Yes.  A RESTful int=
+erface is one where the server provides the links
+or forms that tells the c=
+lient what operations to perform where.
+If you are telling the client to do=
+ the wrong thing, then the
+pattern would be to tell the client to do the ri=
+ght thing instead.
+Generally speaking, it works out better that way.
+
+....R=
+oy
+
+
+

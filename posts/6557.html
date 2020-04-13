@@ -1,0 +1,76 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 43532 invoked from network); 10 Sep 2006 19:17:26 -0000
+Received: from unknown (66.218.66.172)
+  by m38.grp.scd.yahoo.com with QMQP; 10 Sep 2006 19:17:26 -0000
+Received: from unknown (HELO fed1rmmtao08.cox.net) (68.230.241.31)
+  by mta4.grp.scd.yahoo.com with SMTP; 10 Sep 2006 19:17:25 -0000
+Received: from fed1rmimpo02.cox.net ([70.169.32.72])
+          by fed1rmmtao08.cox.net
+          (InterMail vM.6.01.06.01 201-2131-130-101-20060113) with ESMTP
+          id &lt;20060910191608.VXLW22977.fed1rmmtao08.cox.net@...&gt;;
+          Sun, 10 Sep 2006 15:16:08 -0400
+Received: from [192.168.0.100] ([70.187.185.205])
+	by fed1rmimpo02.cox.net with bizsmtp
+	id LjGA1V0034SKAP20000000
+	Sun, 10 Sep 2006 15:16:10 -0400
+In-Reply-To: &lt;711a73df0609100104y5cf7a42fl1560573d18805c27@...&gt;
+References: &lt;W4704429223309831156847800@...&gt; &lt;4FB171C1-515D-4A8C-B1D9-D27B514DD337@...&gt; &lt;711a73df0609100104y5cf7a42fl1560573d18805c27@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;A9C2B38D-9A68-4DE3-A444-05B5AC42BB2E@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Sun, 10 Sep 2006 12:16:35 -0700
+To: Dave Pawson &lt;dave.pawson@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Resources as Orange Apples
+X-Yahoo-Group-Post: member; u=175757792; y=Lrz-3DlI2krK-R-diYtKpCFqrr2fWRkSGyZaxeC-IWstJH-3isWc
+X-Yahoo-Profile: roy_fielding
+
+On Sep 10, 2006, at 1:04 AM, Dave Pawson wrote:
+&gt; although the store has apples today, it may not have any tomorrow.
+&gt; The representation available from the resource changes over time
+&gt; in the same way that a web page content changes over time and hence
+&gt; the web page is a resource.
+&gt; Is that along the right lines?
+
+Not exactly.  A resource is a conceptual mapping.  That mapping may be
+as abstract as &quot;the Apple Store&quot; or as concrete as a single apple that
+was at one time in a box at the Apple Store.  A resource is largely
+defined by what you make of it.  So it is possible that the
+representations of a given resource do not change over time.
+A web site is a resource.  A web page (the conceptual page expected
+by a user when they follow a hypertext link) is a resource.
+So are each of the in-line elements that make up that page, as
+are (at least for the server) all of the files/programs used to
+construct the content of that page.  Each of those are separate
+resources in their own right.
+
+But knowing what the &quot;resource&quot; is does not teach much about REST,
+since REST is designed to hide that information from clients.
+
+Lots of people complain about the definition, largely because
+it seems so nebulous and effectively anything could be a resource.
+What they don&#39;t understand is that allowing anything to be a resource
+is the goal, and REST describes how to build an architecture that
+can effectively manipulate anything even when the client has no
+idea what that thing actually may be.  That&#39;s the point.
+
+If an application can accomplish the user&#39;s need of today in a
+way that is reusable by others, and without revealing much of
+anything about how it works, then there is a good chance that
+the implementation of how it works can evolve independently of
+the user and also that how the user makes use of that work can
+evolve independently from what was anticipated by the resource
+owner.  Those are two of the goals of REST: independent evolvability
+and design-for-serendipity.  There are other goals (e.g., scalability).
+
+....Roy
+
+
+

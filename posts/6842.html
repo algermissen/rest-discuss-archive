@@ -1,0 +1,85 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 20489 invoked from network); 10 Nov 2006 20:22:55 -0000
+Received: from unknown (66.218.67.33)
+  by m25.grp.scd.yahoo.com with QMQP; 10 Nov 2006 20:22:55 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta7.grp.scd.yahoo.com with SMTP; 10 Nov 2006 20:22:54 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.56])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1Gicsm-0006wM-5y; Fri, 10 Nov 2006 12:21:48 -0800
+In-Reply-To: &lt;c70bc85d0611092048k35c366a4i38e66adad658b39c@...&gt;
+References: &lt;eiqv3n+cjsb@...&gt; &lt;c70bc85d0611092048k35c366a4i38e66adad658b39c@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;5238B998-4250-4166-9556-EB5F646AAFEC@...&gt;
+Cc: &quot;Daniel Hardman&quot; &lt;daniel.hardman@...&gt;,
+ rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Fri, 10 Nov 2006 12:21:52 -0800
+To: Mark Baker &lt;distobj@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] automated translation to REST style?
+X-Yahoo-Group-Post: member; u=175757792; y=G-LHJgKX-J7Q7kUkN5eCUGWR3uWArItr-NayoBWGQI5PvdwjCNMa
+X-Yahoo-Profile: roy_fielding
+
+On Nov 9, 2006, at 8:48 PM, Mark Baker wrote:
+&gt; I don&#39;t believe it&#39;s practical. Taking an arbitrary RPC system and
+&gt; putting it on the Web is a very difficult task. But more than
+&gt; &quot;difficult&quot;, it&#39;s *design*, and machines aren&#39;t very good at design.
+&gt; For example, the URIs the tool would generate (e.g. if it found a
+&gt; getFoo() method) would suck, because there&#39;s typically no way (and
+&gt; definitely no general way) to identify resources and their naming
+&gt; structure via RPC interfaces (you&#39;re actually better off going
+&gt; straight to the data). As another example, the granularity of data
+&gt; access normally needs to be designed, IME; getFoo() and getBar() on
+&gt; the same object might be better off as two URIs, or as a single URI
+&gt; which returns both kinds of data (ala
+&gt; &lt;root&gt;&lt;Foo&gt;foo&lt;/Foo&gt;&lt;Bar&gt;bar&lt;/Bar&gt;&lt;/root&gt;). There&#39;s many many other
+&gt; considerations.
+
+Right, it is often harmful to REST design to start with an RPC-style
+interface and work backwards from functionality.  If a group already
+has an RPC implementation, then presumably there is something wrong
+with the architecture if they want to change it to the REST style.
+Architectural change isn&#39;t like changing door knobs or painting
+the garage a different color -- it is fundamental.  That is, unless
+the RPC is already architected as a data-oriented interface, in which
+case the translation is easy to automate (though extremely rare in
+practice).
+
+An interesting idea would be to look at the back-end of a working
+system and try to anticipate a REST architecture on the basis of
+the observed data flow.  And yet, that too is filled with risk,
+since the existing RPC may be causing the data-flow to be unnatural,
+which in turn is why the system needs to be redesigned.  JCR,
+for example, forces the front-end to be data-oriented and then
+allows the back-end to be adjusted for storage-efficiency.
+
+I have yet to see an acceptable building that was designed by a
+computer, even with extensive rule-based systems.  I see no reason
+to believe a network-based application would be any different.
+Sounds like a good research area, though.
+
+Maybe I am showing my age, but there used to be a great deal of
+debate about the proper way to analyze customer requirements and
+design accordingly.  Much of that was suppressed by the rise of
+OOD consulting.  It would be interesting to see what would happen
+if someone were to dredge up Jackson System Design (JSD) methodology
+and customize it specifically for REST-like architectures.
+
+....Roy
+
+

@@ -1,0 +1,41 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_3_0); 6 Jan 2003 19:46:33 -0000
+Received: (qmail 43412 invoked from network); 6 Jan 2003 19:46:32 -0000
+Received: from unknown (66.218.66.216)
+  by m13.grp.scd.yahoo.com with QMQP; 6 Jan 2003 19:46:32 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta1.grp.scd.yahoo.com with SMTP; 6 Jan 2003 19:46:32 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.2/8.12.2) with ESMTP id h06JWPgY001103;
+	Mon, 6 Jan 2003 11:32:25 -0800 (PST)
+Date: Mon, 6 Jan 2003 11:32:25 -0800
+Subject: Re: [rest-discuss] ReST and Representing Mailboxes
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss@yahoogroups.com
+To: &quot;S. Alexander Jacobson&quot; &lt;alex@...&gt;
+In-Reply-To: &lt;Pine.WNT.4.43.0301061232080.1072-100000@fanatic&gt;
+Message-Id: &lt;959DACF4-21AD-11D7-84A2-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; Does this make sense now?
+
+Not really.  An HTTP server&#39;s URI-space has nothing whatsoever to do
+with its storage space, aside from that created by the handlers within
+that space.  In other words, what you name the URIs and how the messages
+are extracted from relevant storage is defined entirely by the handler
+you write for the URIs.  See mod_mbox, for example.
+
+     http://cvs.apache.org/viewcvs.cgi/httpd-mbox/
+
+....Roy
+
+
+

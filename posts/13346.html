@@ -1,0 +1,145 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 54211 invoked from network); 18 Sep 2009 03:34:03 -0000
+X-Received: from unknown (98.137.34.44)
+  by m5.grp.sp2.yahoo.com with QMQP; 18 Sep 2009 03:34:03 -0000
+X-Received: from unknown (HELO spaceymail-a2.g.dreamhost.com) (208.113.200.5)
+  by mta1.grp.sp2.yahoo.com with SMTP; 18 Sep 2009 03:34:03 -0000
+X-Received: from [10.2.8.78] (wsip-70-183-62-251.oc.oc.cox.net [70.183.62.251])
+	by spaceymail-a2.g.dreamhost.com (Postfix) with ESMTP id 9C4C2EE246;
+	Thu, 17 Sep 2009 20:33:52 -0700 (PDT)
+In-Reply-To: &lt;f950954e0909171636qa4cb90ak8c66cd3e05f747a4@...&gt;
+References: &lt;BLU102-DS14D9D7B2EBA7F0FEDB0C6B5E20@...&gt; &lt;21606dcf0909160847j4d0df170x5b9b1a31f8ac9e0d@...&gt; &lt;20090916100613.6030075a.eric@...&gt; &lt;4AB139D9.7050501@...&gt; &lt;A3A8A84B-6460-476C-8490-FD76B6AE7F99@...&gt; &lt;h8sps5$l68$1@...&gt; &lt;3559F8D6-F05D-4E7D-B625-FB080963F696@...&gt; &lt;4AB241A4.5040208@...&gt; &lt;3466522E-31BD-46D6-AB2F-1BCD46C9A95D@...&gt; &lt;a6a6df360909171335r51858fa7t26fadd2658929491@...&gt; &lt;f950954e0909171636qa4cb90ak8c66cd3e05f747a4@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;94861C8C-5B1C-4F38-9C78-F3F0656A04BA@...&gt;
+Cc: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Thu, 17 Sep 2009 20:33:50 -0700
+To: Alexander Johannesen &lt;alexander.johannesen@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: REST-*
+X-Yahoo-Group-Post: member; u=175757792; y=yRJsNAMWcKB4oxHD0loax_Q2tWFyTjcZ26YjdvbrA-0aB4Lyp4sI
+X-Yahoo-Profile: roy_fielding
+
+On Sep 17, 2009, at 4:36 PM, Alexander Johannesen wrote:
+
+&gt; Hiya all,
+&gt;
+&gt; I&#39;ve taken a back-seat this time, luckily due to too much stuff going
+&gt; on in the real world. My two bobs worth, and I&#39;ll just start with this
+&gt; one (although my reply is not directed at Nick throughout) ;
+&gt;
+&gt; On Fri, Sep 18, 2009 at 06:35, Nick Gall &lt;nick.gall@...&gt; wrote:
+&gt; &gt; For the umpteenth time, HTTP is a application protocol NOT a  
+&gt; middleware protocol
+&gt;
+&gt; We all have our definitions (in our heads, at best) of what thing is
+&gt; called what and what that part of technology is categorised under. The
+&gt; thing is, it&#39;s all really philosophically interchangeable in the end
+&gt; (for a good example of what I&#39;m talking about, see &quot;Everything is
+&gt; miscellaneous&quot;; google it). I know we&#39;re all hardcore engineers here
+&gt; and all, but if we take a step back and examine what we&#39;re doing here
+&gt; in human terms, what the heck is all this bickering about?
+&gt;
+
+Yes, we are all a cloud of atoms -- what&#39;s the point of distinguishing
+us into types, shapes, or names?
+
+&gt; I find this (&quot;HTTP is a application protocol NOT a middleware
+&gt; protocol&quot;) a bit of a strange assertion. First of all, the notion of
+&gt; middleware is to glue software components and / or systems together,
+&gt; and as such an application protocol *is* a middleware protocol. Are we
+&gt; here just battling over semantics that actually are superfluous in
+&gt; nature? Aren&#39;t we trying to say that RESTful design removes much of
+&gt; the need for *traditional* middleware whos sole purpose is to glue
+&gt; applications together through structures simulating OO (which REST
+&gt; does for you in better ways through resources [mining from
+&gt; identification management]), so why are you recreating the middleware
+&gt; problem through something that already solves much of it? This
+&gt; misguidance will of course be misinterpreted as commercial bias.
+&gt;
+
+No, that&#39;s not what middleware means (it certainly isn&#39;t tied to OO).
+There is a lot of good middleware and a lot of good distributed
+architectures that use various types of middleware for communication
+according to various good architectural styles.  There is plenty of
+middleware active in the Web as well, like content distribution  
+networks,
+name resolvers, load balancers, etc.  Middleware are implementation
+packages that may or may not fit a given architecture, and should be
+used only when and where the fit is right.  Likewise, there are
+plenty of good RESTful architectures that end at the resource
+interface, behind which is another architecture composed of
+middleware services that are not (and should not be) RESTful.
+
+&gt; People whinge a lot that Red Hat has too much of a bias. Um, computer
+&gt; scientists have a bias too, even people who have no bias have a basic
+&gt; philosophical bias, and these semantics *will* affect (as oppose to
+&gt; mere observatory notions) the work that is done. The argument of bias
+&gt; is mostly moot (but not completely, of course). I personally get the
+&gt; feeling that these REST-* moves were genuinly of good nature, the only
+&gt; business bias that I can see is that they jumped on an idea and went
+&gt; with it. That&#39;s more happening in the REST world in a long time, and
+&gt; as such I *really* welcome it.
+&gt;
+
+Would you welcome it if you went to a car dealer, asked to see a
+new Camaro, and he insisted on showing you a Winnebago instead?
+
+Would you welcome it if you went to MacDonald&#39;s and ordered a
+filet-o-fish sandwich, and they gave you a Big Mac instead?
+
+WTF is wrong with you people?
+
+Red Hat (or, more accurately, JBoss) unilaterally decided to set
+themselves up as the equivalent of Sun within a JCP-like standards
+organization on a topic for which they not only had NOTHING to
+do with creating and know NOTHING about, but for which they
+actually sell products that are the exact opposite of RESTful
+architecture.  The organization claims that it will specify REST
+standards, that such standards will be led by benevolent dictators
+in the form of Spec Leads, that no overlapping proposals would be
+allowed (IOW, the first Spec Lead owns the entire topic as BDFL),
+and that Red Hat would be the only permanent member of the board
+to ensure that never changed.
+
+And, guess what -- the organization starts with a couple Spec Leads
+owning the topics that JBoss wants to SELL YOU as REST, because
+they know damn well that their current market is shrinking: their
+entire product architecture is based on J2EE, the giant black
+hole of Java that is sucking itself into oblivion.
+
+But, no, this won&#39;t be the oh-too-formal version of REST that
+is found in my dissertation.  This will be the new, &quot;Pragmatic&quot;,
+AssHat version of REST, so that JBoss can tell their customers
+that they are the new leaders in &quot;REST&quot; architecture and all
+they need to do get their systems to be RESTful 2.0-compliant
+is to buy their J2EE application server, now with REST-beans.
+
+Bill Burke is not evangelizing REST throughout the Java world.
+What he is evangelizing is the same old architectures that he
+evangelized as J2EE and WS-* -- the only difference is that now
+he starts off calling them REST.  All he is doing is making
+people like you confused over what is REST and what is not, in
+the hope of making a business out of clambering onto yet
+another buzzword.
+
+No, I see no reason to appreciate that nonsense.  Not in the least.
+I don&#39;t care if it was an &quot;honest mistake&quot; or a deliberate attempt
+at fraud -- the result is the same.  Only a complete idiot would
+participate in such a forum.
+
+If you want a place to collect REST ideas and patterns, then
+use the wiki that Mark Baker established.  He actually knows
+what he is talking about, doesn&#39;t pretend to be a dictator, and
+actually earned the role of editor long before most of you had
+even heard of the term.
+
+....Roy
+
+

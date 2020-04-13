@@ -1,0 +1,62 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 67157 invoked from network); 3 Feb 2006 00:34:32 -0000
+Received: from unknown (66.218.66.218)
+  by m32.grp.scd.yahoo.com with QMQP; 3 Feb 2006 00:34:32 -0000
+Received: from unknown (HELO picanmix.dev.day.com) (212.249.34.130)
+  by mta3.grp.scd.yahoo.com with SMTP; 3 Feb 2006 00:34:32 -0000
+Received: from eu-mail.day.com (eu-mail.dev.day.com [10.0.0.30])
+        by picanmix.dev.day.com (DAY) with ESMTP id k130YJr04217;
+        Fri, 3 Feb 2006 01:34:19 +0100 (MET)
+Received: from [10.2.8.78] ([10.2.8.78])
+          by eu-mail.day.com (Lotus Domino Release 5.0.8)
+          with ESMTP id 2006020301341700:1790 ;
+          Fri, 3 Feb 2006 01:34:17 +0100 
+In-Reply-To: &lt;43E2A263.1050502@...&gt;
+References: &lt;B8415163A689094689542C617ECA0366484BAF@...&gt; &lt;438F3F97.20008@...&gt; &lt;43E2A263.1050502@...&gt;
+Mime-Version: 1.0 (Apple Message framework v746.2)
+Message-Id: &lt;6778F2DE-F1B7-46B1-A45E-CB5BE6190107@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Date: Thu, 2 Feb 2006 16:34:18 -0800
+To: &quot;Jack J. Coleman&quot; &lt;jackjc@...&gt;
+X-Mailer: Apple Mail (2.746.2)
+X-MIMETrack: Itemize by SMTP Server on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 02/03/2006
+ 01:34:17 AM,
+	Serialize by Router on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 02/03/2006
+ 01:34:18 AM,
+	Serialize complete at 02/03/2006 01:34:18 AM
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Apache Post
+X-Yahoo-Group-Post: member; u=175757792; y=n1a-AQnzRQteTr0cLCK2FZ0BebQclUsMz4yzX7NEQiJv7fELPGPU
+X-Yahoo-Profile: roy_fielding
+
+On Feb 2, 2006, at 4:22 PM, Jack J. Coleman wrote:
+
+&gt; I implemented a REST web service for administering account  
+&gt; information.
+&gt; I was using a Tomcat server stand-alone. I just installed mod_jk to  
+&gt; hook
+&gt; it in with Apache. I now get an error message when doing a PUT, saying
+&gt; that PUT is not supported by Apache.
+&gt;
+&gt; Has anyone on this list set up Apache with Tomcat for use with the  
+&gt; POST
+&gt; request-method?
+
+I suggest doing a google search.  mod_jk is a servlet interface  
+extension,
+so I don&#39;t know what it supports (and unfortunately I have no time to  
+check
+right now).  PUT is supported by Apache if the module responsible for  
+handling
+that part of the Location space allows PUT.
+
+....Roy
+
+
+

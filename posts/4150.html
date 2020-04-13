@@ -1,0 +1,75 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+Received: (qmail 1978 invoked from network); 12 Feb 2004 02:28:24 -0000
+Received: from unknown (66.218.66.217)
+  by m18.grp.scd.yahoo.com with QMQP; 12 Feb 2004 02:28:24 -0000
+Received: from unknown (HELO n7.grp.scd.yahoo.com) (66.218.66.91)
+  by mta2.grp.scd.yahoo.com with SMTP; 12 Feb 2004 02:28:24 -0000
+X-eGroups-Return: fielding@...
+Received: from [66.218.67.130] by n7.grp.scd.yahoo.com with NNFMP; 12 Feb 2004 02:28:12 -0000
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 26280 invoked from network); 12 Feb 2004 02:22:27 -0000
+Received: from unknown (66.218.66.218)
+  by m8.grp.scd.yahoo.com with QMQP; 12 Feb 2004 02:22:27 -0000
+Received: from unknown (HELO bsl-540.wakasoft.com) (65.208.153.194)
+  by mta3.grp.scd.yahoo.com with SMTP; 12 Feb 2004 02:22:27 -0000
+Received: from gbiv.com (localhost [127.0.0.1])
+	by bsl-540.wakasoft.com (8.12.9/8.12.9) with ESMTP id i1C2LtFf006682
+	for &lt;rest-discuss@yahoogroups.com&gt;; Wed, 11 Feb 2004 18:21:55 -0800 (PST)
+Date: Wed, 11 Feb 2004 17:22:13 -0800
+Resent-Date: Wed, 11 Feb 2004 18:21:53 -0800
+Mime-Version: 1.0 (Apple Message framework v553)
+Cc: &quot;Jeff Bone&quot; &lt;jbone@...&gt;, &quot;Vincent D Murphy&quot; &lt;vdm@...&gt;,
+   &quot;Seairth Jacobs&quot; &lt;seairth@...&gt;, &lt;rest-discuss@yahoogroups.com&gt;
+Resent-Message-Id: &lt;E368C125-5CF9-11D8-A8FB-000393753936@...&gt;
+Resent-To: rest-discuss@yahoogroups.com
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+To: &quot;Justin Sampson&quot; &lt;justin.sampson@...&gt;
+Content-Transfer-Encoding: 7bit
+Message-Id: &lt;393FFE56-5D02-11D8-A8FB-000393753936@...&gt;
+Resent-From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Mailer: Apple Mail (2.553)
+X-eGroups-Remote-IP: 65.208.153.194
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] REST Transaction Process
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+X-eGroups-Approved-By: gonga_thrash &lt;distobj@...&gt; via web; 12 Feb 2004 02:28:11 -0000
+X-eGroups-Remote-IP: 66.218.66.91
+
+&gt; Initiating a transaction really creates a new view of the entire
+&gt; resource space, so it makes sense that any resources accessed
+&gt; within the transaction would be accessed at URIs hierarchically
+&gt; subordinate to the URI of the transaction itself. However,
+&gt; munging the existing URIs on the client is undesirable. Also, any
+&gt; relative URIs inside the representations of those various
+&gt; resources may be thrown off; the server would have to introspect
+&gt; the representations it&#39;s returning and munge any URIs therein
+&gt; itself, and the client would have to be disciplined about only
+&gt; following URIs returned from the server (or built according to
+&gt; rules returned from the server, as for an HTML form submission),
+&gt; and emphatically not constructing URIs itself -- but then that&#39;s
+&gt; just good REST sense, anyway.
+
+I would never munge the request URI -- that just won&#39;t work in the
+long term, once you consider the effect of proxies and multi-site
+transactions.  And if you superset the URI space, then questions
+come up about whether the new space has been checked-out, locked,
+and/or has the same access control and handlers.  Yikes.
+
+This topic has come up a few times on webdav and http-wg lists.
+The transaction is a resource, but the relationship between it and
+the requested resource can be accomplished via a header field that
+defines each request as a sequenced resource within a hierarchical
+transaction.  In other words, ask the server for a transaction begin,
+send the URI it gives the client in each request as a header field
+with a request number appended to it, and finally abort or commit
+the transaction as a final request to the transaction&#39;s URI.  That&#39;s
+basically how I did it for the still-vapor waka protocol.
+
+....Roy
+
+
+
+

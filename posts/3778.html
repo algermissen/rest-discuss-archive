@@ -1,0 +1,49 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 95038 invoked from network); 23 Jul 2003 21:53:26 -0000
+Received: from unknown (66.218.66.217)
+  by m11.grp.scd.yahoo.com with QMQP; 23 Jul 2003 21:53:26 -0000
+Received: from unknown (HELO mac.wakasoft.com) (209.17.183.199)
+  by mta2.grp.scd.yahoo.com with SMTP; 23 Jul 2003 21:53:26 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id h6NLrjrB004710;
+	Wed, 23 Jul 2003 14:53:45 -0700 (PDT)
+Date: Wed, 23 Jul 2003 14:53:44 -0700
+Subject: Re: [rest-discuss] Re: URIs are RESTful
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;Justin Sampson&quot; &lt;justin.sampson@...&gt;
+In-Reply-To: &lt;0EAA506787D12B4B99D3CA086230A2B4D5AB87@...&gt;
+Message-Id: &lt;21143E10-BD58-11D7-8573-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; That is, assuming that I were to implement cookie authentication with 
+&gt; some
+&gt; kind of secure token not requiring any server state, and Cookie was a 
+&gt; part
+&gt; of the HTTP standard, and proxies were to treat Cookie similarly to 
+&gt; how they
+&gt; treat Authorization for caching, would such use of cookies be 
+&gt; consistent
+&gt; with REST? It would be almost like having a Set-Authorization response
+&gt; header that could be returned from posting a login form, giving the
+&gt; credentials that should be returned by the client on subsequent
+&gt; requests.
+&gt; Does that make any sense?
+
+You should note that there is no design reason why Authorization
+and WWW-Authenticate are limited to Basic and Digest.  That is why
+those fields are extensible.  Why would you want to duplicate that
+functionality in another field?
+
+....Roy
+
+
+

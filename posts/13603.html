@@ -1,0 +1,80 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 81148 invoked from network); 2 Oct 2009 02:16:22 -0000
+X-Received: from unknown (98.137.34.45)
+  by m5.grp.re1.yahoo.com with QMQP; 2 Oct 2009 02:16:22 -0000
+X-Received: from unknown (HELO hapkido.dreamhost.com) (66.33.216.122)
+  by mta2.grp.sp2.yahoo.com with SMTP; 2 Oct 2009 02:16:22 -0000
+X-Received: from spaceymail-a2.g.dreamhost.com (caibbdcaaaaf.dreamhost.com [208.113.200.5])
+	by hapkido.dreamhost.com (Postfix) with ESMTP id 5ED8317CAA3
+	for &lt;rest-discuss@yahoogroups.com&gt;; Thu,  1 Oct 2009 19:16:12 -0700 (PDT)
+X-Received: from [10.2.8.78] (wsip-98-189-13-228.oc.oc.cox.net [98.189.13.228])
+	by spaceymail-a2.g.dreamhost.com (Postfix) with ESMTP id 44C18EE3DF;
+	Thu,  1 Oct 2009 19:15:37 -0700 (PDT)
+In-Reply-To: &lt;a6a6df360910010838x65e226c5r4c806547cb675b8e@...&gt;
+References: &lt;h9gim7+j49u@...&gt; &lt;de70b39d0909241441m396cf1cev5bf895a53de7c6d3@...&gt;  &lt;46DFBCA3-66A7-4BBC-B1F9-177BE4A9C0AA@...&gt; &lt;106b72590909301411p74f893bep238132cd2e9fb5b7@...&gt;  &lt;D96BB382-477A-4B85-A984-32E5D255D8E3@...&gt; &lt;a6a6df360910010419h67c1f9c0w5b9dc450ed942704@...&gt;  &lt;4AC4A674.90003@...&gt; &lt;a6a6df360910010646v79912185xd18857f621dd49e7@...&gt;  &lt;4AC4C8AE.5010304@...&gt; &lt;a6a6df360910010838x65e226c5r4c806547cb675b8e@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;CAF2DF74-E01A-404B-BBA3-EB2FC60E4C17@...&gt;
+Cc: Mike Kelly &lt;mike@...&gt;,
+	Jan Algermissen &lt;algermissen1971@...&gt;,
+	Bediako George &lt;bediakogeorge@...&gt;,
+	Stefan Tilkov &lt;stefan.tilkov@...&gt;,
+	Noah Campbell &lt;noahcampbell@...&gt;,
+	&quot;pablo.fernandez@...&quot; &lt;fernandezpablo85@...&gt;,
+	rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Thu, 1 Oct 2009 19:15:42 -0700
+To: Nick Gall &lt;nick.gall@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Newbie REST Question
+X-Yahoo-Group-Post: member; u=175757792; y=pGsTvWNtfFU_1cbhGR9S_elT1ZLB0mbHNDRozBgsv51y29DpOSjz
+X-Yahoo-Profile: roy_fielding
+
+On Oct 1, 2009, at 8:38 AM, Nick Gall wrote:
+&gt; You are making the entry point URI vs. transitional URI distinction  
+&gt; I raised back in Feb:
+&gt;
+&gt; It seems that perhaps there is an implicit REST constraint that is  
+&gt; beginning to become more explicit. Roughly, REST distinguishes two  
+&gt; types of URIs:
+&gt; &quot;entry point&quot; type URIs, which may be bookmarked indefinitely.  
+&gt; These are Cool URIs.
+&gt; &quot;transitional&quot; type URIs, which may not be bookmarked indefinitely.  
+&gt; These are unCool URIs. I call then &quot;transitional&quot; given that their  
+&gt; role is typically to enable transition to the next state.
+
+No, REST has no such distinctions.  They might occur in practice,
+but that is neither here nor there.  REST does not distinguish them.
+
+&gt; I&#39;m not wedded to the names (you could call them internal/ 
+&gt; external), but I do think this distinction between types of URIs is  
+&gt; an important aspect of REST that, so far, has not been clearly  
+&gt; outlined. It certainly seems to be in play in the permathread  
+&gt; debates regarding whether &quot;URIs should be RESTful or not&quot; (and  
+&gt; whether that designation is even a meaningful one). I also think  
+&gt; the distinction is a bit at odds with the common understanding of  
+&gt; URIs on the Web that ANY URI should be a bookmarkable URI, ie that  
+&gt; ALL URIs should strive to be Cool.
+&gt;
+&gt; Feel free to make such a distinction, but acknowledge that such a  
+&gt; distinction goes against the Web ethos that ALL URIs should be cool  
+&gt; (ie should not change) not just entry point URIs.
+
+Umm, all of my URIs are cool *and* entry point URIs.  TimBL&#39;s point
+was that cool URIs do not change, not that all URIs are cool.
+
+&gt; In other words, REST seems to imply that only entry point URIs need  
+&gt; be cool, while Web Architecture implies that ALL URI should be  
+&gt; cool. Someone should justify the (sexual) tension between these  
+&gt; principles.
+
+I still don&#39;t see where you are deriving these ideas.
+
+....Roy
+
+

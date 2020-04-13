@@ -1,0 +1,122 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 85376 invoked from network); 6 Apr 2006 02:01:41 -0000
+Received: from unknown (66.218.67.35)
+  by m28.grp.scd.yahoo.com with QMQP; 6 Apr 2006 02:01:41 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta9.grp.scd.yahoo.com with SMTP; 6 Apr 2006 02:01:40 -0000
+Received: from wsip-70-183-59-151.oc.oc.cox.net ([70.183.59.151] helo=[10.2.8.57])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1FRJoa-0003J8-1i; Wed, 05 Apr 2006 19:01:40 -0700
+In-Reply-To: &lt;A3033316-430A-4DCC-B0FA-BC0D59948F6E@...&gt;
+References: &lt;8E28BFA3-2377-4A5B-B4B0-41B51165D7F2@...&gt; &lt;D293D5CC-2508-463A-98B4-A0186150395F@...&gt; &lt;A3033316-430A-4DCC-B0FA-BC0D59948F6E@...&gt;
+Mime-Version: 1.0 (Apple Message framework v746.3)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;F2C78DDE-77D3-46FA-B5AE-8419F2894A56@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Wed, 5 Apr 2006 19:01:38 -0700
+To: Dr. Ernie Prabhakar &lt;drernie@...&gt;
+X-Mailer: Apple Mail (2.746.3)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] RESTful representation of nouns?
+X-Yahoo-Group-Post: member; u=175757792; y=molLXjmMLLXVMPdaoQ_OG8SyNDfGhmMVkizoL88TwKdrj5rKLgpp
+X-Yahoo-Profile: roy_fielding
+
+On Apr 5, 2006, at 5:31 PM, Dr. Ernie Prabhakar wrote:
+
+&gt; Thanks, Nic, Roy.  The fog is clearing slightly. :-)  The key issue  
+&gt; appears to be:
+&gt;
+&gt; On Apr 5, 2006, at 4:26 PM, Roy T. Fielding wrote:
+&gt;&gt; OTOH, a translation service like
+&gt;&gt;
+&gt;&gt;    /convert?format=pdf
+&gt;&gt;
+&gt;&gt; can simply be a POST of file-upload with the response being the
+&gt;&gt; converted representation.
+&gt;&gt;
+&gt;&gt;&gt; However, that doesn&#39;t seem very RESTful.
+&gt;&gt;
+&gt;&gt; Why?  POST is RESTful too, when it is used correctly.
+&gt;
+&gt; This is what confuses me.  My (naive) understanding is that every  
+&gt; URI represents a noun, that is, a resource.  The URL:
+&gt;
+&gt; http://myhost.com/convert
+&gt;
+&gt; seems like it represents a verb, especially when given parameters:
+&gt;
+&gt; http://myhost.com/convert?format=pdf
+
+Places are nouns, too.  All you are doing is giving the URI of a service
+that performs stateless conversions.  The GET interface simply tells you
+how to use the service (e.g., HTML form), there is no other resource
+involved, and there is no sustained benefit across multiple invocations
+(no reusable resources other than the service itself).
+
+I hate to quote myself, but in sec 5.2.1.2:
+
+   &quot;REST components perform actions on a resource by using a
+   representation to capture the current or intended state of that
+   resource and transferring that representation between components.&quot;
+
+so what you have defined above is a one-resource RESTful service that
+merely reflects a different shade of state back to the client.
+
+&gt; or even when given other nouns:
+&gt;
+&gt; http://myhost.com/convert?format=pdf&uri=http//example.com/ 
+&gt; get_it_here.html
+
+That&#39;s a different beast -- it is a gateway, and it would &quot;look&quot;
+more RESTful simply by choosing a different URI syntax, e.g.
+
+   http://myconverter.com/pdf/http://example.com/get_it_here.html
+
+(naming scripts, including .cgi, and using path components versus
+query parameters are all equivalent aside from some caching heuristics).
+The presence of that gateway provides a parallel world of resources
+(hopefully they would have the sense to block their own site
+from being included within itself).
+
+I guess you could say that is a more RESTful service than one that
+only converted the input of forms. [OTOH, I am not entirely convinced
+that &quot;RESTful&quot; is a meaningful term, since for me REST is a particular
+architectural style with black&white constraints, whereas I use the
+term &quot;principled design&quot; for discussion of tradeoffs. *shrug*]
+I guess &quot;more resources&quot; would have to be &quot;more RESTful&quot;.
+
+&gt; So, if I read Roy correctly, the service described by that URL is  
+&gt; -- or at least could be -- RESTful. Does this mean that the belief  
+&gt; &quot;URLs must represent nouns&quot; is a complete myth?  Or is there  
+&gt; something else going on here?
+
+Don&#39;t get carried away. You won&#39;t find a constraint about &quot;nouns&quot;
+anywhere in my dissertation.  It talks about resources, as in
+*re*sources, because that is what we want from a distributed
+hypermedia system (the ability to reuse those information sources
+through the provision of links).  Services that are merely end-points
+are allowed within that model, but they aren&#39;t very interesting
+because they only amount to one resource.  The really interesting
+services provide many resources.
+
+Note that this is just another way of restating Reed&#39;s law in
+relation to Metcalfe&#39;s law.
+
+   http://en.wikipedia.org/wiki/Reed%27s_law
+
+....Roy
+
+

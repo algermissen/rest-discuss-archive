@@ -1,0 +1,65 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 1393 invoked from network); 9 Jun 2009 15:12:10 -0000
+X-Received: from unknown (69.147.108.200)
+  by m1.grp.re1.yahoo.com with QMQP; 9 Jun 2009 15:12:10 -0000
+X-Received: from unknown (HELO spaceymail-a7.g.dreamhost.com) (208.113.200.5)
+  by mta1.grp.re1.yahoo.com with SMTP; 9 Jun 2009 15:12:10 -0000
+X-Received: from [10.0.0.125] (bsl-rtr.day.com [62.192.10.254])
+	by spaceymail-a7.g.dreamhost.com (Postfix) with ESMTP id C69DF142B0
+	for &lt;rest-discuss@yahoogroups.com&gt;; Tue,  9 Jun 2009 08:11:52 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v753.1)
+In-Reply-To: &lt;DED65368-D967-42F7-9445-46984B315BDD@...&gt;
+References: &lt;4A2548FE.8090105@...&gt; &lt;343ecb3e0906020907m29d998c5kecd3e953da7b6cf9@...&gt; &lt;CA83CFE5-5F4D-40A3-A096-AF0815A0E73D@...&gt; &lt;343ecb3e0906070529h727aad91l4b4037c1bb430ed@...&gt; &lt;BB5BDB5C-D2FA-4666-B9AA-4D5ACD33E42D@...&gt; &lt;343ecb3e0906090627w1f53a39eqefdd58c90e55a439@...&gt; &lt;DED65368-D967-42F7-9445-46984B315BDD@...&gt;
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;22823145-45B6-4648-973E-CF771C60B9D2@...&gt;
+Content-Transfer-Encoding: 7bit
+Date: Tue, 9 Jun 2009 17:11:55 +0200
+To: REST-Discuss Discussion Group &lt;rest-discuss@yahoogroups.com&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] rest transactions
+X-Yahoo-Group-Post: member; u=175757792; y=aawEG9JPvzgd6nd35UzukTKCangQRoJLniMtWzM5s0gu5Vj8COQt
+X-Yahoo-Profile: roy_fielding
+
+If you find yourself in need of a distributed transaction
+protocol, then how can you possibly say that your architecture
+is based on REST?  I simply cannot see how you can get from one
+situation (of using RESTful application state on the client and
+hypermedia to determine all state transitions) to the next
+situation of needing distributed agreement of transaction semantics
+wherein the client has to tell the server how to manage its own
+resources.
+
+Most likely, the system you are thinking of is just doing
+CRUD operations on multiple servers.  Each of those actions
+might be based on a RESTful architecture.  When all of them
+are done and the client makes a final request to approve or
+cancel the changes, it might be interacting with a TM-style
+manager resource that tells all of the other services to commit
+the associated changes to a more persistent or public set of
+resources, just like a staging server might be used to prepare
+content prior to publication.   The sum of all those actions
+might be equivalent to an ACID transaction.
+
+None of that matters to the REST client.  As far as the client is
+concerned, it is only interacting with one resource at a time
+even when those interactions overlap asynchronously. There is
+no &quot;transaction protocol&quot; aside from whatever agreement mechanism
+is implemented in the back-end in accordance with the resource
+semantics (in a separate architecture that we don&#39;t care about
+here).  There is no commit protocol other than the presentation
+of various options to the client at any given point in the
+application.  There is no need for client-side agreement with
+the transaction protocol because the client is only capable of
+choosing from the choices provided by the server.
+
+If I am missing something, please let me know, but for now
+I consider &quot;rest transaction&quot; to be an oxymoron.
+
+....Roy
+
+

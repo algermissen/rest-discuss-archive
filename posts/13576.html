@@ -1,0 +1,51 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 91904 invoked from network); 30 Sep 2009 20:07:24 -0000
+X-Received: from unknown (69.147.108.200)
+  by m4.grp.sp2.yahoo.com with QMQP; 30 Sep 2009 20:07:24 -0000
+X-Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.113.200.5)
+  by mta1.grp.re1.yahoo.com with SMTP; 30 Sep 2009 20:07:24 -0000
+X-Received: from [192.168.0.101] (ip72-211-202-154.oc.oc.cox.net [72.211.202.154])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id AF3A5F6113;
+	Wed, 30 Sep 2009 13:06:53 -0700 (PDT)
+In-Reply-To: &lt;499888440909301256h657a0679m81ddcfc24444a02@...&gt;
+References: &lt;499888440909301256h657a0679m81ddcfc24444a02@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;09F3D22F-7A4E-4C04-8092-7C442DF769C2@...&gt;
+Cc: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Wed, 30 Sep 2009 13:06:56 -0700
+To: Tim Williams &lt;williamstw@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Encoding reuse but new content types?
+X-Yahoo-Group-Post: member; u=175757792; y=Mkr8mK4Va7fHq3CmC-FfA-HmnbpBT2NnNbq-cmNbZLHv94SPxC7B
+X-Yahoo-Profile: roy_fielding
+
+On Sep 30, 2009, at 12:56 PM, Tim Williams wrote:
+
+&gt; Roy says[0], &quot;A REST API should spend almost all of its descriptive
+&gt; effort in defining the media type(s) used for representing resources
+&gt; and driving application state, or in defining extended relation names
+&gt; and/or hypertext-enabled mark-up for existing standard media types.&quot;
+&gt;
+&gt; I have situations where formats such as Atom are fairly well-suited to
+&gt; represent my resources.  If I re-use the format and keep the content
+&gt; type &quot;atom+xml&quot;, then client&#39;s wouldn&#39;t know my specific usage of atom
+&gt; (e.g. semantics behind some of my &quot;rel&quot; attributes).
+
+Link relations are universal, independent of the format in
+which they are found, though perhaps only used with a target
+that is in a specific format (by practice, not by standard).
+The fact that some media type specifications also introduce
+new link relations does not make the relations specific to
+those media types.
+
+....Roy
+
+
+

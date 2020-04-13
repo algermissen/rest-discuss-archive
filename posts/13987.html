@@ -1,0 +1,84 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 20505 invoked from network); 3 Nov 2009 07:43:39 -0000
+X-Received: from unknown (98.137.34.46)
+  by m3.grp.sp2.yahoo.com with QMQP; 3 Nov 2009 07:43:39 -0000
+X-Received: from unknown (HELO spaceymail-a7.g.dreamhost.com) (208.113.200.5)
+  by mta3.grp.sp2.yahoo.com with SMTP; 3 Nov 2009 07:43:39 -0000
+X-Received: from [10.0.0.24] (unknown [12.155.165.130])
+	by spaceymail-a7.g.dreamhost.com (Postfix) with ESMTP id F32EC15308;
+	Mon,  2 Nov 2009 23:43:38 -0800 (PST)
+Mime-Version: 1.0 (Apple Message framework v1076)
+Content-Type: text/plain; charset=us-ascii; format=flowed; delsp=yes
+In-Reply-To: &lt;b0ebafd10911022207m67511f96m87e71911b84e652@...&gt;
+Date: Mon, 2 Nov 2009 23:43:37 -0800
+Cc: mike amundsen &lt;mamund@...&gt;, rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Message-Id: &lt;15D1263D-E0EA-43FC-8B1C-48BD09B169E9@...&gt;
+References: &lt;b548df650910290825p1fb03e2at9c4388e798592d4a@...&gt; &lt;hcn9oe+u990@...&gt; &lt;b548df650911021139r43de4821xacdd1bdd98059c5f@...&gt; &lt;DFB288DB-6A72-4FEE-BCBB-BDB8959C96E0@...&gt; &lt;b0ebafd10911022207m67511f96m87e71911b84e652@...&gt;
+To: Andrew Wahbe &lt;andrew.wahbe@...&gt;
+X-Mailer: Apple Mail (2.1076)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: Self descriptiveness issues with general media  types?
+X-Yahoo-Group-Post: member; u=175757792; y=STwkCUj_MoSwazVz7JRbI-bbLvi3LFOWk-WZjNx3lxpprD1eDR62
+X-Yahoo-Profile: roy_fielding
+
+On Nov 2, 2009, at 10:07 PM, Andrew Wahbe wrote:
+&gt; Fair enough, but the fact that self-descriptive messages enable
+&gt; efficient processing by intermediaries is one thing; and asserting
+&gt; that intermediaries &quot;should not be peeking inside the body at all&quot; is
+&gt; another.
+
+You lost me there.  I thought you were talking about not looking
+inside the body for performance reasons.  HTTP is designed so that
+an intermediary doesn&#39;t have to look inside the body (for performance
+reasons), but that is not a constraint of REST and thus it is common
+to have intermediaries that do want to look inside the body.
+
+&gt; I questioned the assertion because it is not uncommon to see
+&gt; gateway proxies mucking about in bodies, rewriting URIs etc.And while
+&gt; this is often criticized for all the obvious reasons, I wasn&#39;t aware
+&gt; of any well-defined rule that was being violated. SIP contains
+&gt; language like &quot;The proxy MUST NOT add to, modify, or remove the
+&gt; message body.&quot; so that sort of proxy behavior would be a violation of
+&gt; the protocol. I assumed that HTTP didn&#39;t contain this sort of language
+&gt; because it was overly restrictive (e.g. if you must resort to
+&gt; something like URI rewriting then you can as long as you are prepared
+&gt; to deal with the costs). Is this not the case?
+
+HTTP does not contain such a restriction because transducing proxies
+and mash-up gateways are considered features.  That is part of the
+REST style.
+
+&gt; Also, I&#39;m curious as to why this couldn&#39;t be a style issue. The
+&gt; closest thing I&#39;ve found to architectural style-like constraints for
+&gt; the SIP architecture is Rosenberg&#39;s Architecture and Design Principles
+&gt; for SIP (http://tools.ietf.org/html/draft-rosenberg-sipping-sip-arch-01 
+&gt; ).
+&gt; It describes the &quot;Proxies are for routing&quot; principle which assigns a
+&gt; specific role to intermediaries -- similar to the roles assigned by
+&gt; the client-server constraint. One might argue that the SIP protocol
+&gt; constraint quoted above is derived from this principle. Is there some
+&gt; reason that an architectural style couldn&#39;t or shouldn&#39;t contain a
+&gt; constraint that implies that intermediaries never modify message
+&gt; bodies?
+
+No, that is a common constraint.  Not in REST, but certainly in
+other styles of interaction and in much of the design around the
+core Internet protocols (the end-to-end principle).  However, it
+isn&#39;t quite right to call them intermediaries, at least if you are
+following my definitions of software architecture.  Those are
+called connectors.
+
+An intermediary is a component that is allowed to do intermediation,
+which in my opinion implies the ability to change the payload.
+
+Sorry for the confusion.
+
+....Roy
+
+
+

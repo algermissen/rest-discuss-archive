@@ -1,0 +1,43 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 29276 invoked from network); 12 Dec 2007 22:52:17 -0000
+X-Received: from unknown (66.218.67.94)
+  by m42.grp.scd.yahoo.com with QMQP; 12 Dec 2007 22:52:17 -0000
+X-Received: from unknown (HELO spaceymail-a3.g.dreamhost.com) (208.113.200.5)
+  by mta15.grp.scd.yahoo.com with SMTP; 12 Dec 2007 22:52:17 -0000
+X-Received: from [192.168.0.160] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a3.g.dreamhost.com (Postfix) with ESMTP id 722D91953DC;
+	Wed, 12 Dec 2007 14:52:16 -0800 (PST)
+In-Reply-To: &lt;A3E65291-F7EF-4D65-859A-E3F2426D3220@...&gt;
+References: &lt;68EBBB45-0BA6-4E1F-8DB1-9EBA3822C3AF@...&gt; &lt;475F46DB.9020509@...&gt; &lt;f950954e0712111842y6ebf397oe1ef87a5233ef1cb@...&gt; &lt;19AAF08F-AF96-484A-9B97-8770FE34AA5F@...&gt; &lt;20071212175635.GF15399@klangraum&gt; &lt;e9dffd640712121152t6de53da3n5e533db874978f62@...&gt; &lt;006b01c83cfa$3e8e41a0$2101a8c0@Junk&gt; &lt;A3E65291-F7EF-4D65-859A-E3F2426D3220@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;5F952CCF-B8EA-4D18-B0EF-C59950A8AA1D@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Wed, 12 Dec 2007 14:52:15 -0800
+To: Xavier Noria &lt;fxn@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: Introductory REST Article
+X-Yahoo-Group-Post: member; u=175757792; y=BrcWXa9a5_yL1-uYCXR0yh731K4HLiQuOsdqQW0MT9ngsmN_RWnV
+X-Yahoo-Profile: roy_fielding
+
+Yes.  In other words, any HTTP request message is allowed to contain
+a message body, and thus must parse messages with that in mind.
+Server semantics for GET, however, are restricted such that a body,
+if any, has no semantic meaning to the request.  The requirements
+on parsing are separate from the requirements on method semantics.
+
+So, yes, you can send a body with GET, and no, it is never useful
+to do so.
+
+This is part of the layered design of HTTP/1.1 that will become
+clear again once the spec is partitioned (work in progress).
+
+....Roy
+
+

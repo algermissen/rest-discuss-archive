@@ -1,0 +1,62 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 82322 invoked from network); 14 Aug 2008 20:47:28 -0000
+X-Received: from unknown (66.218.67.94)
+  by m46.grp.scd.yahoo.com with QMQP; 14 Aug 2008 20:47:28 -0000
+X-Received: from unknown (HELO spaceymail-a5.g.dreamhost.com) (208.113.200.5)
+  by mta15.grp.scd.yahoo.com with SMTP; 14 Aug 2008 20:47:28 -0000
+X-Received: from [192.168.0.137] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a5.g.dreamhost.com (Postfix) with ESMTP id 3C8FA87070;
+	Thu, 14 Aug 2008 13:47:32 -0700 (PDT)
+In-Reply-To: &lt;799330c30808131528v4ce61169x807d26c1a8f8d65@...&gt;
+References: &lt;20080813123239.aa9a3fb355bd767352688c621504df24.c6e6c254ad.wbe@...&gt; &lt;BLU102-DS5B461ED4FB0AFE0A4650CB5730@...&gt; &lt;799330c30808131528v4ce61169x807d26c1a8f8d65@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;826E27FD-8950-4DC8-8E2E-6D79B738BD9F@...&gt;
+Cc: &quot;Sebastien Lambla&quot; &lt;seb@...&gt;,
+	rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Thu, 14 Aug 2008 13:47:24 -0700
+To: Alan Dean &lt;alan.dean@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: URI delimiters and reserved characters (a [rest-discuss] public-service announcement)
+X-Yahoo-Group-Post: member; u=175757792; y=WVmyg2Cf6OHyZAEnfnV3McD1NgI5UxP1doZoNhbCSwTT8pGH3Pn4
+X-Yahoo-Profile: roy_fielding
+
+On Aug 13, 2008, at 3:28 PM, Alan Dean wrote:
+&gt; Sounds like we need to put up the bat signal to summon Roy ;-)
+&gt;
+
+Or someone needs to be beaten over the head with an ABNF-based
+validator.
+
+It is painfully obvious, no matter how you look at it, that square
+brackets are forbidden outside of IPv6 address delimiters.  They were
+forbidden anywhere in a URI before the IPv6 groups screwed that up.
+That&#39;s why we don&#39;t painstakingly list all the forbidden characters
+any more -- because some idiots decided the fact that we listed them
+meant that they were available for extensions.
+
+&quot;each syntax rule lists the characters allowed within that component&quot;
+
+&quot;URI scheme specifications must define their own
+  syntax so that all strings matching their scheme-specific syntax will
+  also match the &lt;absolute-URI&gt; grammar, as described in Section 4.3.&quot;
+
+and for those who still can&#39;t read ABNF ...
+
+    A host identified by an Internet Protocol literal address, version 6
+    [RFC3513] or later, is distinguished by enclosing the IP literal
+    within square brackets (&quot;[&quot; and &quot;]&quot;).  This is the only place where
+    square bracket characters are allowed in the URI syntax.
+
+How could I be any more clear that that?
+
+....Roy
+
+
+

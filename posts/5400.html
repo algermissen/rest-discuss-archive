@@ -1,0 +1,112 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 60488 invoked from network); 3 Nov 2005 19:46:46 -0000
+Received: from unknown (66.218.66.216)
+  by m26.grp.scd.yahoo.com with QMQP; 3 Nov 2005 19:46:46 -0000
+Received: from unknown (HELO picanmix.dev.day.com) (212.249.34.130)
+  by mta1.grp.scd.yahoo.com with SMTP; 3 Nov 2005 19:46:46 -0000
+Received: from eu-mail.day.com (eu-mail.dev.day.com [10.0.0.30])
+        by picanmix.dev.day.com (DAY) with ESMTP id jA3JkaY05580;
+        Thu, 3 Nov 2005 20:46:37 +0100 (MET)
+Received: from [10.0.0.68] ([10.0.0.68])
+          by eu-mail.day.com (Lotus Domino Release 5.0.8)
+          with ESMTP id 2005110320463406:11978 ;
+          Thu, 3 Nov 2005 20:46:34 +0100 
+In-Reply-To: &lt;27F772EB-B854-4FFF-AA4B-06576C61F3B6@...&gt;
+References: &lt;dkclaq+a27a@...&gt; &lt;20051103150107.GB6068@...&gt; &lt;87ll053ch2.fsf_-_@...&gt; &lt;12488230e83ec302144d4e38a71164a1@...&gt; &lt;CC1D846A-963C-4E30-A3C8-E2083B01690C@...&gt; &lt;3f1451f50511031002w599069b0ub659168d8262bcdc@...&gt; &lt;27F772EB-B854-4FFF-AA4B-06576C61F3B6@...&gt;
+Mime-Version: 1.0 (Apple Message framework v623)
+Message-Id: &lt;8b06cef01a74953fd23d1ba30197c1c7@...&gt;
+Cc: Joe Gregorio &lt;joe.gregorio@...&gt;,
+   Nic Ferrier &lt;nferrier@...&gt;,
+   REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Date: Thu, 3 Nov 2005 11:46:41 -0800
+To: &quot;Dr. Ernie Prabhakar&quot; &lt;drernie@...&gt;
+X-Mailer: Apple Mail (2.623)
+X-MIMETrack: Itemize by SMTP Server on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 11/03/2005
+ 08:46:34 PM,
+	Serialize by Router on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 11/03/2005
+ 08:46:36 PM,
+	Serialize complete at 11/03/2005 08:46:36 PM
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: REST descriptive services (was Re: [rest-discuss] REST description using WSDL)
+X-Yahoo-Group-Post: member; u=175757792; y=J36syqbsjeQSKWske4MJi64LuyJ6iE9wnGlmNDNIFnkLh8EUjhtR
+X-Yahoo-Profile: roy_fielding
+
+On Nov 3, 2005, at 10:11 AM, Dr. Ernie Prabhakar wrote:
+&gt; Sorry, I should h=
+ave been more precise.=A0 I want to automatically build 
+&gt; a thick-client G=
+UI application that does the same thing, so I can hook 
+&gt; it into my deskto=
+p workflow using (on a Mac) Spotlight and Automator.=A0 
+&gt; =A0I&#39;d also like=
+ to build a re-sharing web service using Ruby on Rails, 
+&gt; that consumes Am=
+azon feeds and spits out a custom web service 
+&gt; according to certain rules=
+.=A0 Oh, and it&#39;d be nice to reformat my 
+&gt; personal page as an RSS feed. :=
+-)
+&gt;
+&gt; Right now, in order to do any of that, I need to read the $#*! user =
+
+&gt; guide.=A0 Not that its badly written, but I just want the basics in a 
+&gt;=
+ machine-readable format so that I have a trivial way to import that 
+&gt; ser=
+vice into my language&#39;s object model, so I can work from there 
+&gt; without h=
+aving to read a bunch of documentation and manually write a 
+&gt; bunch of par=
+sers.
+&gt;
+&gt; Does that make my goals any more clear?=A0 Is *that* possible tod=
+ay?
+
+Yes, it is done every day with HTML -- you&#39;ve simply forgotten
+that a =
+person reading a page and following the links/forms on
+that page is actuall=
+y performing a process of decisions and
+selecting actions that drive an app=
+lication through a set of
+hypermedia workspaces to perform whatever task th=
+ey wanted to
+perform.
+
+So, thinking in that model, what kind of representat=
+ion do you
+need to take your application from the initial step (a URI) to
+t=
+he next step following that representation?  What does your
+&quot;user&quot; (doesn&#39;t=
+ have to be human) need to &quot;understand&quot; (in the
+simplest sense) in order to=
+ evaluate the alternatives provided
+and submit the appropriate data or sele=
+ct the appropriate links
+to get it to the next state, and how does the prov=
+ider of that
+representation express such ideas without natural language?
+
+X=
+ML is not an answer here -- it could be some application of
+XML which adds =
+the necessary semantics, but just having angle
+brackets is not enough.  Ask=
+ Joe how much effort it takes just
+to explain &quot;post it here&quot; to a blogging =
+client. ;-)
+
+The effort is all in the semantics of standard data formats;
+t=
+he rest of the technology has already been deployed.
+
+....Roy
+
+

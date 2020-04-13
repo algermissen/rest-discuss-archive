@@ -1,0 +1,78 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 79848 invoked from network); 3 Oct 2003 01:23:17 -0000
+Received: from unknown (66.218.66.172)
+  by m11.grp.scd.yahoo.com with QMQP; 3 Oct 2003 01:23:17 -0000
+Received: from unknown (HELO mac.wakasoft.com) (65.208.153.194)
+  by mta4.grp.scd.yahoo.com with SMTP; 3 Oct 2003 01:23:17 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id h931MXvh026007;
+	Thu, 2 Oct 2003 18:22:34 -0700 (PDT)
+Date: Thu, 2 Oct 2003 18:22:32 -0700
+Subject: Re: [rest-discuss] REST&#39;s Definition of Resource (fwd)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: algermissen@...
+In-Reply-To: &lt;3F7C8B84.56B07A86@...&gt;
+Message-Id: &lt;10392C68-F540-11D7-BD07-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; Suppose the HTML snippet:
+&gt;
+&gt; &lt;p&gt;
+&gt;   Professor &lt;a 
+&gt; href=&quot;http://www.gseis.ucla.edu/faculty/pages/svenonius.html&quot;&gt;
+&gt;   Elaine Svenonious&lt;/a&gt; is the author of several papers, ....
+&gt; &lt;/p&gt;
+&gt;
+&gt;
+&gt; Is REST&#39;s interpretation of this snippet that the author uses the URI 
+&gt; to
+&gt; identify a resource that &#39;is&#39; the person Elaine Svenonious?
+&gt;
+&gt; And that the author&#39;s intention is *not* to identify a resource that 
+&gt; &#39;is&#39;
+&gt; the Web page.
+
+REST is an architectural style, not an interpreter.  REST-based
+components will see the anchor reference (which gives meaning),
+extract the reference, obtain the URI from that reference, and
+perform a retrieval action (implied by the anchor tag, not by the
+URI).  What exactly the URI identifies is not relevant to the client,
+since it only follows the rules of interaction called for by the
+protocols.
+
+The origin server, if a request gets that far, receives a request and
+maps it to a response, using however complicated or slow a process it
+might desire.  To be Turing-like, you might even place a person on
+the back end that does a manual mapping for each request.  However,
+for efficiency reasons, the mappings are typically arranged in advance.
+
+REST does not define how the mapping works, and thus cannot say one
+way or the other as to the URI coiner&#39;s intention.  It does know that
+whether the URI identifies the person or not is irrelevant to the
+meaning and nature of a successful response to the request, which
+in all cases is a representation.  A &quot;Web page&quot; is actually a
+construct of one or more representations as rendered by the client,
+and thus is never directly identified by a URI (the first URI is
+merely a starting point from which my home page is constructed as
+a sequence of interactions, depending on the client configuration).
+
+We have no way of knowing whether the URI, as used by the author,
+is intended to identify the person, their home page, or some other
+aspect of past responses that the author simply had no other URI
+to reference.  That&#39;s why it is useful to look at the text inside
+the anchor, both here and in other authors&#39; use of the URI, and
+any other metadata that might be laying about.
+
+....Roy
+
+
+

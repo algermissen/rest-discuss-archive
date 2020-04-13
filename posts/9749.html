@@ -1,0 +1,89 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 61589 invoked from network); 6 Nov 2007 00:04:43 -0000
+X-Received: from unknown (66.218.67.97)
+  by m47.grp.scd.yahoo.com with QMQP; 6 Nov 2007 00:04:43 -0000
+X-Received: from unknown (HELO spaceymail-a1.g.dreamhost.com) (208.97.132.202)
+  by mta18.grp.scd.yahoo.com with SMTP; 6 Nov 2007 00:04:43 -0000
+X-Received: from [10.2.8.60] (wsip-70-183-62-251.oc.oc.cox.net [70.183.62.251])
+	by spaceymail-a1.g.dreamhost.com (Postfix) with ESMTP id E2E928185C;
+	Mon,  5 Nov 2007 16:04:34 -0800 (PST)
+In-Reply-To: &lt;7ac0fa1d0711050554v64a49b76lf21b2102d70a57e@...&gt;
+References: &lt;7ac0fa1d0711031657n4291f639s9cb4d87122b459d@...&gt; &lt;E16F7156-94A0-4284-AFE5-33963BA55215@...&gt; &lt;7ac0fa1d0711050554v64a49b76lf21b2102d70a57e@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=ISO-8859-1; delsp=yes; format=flowed
+Message-Id: &lt;C666EAE2-7BCB-42A5-94A6-31DBC331CB55@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: quoted-printable
+Date: Mon, 5 Nov 2007 16:04:40 -0800
+To: Dmitriy Kopylenko &lt;dmitriy.kopylenko@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Need some advise
+X-Yahoo-Group-Post: member; u=175757792; y=-ZvUDLJ8QJn0EYcxD3xnua8jFRlVvaZPjMBpNIBhU36kZbLqph2t
+X-Yahoo-Profile: roy_fielding
+
+On Nov 5, 2007, at 5:54 AM, Dmitriy Kopylenko wrote:
+&gt; Thanks Roy for your =
+advice. So, what would be the correct HTTP  
+&gt; response code in case of &quot;pa=
+rtial grade upload&quot; using POST  
+&gt; interface? For example, let&#39;s say we hav=
+e
+&gt;
+&gt; POST /grade-upload/{year}/{term}/{course}
+&gt;
+&gt; ...
+&gt;
+&gt; sec1, &quot;John Doe=
+&quot;, A
+&gt; sec2, &quot;Jane Doe&quot;, B
+&gt; sec21, &quot;Some Guy&quot;, XX
+&gt;
+&gt; and server accepts t=
+wo valid grades for Jane and John, but &quot;skips&quot;  
+&gt; an invalid grade  for &quot;S=
+ome Guy&quot;. So the response entity body could  
+&gt; send back a representation =
+of &quot;invalid&quot; records along with error  
+&gt; messages, etc., but in terms of t=
+he proper HTTP code, I&#39;m not sure.  
+&gt; Does 200 seem like a good idea in th=
+e situation like this (partial  
+&gt; acceptance of the resource&#39;s state/repre=
+sentation)? I couldn&#39;t find  
+&gt; any suitable HTTP codes for  this situation=
+.
+
+Keep in mind that when you do POST there is no longer a shared
+understan=
+ding of the resource&#39;s state.  As such, I would probably
+respond with 200 a=
+nd the same index/form page with the latest
+grades updated (blank if invali=
+d or empty), and a link to the
+equivalent content in the form of text/csv. =
+ Responding with 200
+and a Content-Location field equal to the requested UR=
+I should
+tell the client that the representation being returned is the
+resu=
+lting resource state.
+
+OTOH, this type of content manipulation is what JCR-=
+based
+web content management products were designed to handle almost
+automa=
+tically.  For example, Day Communiqu=E9 has built-in support
+for spreadshee=
+ts and can handle both file-like updates (mapping
+onto the content hierarch=
+y) or direct manipulation of the
+individual record fields.
+
+....Roy
+
+

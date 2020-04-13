@@ -1,0 +1,85 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_3_0); 11 Jan 2003 10:39:40 -0000
+Received: (qmail 15481 invoked from network); 11 Jan 2003 10:39:40 -0000
+Received: from unknown (66.218.66.218)
+  by m1.grp.scd.yahoo.com with QMQP; 11 Jan 2003 10:39:40 -0000
+Received: from unknown (HELO mac.wakasoft.com) (68.5.85.181)
+  by mta3.grp.scd.yahoo.com with SMTP; 11 Jan 2003 10:39:40 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.2/8.12.2) with ESMTP id h0BARFj7000711;
+	Sat, 11 Jan 2003 02:27:15 -0800 (PST)
+Date: Sat, 11 Jan 2003 02:27:14 -0800
+Subject: Re: [rest-discuss] opaqueness of URI
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss@yahoogroups.com
+To: Miles Sabin &lt;miles@...&gt;
+In-Reply-To: &lt;200301110807.18589.miles@...&gt;
+Message-Id: &lt;409AA192-254F-11D7-890F-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; I think you&#39;re saying that it&#39;s legitimate from a REST POV for a client
+&gt; to infer a URI pattern or template, eg.
+&gt;
+&gt;   http://example.invalid/foo?foo=$1
+&gt;
+&gt; or,
+&gt;
+&gt;   http://example.invalid/foo/$1
+&gt;
+&gt; where the client can substitute into the $1 position to obtain a URI 
+&gt; and
+&gt; have some reasonable expectation that the server manages a
+&gt; corresponding resource.
+
+Reasonable expectation?  Hmmm.  All links are wishful thinking.
+Guessed links are just somewhat more wishful than others.
+
+&gt; These URI templates aren&#39;t URIs, clearly. They represent a family of
+&gt; related URIs: an infinite family if arbitrary substitutions into the
+&gt; template positions are acceptable; a finite family if the substutions
+&gt; should be drawn from a restricted set as in an HTML &lt;select&gt;.
+
+Er, don&#39;t think too hard about it.  All URIs are URIs -- some resources
+just don&#39;t (currently) have a representation.
+
+&gt; But they do seem like identifiers for all that, even if only virtual/
+&gt; derived and parasitic on the &quot;true&quot; identifiers which support them.
+&gt; What would support a clients expectation that substutions into,
+&gt;
+&gt;   http://example.invalid/foo?foo=$1
+&gt;
+&gt; would be likely to generate dereferencable URIs other than an 
+&gt; assumption
+&gt; that the URI template effectively identifies a _process_ (or something
+&gt; equivalent) which is able to perform the inverse operation on the URI
+&gt; and extract the substitued-in value as a parameter for a computation?
+
+A hierarchical namespace typically assigns semantics to each name in
+the hierarchy, and a well-written server-side application will
+respond consistently to requests throughout that namespace, keeping
+in mind that &quot;not found&quot; is a consistent response if, in fact, there
+is no associated representation for that name.  It is often harder
+to interpret the same of query info because it is unordered, which
+is why developers should not hide hierarchy inside queries.
+
+&gt; I wonder if something like the above would go some way towards tweaking
+&gt; RFC 2396 3.4 in a REST-consistent direction?
+
+It is difficult to write good descriptions for URI components given
+that schemes frequently differ in some uses.  The descriptions in
+RFC 2396 give the intent, even though they can be misused in practice.
+I suspect that most of the spec will have to be rewritten before all
+of the authors will agree, let alone the IETF reviewers.
+
+....Roy
+
+
+

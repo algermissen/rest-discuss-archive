@@ -1,0 +1,86 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 16 Apr 2003 02:40:34 -0000
+Received: (qmail 74008 invoked from network); 16 Apr 2003 02:40:34 -0000
+Received: from unknown (66.218.66.218)
+  by m9.grp.scd.yahoo.com with QMQP; 16 Apr 2003 02:40:34 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta3.grp.scd.yahoo.com with SMTP; 16 Apr 2003 02:40:34 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.8/8.12.8) with ESMTP id h3G1k8dl003775;
+	Tue, 15 Apr 2003 18:46:08 -0700 (PDT)
+Date: Tue, 15 Apr 2003 18:46:07 -0700
+Subject: Re: [rest-discuss] REST, HTTP, Sessions and Cookies
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss@yahoogroups.com
+To: Vincent D Murphy &lt;vdm@...&gt;
+In-Reply-To: &lt;88D47CC1-6DB0-11D7-BEF7-000393A53482@...&gt;
+Message-Id: &lt;312B05B4-6FAD-11D7-831E-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+On Sunday, April 13, 2003, at 06:05  AM, Vincent D Murphy wrote:
+&gt; On Thursday, Apr 10, 2003, at 20:51 Europe/Dublin, sem_antico wrote:
+&gt;&gt; Following on from the recent thread which discussed modelling a multi
+&gt;&gt; page form submission process using REST principles, I&#39;m wondering if
+&gt;&gt; there is any place at all for the use of cookies in a REST style http
+&gt;&gt; application?
+&gt;
+&gt; i don&#39;t think so.
+&gt;
+&gt; however the reality of contemporary user agents dictates a more
+&gt; pragmatic approach.  (IMHO of course).
+
+Yes, for current implementations.  Eventually, someone points
+out the security hole and some poor sap is assigned to make the browser
+compliant with one or more standards, and suddenly they find out that
+a raft of user-reported errors just go away.
+
+&gt; i will take two examples where i have had to use cookies as keys to
+&gt; server-side session state:
+&gt; 1. shopping cart.
+&gt; 2. authentication.
+&gt;
+&gt; it seems to me that early web/REST people may have thought shopping
+&gt; carts would be handled as client side state, and be all posted to an
+&gt; /orders resource or whatever at the end.  however this isn&#39;t the
+&gt; reality of how client UAs work.
+
+That can be fixed.  Back in the really old days, all of the people who
+were actually working on the Web implementations would talk about this
+kind of thing on www-talk and it would be implemented by half the
+browsers before the day ended.  Now such a suggestion would be tabled
+within the W3C and two years later they would figure out which working
+group has the appropriate right and W3C representation to work on the
+topic, and two years after that we would have two different
+recommendations based on technologies that none of the browsers 
+implement.
+
+&gt;&gt; Another popular use of cookies is as an alternative authentication
+&gt;&gt; mechanism. The chief motivation for this is the lack of control most
+&gt;&gt; user agents give application designers over the standard http
+&gt;&gt; authorisation mechanisms - no easy way of providing customised login
+&gt;&gt; prompts and no control over expiring authentication are two of the
+&gt;&gt; issues here. Does this application of cookies break REST principles?
+&gt;
+&gt; i think so.
+&gt;
+&gt; as mentioned by others, user agents need to display the entity returned
+&gt; by the server.  i would say they also need to supply &#39;log out&#39; UI and
+&gt; make the current authentication status highly visible and obvious.
+
+Yes, that would be the correct fix.  Note that this is a well-known
+security hole in browsers that has been consistently reported since
+1993, and yet no one ever fixed it.  Probably because Netscape and MSIE
+were too busy battling over blink and marquee tags.
+
+....Roy
+
+
+

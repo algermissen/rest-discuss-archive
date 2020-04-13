@@ -1,0 +1,127 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 91931 invoked from network); 8 Mar 2011 03:00:44 -0000
+X-Received: from unknown (98.137.34.46)
+  by m6.grp.sp2.yahoo.com with QMQP; 8 Mar 2011 03:00:44 -0000
+X-Received: from unknown (HELO homiemail-a65.g.dreamhost.com) (208.97.132.126)
+  by mta3.grp.sp2.yahoo.com with SMTP; 8 Mar 2011 03:00:44 -0000
+X-Received: from homiemail-a65.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a65.g.dreamhost.com (Postfix) with ESMTP id D97C07E406F;
+	Mon,  7 Mar 2011 19:00:43 -0800 (PST)
+X-Received: from kiwi.corp.day.com (wsip-98-189-13-228.oc.oc.cox.net [98.189.13.228])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: fielding@...)
+	by homiemail-a65.g.dreamhost.com (Postfix) with ESMTPSA id A1CB67E4065;
+	Mon,  7 Mar 2011 19:00:43 -0800 (PST)
+Mime-Version: 1.0 (Apple Message framework v1082)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;78B32E3E-E504-497F-99D2-3183C0F58975@...&gt;
+Date: Mon, 7 Mar 2011 19:00:44 -0800
+Cc: Unmesh Joshi &lt;unmeshjoshi@...&gt;,
+ rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: quoted-printable
+Message-Id: &lt;33CDC0CA-4F50-4AC2-BFAB-445B8EF609EA@...&gt;
+References: &lt;AANLkTin+kRato+X0g9r8rqJtt-qcrCaVJYf5yL8q_mQT@...&gt; &lt;78B32E3E-E504-497F-99D2-3183C0F58975@...&gt;
+To: Subbu Allamaraju &lt;subbu@...&gt;
+X-Mailer: Apple Mail (2.1082)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Overriding HTTP verb VS. POST-REDIRECT-GET
+X-Yahoo-Group-Post: member; u=175757792; y=pZnItOMueXw3BP5PiS-ifEyo50nS97K-5dbHZpmpm7yELa0XVhui
+X-Yahoo-Profile: roy_fielding
+
+On Mar 7, 2011, at 4:07 PM, Subbu Allamaraju wrote:
+&gt; On Mar 7, 2011, at 12=
+:07 AM, Unmesh Joshi wrote:
+&gt;&gt; Validating forms submitted by users and repo=
+rting back validations
+&gt;&gt; errors is a common requirement in HTTP web applic=
+ations.
+&gt;&gt; POST-REDIRECT-GET is a commonly used pattern for this. But I rec=
+ently
+&gt;&gt; saw an interesting piece of code, which forced me to think again a=
+bout
+&gt;&gt; the basics.
+&gt;&gt; 
+&gt;&gt; The code I am looking at, is actually overriding=
+ HttpServletRequest
+&gt;&gt; and oerriding &#39;getMethod&#39; to change HTTP verb from P=
+OST to GET. then
+&gt;&gt; doing request forwarding.
+&gt;&gt; So for the forwarded resou=
+rce its a GET request, even if from browser,
+&gt;&gt; its was a POST request.
+&gt;&gt; =
+I see two problems with this,
+&gt;&gt; 1. The response is still given to user age=
+nt as part of POST request.
+&gt;&gt; 2. For web container, even if getMethod is o=
+verridden, its a POST
+&gt;&gt; request. (I do not know, if in the forwarded reque=
+sts, web containers
+&gt;&gt; strictly use the request objects thats wrapped and d=
+o not use any of
+&gt;&gt; the internal information for that request)
+&gt;&gt; 
+&gt;&gt; The a=
+dvantage of this method, is that you do not need to persist
+&gt;&gt; information =
+between redirects, So you do not need session or other
+&gt;&gt; persistence mecha=
+nism.
+&gt;&gt; 
+&gt;&gt; Anyone else has seem this kind of idiom used in J2EE web appli=
+cations?
+
+&gt; None of this has any bearing on what is seen at the protocol le=
+vel. At the protocol level, a POST is a POST.
+&gt; 
+&gt; From your description it=
+ seems that this idiom is based on an incorrect understanding of the protoc=
+ol.
+
+I don&#39;t see how that is responsive to the question.  The server is
+cha=
+nging a POST request inside the service handler to be a GET
+request so that=
+ the handler can do some funky chicken dance that
+has specific behavior wit=
+hin the current JDK.
+
+This is essentially the same thing that Apache httpd =
+does when
+an internal content handler needs to perform an internal redirect=
+
+to obtain some part of the content, such as with server-side
+includes bein=
+g embedded in the POST response.
+
+REST plays no part in this because it is =
+all behind the resource
+interface provided by the servlet engine.  There ar=
+e no constraints
+on POST, so changing the method to a safer one (like GET) =
+is
+certainly not going to violate any of the client&#39;s expectations
+regardin=
+g their POST.
+
+It may be weird.  It may be unreliable over time.  But it is=
+ not
+inherently for or against RESTful interaction with the client.
+The rea=
+son for doing content handling in this manner is usually
+so that the intern=
+al request contains the same authentication
+information as the original req=
+uest, thereby avoiding some
+security issues during request handling.
+
+....R=
+oy
+
+
+

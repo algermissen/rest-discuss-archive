@@ -1,0 +1,48 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 66138 invoked from network); 12 Feb 2004 20:55:57 -0000
+Received: from unknown (66.218.66.172)
+  by m14.grp.scd.yahoo.com with QMQP; 12 Feb 2004 20:55:57 -0000
+Received: from unknown (HELO bsl-540.wakasoft.com) (65.208.153.194)
+  by mta4.grp.scd.yahoo.com with SMTP; 12 Feb 2004 20:55:57 -0000
+Received: from gbiv.com (localhost [127.0.0.1])
+	by bsl-540.wakasoft.com (8.12.9/8.12.9) with ESMTP id i1CKv3Ff006760;
+	Thu, 12 Feb 2004 12:57:03 -0800 (PST)
+Date: Thu, 12 Feb 2004 12:57:02 -0800
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v553)
+Cc: &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;Justin Sampson&quot; &lt;justin.sampson@...&gt;
+In-Reply-To: &lt;3BB3F93C80B9054D8536D51A3D7130130EA32D@...&gt;
+Message-Id: &lt;019BCB7A-5D9E-11D8-A8A3-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.553)
+X-eGroups-Remote-IP: 65.208.153.194
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] REST Transaction Process
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+&gt; Does that mean that session cookies are okay, as long as I use
+&gt; URI syntax for the session key and the session state is
+&gt; persisted?
+
+Yes and no.  They satisfy the stateless constraint, but they lose by
+creating an infinite resource space.  Sessions are rarely necessary,
+but when they are necessary (such as per-client transaction state that
+needs to be available via multiple devices) they should be tied to
+a specific user, not the browser that user happens to be using.
+Authentication is where that should be enabled.
+
+A more REST solution for shopping carts is to keep the state on the
+client, which could be accomplished simply by defining a few commerce
+elements for HTML and the protocol for dealing with the checkout
+(a resource referenced by those elements).  The reasons that did not
+happen on the Web are purely social, not technical.
+
+....Roy
+
+
+

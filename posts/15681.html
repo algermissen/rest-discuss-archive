@@ -1,0 +1,59 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 67358 invoked from network); 15 Jun 2010 00:17:37 -0000
+X-Received: from unknown (66.196.94.107)
+  by m10.grp.re1.yahoo.com with QMQP; 15 Jun 2010 00:17:37 -0000
+X-Received: from unknown (HELO spaceymail-a1.g.dreamhost.com) (208.113.200.5)
+  by mta3.grp.re1.yahoo.com with SMTP; 15 Jun 2010 00:17:37 -0000
+X-Received: from di-524.corp.day.com (wsip-98-189-13-228.oc.oc.cox.net [98.189.13.228])
+	by spaceymail-a1.g.dreamhost.com (Postfix) with ESMTP id AE8F480D16;
+	Mon, 14 Jun 2010 17:17:36 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1078)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;87y6eh18kq.wl%berend@...&gt;
+Date: Mon, 14 Jun 2010 17:17:36 -0700
+Cc: Eric J.Bowman &lt;eric@...&gt;,
+	Etan Wexler &lt;yahoo.com@...&gt;, rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Message-Id: &lt;D80027C2-903E-4B5F-95D3-16D7B37DC677@...&gt;
+References: &lt;hv5h7j+80ct@...&gt; &lt;AANLkTilPr4aylV-gkrGXGy_7tfyJz888_7GgyOw8O1sn@...&gt; &lt;20100614172604.ee188850.eric@...&gt; &lt;BD25B511-4FE0-4FA5-A90C-13655477B6B8@...&gt; &lt;87y6eh18kq.wl%berend@...&gt;
+To: Berend de Boer &lt;berend@...&gt;
+X-Mailer: Apple Mail (2.1078)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Which status code to return for DELETE if parent resource is not found?
+X-Yahoo-Group-Post: member; u=175757792; y=zYA3zODa5c7ZZfFEm7DlDd1LcZ52jD8aWFSjo8o8X0wrxUK8OuSD
+X-Yahoo-Profile: roy_fielding
+
+On Jun 14, 2010, at 4:46 PM, Berend de Boer wrote:
+
+&gt;&gt;&gt;&gt;&gt;&gt; &quot;Roy&quot; == Roy T Fielding &lt;fielding@...&gt; writes:
+&gt; 
+&gt;    Roy&gt; A resource is never deleted.  The current representation is
+&gt;    Roy&gt; deleted.
+&gt; 
+&gt; I hope you&#39;re implementing a REST based system for a bank one day
+&gt; Roy. I love to delete some of my money using your system :-)
+
+One day?
+
+  http://www.day.com/day/en/customers.html
+
+I&#39;d love to implement a system that let me PUT my own
+bank balance, but that would be f&#39;ing stupid on the part
+of the bank.  I don&#39;t build stupid systems.  REST does not
+require that every data item be mapped to a resource, let
+alone that every resource allow PUT and DELETE.
+So why on earth would I allow a client to DELETE money?
+
+REST is not distributed objects.  Don&#39;t get stuck thinking
+that resources are like objects.  They are not.  The origin
+server is in complete control over what actions are allowed
+across that interface, and the nature of the results. 
+
+....Roy
+
+
+

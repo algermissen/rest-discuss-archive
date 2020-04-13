@@ -1,0 +1,230 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 22809 invoked from network); 8 Aug 2003 23:27:58 -0000
+Received: from unknown (66.218.66.216)
+  by m11.grp.scd.yahoo.com with QMQP; 8 Aug 2003 23:27:58 -0000
+Received: from unknown (HELO mac.wakasoft.com) (65.208.153.194)
+  by mta1.grp.scd.yahoo.com with SMTP; 8 Aug 2003 23:27:58 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id h78NPlQF002392;
+	Fri, 8 Aug 2003 16:25:47 -0700 (PDT)
+Date: Fri, 8 Aug 2003 16:25:45 -0700
+Subject: Re: [rest-discuss] Jot, RNA and ReST vs MoST
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: Alex Jacobson &lt;alex@...&gt;
+In-Reply-To: &lt;267785775.1060362944@localhost&gt;
+Message-Id: &lt;A2E6BB5E-C9F7-11D7-996C-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; MoST says that the semantics of this generic interface should apply to 
+&gt; the exposed representation rather than the &quot;hidden&quot; one.  Because, if 
+&gt; HTTP methods apply only to the exposed representation of a resource, 
+&gt; then their semantics are constrained entirely by the HTTP protocol and 
+&gt; the content-type of the subject resource and HTTP thereby becomes a 
+&gt; truly generic interface (at least on a per-content-type basis).
+&gt;
+&gt; However, if HTTP methods are intended to apply to the &quot;hidden&quot; 
+&gt; representation then, aside from the fact that the &quot;hidden&quot; 
+&gt; representation would not be truly hidden, the semantics of HTTP 
+&gt; methods would need to include the mapping between hidden and external 
+&gt; representations.  If this mapping varies from resource to resource 
+&gt; then the semantics of HTTP methods cease to be generic as they depend 
+&gt; on the behavior of each resource server&#39;s mapping functions.
+
+No.  Information comes in many different representations.  That does not
+change the semantics of GET or PUT -- not even a tiny bit.  IF the 
+server
+allows a resource to be negotiable in terms of representations, then the
+resource (that abstract concept mapping) is independent of the bits.
+That means the server either must disallow PUT on that resource,
+possibly redirecting the request to some other resource that is
+bit-for-bit equivalent, or be capable of inspecting each PUT
+representation for the new abstract state.  The latter is not too
+difficult for many practical uses: Day&#39;s Communique product extracts
+the atoms of content from the individual cells of table whether it
+is PUT as an excel spreadsheet, an HTML table, or a Word RTF table.
+
+&gt; Although, based on your comments quoted above, I believe MoST follows 
+&gt; logically and necessarily from ReST, many of the people on this list 
+&gt; appear to disagree.  They believe that HTTP methods should be 
+&gt; interpreted as applying to the internal representations rather than 
+&gt; the external ones, forcing me so articulate this issue as &quot;ReST vs 
+&gt; MoST&quot; rather than &quot;ReST implies MoST.&quot;
+
+They apply to representations depending upon how the resource is 
+defined,
+but they apply to the resource (as in changing its state) uniformly.  
+The
+problem is the way you view a resource -- if you constrain the notion of
+a resource to being a stored representation, then you simply eliminate
+the freedom of the server to choose whether the resource is going to
+be negotiable in bit format.  There are good things and bad things
+about such a model, but it certainly isn&#39;t necessary.  The Web works
+fine without such a constraint.
+
+&gt;&gt;&gt; * Without an *explicit* model of exactly how the server maps the &gt;&gt;
+&gt; state of a resource into a response to a GET request, a client &gt;&gt; can 
+&gt; have ABSOLUTELY NO IDEA what the content of that response
+&gt;&gt;&gt; means; it is simply has bits that can mean anything at all.
+&gt;&gt;
+&gt;&gt; What does &quot;mean&quot; mean in this context?
+&gt;
+&gt; If I GET a number and that number is intended to *represent* another 
+&gt; number, how do I know what functions were applied to the represented 
+&gt; number to produce the representing number.  Was it only the identity 
+&gt; function? Was ln() applied?  Was round() or floor() applied?  If I 
+&gt; don&#39;t know the mapping function between the internal and external 
+&gt; representations, exactly what do I know about a represented resource 
+&gt; simply from GETting a  representation from its server?
+
+Whatever is applied, it cannot change the information state.  Obviously,
+that means round() and floor() are out of the question.
+
+&gt;&gt;&gt; * Without an *explicit* model of exactly how the server uses
+&gt;&gt;&gt; PUT/POST-ed content to change the state of a resource, a client
+&gt;&gt;&gt; can have ABSOLUTELY NO IDEA what the effect of a PUT or POST
+&gt;&gt;&gt; actually will be.
+&gt;&gt;
+&gt;&gt; That just says that REST doesn&#39;t mandate one single model.  Nothing
+&gt;&gt; prevents the server from establishing a model and telling the client
+&gt;&gt; what it is.  That is how hypertext works: the engine of application
+&gt;&gt; state change.
+&gt;
+&gt; Exactly how does hypertext tell me the relationship between a resource 
+&gt; and its representation?
+
+By including the identifier in a context of use wherein the relationship
+is predefined, just as it is for an HTML anchor.
+
+&gt; Following the above example, if I PUT a number to the server, how does 
+&gt; hypertext tell me what transformations the server applies to that 
+&gt; number to change the actual state of the resource?
+
+It doesn&#39;t, because you don&#39;t need to know.
+
+&gt; Note absent this hypothetical hypertext engine, what you are really 
+&gt; saying is that ReST allows every server to choose its own semantics 
+&gt; for GET, PUT, POST and that all the advantages ReST claims from 
+&gt; delivering a generic interface would be bogus.
+
+That&#39;s just bullshit.
+
+&gt;&gt;&gt; Roy thinks these explicit models should be entirely arbitrary
+&gt;&gt;&gt; and specified at the whim of the server operator on a per-URI
+&gt;&gt;&gt; basis.  I think these models should be standardized in some
+&gt;&gt;&gt; manner and be URI independent.
+&gt;&gt;
+&gt;&gt; They aren&#39;t entirely arbitrary; they are merely chosen by the server.
+&gt;
+&gt; They are arbitrarily chosen by the server operator because the server 
+&gt; operator can choose whichever internal representation suits his/her 
+&gt; fancy.
+
+Which is irrelevant because the interface is to a RESOURCE.
+
+&gt;&gt; In some cases they will be selected from a standard (such as webdav).
+&gt;&gt; In other cases they will be defined by an interface language (like 
+&gt;&gt; WSDL).
+&gt;
+&gt; You used to think differently.  In your dissertation you say:
+&gt;
+&gt; &quot;&quot;&quot;
+&gt; The semantics are thus not defined by the network interface (IIOP), 
+&gt; but by the object&#39;s IDL spec. Whether this is a good thing or not 
+&gt; depends on the application -- for distributed objects it is a 
+&gt; necessity, for the Web it isn&#39;t.
+&gt; &quot;&quot;&quot;
+&gt;
+&gt; Now you tell us that we need these IDLs (now taking the form of WSDL). 
+&gt; What changed?
+
+No, I said that what you wanted to do (define an interface model for 
+some
+set of resources) can be done with something like WSDL.  The Web still
+doesn&#39;t need them.
+
+&gt; You used to want &quot;generic interface with standard semantics that can 
+&gt; be interpreted by intermediaries almost as well as by the machines 
+&gt; that originate services.&quot;
+&gt;
+&gt; You now appear to have abandoned that project in favor of per-service 
+&gt; semantics.  What happened?
+
+Nothing -- you are just wrong about them being necessary.
+
+&gt;&gt;&gt; Allowing clients to interact with agents of this power and
+&gt;&gt;&gt; complexity through HTTP then requires that service operators be
+&gt;&gt;&gt; permitted to overload HTTP methods to have essentially arbitrary
+&gt;&gt;&gt; meanings.
+&gt;&gt;
+&gt;&gt; That doesn&#39;t follow at all.  Service operators control the 
+&gt;&gt; implementation
+&gt;&gt; of HTTP methods.  Methods get overloaded because service operators do 
+&gt;&gt; want
+&gt;&gt; additional semantics, but normal people don&#39;t know how to extend them 
+&gt;&gt; and
+&gt;&gt; implementers can&#39;t read protocol specs.  It is an artifact of the 
+&gt;&gt; social
+&gt;&gt; process surrounding standardized protocols.  You can&#39;t fix it by
+&gt;&gt; forbidding the extension of methods.
+&gt;
+&gt; In another thread on this topic, Yannick wants to create an &quot;inbox&quot; 
+&gt; resource that is represented by plaintext lines of &quot;subject : uri&quot;.  
+&gt; He says that this format actually represents a container of MIME 
+&gt; messages, that one can add a message to this container by POSTing 
+&gt; message/rfc822, and that a GET of a URI in the inbox representation 
+&gt; should return a message/rfc822.
+&gt;
+&gt; In other words, Yannick arbitrarily overloads GET to return his new 
+&gt; index format as a representation of a &quot;hidden&quot; container rather than 
+&gt; e.g. a multipart/digest containing all the messages (no downloading of 
+&gt; mail archives allowed!).  He arbitrarily overloads POST to take a 
+&gt; message/rfc822 and add it to this imaginary container (in what 
+&gt; order?),  rather than e.g. taking text/xml+message and converting and 
+&gt; rather than taking the POST content as a message body and constructing 
+&gt; message headers from the HTTP headers.
+
+Why &quot;overloads&quot;?  He is simply using those methods as they were defined.
+He isn&#39;t defining an interface of bits -- he is defining an information
+interface.
+
+&gt; I&#39;m pretty sure that Yannick is doing nothing that contravenes any 
+&gt; spec. But I am also pretty sure that there is a problem if all of 
+&gt; these methods can mean so many different things for such a tiny 
+&gt; application.  It means that we need documentation of how to use HTTP 
+&gt; for each and every actual and hypothetical URI on the Internet.  It 
+&gt; means we lose the whole notion of simple interoperability.
+
+No, it doesn&#39;t -- you have no basis for such a claim.
+
+&gt; Perhaps we could use WSDL, but why not simply follow the rule that 
+&gt; HTTP semantics operate on external representations.  Then Yannick&#39;s 
+&gt; index format specifies everything about you need to know and we don&#39;t 
+&gt; need him to tell us how to use HTTP to operate on his resources.  (See 
+&gt; the other thread for details).
+
+Because HTTP semantics do not operate on external representations,
+and therefore any attempt to claim such a rule for the general case
+is false.  HTTP needs to be flexible to support gateways and legacy
+systems for which the semantics you are demanding simply do not apply.
+
+That does not prevent you from applying that rule in a specific case,
+such as in a specific set of resources that your software is going
+to be interacting with -- such an additional constraint is still
+compatible with REST-based systems and may have some additional
+properties that make it worthwhile, but you should also document
+the trade-offs: those properties that are degraded by applying
+that rule.
+
+....Roy
+
+
+

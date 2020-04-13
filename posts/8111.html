@@ -1,0 +1,57 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 84651 invoked from network); 9 Mar 2007 01:31:03 -0000
+Received: from unknown (66.218.67.35)
+  by m35.grp.scd.yahoo.com with QMQP; 9 Mar 2007 01:31:03 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta9.grp.scd.yahoo.com with SMTP; 9 Mar 2007 01:31:03 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.55])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1HPTw1-0003di-IV; Thu, 08 Mar 2007 17:30:17 -0800
+In-Reply-To: &lt;20070309010048.GA9041@...&gt;
+References: &lt;45F06C99.1090606@...&gt; &lt;6fb173f50703081221p3102abbagadc8aa4af0239b3a@...&gt; &lt;1173386084.17298.160.camel@phoenix&gt; &lt;45F075EB.5030808@...&gt; &lt;87zm6n8my7.fsf@...&gt; &lt;45F07C51.9000800@...&gt; &lt;6fb173f50703081358g47b0505ct6c9007bc86e72e32@...&gt; &lt;87wt1r8hmk.fsf@...&gt; &lt;45F09A1A.40208@...&gt; &lt;6564DA3F-26CF-4788-8B47-71B425127DA5@...&gt; &lt;20070309010048.GA9041@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;21186EE5-7D67-4067-954C-354DE7155208@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Thu, 8 Mar 2007 17:30:26 -0800
+To: Paul Winkler &lt;pw_lists@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Move representation + support redirect
+X-Yahoo-Group-Post: member; u=175757792; y=c_QIzu8PLa5u4qFw5-6-r74W0rJ9ZFLvkpg1okDU8tsNcmv2fEsz
+X-Yahoo-Profile: roy_fielding
+
+On Mar 8, 2007, at 5:00 PM, Paul Winkler wrote:
+&gt; OK, but stating the obvious pragmatic issue: A major benefit of REST
+&gt; is that things work with existing HTTP implementations - servers,
+&gt; proxies, caches, client libraries. But if a REST application uses
+&gt; methods other than those listed in HTTP/1.1, that will greatly reduce
+&gt; the number of existing implementations that will be able to work with
+&gt; that app.
+
+Any implementation that doesn&#39;t support arbitrary HTTP methods
+is not going to work in other, less obvious, ways as well.  It is
+a lost cause to design systems around the lowest common denominator
+implementation -- just report errors when they are found and use
+a configurable workaround when necessary (and only when necessary).
+
+The only reason that Web proxies suck is because Web browsers
+are too stupid to report an error while working around them.
+
+....Roy
+
+
+

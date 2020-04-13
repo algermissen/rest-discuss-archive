@@ -1,0 +1,75 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 16108 invoked from network); 19 Oct 2004 17:16:28 -0000
+Received: from unknown (66.218.66.166)
+  by m22.grp.scd.yahoo.com with QMQP; 19 Oct 2004 17:16:28 -0000
+Received: from unknown (HELO fed1rmmtao10.cox.net) (68.230.241.29)
+  by mta5.grp.scd.yahoo.com with SMTP; 19 Oct 2004 17:16:28 -0000
+Received: from [192.168.0.100] (really [68.4.71.218])
+          by fed1rmmtao10.cox.net
+          (InterMail vM.6.01.03.04 201-2131-111-106-20040729) with ESMTP
+          id &lt;20041019171628.HNTY25594.fed1rmmtao10.cox.net@[192.168.0.100]&gt;;
+          Tue, 19 Oct 2004 13:16:28 -0400
+In-Reply-To: &lt;20041019140408.GT24058@...&gt;
+References: &lt;20041009202729.GM3204@...&gt; &lt;cl2o9c+crj2@...&gt; &lt;20041019121738.GR24058@...&gt; &lt;41750F55.4020606@...&gt; &lt;20041019140408.GT24058@...&gt;
+Mime-Version: 1.0 (Apple Message framework v619)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;9CC20CF2-21F2-11D9-8A83-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+Cc: Joe Gregorio &lt;joe@...&gt;,
+ rest-discuss@yahoogroups.com
+Date: Tue, 19 Oct 2004 10:16:27 -0700
+To: Mark Baker &lt;distobj@...&gt;
+X-Mailer: Apple Mail (2.619)
+X-eGroups-Remote-IP: 68.230.241.29
+From: Roy T. Fielding &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Querying with POST
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+&gt;&gt; That is, we have GET, PUT, POST and DELETE, our fundamental
+&gt;&gt; ways of dereferencing a URI. We&#39;ll assume that we are putting
+&gt;&gt; together nice RESTful services and using all these methods correctly.
+&gt;&gt; What happens when we start combining these dereferences?
+&gt;&gt;
+&gt;&gt; For example:
+&gt;&gt;   POST is used to create new resources
+&gt;&gt;   GET is used to retrieve a representation of a resource
+&gt;&gt;
+&gt;&gt; On their own they&#39;re RESTful,
+&gt;
+&gt; No, the POST invocation isn&#39;t RESTful by itself.  In the examples
+&gt; people have given, the client expects that a particular POST invocation
+&gt; will result in a resource being created (and furthermore, that this
+&gt; resource will have a particular relationship to the POSTed
+&gt; representation).
+
+Nonsense, Mark.  Of course that is REST -- it is right in the
+HTTP standard.  The client is *told* by the server the URI of
+the new resource.  The client doesn&#39;t need any other expectation than
+simply following HTTP.  This is no different from following application
+state as presented by links within representations.
+
+&gt; Sometimes it&#39;s hard to see the forest for the trees here.  I&#39;ve found 
+&gt; it
+&gt; helpful to focus on one of the primary objectives of the uniform
+&gt; interface; substitutability, i.e. the ability to substitute one service
+&gt; implementing POST with another service implementing POST.
+&gt; Query-via-POST fails this test because the expectation about the query
+&gt; results being returned cannot be provided by other services.  For
+&gt; example, if one swapped in a resource which spat out the input document
+&gt; to a printer, then clearly it wouldn&#39;t meet the expectation of
+&gt; performing a query.
+
+Sorry, that makes no sense.  The interface is substitutable.  Resources
+are not substitutable.  Nobody has an expectation that you can replace
+one resource with a different resource and have continuation of
+semantics.  What you get with REST is an interface that tells you
+how it works.  POST is part of that interface when used right.
+
+....Roy
+
+
+

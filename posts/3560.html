@@ -1,0 +1,99 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 12 Apr 2003 00:09:30 -0000
+Received: (qmail 51833 invoked from network); 12 Apr 2003 00:09:29 -0000
+Received: from unknown (66.218.66.216)
+  by m15.grp.scd.yahoo.com with QMQP; 12 Apr 2003 00:09:29 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta1.grp.scd.yahoo.com with SMTP; 12 Apr 2003 00:09:23 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.8/8.12.8) with ESMTP id h3BNW8dl003289;
+	Fri, 11 Apr 2003 16:32:08 -0700 (PDT)
+Date: Fri, 11 Apr 2003 16:32:07 -0700
+Subject: Re: [rest-discuss] DELETE container?
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;S. Alexander Jacobson&quot; &lt;alex@...&gt;
+In-Reply-To: &lt;Pine.WNT.4.53.0304101918440.7500@philo&gt;
+Message-Id: &lt;CF77EFBC-6C75-11D7-986D-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; Why is slash definitive about containment?
+
+Because that is the meaning of slash in a URI (name containment, not
+storage containment).  RFC 2396.
+
+&gt; If you PUT /foo/bar?baz, does that create a
+&gt; container?
+&gt; How about PUT http://objectname.domain.com?
+&gt;
+&gt; My claim at this point is that (ignorning WebDAV)
+&gt; URLs tell you nothing about containment relations.
+
+Then you are talking about storage containment, which is irrelevant
+to REST.
+
+&gt;&gt;&gt; 4. How do you DELETE a non-empty container and its contents?
+&gt;&gt;&gt;   My answer: DELETE /container
+&gt;&gt;
+&gt;&gt; That is certainly how the user agent would express the semantic.
+&gt;&gt; The server might tell you to delete the children first.
+&gt;
+&gt; This is actually related to the question I didn&#39;t
+&gt; ask.  What happens when you GET a container?  I
+&gt; think that GET on a container isn&#39;t standardized
+&gt; because, again, HTTP URLs are not defined to have
+&gt; containment relations.  I think for WebDAV to
+&gt; specify DELETE in this context without
+&gt; constraining GET is weird.
+&gt;
+&gt; Note: If GET were specified on a containe, we
+&gt; wouldn&#39;t need index.html files.
+
+Huh?  index.html files are an implementation mechanism for providing
+a representation for the ancestor/ name, which most people call a
+collection (of names).  That is not a container.
+
+&gt;&gt; BTW, why do you switch from &quot;collection&quot; to &quot;container&quot;?
+&gt;
+&gt; We are talking implicitly about containment
+&gt; relationships.  A directory contains other files,
+&gt; it does not collect them.
+
+You used both words interchangeably.  Traditionally, a container is a
+storage component that contains other addressable items, whereas a
+collection is a list of addressable items independent of storage.
+Containers are represented by an aggregation of its contents.
+A collection is represented by a list of names and related information.
+
+In REST, a &quot;directory&quot; can be presented as two different resources --
+container or collection -- only by providing different identifiers
+for each purpose.
+
+&gt; Note: If you want to use collection, then I would
+&gt; observe that to delete a name for the collection
+&gt; is not to delete the members of the collection.
+&gt;
+&gt; And to DELETE a URL is really only to DELETE a
+&gt; name.
+
+More assumptions about the implementation.  The method only signifies
+the action desired by the user agent.  How that is accomplished is left
+to the server implementation.  Some implementations will have garbage
+collection, others will delete on last reference removed, and still
+others will refuse a delete until the namespace is empty.  In any case,
+the client cannot delete the URI -- it can only see and manipulate the
+representation, and all it expects from the origin server is that the
+old representation is no longer available once the DELETE succeeds.
+
+....Roy
+
+
+

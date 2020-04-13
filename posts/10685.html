@@ -1,0 +1,65 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 59612 invoked from network); 1 May 2008 07:20:42 -0000
+X-Received: from unknown (66.218.67.94)
+  by m43.grp.scd.yahoo.com with QMQP; 1 May 2008 07:20:42 -0000
+X-Received: from unknown (HELO spaceymail-a2.g.dreamhost.com) (208.113.200.5)
+  by mta15.grp.scd.yahoo.com with SMTP; 1 May 2008 07:20:42 -0000
+X-Received: from [192.168.0.160] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a2.g.dreamhost.com (Postfix) with ESMTP id 4D732EE36B;
+	Thu,  1 May 2008 00:20:43 -0700 (PDT)
+In-Reply-To: &lt;a6a6df360804302220h7efbe0f2ib3230b5c74095087@...&gt;
+References: &lt;a6a6df360804301352p2e77c395hb02f88b75cfd8b4b@...&gt; &lt;a6a6df360804301428meebbcc2vfe3245e6d3e5bda9@...&gt; &lt;e9dffd640804302112r64a893fftc96bf88b4528e4f1@...&gt; &lt;a6a6df360804302220h7efbe0f2ib3230b5c74095087@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;7B575242-F332-4265-AB10-DAB2FF9E73D2@...&gt;
+Cc: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Thu, 1 May 2008 00:20:42 -0700
+To: Nick Gall &lt;nick.gall@...&gt;
+X-Mailer: Apple Mail (2.753)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: The Use of Metadata in URIs: How long does a FORM assertion last?
+X-Yahoo-Group-Post: member; u=175757792; y=6FnTyIBGa2pkAPfrgu34TSBvHn3FdieEVo7UhVv6rbaWq-eFB3DG
+X-Yahoo-Profile: roy_fielding
+
+On Apr 30, 2008, at 10:20 PM, Nick Gall wrote:
+&gt; &quot;Not clear what Bob&#39;s software is doing&quot;? Do you really believe  
+&gt; that, Mark? I think it&#39;s pretty darn clear what the TAG thinks the  
+&gt; software is doing:
+&gt;
+&gt;
+&gt; &quot;Bob if he views the source of the form is assured that the  
+&gt; assigning authority issupporting an entire class of URIs of the  
+&gt; form: http://example.org/cityweather?city=CityName. ... Bob could,  
+&gt; with this assurance, write his ownsoftware to construct and use  
+&gt; such URIs to retrieve weather reports.&quot;
+&gt;
+&gt; The TAG is clearly not suggesting that Bob is merely authorized by  
+&gt; the FORM to write generic FORM-parsing software as you suggest. On  
+&gt; the contrary, It is clearly stating that given the specific  
+&gt; &quot;weather URI&quot; parameters that appear in the FORM, Bob is authorized  
+&gt; to write software that can generate &quot;an entire class of URIs&quot; &quot;to  
+&gt; retrieve weather reports&quot;. In other words the software can use a  
+&gt; URI template.
+
+I don&#39;t see why we should care.  Anyone is &quot;authorized&quot; to write any  
+software.
+Anyone is authorized to perform a GET on any URI.  The server will  
+respond
+however it sees fit.  The document got stuck in the weeds somewhere and
+is struggling to make sense out of nonsense.
+
+Don&#39;t read too much into what is obviously a poor choice of words.
+What they meant to say is that some services correspond to a range
+(template) of URIs for which guessing the potential values in that
+range is a perfectly reasonable thing to do, even if there turns
+out to be no resource for a given guess.  There are no guarantees
+on the Web.
+
+....Roy
+
+

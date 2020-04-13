@@ -1,0 +1,74 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 49913 invoked from network); 11 May 2007 17:54:08 -0000
+Received: from unknown (66.218.67.35)
+  by m46.grp.scd.yahoo.com with QMQP; 11 May 2007 17:54:08 -0000
+Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.97.132.66)
+  by mta9.grp.scd.yahoo.com with SMTP; 11 May 2007 17:54:08 -0000
+Received: from [10.0.0.110] (bsl-rtr.day.com [62.192.10.254])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id CAAFF16155B;
+	Fri, 11 May 2007 10:53:26 -0700 (PDT)
+In-Reply-To: &lt;eb208cac0705101448h27ab0191u7a0cd0f9ef496a30@...&gt;
+References: &lt;f14uuu+h1hc@...&gt; &lt;20070430151411.GY20785@klangraum&gt; &lt;BFEA2E12-3952-47BB-B62F-F82C53F78B62@...&gt; &lt;9C7DBAFE-CB95-408E-A37F-3A864B18D3DE@...&gt; &lt;1178804269.16366.346.camel@phoenix&gt; &lt;BC3440FE-B59C-4245-92BC-D9F076DA09F6@...&gt; &lt;eb208cac0705101448h27ab0191u7a0cd0f9ef496a30@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;1512E2AF-B792-4405-A657-1AAC95651876@...&gt;
+Cc: &quot;REST Discuss&quot; &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Fri, 11 May 2007 10:53:35 -0700
+To: Chuck Hinson &lt;chuck.hinson@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: REST intro slides
+X-Yahoo-Group-Post: member; u=175757792; y=hMN-7O8YtuE15IhWU2ZVQ2sQ_6wDlHcH1JAbTyhLR_Bk9IYjHq1M
+X-Yahoo-Profile: roy_fielding
+
+On May 10, 2007, at 2:48 PM, Chuck Hinson wrote:
+&gt; On 5/10/07, Roy T. Fielding &lt;fielding@...&gt; wrote:
+&gt; &gt;
+&gt; [. . .]
+&gt; &gt; REST simplifies applications because it rips apart the million
+&gt; &gt; potential states inherent in any serious application and presents
+&gt; &gt; to the client only one at a time, with every single transition
+&gt; &gt; from that state described in a format that can be understood by
+&gt; &gt; the client as a potential transition. The client is completely
+&gt; &gt; decoupled from the server aside from the shared agreement on what
+&gt; &gt; each media type means. The entire application only needs to be
+&gt; &gt; understood (and can be completely tested) one state at a time.
+&gt; &gt;
+&gt; This is where I get a little confused.
+&gt;
+&gt; I assume that the client still needs to understand each of the  
+&gt; possible
+&gt; states so that it knows what to do with/at each of those states. I  
+&gt; also
+&gt; assume that the client needs to understand what each of the  
+&gt; transitions
+&gt; (links) out of the current state means so that it can determine  
+&gt; which one
+&gt; to follow.
+
+Each state is described by the current set of representations.
+A client&#39;s understanding will depend on its understanding of the
+media types.
+&gt; What happens when the application evolves to include a new
+&gt; state? How does the client figure out what to do with that new state?
+
+The client doesn&#39;t need to memorize the states, other than the
+few cool URI &quot;start states&quot; that might be bookmarked.  Each state
+tells it what to do next.  The evolution a client has to worry about
+is when the media type evolves in unanticipated ways, which is the
+same problem as occurs when new HTML elements are added that a browser
+doesn&#39;t recognize.  Perhaps a representation is provided such that
+the new bits can be safely ignored by old clients, or parallel
+states are introduced for different types of clients, or clients
+are automagically updated through code on demand, or clients
+use content negotiation on each request.  Those are all typical
+mechanisms for backwards compatibility with clients.
+
+....Roy
+
+

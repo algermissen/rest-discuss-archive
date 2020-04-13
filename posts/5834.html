@@ -1,0 +1,89 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 87369 invoked from network); 5 Apr 2006 23:26:02 -0000
+Received: from unknown (66.218.67.34)
+  by m8.grp.scd.yahoo.com with QMQP; 5 Apr 2006 23:26:02 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta8.grp.scd.yahoo.com with SMTP; 5 Apr 2006 23:26:02 -0000
+Received: from wsip-70-183-59-151.oc.oc.cox.net ([70.183.59.151] helo=[10.2.8.57])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1FRHNw-0004In-UP; Wed, 05 Apr 2006 16:26:00 -0700
+In-Reply-To: &lt;8E28BFA3-2377-4A5B-B4B0-41B51165D7F2@...&gt;
+References: &lt;8E28BFA3-2377-4A5B-B4B0-41B51165D7F2@...&gt;
+Mime-Version: 1.0 (Apple Message framework v746.3)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;D293D5CC-2508-463A-98B4-A0186150395F@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Wed, 5 Apr 2006 16:26:00 -0700
+To: Dr. Ernie Prabhakar &lt;drernie@...&gt;
+X-Mailer: Apple Mail (2.746.3)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] RESTful representation of side effects?
+X-Yahoo-Group-Post: member; u=175757792; y=O38R8lvq5cuTWbCG-V0R3splxcIlpXqY-G9I4V77oxQVuIpOjWGM
+X-Yahoo-Profile: roy_fielding
+
+Hi Ernie,
+
+&gt; I want to provide a web service that, say, converts HTML documents
+&gt; into various formats.   The naive RPC method would seem to be to
+&gt; create a special URL string for each type, e.g.:
+&gt;
+&gt; 	/convert.cgi?format=pdf&document=mydocument.html
+&gt; 	/convert.cgi?format=doc&document=mydocument.html
+&gt; etc.
+
+That is confusing.  Why &quot;document=mydocument.html&quot;?  Is the server
+translating the input file or is it getting the file from somewhere
+else?  I could understand a gateway form like
+
+    /convert?format=pdf&uri=http//example.com/get_it_here.html
+or
+    /convert/http://example.com/get_it_here.html
+
+OTOH, a translation service like
+
+    /convert?format=pdf
+
+can simply be a POST of file-upload with the response being the
+converted representation.
+
+&gt; However, that doesn&#39;t seem very RESTful.
+
+Why?  POST is RESTful too, when it is used correctly.
+
+&gt;  I would imagine the RESTful
+&gt; alternative would be to:
+&gt; a) PUT the initial resource; get a URL back
+&gt; b) &lt;do something to that URL&gt;
+&gt; c) Return the URL describing that resource
+&gt; d) GET the final resource
+&gt;
+&gt; But, if so, I can&#39;t figure out the RESTful way to do (b). Is there?
+
+That would only make sense if you want the document to be stored
+as a new resource that is available from then on, and the converted
+forms are available via different links and/or negotiation.
+In that case, you want the Alternates header field, though similar
+functionality can be accomplished within the body of a 201 response.
+
+It is relatively easy to create an HTTP server module that
+provides content-conversion on the fly for anything stored within
+the system.  It then becomes a resource discovery problem (how does
+the client know where to obtain all of these other formats?), which
+is what Alternates or Link was intended to supply.
+
+....Roy
+
+

@@ -1,0 +1,53 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 74984 invoked from network); 21 Jun 2012 07:19:15 -0000
+X-Received: from unknown (98.137.35.161)
+  by m9.grp.sp2.yahoo.com with QMQP; 21 Jun 2012 07:19:15 -0000
+X-Received: from unknown (HELO homiemail-a77.g.dreamhost.com) (208.97.132.83)
+  by mta5.grp.sp2.yahoo.com with SMTP; 21 Jun 2012 07:19:15 -0000
+X-Received: from homiemail-a77.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a77.g.dreamhost.com (Postfix) with ESMTP id CD34694065;
+	Thu, 21 Jun 2012 00:19:15 -0700 (PDT)
+X-Received: from [192.168.1.127] (66-192-186-210.static.twtelecom.net [66.192.186.210])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: fielding@...)
+	by homiemail-a77.g.dreamhost.com (Postfix) with ESMTPSA id AC63C94059;
+	Thu, 21 Jun 2012 00:19:15 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1278)
+Content-Type: text/plain; charset=iso-8859-1
+In-Reply-To: &lt;CAE-VBsBHEnGOAZ4wOn09y4YTogshBBfEB6MJZn3oJt=w7yPX9Q@...&gt;
+Date: Thu, 21 Jun 2012 00:19:14 -0700
+Cc: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: quoted-printable
+Message-Id: &lt;F382682D-F664-47D3-8B4E-760C47B8F915@...&gt;
+References: &lt;CAE-VBsDw2BnuVp9yUVOGuUERdOvBm+fagxaPNmwfQfa7f52CsA@...&gt; &lt;A959C2CD-3B3B-4CCE-8079-35ED46783267@...&gt; &lt;CAE-VBsBMZwo=c_JnSFPDuP63P78bPvbb=P+hE-ROFOeO4C6Vjw@...&gt; &lt;E374AB02-B5A6-4E54-A010-68C11939CF9F@...&gt; &lt;CAE-VBsBHEnGOAZ4wOn09y4YTogshBBfEB6MJZn3oJt=w7yPX9Q@...&gt;
+To: =?iso-8859-1?Q?Philippe_Rath=E9?= &lt;prathe@...&gt;
+X-Mailer: Apple Mail (2.1278)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Is it correct to respond with partial representation for low capabilities media-types?
+X-Yahoo-Group-Post: member; u=175757792; y=3ja1D4JXVnGaPCvdtJgKv3lc9EfJVLPi29Ulh4KpPoqXwn3lVBnZ
+X-Yahoo-Profile: roy_fielding
+
+On Jun 20, 2012, at 8:33 PM, Philippe Rath=E9 wrote:
+
+&gt; By the way, does so=
+mebody know if an http header is considered part of
+&gt; the representation fr=
+om a REST POV? Because it is possible to define
+&gt; link relations in the hea=
+der response without it being in the
+&gt; &quot;metadata body container&quot;.
+
+Yes, for=
+ those header fields that are not defined as control data
+(like Cache-contr=
+ol) or message metadata (like Transfer-Encoding).
+
+....Roy
+
+
+

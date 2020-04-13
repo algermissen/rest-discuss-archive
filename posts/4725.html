@@ -1,0 +1,60 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 37546 invoked from network); 29 Dec 2004 02:38:56 -0000
+Received: from unknown (66.218.66.218)
+  by m19.grp.scd.yahoo.com with QMQP; 29 Dec 2004 02:38:56 -0000
+Received: from unknown (HELO fed1rmmtao09.cox.net) (68.230.241.30)
+  by mta3.grp.scd.yahoo.com with SMTP; 29 Dec 2004 02:38:56 -0000
+Received: from [192.168.0.100] (really [68.4.71.218])
+          by fed1rmmtao09.cox.net
+          (InterMail vM.6.01.04.00 201-2131-117-20041022) with ESMTP
+          id &lt;20041229023852.GUKP2638.fed1rmmtao09.cox.net@[192.168.0.100]&gt;;
+          Tue, 28 Dec 2004 21:38:52 -0500
+In-Reply-To: &lt;1104275921.23578.30.camel@phoenix&gt;
+References: &lt;cqrrt3+8dlm@...&gt; &lt;1104275921.23578.30.camel@phoenix&gt;
+Mime-Version: 1.0 (Apple Message framework v619)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;C5106884-5942-11D9-B3AF-000D93324AD6@...&gt;
+Content-Transfer-Encoding: 7bit
+Cc: rlution &lt;rlution@...&gt;,
+ rest-discuss@yahoogroups.com
+Date: Tue, 28 Dec 2004 18:38:49 -0800
+To: jsled@...
+X-Mailer: Apple Mail (2.619)
+X-eGroups-Remote-IP: 68.230.241.30
+From: Roy T. Fielding &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] REST clarifications...
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+On Dec 28, 2004, at 3:18 PM, Josh Sled wrote:
+&gt; It&#39;s hard to say generally, but I think you&#39;re seeing two different
+&gt; things:
+&gt;
+&gt; * an inherent similarity in the two methods, including a bit of a
+&gt;   semantic overlap with respect to PUT&#39;s specification of ability to
+&gt;   create things.
+&gt;
+&gt; * the fact that there&#39;s two different levels of REST:
+&gt;   GET+POST-does-everything-else  vs.  GET/PUT/POST/DELETE.  Not
+&gt;   differentiating the two can lead to confusion about which &quot;POST&quot;
+&gt;   is being used/described. [1]
+...
+&gt; [1]: 
+&gt; http://asynchronous.org/blog/archives/2004/08/25/levels_of_rest.html
+
+Josh, while that may be your theory (and you are welcome to it), the
+notion that there are two levels of REST is completely false.  There
+are different extents to which a REST-based application will use HTTP
+methods, but that doesn&#39;t mean the architectural style has two different
+sets of constraints.  The application is either obeying the REST
+constraints or it is not, and POST in particular has the meaning
+&quot;process this&quot; regardless of how REST-compliant it may be because
+REST does not define the meaning of POST (HTTP does).
+
+....Roy
+
+
+

@@ -1,0 +1,60 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 39319 invoked from network); 11 May 2007 18:21:44 -0000
+Received: from unknown (66.218.67.34)
+  by m35.grp.scd.yahoo.com with QMQP; 11 May 2007 18:21:44 -0000
+Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.97.132.202)
+  by mta8.grp.scd.yahoo.com with SMTP; 11 May 2007 18:21:44 -0000
+Received: from [10.0.0.110] (bsl-rtr.day.com [62.192.10.254])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id E8BB1161546;
+	Fri, 11 May 2007 11:21:43 -0700 (PDT)
+In-Reply-To: &lt;4643638D.7040901@...&gt;
+References: &lt;f14uuu+h1hc@...&gt; &lt;20070430151411.GY20785@klangraum&gt; &lt;BFEA2E12-3952-47BB-B62F-F82C53F78B62@...&gt; &lt;9C7DBAFE-CB95-408E-A37F-3A864B18D3DE@...&gt; &lt;1178804269.16366.346.camel@phoenix&gt; &lt;BC3440FE-B59C-4245-92BC-D9F076DA09F6@...&gt; &lt;4643638D.7040901@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;E919FE8A-4D99-45DF-AA78-2A1957557AD9@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Fri, 11 May 2007 11:21:52 -0700
+To: Ittay Dror &lt;ittayd@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: REST intro slides
+X-Yahoo-Group-Post: member; u=175757792; y=0aCo8YDK8ISrv6AjBDZV23Qd1E3UEdGpSgWodsUceJqa3DMqoWx2
+X-Yahoo-Profile: roy_fielding
+
+On May 10, 2007, at 11:25 AM, Ittay Dror wrote:
+&gt; i&#39;m having a hard time understanding your explanation. can you  
+&gt; please post two examples, one &quot;RPC plus streaming&quot;, the other true  
+&gt; REST?
+
+RPC is remote procedure call.  One of the things that typical RPC
+mechanisms lack is the ability to describe responses (or even
+parameters) as a stream of data as opposed to a small data type.
+HTTP has no problem doing that even when it is used in an RPC way.
+
+So, people who advocate &quot;resource-oriented&quot; as an end in itself,
+as if the only thing you need to build a network-based application
+is a URI template and resource definition language, are just fooling
+themselves into thinking what they are doing is REST.  Resources
+are just one part of the style.  Resources are necessary for REST,
+but resources must be allowed to evolve independently from the
+clients and the only way that can happen is when the clients are
+expecting to be instructed by the next representation received.
+Otherwise, the client is making assumptions about the server&#39;s
+implementation --- assumptions that will break eventually --- and
+becomes much more complex and brittle than the type of network-based
+application that REST is intended to encourage.
+
+That is why hypermedia as the engine of application state is
+an essential constraint of REST, and why RESTful application
+frameworks cannot ignore the need for meaningful media types,
+whether it be in the form of microformats or specialized XML
+data types.
+
+....Roy
+
+

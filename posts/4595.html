@@ -1,0 +1,98 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 65711 invoked from network); 22 Oct 2004 08:19:51 -0000
+Received: from unknown (66.218.66.172)
+  by m6.grp.scd.yahoo.com with QMQP; 22 Oct 2004 08:19:51 -0000
+Received: from unknown (HELO fed1rmmtao12.cox.net) (68.230.241.27)
+  by mta4.grp.scd.yahoo.com with SMTP; 22 Oct 2004 08:19:51 -0000
+Received: from [192.168.0.100] (really [68.4.71.218])
+          by fed1rmmtao12.cox.net
+          (InterMail vM.6.01.03.04 201-2131-111-106-20040729) with ESMTP
+          id &lt;20041022081950.LBKT9689.fed1rmmtao12.cox.net@[192.168.0.100]&gt;;
+          Fri, 22 Oct 2004 04:19:50 -0400
+In-Reply-To: &lt;002801c4b6cc$cc3d9cb0$6401a8c0@hw8200&gt;
+References: &lt;002801c4b6cc$cc3d9cb0$6401a8c0@hw8200&gt;
+Mime-Version: 1.0 (Apple Message framework v619)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;21A4FAAB-2403-11D9-BBD4-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+Cc: rest discuss &lt;rest-discuss@yahoogroups.com&gt;
+Date: Fri, 22 Oct 2004 01:19:45 -0700
+To: &quot;Hugh Winkler&quot; &lt;hughw@...&gt;
+X-Mailer: Apple Mail (2.619)
+X-eGroups-Remote-IP: 68.230.241.27
+From: Roy T. Fielding &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Querying with POST
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+On Oct 20, 2004, at 10:46 AM, Hugh Winkler wrote:
+&gt; Thanks for this great discussion. May I summarize how it looks from
+&gt; here:
+&gt;
+&gt; HTTP GET, PUT, DELETE, and even POST realize uniform semantics. POST
+&gt; doesn&#39;t constrain the semantics very much, because the server can do a
+&gt; lot of things with the posted message. But ordinary HTTP clients don&#39;t
+&gt; assume anything more than that the result of the POST may be available
+&gt; in the returned entity or at the URI specified in the Location header.
+&gt;
+&gt; HTTP permits a certain class of client applications to operate against
+&gt; arbitrary servers in exactly the same way. When those clients POST, 
+&gt; they
+&gt; would not presume that the server will return the Location of query
+&gt; results. They might, however, retrieve the representation from the 201
+&gt; created Location, should the server return that, and render it for the
+&gt; user. They could not process the response more intelligently than that.
+&gt;
+&gt; If you write a client application that presumes the resource returned 
+&gt; in
+&gt; the Location header is a query result, and attempt to do further
+&gt; processing based on that presumption, your client will fail against
+&gt; arbitrary resources. Or rather, the server may happily respond with 200
+&gt; or 201 but your client will have to further process the response to
+&gt; determine whether the invocation really succeeded, before processing it
+&gt; as a query result.
+
+Good summary, but it should be clear that if such were true, it would
+be unnecessary for REST to include the concept of hypertext as the
+engine of application state.  The above completely ignores the role
+of representations in determining the available set of actions,
+and describing their semantics, such that the user agent can know
+how to interact with the identified resources.
+
+The fact that an occasional in-line image request doesn&#39;t actually
+result in an image typed representation is an error, but one that
+is easily detected by the client.  We would never consider disallowing
+such requests simply because the resource might not correspond to what
+the browser expects.  The notion that REST-based user agents can&#39;t
+have expectations of a resource is clearly false.
+
+&gt; Mark suggests a new interface, adding the QUERY-WITH-POST method to the
+&gt; usual HTTP methods. If you want to write a client that can operate
+&gt; against arbitrary resources, and presume the response will be a query
+&gt; result it can process, you would have to use that new method. If the
+&gt; server responds 200 or 201 in that case, you can process the response 
+&gt; as
+&gt; a query. This interface exposes uniform semantics to all such clients.
+&gt; This approach seems the most robust way for Bud (the original poster on
+&gt; the thread) to implement his query.
+
+Except that it has nothing to do with REST.  REST would say that the
+200 response can be processed however the client likes.  A 201 response,
+however, says that a new resource has been created as a result of
+processing the request -- a client will always use GET on that new
+resource and may process it however the client wants, provided that
+it understands the media type.  The client does not need anyone&#39;s
+permission to go from one state to the next.
+
+Using a different method has no value here because the total semantics
+of the original request is &quot;process this&quot;.  GET would be a better
+choice if the query is amenable to being translated into a URI, but
+when it is not there is no harm in using POST.
+
+....Roy
+
+
+

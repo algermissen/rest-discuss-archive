@@ -1,0 +1,141 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 53094 invoked from network); 6 Jun 2009 12:39:30 -0000
+X-Received: from unknown (98.137.34.44)
+  by m3.grp.sp2.yahoo.com with QMQP; 6 Jun 2009 12:39:30 -0000
+X-Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.113.200.5)
+  by mta1.grp.sp2.yahoo.com with SMTP; 6 Jun 2009 12:39:30 -0000
+X-Received: from [10.0.0.50] (bsl-rtr.day.com [62.192.10.254])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id 2B97C1614DF;
+	Sat,  6 Jun 2009 05:39:17 -0700 (PDT)
+In-Reply-To: &lt;a6a6df360906060340j577fd01fxe1607d842cb5b9aa@...&gt;
+References: &lt;a6a6df360906040300u5a0b2742pd17cbc26076450cb@...&gt;  &lt;h08o9r+6k2i@...&gt; &lt;a6a6df360906041038r4615a3d3s54ba579bebc2ace1@...&gt;  &lt;4A66F3F7-6C18-44E2-9D22-E2EF09C67A36@...&gt; &lt;a6a6df360906050333tc119469v1b602ebcefb12d21@...&gt;  &lt;4A28F91E.5090109@...&gt; &lt;BA0EBA6B-4AF6-4996-8A55-83B5193144E4@...&gt;  &lt;4A290CD0.5060706@...&gt; &lt;a6a6df360906051119j1e2d4ed7w2b93e5ed28df4fcc@...&gt;  &lt;532BE158-2142-44EC-AC52-E887D4A6B500@...&gt; &lt;a6a6df360906060340j577fd01fxe1607d842cb5b9aa@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;B22A0B12-E798-433B-9133-29DFF5E950D0@...&gt;
+Cc: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Sat, 6 Jun 2009 14:39:17 +0200
+To: Nick Gall &lt;nick.gall@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: YAATRTA HATEOAS
+X-Yahoo-Group-Post: member; u=175757792; y=U78ougX9QSCPLclKM8UvD_cDSzVoUPmMnfT0HJNIVhK0IO0ZSl3L
+X-Yahoo-Profile: roy_fielding
+
+On Jun 6, 2009, at 12:40 PM, Nick Gall wrote:
+&gt; I thought REST was the STYLE! Now we have the style of a style?  
+&gt; I.e, REST is substyle of the hypermedia style?
+
+REST is a composition of constraints that come from many styles.
+
+&gt; So I went back to the thesis to see how you defined hypermedia only  
+&gt; to discover that you don&#39;t. AFAICT there is only one definition  
+&gt; constraining hypermedia in your thesis: Hypermedia is defined by  
+&gt; the presence of application control information embedded within, or  
+&gt; as a layer above, the presentation of information. (I notice that  
+&gt; assertion is not footnoted.)
+&gt;
+&gt; This sentence really doesn&#39;t help since it uses the phrase defined  
+&gt; by not defined as.Thus, the sentence doesn&#39;t say what hypermedia  
+&gt; is, it merely imposes a constraint on the concept of hypermedia --  
+&gt; whatever it may be. Nowhere in the thesis is hypermedia (style)  
+&gt; ever cited or defined. Or is hypermedia not a style but the single  
+&gt; architectural constraint provided by the quoted sentence? All this  
+&gt; kind of makes it a moving target.
+
+*shrug*  I didn&#39;t think it needed to be &quot;defined as&quot; (at the time).
+Too many of my friends are experts in hypertext research and they
+probably would have poked mercilessly at my final defense.
+
+&gt; [Current debate aside, I&#39;d be really interested to hear your  
+&gt; definition of hypermedia, or even just see some pointers to others&#39;  
+&gt; definitions that define it as an interaction style. All the  
+&gt; definitions I&#39;ve ever seen define hypermedia as a kind of media.  
+&gt; Even Ted Nelson defined hypermedia as simply the medium, not the  
+&gt; style.]
+
+See slide 35 (pp. 50-53) of
+
+http://roy.gbiv.com/talks/200804_REST_ApacheCon.pdf
+
+&gt; All that being said, my argument still holds. Even if hypermedia is  
+&gt; defined as an interaction style (or something like a style) as  
+&gt; opposed to a particular kind of media (data), a style is no more an  
+&gt; engine than a set of HTML documents is an engine.
+
+Oh, really?  I wonder what you think engine means.
+
+   http://en.wikipedia.org/wiki/The_Engine
+
+An engine is a system for transforming input into some form
+of output.  The engine in a car is a system for transforming
+gasoline into torque that can be applied to a drive axle.
+
+My little bullet of a constraint
+
+   &quot;hypermedia as the engine of application state&quot;
+
+does not say that the engine is a hypertext document.  It describes
+the engine as being a hypermedia system, much like a car&#39;s engine
+would be described as an internal combustion system.
+
+I did not cite any specific reference for that because (AFAIK)
+there doesn&#39;t exist any specific reference.  I was doing synthesis.
+Nelson&#39;s definition is tied to what he cared about -- non-linear
+writing as a form of poetry.  Conklin was entirely focused on
+graphical user interfaces, so his definition is tied directly to
+GUI affordances.  My observation is something that I considered
+to be inherent in the design largely because the Web was based
+on Engelbart&#39;s view of hypertext, but AFAIK Engelbart never actually
+defined the term other than by how it was used in Augment/NLS
+
+&gt; To support this claim, let me quote further from the paragraph in  
+&gt; which the above quoted sentence appears (4.1.3):
+&gt;
+&gt; Hypermedia is defined by the presence of application control  
+&gt; information embedded within, or as a layer above, the presentation  
+&gt; of information. Distributed hypermedia allows the presentation and  
+&gt; control information to be stored at remote locations. By its  
+&gt; nature, user actions within a distributed hypermedia system require  
+&gt; the transfer of large amounts of data from where the data is stored  
+&gt; to where it is used.
+&gt;
+&gt; Yet again, we see that it is user actions (powered by the browser  
+&gt; software) that singled out as driving the application (&quot;user  
+&gt; actions ... require the transfer of ... data&quot;) -- the system does  
+&gt; not drive itself.
+
+User actions are part of the system being designed.  That paragraph
+is talking about a design constraint imposed by the requirement that
+the information be distributed all around the world.  Aside from using
+the same term in two different ways, I don&#39;t see how that has anything
+to do with your point.  Whether or not the system drives itself is
+irrelevant.
+
+&gt; Saying that hypermedia (the entire system or style) is the engine  
+&gt; is like saying the entire automobile (or the architectural style  
+&gt; called &quot;automobile&quot;) is the engine. It may be true in a Zen-like  
+&gt; way (and believe me, I LOVE mystical philosophies), but it is  
+&gt; utterly confusing to 99% of humanity.
+
+99% of humanity was not my audience, and I&#39;ll hasten to bet that less
+than 1% of humanity knows what an engine means even for something as
+mundane as an automobile.
+
+&gt; It is far clearer to the rest of humanity to say that the browser  
+&gt; (or more generally user agent) is the engine of state, the user is  
+&gt; the driver of state, and hypermedia is the representation of state.
+
+The only reason that is clearer to the rest of humanity is
+because it is wrong.  It&#39;s like saying the Web is defined by
+what a user sees in MSIE.  I don&#39;t care how easy it may be for
+a non-educated user to understand that definition: it is wrong
+and I have no interest in peddling simplified forms.
+
+....Roy
+
+

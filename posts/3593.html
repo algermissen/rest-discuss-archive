@@ -1,0 +1,74 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 16 Apr 2003 18:48:00 -0000
+Received: (qmail 26248 invoked from network); 16 Apr 2003 18:48:00 -0000
+Received: from unknown (66.218.66.217)
+  by m6.grp.scd.yahoo.com with QMQP; 16 Apr 2003 18:48:00 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta2.grp.scd.yahoo.com with SMTP; 16 Apr 2003 18:47:59 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.8/8.12.8) with ESMTP id h3GIo9dl004279;
+	Wed, 16 Apr 2003 11:50:09 -0700 (PDT)
+Date: Wed, 16 Apr 2003 11:50:08 -0700
+Subject: Re: [rest-discuss] REST, HTTP, Sessions and Cookies
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss@yahoogroups.com
+To: Mark Baker &lt;distobj@...&gt;
+In-Reply-To: &lt;20030416110732.I31683@...&gt;
+Message-Id: &lt;3F11511F-703C-11D7-8D86-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt;&gt; That concept tends to be a little confusing, partly because HTTP,
+&gt;&gt; like many network protocols, has a notion of stateless interactions
+&gt;&gt; that only refers to having all of the information needed to
+&gt;&gt; understand each request inside the request or defined by universal
+&gt;&gt; standard.  REST goes further and constrains application state
+&gt;&gt; (not resource state) to be held on the client.
+&gt;
+&gt; Right.  Correct me if I&#39;m wrong, but I&#39;ve always assumed that this
+&gt; additional constraint is a constraint on application semantics.  That
+&gt; is, that a RESTful application semantic may not punt application
+&gt; state.  So &quot;LOGIN&quot; wouldn&#39;t be a permitted semantic, because even 
+&gt; though
+&gt; a LOGIN message may be semantically self-contained (and uniform even),
+&gt; it defers the maintenance of some application state (whether you&#39;re
+&gt; authorized or not) to the server.
+
+Well, keep in mind that the actions of PUT and POST also defer the
+maintenance of state to the server.  Since we could construct a login
+semantic via the PUT of a user-specific resource, with logout being
+signified by a DELETE, it would be odd for REST to disallow LOGIN
+just on the basis of it being a stateful semantic.  I think it is more
+accurate to say that, because user identification must be supplied
+with each request subject to authentication, that an action like LOGIN
+would only add overhead.
+
+&gt; But there&#39;s also a problem if the cookie is defined such that the
+&gt; referenced state varies with time, which I would expect is much more
+&gt; common than varying by gateway.  A message that references some other
+&gt; state may be processed at a time when that state is different than it
+&gt; was when the message was constructed.
+&gt;
+&gt; I understand that this isn&#39;t as relevant to the simple browser/server
+&gt; interactions of today, but architecturally speaking it seems quite
+&gt; important, especially as we move towards disconnected and queued
+&gt; interactions.
+
+That same problem applies to resources.  We could attempt to model REST
+as a shared-memory-by-message-passing system, but don&#39;t because that
+model tries to maintain distributed consistency.  REST just says that
+there is no consistency -- only representations that indicate state
+at some point in the past and an implicit grant of use for some time
+into the future.
+
+....Roy
+
+
+

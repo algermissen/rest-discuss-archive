@@ -1,0 +1,99 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 99318 invoked from network); 25 Mar 2006 00:57:39 -0000
+Received: from unknown (66.218.66.166)
+  by m6.grp.scd.yahoo.com with QMQP; 25 Mar 2006 00:57:39 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta5.grp.scd.yahoo.com with SMTP; 25 Mar 2006 00:57:39 -0000
+Received: from wsip-70-183-59-151.oc.oc.cox.net ([70.183.59.151] helo=[10.2.8.57])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1FMx5O-0005Hy-Jp; Fri, 24 Mar 2006 16:56:58 -0800
+In-Reply-To: &lt;44241657.9060805@...&gt;
+References: &lt;EED355D2-254F-4777-9F50-0BDC3953265E@...&gt; &lt;87zmjgjegy.fsf@...&gt; &lt;929FCF3F-3EF6-43A5-8E1A-F5878EC675F4@...&gt; &lt;4423DCFF.6090401@...&gt; &lt;C4F29735-370B-40CF-B92B-8E0581454DD5@...&gt; &lt;4423E115.3060108@...&gt; &lt;3DF1CB76-8D3A-4DD7-B191-21D915D76313@...&gt; &lt;44241657.9060805@...&gt;
+Mime-Version: 1.0 (Apple Message framework v746.3)
+Content-Type: text/plain; charset=ISO-8859-1; delsp=yes; format=flowed
+Message-Id: &lt;84C4F4F4-650A-41D5-B374-CA7BB9478DB2@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: quoted-printable
+Date: Fri, 24 Mar 2006 16:56:54 -0800
+To: bill@...
+X-Mailer: Apple Mail (2.746.3)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] 418 Invalid [was HTTP Status code question]
+X-Yahoo-Group-Post: member; u=175757792; y=wO-I6fJ-C1lD8xho_bTcdiFdIC8vKccHjiX9Gui_jTB7Z3SmVQwx
+X-Yahoo-Profile: roy_fielding
+
+On Mar 24, 2006, at 7:55 AM, Bill de h=D3ra wrote:
+
+&gt; Jan Algermissen wrote=
+:
+&gt;&gt;
+&gt;&gt; On Mar 24, 2006, at 1:07 PM, Jon Hanna wrote:
+&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; Why not. I=
+t tells us that the request cannot be successfully tried
+&gt;&gt;&gt; againt without=
+ alteration. It tells proxies that too.
+&gt;&gt;&gt;
+&gt;&gt;
+&gt;&gt; &lt;quote&gt;
+&gt;&gt; 10.4.1 400 Bad=
+ Request
+&gt;&gt;
+&gt;&gt; The request could not be understood by the server due to mal=
+formed
+&gt;&gt; syntax. The client SHOULD NOT repeat the request without  
+&gt;&gt; mod=
+ifications.
+&gt;&gt; &lt;/quote&gt;
+&gt;
+&gt; 418 Invalid
+&gt;
+&gt; The request could not be comple=
+ted due to a validation failing against
+&gt; the sent entity. This code is onl=
+y allowed in situations where it is
+&gt; expected that the user might be able =
+to resubmit the request with  
+&gt; valid
+&gt; content and where the sent content=
+ was syntactically correct according
+&gt; to its media type. The response body=
+ SHOULD include enough information
+&gt; for the user to recognize the source o=
+f the conflict. Invalidations  
+&gt; are
+&gt; most likely to occur in response to=
+ a PUT or POST request.
+
+Yep, that&#39;s what I would do, though a properly spe=
+cified response code
+would never include that second sentence &quot;This code is=
+ only allowed ...&quot;
+since servers are always right (and never omnipotent).  =
+And the last
+sentence is kind of goofy -- request payload is unlikely to be=
+
+invalid when it isn&#39;t present.
+
+Do you want me to standardize it?
+
+Of cour=
+se, it would help if browsers would implement HTTP, eventually,
+and treat t=
+he code as a 400 if not understand.
+
+....Roy
+

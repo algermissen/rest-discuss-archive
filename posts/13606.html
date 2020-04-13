@@ -1,0 +1,102 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 43182 invoked from network); 2 Oct 2009 04:13:12 -0000
+X-Received: from unknown (98.137.34.44)
+  by m3.grp.re1.yahoo.com with QMQP; 2 Oct 2009 04:13:12 -0000
+X-Received: from unknown (HELO spaceymail-a2.g.dreamhost.com) (208.113.200.5)
+  by mta1.grp.sp2.yahoo.com with SMTP; 2 Oct 2009 04:13:11 -0000
+X-Received: from [192.168.0.101] (ip72-211-202-154.oc.oc.cox.net [72.211.202.154])
+	by spaceymail-a2.g.dreamhost.com (Postfix) with ESMTP id 71797EE3DD;
+	Thu,  1 Oct 2009 21:13:11 -0700 (PDT)
+In-Reply-To: &lt;a6a6df360910010419h67c1f9c0w5b9dc450ed942704@...&gt;
+References: &lt;h9gim7+j49u@...&gt; &lt;de70b39d0909241441m396cf1cev5bf895a53de7c6d3@...&gt;  &lt;46DFBCA3-66A7-4BBC-B1F9-177BE4A9C0AA@...&gt; &lt;106b72590909301411p74f893bep238132cd2e9fb5b7@...&gt;  &lt;D96BB382-477A-4B85-A984-32E5D255D8E3@...&gt; &lt;a6a6df360910010419h67c1f9c0w5b9dc450ed942704@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;82DC6FB8-F259-45A7-A427-29869CE6492B@...&gt;
+Cc: Jan Algermissen &lt;algermissen1971@...&gt;,
+	Bediako George &lt;bediakogeorge@...&gt;,
+	Stefan Tilkov &lt;stefan.tilkov@...&gt;,
+	Noah Campbell &lt;noahcampbell@...&gt;,
+	&quot;pablo.fernandez@...&quot; &lt;fernandezpablo85@...&gt;,
+	rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Thu, 1 Oct 2009 21:13:16 -0700
+To: Nick Gall &lt;nick.gall@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Newbie REST Question
+X-Yahoo-Group-Post: member; u=175757792; y=XyAREJd7qzQh-SIq7i6IegkLReBAsLV8aM3dVViKyCa0KA5bF_gC
+X-Yahoo-Profile: roy_fielding
+
+On Oct 1, 2009, at 4:19 AM, Nick Gall wrote:
+&gt; If (i) means &quot;organizing its URI space in a stable manner&quot;, ie so  
+&gt; that bookmarking URIs works over long periods of time, then the  
+&gt; practice of bookmarking is a violation of REST -- assuming that  
+&gt; REST means minimizing dependency on stable URIs and instead  
+&gt; navigating to potentially transient URIs via stable media types and  
+&gt; HATEOAS.
+
+Why would navigating imply transient URIs?
+
+There are times when the best RESTful design will conflict
+with UI guidelines (split-page processing) or browser limitations.
+The goal here is not to run away screaming whenever something
+doesn&#39;t match the ideal -- it is to recognize there is a
+problem and find a way to compensate for it (e.g., by changing
+the mode of interaction, using better clients, introducing
+code to compress multiform steps into a single network
+interaction, or just buying bigger machines).
+
+Minimizing dependencies does not mean that one cannot
+have a rich and well-defined URI space.  Such dependencies
+can be programmatically adjusted as whole trees of resources
+just as easily as any single resource.  However, that doesn&#39;t
+mean that REST implies one particular design of URI space
+is somehow &quot;more RESTful&quot; than some other design, which
+was the original point being argued.  Aside from the legacy
+cache issues, any given organized structure is just as
+good as any other organized structure, and both are better
+than a disorganized structure. That&#39;s what we mean by
+&quot;it just doesn&#39;t matter to REST how you design your URIs.&quot;
+
+IIRC, the complaint was about APIs that have a standard
+URI structure.  The problem with that is not the structure,
+but rather the way that the structure is communicated to
+clients (by antiquated agreement rather than by following
+your nose).  The follow-your-nose style has the built-in
+capacity for indirection and redirection at the time
+of the current interaction, whereas standard layouts
+encourage the client to bake-in assumptions that will
+inevitably break.
+
+That does not mean it isn&#39;t RESTful to have permanent URIs.
+REST is still dependent on at least one starting URI, and
+thus it is always going to be better for the URIs to be
+permanent.  It just isn&#39;t necessary to structure the
+application around such permanence.
+
+Bookmarks are resource identifiers from a prior interaction.
+They are bread-crumbs. Sometimes they get eaten.
+
+REST doesn&#39;t enter into the discussion until one of the
+URIs is actively traversed and the application enters one of
+its initial states.  After that point the user agent is led
+by the nose through the application.  If the application is
+designed correctly, then the only times that the user agent
+will pause long enough to make a bookmark will be at one of
+the application steady states, which should correspond to one
+of the cool URIs.  In other words, a RESTful architecture will
+expose the cool URIs (and only the cool URIs) to the user.
+
+REST cannot remove all the points of coupling.  It can reduce
+those points of coupling to the set of URIs that an organization
+is willing to maintain over time for bookmarks (cool URIs).
+How many of those you have is entirely up to the organization.
+It is certainly possible for all of the URIs to be maintained.
+
+....Roy
+
+

@@ -1,0 +1,60 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 73624 invoked from network); 5 May 2008 21:17:47 -0000
+X-Received: from unknown (66.218.67.96)
+  by m56.grp.scd.yahoo.com with QMQP; 5 May 2008 21:17:47 -0000
+X-Received: from unknown (HELO spaceymail-a5.g.dreamhost.com) (208.113.200.5)
+  by mta17.grp.scd.yahoo.com with SMTP; 5 May 2008 21:17:47 -0000
+X-Received: from [192.168.0.160] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a5.g.dreamhost.com (Postfix) with ESMTP id 20FD087081
+	for &lt;rest-discuss@yahoogroups.com&gt;; Mon,  5 May 2008 14:17:47 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v753)
+Content-Transfer-Encoding: 7bit
+Message-Id: &lt;A3B97F07-C699-4A9A-8C49-581B3AECDF56@...&gt;
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+To: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Date: Mon, 5 May 2008 14:17:42 -0700
+X-Mailer: Apple Mail (2.753)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: REST is not just file storage
+X-Yahoo-Group-Post: member; u=175757792; y=xra5G9v4eJcGinoJrJoCc1Se34AlAY0U6yWg6GWt06r00QcR0Xqq
+X-Yahoo-Profile: roy_fielding
+
+There seems to be a common thread with most posts here.  People
+have been busy modeling everything as a resource and now they
+want to know how to do everything in a PUT or DELETE instead of
+any of the other HTTP methods.  That is wrong.  That is thinking
+HTTP is just a &quot;Save as...&quot; dialog.
+
+REST is not limited to GET, PUT, and DELETE.  Anyone who says so
+is just making things up as they go along.  REST is limited to the
+client being told what to do next by the current state of where
+they are now, aside from the entry point(s) we call a bookmark.
+That is feasible because the set of methods is uniform, not because
+it is limited to CRUD.  POST is an equal party in the REST interface,
+particularly when actions are being applied to the resources that
+are a composite of multiple source resources.  So is PATCH.
+
+Doing RESTful actions on multiple resources is no different from
+selecting multiple tunes in iTunes and using the info dialog
+to set certain properties across all selected tunes.  It is a UI issue.
+The UI builds a set of actions to perform and then performs them
+in whatever way is most efficiently provided by the set of resources
+being operated upon.  If those resources (or, rather, the index to
+those resources) say they can be operated upon as a group by POST
+of a selection form, then so be it -- that is perfectly RESTful
+even without the benefit of per-resource cache invalidation.
+Likewise for PATCH or PUT to a meta-resource, or PROPPATCH to a
+WebDAV resource, it is RESTful if there is some engine described
+by a representation provided by the origin server that instructs
+the client on what to do next.
+
+The goals are to remove coupling and maximize the number of
+reusable resources.
+
+....Roy
+
+

@@ -1,0 +1,126 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 95451 invoked from network); 4 Oct 2003 13:29:03 -0000
+Received: from unknown (66.218.66.216)
+  by m13.grp.scd.yahoo.com with QMQP; 4 Oct 2003 13:29:02 -0000
+Received: from unknown (HELO fed1mtao07.cox.net) (68.6.19.124)
+  by mta1.grp.scd.yahoo.com with SMTP; 4 Oct 2003 13:29:02 -0000
+Received: from mac.wakasoft.com ([68.5.5.20]) by fed1mtao07.cox.net
+          (InterMail vM.5.01.06.05 201-253-122-130-105-20030824) with ESMTP
+          id &lt;20031004132855.REZT13061.fed1mtao07.cox.net@...&gt;;
+          Sat, 4 Oct 2003 09:28:55 -0400
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id h94DSa3d000823;
+	Sat, 4 Oct 2003 06:28:36 -0700 (PDT)
+Date: Sat, 4 Oct 2003 06:28:35 -0700
+Subject: Re: [rest-discuss] REST&#39;s Definition of Resource (fwd)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: algermissen@...
+In-Reply-To: &lt;3F7EC5A6.5B800E8D@...&gt;
+Message-Id: &lt;A8143CDC-F66E-11D7-81BC-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; What I did not understand was that on the one hand REST says that the
+&gt; naming authority decides what the resource is that a given URI 
+&gt; identifies
+&gt; and that on the other hand people on this list said that the user of
+&gt; a URI (the link maker) decides what resource it identifies.
+&gt;
+&gt; Then I understood you to say that
+&gt;
+&gt; - a URI (directly) identifies the one resource that the naming 
+&gt; authority
+&gt;   decides it to identify.
+&gt;
+&gt; - a URI (may) **indirectly** identify other resources depending on the
+&gt;   intention of the URI-user (the link-maker)
+
+It would be better to say that the link-maker is indirectly identifying
+other resources (for which he is ignorant of a better URI, if any)
+through use of a URI that seems to result in what he wants when it
+is used.  Whether or not his intended resource is, in fact, the one
+identified by the URI (by means of the owner maintaining the mapping)
+is unknown to that link-maker.
+
+It gets worse: over time, if the majority of link-makers have a 
+different
+opinion about the nature of the resource being identified than the 
+owner,
+they might change the owner&#39;s opinion as well.  [oh, you mention that 
+later]
+
+&gt; I haven&#39;t seen the idea of URIs indirectly identifying resources used 
+&gt; in
+&gt; the context of REST before, that&#39;s why I asked what you (or REST) mean 
+&gt; by
+&gt; it.
+
+Hmm, well, from my point of view, the idea that &quot;http&quot; URIs are ever
+used to directly identify anything is a bit absurd.  The interface is
+there to hide the nature of what is behind it, and it cannot do that
+very well if the clients have to know what it is.
+
+&gt; The practical problem I have is this:
+&gt;
+&gt; The moment a user agent sends a request to the origin server, any 
+&gt; &#39;indirection
+&gt; information&#39; is lost due to REST&#39;s unique addressing context. 
+&gt; Certainly,
+&gt; the origin server &#39;knows&#39; what resource the URI (directly) identifies 
+&gt; because
+&gt; that is controlled by the naming authority. But all intermediaries 
+&gt; have no way
+&gt; of seeing/accessing any information about indirection in 
+&gt; identification.
+
+The server doesn&#39;t know either -- it relies on the human maintainer to 
+know
+well enough to set up the correct mechanism for the mapping.
+
+&gt; I read about the idea (thanks Mark!) that intermediaries can provide
+&gt; information about the resources that the URIs identify they see in 
+&gt; requests
+&gt; &#39;running through&#39; them and weave that information into the 
+&gt; representation
+&gt; returned to the user agent. It was then that I understood the 
+&gt; advantages of
+&gt; a unique addressing context, because the intermediary knows that a 
+&gt; given
+&gt; URI unambiguously identifies a single resource.
+&gt;
+&gt; Given the idea of &#39;indirect identification&#39; the question arises, how
+&gt; intermediaries can usefully enhance representations with information 
+&gt; they
+&gt; obtained, for example, from an RDF document.
+
+They can only state what they know, and that very carefully.  Just like
+real life, an intermediary must either state only what it has observed
+in the past, or state its predictions on the future in terms that make
+clear they are only guesses based on past observations.
+
+&gt; I like the collaboration idea, which seems to come down to the 
+&gt; possibility
+&gt; that many *indirect* identifications can affect/alter a naming 
+&gt; authority&#39;s
+&gt; decision about the *direct* identification. Wonder how intermediaries 
+&gt; can
+&gt; contribute to this process.
+
+That is one of the main weaknesses of HTTP -- there is no way for a
+proxy to distinguish between authoritative responses and ones that
+it cooked up on its own.
+
+I&#39;ll be in England this week, so no more from me on this thread.
+
+....Roy
+
+
+

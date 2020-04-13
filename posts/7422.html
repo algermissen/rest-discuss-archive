@@ -1,0 +1,63 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 97290 invoked from network); 4 Jan 2007 00:52:52 -0000
+Received: from unknown (66.218.67.34)
+  by m25.grp.scd.yahoo.com with QMQP; 4 Jan 2007 00:52:52 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta8.grp.scd.yahoo.com with SMTP; 4 Jan 2007 00:52:52 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.55])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1H2Grr-0007Bt-B8; Wed, 03 Jan 2007 16:54:03 -0800
+In-Reply-To: &lt;enhhbv+v0d5@...&gt;
+References: &lt;enhhbv+v0d5@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;64169E77-40FB-48AD-BA61-9FCA165A4BA0@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Wed, 3 Jan 2007 16:52:11 -0800
+To: &quot;Steve G. Bjorg&quot; &lt;steveb@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: Request for feedback: REST for the Rest of Us
+X-Yahoo-Group-Post: member; u=175757792; y=b4w8IHWudfzmEm4UahDpcjvAn251EeUu7KjMBw3VGIDIt-nTLQ2_
+X-Yahoo-Profile: roy_fielding
+
+On Jan 3, 2007, at 4:22 PM, Steve G. Bjorg wrote:
+&gt; Bill de hOra wrote:
+&gt; &gt; Bill, the same resource is the accessed in both cases as the  
+&gt; resource
+&gt; &gt; identifier is the same - namely the pieces up to the query string  
+&gt; (see
+&gt; &gt; para two in 3.2.2 of the HTTP spec).
+&gt;
+&gt; Wonderful! All is good then.
+
+That was the case back in 1994, when I wrote it.  It has not been true
+for a long time since.  It is one of those things that became untrue
+once people realized that the interface had no reason to respect such
+a distinction (and rightly so -- it introduces coupling where none is
+needed) and so the distinction was removed server-side to reflect the
+migration of resources to new implementations.
+
+The resource in HTTP is the mapping from the entire identifier
+(including scheme, authority, path, and query) to a set of values.
+For two resources to be the same, they must map to the same set
+of values for all time.  There is no way to determine that by
+inspecting the identifiers, aside from scheme-defined equivalence.
+
+....Roy
+
+
+

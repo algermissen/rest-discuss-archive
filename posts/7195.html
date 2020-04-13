@@ -1,0 +1,145 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 67095 invoked from network); 5 Dec 2006 01:26:46 -0000
+Received: from unknown (66.218.67.33)
+  by m35.grp.scd.yahoo.com with QMQP; 5 Dec 2006 01:26:46 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta7.grp.scd.yahoo.com with SMTP; 5 Dec 2006 01:26:45 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.55])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1GrP5o-0006x5-Li; Mon, 04 Dec 2006 17:27:32 -0800
+In-Reply-To: &lt;0659880A-25F1-4174-8FAE-23B7743A17EB@...&gt;
+References: &lt;0659880A-25F1-4174-8FAE-23B7743A17EB@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;11B29291-86AF-4444-8CC8-D936D9168E14@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Mon, 4 Dec 2006 17:26:37 -0800
+To: Jan Algermissen &lt;algermissen1971@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Dynamic Evolvability
+X-Yahoo-Group-Post: member; u=175757792; y=nXVy6YhYukvN0LUlczOhmtVStQ0qsUbuvoqunNhUiMJqotL_sGls
+X-Yahoo-Profile: roy_fielding
+
+On Dec 4, 2006, at 2:57 PM, Jan Algermissen wrote:
+&gt; Roy writes in his dissertation:
+&gt;
+&gt; &quot;2.3.4.1 Evolvability
+&gt;
+&gt; Evolvability represents the degree to which a component
+&gt; implementation can be changed without negatively impacting other
+&gt; components. Static evolution of components generally depends on how
+&gt; well the architectural abstraction is enforced by the implementation,
+&gt; and thus is not something unique to any particular architectural
+&gt; style. Dynamic evolution, however, can be influenced by the style if
+&gt; it includes constraints on the maintenance and location of
+&gt; application state. The same techniques used to recover from partial
+&gt; failure conditions in a distributed system [133] can be used to
+&gt; support dynamic evolution.&quot;[1]
+&gt;
+&gt; While trying to flesh out the argument that REST does increase
+&gt; dynamic evolvability (and that SOA (whatever it really is) does not,
+&gt; if so) I realized that I am not entirely clear what architectral
+&gt; constraint of REST increases dynamic evolvability and why it does so.
+
+I am &quot;pretty sure&quot; that I was thinking of the constraint that  
+application
+state be kept on the user agent.  It is dynamic evolution in the  
+sense that
+an old origin server can be replaced with a new one in the middle of one
+browser&#39;s ongoing conversation with a website (aside from the current
+message streams, which are presumed to complete before the origin server
+is replaced). Likewise, servers don&#39;t need to remember clients, so  
+replacing
+a piece of client software does not affect other clients or servers.
+Use of URIs also helps in that regard (as opposed to using something
+that is less portable during evolution, like UUIDs).
+
+It is difficult for me to remember the exact origin of what I was  
+thinking
+at the time because architectural properties were the first parts of the
+dissertation written down (part of the survey paper) and I changed the
+categories around several times.  Most software research calls them
+&quot;qualities&quot; (mostly because that is what Boehm called them in early
+studies, IIRC), though some other sources refer to them as principles,
+requirements, or a host of other disturbing things.
+
+My first thought today was that I must have picked that definition up
+from some conversation with my apartment-mate (Peyman Oreizy).  His
+dissertation on decentralized software evolution can be found at
+
+    http://www.ics.uci.edu/~peymano/
+
+but he seems to have settled on a different set of terms from the
+ones that I used.  It is worth reading anyway if you are interested
+in software evolution (or adaptability).
+
+&gt; The reference to Waldo&#39;s &quot;Note on Disributed Computing&quot; suggests -if
+&gt; I understand correctly- that one of the problems of dynamic evolution
+&gt; is to leave the calling component in a consistent state if the
+&gt; interface of the called component unexpectedly changes. IOW, making a
+&gt; call to a remote object should either succeed or fail with a clear
+&gt; error indication that tells the caller that the interface changed and
+&gt; how.
+
+Er, possible, but more likely I was just thinking of partial failure
+conditions being the result of evolution-in-situ.
+
+&gt; Regarding REST I understand this:
+&gt;
+&gt; While REST&#39;s uniform interface constraint cannot prevent a remote
+&gt; component from changing its interface as part of an evolution (e.g.
+&gt; it could remove former support for PUT) the client will know exactly
+&gt; what happened since it knows the method semantics (they are uniform)
+&gt; and the error code (&quot;405 Method Not Allowed&quot;) indicates the reason
+&gt; for the failure. IOW, dynamic evolvability is increased because the
+&gt; called component can change without brealing the client (because the
+&gt; client is required to understand and expect a 405).
+&gt;
+&gt; Is this understanding correct?
+
+I think it is more accurate to say that a resource cannot change
+its interface as part of an evolution because all resources have
+the same interface.  (405 doesn&#39;t change the interface -- it is an
+answer to the request via the same interface.)  But REST does not
+require use of a single interface protocol, so in that sense the
+interface could change dynamically (e.g., HTTP Upgrade).
+
+&gt; Assuming it is correct, does WS-* (being a SOA implementation) pass
+&gt; the test or not?
+&gt; (Without interface uniformity, all the server can really tell the
+&gt; client upon an interface change is: &quot;Interface changed&quot;. This IMHO
+&gt; violates the constraint that the client must be in a consistent state
+&gt; after the failed call).
+
+WS-* doesn&#39;t *do* anything, and thus doesn&#39;t qualify for any test.
+You would have to test an application architecture that happens to
+use WS-* in a specific way that is testable.  HTTP doesn&#39;t
+&quot;pass&quot; the test in isolation either -- it only passes when a
+REST-based application makes use of HTTP in a RESTful way.
+
+&gt; Can anyone explain to me, how the location of application state
+&gt; affects dynamic evolvability? I am honsetly missing a clue here (or
+&gt; do not see the forrest for the trees).
+
+Consider what happens when a stateful server is replaced in the
+middle of a conversation with a client by a new server which seems
+just like the old one but has no idea what stage the client is
+within its application.
+
+....Roy
+
+

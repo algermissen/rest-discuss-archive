@@ -1,0 +1,89 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 37663 invoked from network); 1 Jan 2005 22:32:49 -0000
+Received: from unknown (66.218.66.217)
+  by m24.grp.scd.yahoo.com with QMQP; 1 Jan 2005 22:32:49 -0000
+Received: from unknown (HELO fed1rmmtao06.cox.net) (68.230.241.33)
+  by mta2.grp.scd.yahoo.com with SMTP; 1 Jan 2005 22:32:49 -0000
+Received: from [192.168.0.100] (really [68.4.71.218])
+          by fed1rmmtao06.cox.net
+          (InterMail vM.6.01.04.00 201-2131-117-20041022) with ESMTP
+          id &lt;20050101223249.FOX17071.fed1rmmtao06.cox.net@[192.168.0.100]&gt;;
+          Sat, 1 Jan 2005 17:32:49 -0500
+In-Reply-To: &lt;41D710C0.4020501@...&gt;
+References: &lt;cqrrt3+8dlm@...&gt; &lt;1104275921.23578.30.camel@phoenix&gt; &lt;C5106884-5942-11D9-B3AF-000D93324AD6@...&gt; &lt;1104331678.23563.23.camel@phoenix&gt; &lt;7EBCED3F-5A0A-11D9-B3AF-000D93324AD6@...&gt; &lt;BAY101-DAV1645BF2289FFCBE2118FFDD89C0@...&gt; &lt;41D42376.80605@...&gt; &lt;E88B1B4B-5AB0-11D9-B3AF-000D93324AD6@...&gt; &lt;41D48951.2090602@...&gt; &lt;4003B4EC-5AF5-11D9-B3AF-000D93324AD6@...&gt; &lt;41D534C4.6050103@...&gt; &lt;41D6F7F4.7010109@...&gt; &lt;41D710C0.4020501@...&gt;
+Mime-Version: 1.0 (Apple Message framework v619)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;117ECBD5-5C45-11D9-B3AF-000D93324AD6@...&gt;
+Content-Transfer-Encoding: 7bit
+Cc: algermissen@...,
+ rest discuss &lt;rest-discuss@yahoogroups.com&gt;
+Date: Sat, 1 Jan 2005 14:32:50 -0800
+To: Julian Reschke &lt;julian.reschke@...&gt;
+X-Mailer: Apple Mail (2.619)
+X-eGroups-Remote-IP: 68.230.241.33
+From: Roy T. Fielding &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] REST and the design of HTTP methods
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+On Jan 1, 2005, at 1:06 PM, Julian Reschke wrote:
+&gt; Extensibility of header names? Internationalization considerations?
+&gt; Namespace operations? Updates of properties?
+&gt;
+&gt; Anyway, this:
+&gt;
+&gt; 	&quot;WebDAV and the Birth of Properties&quot;
+&gt; &lt;http://lists.w3.org/Archives/Public/w3c-dist-auth/1998OctDec/ 
+&gt; 0074.html&gt;
+&gt;
+&gt; may also be an interesting read...
+
+Yeah, Yaron&#39;s twisted little view of history.  It would be more  
+accurate to say
+that some people insisted HTTP could not carry internationalized data in
+header fields (which is blatantly false -- it is only inconveniently  
+encoded),
+and thus spawned an incredibly convoluted XML format for properties,  
+which
+later got boiled down to name-value pairs (like all metadata systems).   
+DASL
+got invented because an XML search interface was needed to deal with  
+the complex
+properties, but was later dropped due to lack of interest in a  
+half-assed
+variation of what the real database people were working on with XQuery.
+
+The issue of identification started because of a really bad paper tiger  
+design
+for munging URIs that was proposed by someone else, rejected, and then  
+replaced
+by me during a meeting at Xerox PARC with the imagemap-style URI  
+provided
+by the server.  Larry did not object to that style of munging.  The  
+design was
+not used by WebDAV because the editors chose not to for some unknown  
+reason,
+not because there was any objection from the working group (on the  
+contrary,
+both Henrik and I objected to the extra methods).  All of that nonsense
+about extra round-trips is just bullshit invented by Yaron --  
+Microsoft&#39;s own
+implementations had no such concern for round-trips and actually made  
+two
+unnecessary requests prior to each WebDAV resource action just to check  
+if it
+was actually WebDAV-enabled.
+
+WebDAV is stuck with that design because we let Microsoft dominate the
+working group as the only significant implementation.  Apache&#39;s mod_dav
+didn&#39;t come along until much later.  Henrik&#39;s implementation in libwww,
+completed during the HTTP/1.1 design, was ignored because it didn&#39;t use  
+XML.
+
+....Roy
+
+
+

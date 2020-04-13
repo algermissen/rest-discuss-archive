@@ -1,0 +1,105 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 76046 invoked from network); 2 Oct 2006 22:09:49 -0000
+Received: from unknown (66.218.67.34)
+  by m33.grp.scd.yahoo.com with QMQP; 2 Oct 2006 22:09:49 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta8.grp.scd.yahoo.com with SMTP; 2 Oct 2006 22:09:48 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.53])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1GUVzG-00031b-Al; Mon, 02 Oct 2006 15:10:10 -0700
+In-Reply-To: &lt;c70bc85d0610020837m4f1263c3s4e315d71fa20b45c@...&gt;
+References: &lt;a373dc740609252215t7873f84eof0ddd6fb334959af@...&gt; &lt;490201DC-8CD9-4192-A5D3-D061D982A8B5@...&gt; &lt;a373dc740609281244h1ad3b271s2599871582034dbb@...&gt; &lt;1159599633.7305.35.camel@...&gt; &lt;EDE8063D-534B-426B-A42F-CC3930858FB8@...&gt; &lt;87y7s0e9ig.fsf@...&gt; &lt;F04F5B63-4792-44F2-B588-133CE745562A@...&gt; &lt;87ven4e194.fsf@...&gt; &lt;20C6ED3C-96BA-4E9D-AFB1-A197FC9F2307@...&gt; &lt;c70bc85d0610020837m4f1263c3s4e315d71fa20b45c@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;6979E4DE-1F4E-4099-BE95-089D37FD98CC@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Mon, 2 Oct 2006 15:09:30 -0700
+To: Mark Baker &lt;distobj@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Seeking feedback on the Blinksale API
+X-Yahoo-Group-Post: member; u=175757792; y=Ndzl3FV0ABE-BexdUmFWmHviaBk_MLF9oaG3vkfx78xHqNZ5RIq-
+X-Yahoo-Profile: roy_fielding
+
+On Oct 2, 2006, at 8:37 AM, Mark Baker wrote:
+&gt; On 10/1/06, Roy T. Fielding &lt;fielding@...&gt; wrote:
+&gt; &gt; Well, so do I. Self-descriptive means that the type is registered  
+&gt; and
+&gt; &gt; the registry points to a specification and the specification  
+&gt; explains
+&gt; &gt; how to process the data according to its intent.
+&gt;
+&gt; Ok, which one is it? 8-)
+&gt;
+&gt; &quot;REST enables intermediate processing by constraining messages to be
+&gt; self-descriptive: interaction is stateless between requests, standard
+&gt; methods and media types are used to indicate semantics and exchange
+&gt; information, and responses explicitly indicate cacheability.&quot;
+
+Both.  That is just a summary.  The real constraint you are looking
+for is under 5.2.1:
+
+    REST provides a hybrid of all three options by focusing on a
+    shared understanding of data types with metadata, but limiting
+    the scope of what is revealed to a standardized interface.
+    REST components communicate by transferring a representation of
+    a resource in a format matching one of an evolving set of standard
+    data types, selected dynamically based on the capabilities or
+    desires of the recipient and the nature of the resource. Whether
+    the representation is in the same format as the raw source, or is
+    derived from the source, remains hidden behind the interface. ...
+
+This is one of those gray areas of increasing RESTfulness that will
+doubtless drive some people nuts.  The problem is that I can&#39;t say
+&quot;REST requires media types to be registered&quot; because both Internet
+media types and the registry controlled by IANA are a specific
+architecture&#39;s instance of the style -- they could just as well be
+replaced by some other mechanism for metadata description.
+
+The broader question is what does it take to create an *evolving*
+set of standard data types?  Obviously, I can&#39;t say that all data
+types have to be *the* standard before they are used in a REST-based
+architecture.  At the same time, I do require enough standardization
+to allow the data format sent to be understood as such by the
+recipient.  Hence, both sender and recipient agree to a common
+registration authority (the standard) for associating media types
+with data format descriptions.  The degree to which the format chosen
+is a commonly accepted standard is less important than making sure
+that the sender and recipient agree to the same thing, and that&#39;s
+all I meant by an evolving set of standard data types.
+
+Sure, it is easier to deploy the use of a commonly understood data
+format.  However, it is also more efficient to use a format
+that is more specifically intended for a given application.
+Where those two trade-offs intersect is often dependent on the
+application.  REST does not demand that everyone agree on a single
+format for the exchange of data -- only that the participants in the
+communication agree.  Beyond that, designers need to apply their
+own common sense and choose/create the best formats for the job.
+
+If we want to call one more RESTful than the other, then we have
+to take the goal of evolution into account.  I would say it is more
+RESTful to use a specific standard type when applicable or to define
+a new type that is specific to a given purpose AND intended to be
+standardized for that application type (i.e., proprietary types are
+less RESTful than industry-wide standard types, but new standard
+types are not less RESTful than old standard types).  But that is
+really only my personal preference, since the style does not
+constrain REST-based architectures to a single standard.
+
+....Roy
+
+

@@ -1,0 +1,112 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 57093 invoked from network); 1 Nov 2005 13:05:51 -0000
+Received: from unknown (66.218.66.217)
+  by m30.grp.scd.yahoo.com with QMQP; 1 Nov 2005 13:05:51 -0000
+Received: from unknown (HELO picanmix.dev.day.com) (212.249.34.130)
+  by mta2.grp.scd.yahoo.com with SMTP; 1 Nov 2005 13:05:51 -0000
+Received: from eu-mail.day.com (eu-mail.dev.day.com [10.0.0.30])
+        by picanmix.dev.day.com (DAY) with ESMTP id jA1D5lY06023;
+        Tue, 1 Nov 2005 14:05:47 +0100 (MET)
+Received: from [10.0.0.54] ([10.0.0.54])
+          by eu-mail.day.com (Lotus Domino Release 5.0.8)
+          with ESMTP id 2005110114054563:7378 ;
+          Tue, 1 Nov 2005 14:05:45 +0100 
+In-Reply-To: &lt;4366F7EA.7BE018D9@...&gt;
+References: &lt;436284EE.5090109@...&gt; &lt;436650E2.8050407@...&gt; &lt;57D59A1B-FB9C-482E-B3BB-54D008C7F3AB@...&gt; &lt;436684DC.2070102@...&gt; &lt;298F2AFB-D6C8-4A0C-B294-3E80C409A84F@...&gt; &lt;4366F7EA.7BE018D9@...&gt;
+Mime-Version: 1.0 (Apple Message framework v623)
+Message-Id: &lt;5aaa0c56f669f40d1ec642b690f4dc71@...&gt;
+Cc: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Date: Tue, 1 Nov 2005 05:05:52 -0800
+To: Seth Johnson &lt;seth.johnson@...&gt;
+X-Mailer: Apple Mail (2.623)
+X-MIMETrack: Itemize by SMTP Server on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 11/01/2005
+ 02:05:45 PM,
+	Serialize by Router on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 11/01/2005
+ 02:05:46 PM,
+	Serialize complete at 11/01/2005 02:05:46 PM
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] opaque URIs and RFC 2397 URIs
+X-Yahoo-Group-Post: member; u=175757792; y=aRHA3yP-qSSk7eCjUIvqW9-BEhFj0v4PB75UVYKhfDbMC6TmBMFV
+X-Yahoo-Profile: roy_fielding
+
+On Oct 31, 2005, at 9:06 PM, Seth Johnson wrote:
+&gt; I thought Josh&#39;s explanation made sense.  Analyzing the URL moves
+&gt; away from treating hypermedia as the engine of application
+&gt; state.  That said, it appears that opacity isn&#39;t so much a
+&gt; principle of REST as it&#39;s an original principle of the web that
+&gt; Fielding didn&#39;t really care to integrate so much.
+
+No, it is just that people are different from machines,
+servers are different from clients, and TimBL used the word
+&quot;Axiom&quot; to mean architectural constraint.  In order to understand
+TimBL&#39;s design notes, you have to know about the context in which
+he is writing a response.  In this case, various thoughts were
+recorded as the &quot;Opacity Axiom&quot; in response to a discussion about
+client behavior and the perceived need for URNs.  It has long
+since been taken out of context and abused in various ways.
+
+Also, keep in mind that TimBL&#39;s design note was written two
+years after Henrik and I worked out the important bits of what
+would become the HTTP object model, later re-named REST to get
+away from OOM terms, about 18 months after we had similar
+discussions at MIT with TimBL and the rest of the W3C team, and
+more than a year after HTTP/1.0 was finished and HTTP/1.1 proposed.
+So, saying it was something that I &quot;didn&#39;t really care to
+integrate so much&quot; is missing the mark by quite a bit -- he is
+trying to describe our model to people who did not understand it.
+
+The opacity principle, as actually used on the Web, refers only
+to the machine interpretation of request processing as being
+dependent on control data (e.g., hypertext anchors and message
+field names) rather than on metadata appearing within the URI.
+It is the same reason why we distinguish media types from data
+formats -- the fact that a string of bytes looks like angle tags
+doesn&#39;t mean we want to process it as HTML.  Ignoring any
+semantically significant data in a URI allows operations on a
+resource to be orthogonal to identification of the resource.
+
+REST does include the opacity axiom in the original sense of
+that phrase.  I did not use it by name in REST because it isn&#39;t
+a principle at all -- opacity is just a name TimBL used for the
+set of constraints around URI processing by clients (a byproduct
+of the constraints that you will find in REST).  The principle
+involved is orthogonal design.
+
+&quot;Opacity of URI&quot; only applies to clients and, even then, only to
+those parts of the URI that are not defined by relevant standards.
+Origin servers, for example, have the choice of interpreting a
+URI as being opaque or as a structure that defines how the server
+maps the URI to a representation of the resource.  Cool URIs will
+often make a transition from being originally interpreted as
+structure by the server and then later treated as an opaque
+string (perhaps because the server implementation has changed
+and the owner wants the old URI to persist).  The server can make
+that transition because clients are required to act like they
+are ignorant of the server-private structure.
+
+Clients are allowed to treat a URI as being structured
+if that structure is defined by standard (e.g., scheme and
+authority in &quot;http&quot;) or if the server tells the client how its
+URI is structured.  For example, both GET-based FORM actions and
+server-side image map processing compose the URI from a
+server-provided base and a user-supplied suffix constructed
+according to an algorithm defined by a standard media type.
+
+Note, however, that some people have taken the mere title of
+&quot;opacity&quot; and assumed that it meant URIs should not have
+meaningful construction at all.  TimBL&#39;s axiom doesn&#39;t say
+that and neither does REST.
+
+Cheers,
+
+Roy T. Fielding                            &lt;http://roy.gbiv.com/&gt;
+Chief Scientist, Day Software              &lt;http://www.day.com/&gt;
+
+
+

@@ -1,0 +1,47 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 58478 invoked from network); 20 Dec 2007 02:45:34 -0000
+X-Received: from unknown (66.218.67.95)
+  by m49.grp.scd.yahoo.com with QMQP; 20 Dec 2007 02:45:34 -0000
+X-Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.113.200.5)
+  by mta16.grp.scd.yahoo.com with SMTP; 20 Dec 2007 02:45:34 -0000
+X-Received: from [10.2.8.60] (wsip-70-183-62-251.oc.oc.cox.net [70.183.62.251])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id 506441618C5;
+	Wed, 19 Dec 2007 18:45:34 -0800 (PST)
+In-Reply-To: &lt;47690619.106@...&gt;
+References: &lt;alpine.LNX.0.9999.0712010954260.19918@...&gt; &lt;4751D00F.70605@...&gt; &lt;alpine.LNX.0.9999.0712011658440.20882@...&gt; &lt;475202A1.8060902@...&gt; &lt;alpine.LNX.0.9999.0712012145000.20882@...&gt; &lt;4752A953.4000803@...&gt; &lt;alpine.LNX.0.9999.0712020813380.25802@...&gt; &lt;4752E20A.6070809@...&gt; &lt;alpine.LNX.0.9999.0712021212250.26461@...&gt; &lt;47690619.106@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;D83AD81C-8700-4BF8-A70F-88B69C84AC11@...&gt;
+Cc: pkeane &lt;pkeane@...&gt;, rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Wed, 19 Dec 2007 18:45:32 -0800
+To: elharo@...
+X-Mailer: Apple Mail (2.753)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] are cookies EVER restful?
+X-Yahoo-Group-Post: member; u=175757792; y=MFVGOJkeLCIm7Bw0AuAXWbb48suI78bWvMw_WKCSwKAlOtvzRDRl
+X-Yahoo-Profile: roy_fielding
+
+On Dec 19, 2007, at 3:52 AM, Elliotte Rusty Harold wrote:
+&gt; URLs are passed in
+&gt; hypertext URL construction from algorithms or other non-hypertext
+&gt; information like cookies is non-RESTful.
+&gt;
+
+That&#39;s not even remotely true.  If anything, REST encourages the
+creation of URIs by construction.  Forms, server-side imagemaps,
+isindex, and any form of code-on-demand all construct URIs
+through algorithms.
+
+The important bit is that the algorithm is defined by the server
+and the resource remains accessible regardless of how the URI
+was calculated (i.e., the result of the algorithm is bookmarkable).
+
+....Roy
+
+
+

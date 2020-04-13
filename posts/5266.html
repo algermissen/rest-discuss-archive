@@ -1,0 +1,170 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 70376 invoked from network); 7 Oct 2005 20:07:16 -0000
+Received: from unknown (66.218.66.217)
+  by m24.grp.scd.yahoo.com with QMQP; 7 Oct 2005 20:07:16 -0000
+Received: from unknown (HELO picanmix.dev.day.com) (212.249.34.130)
+  by mta2.grp.scd.yahoo.com with SMTP; 7 Oct 2005 20:07:15 -0000
+Received: from eu-mail.day.com (eu-mail.dev.day.com [10.0.0.30])
+        by picanmix.dev.day.com (DAY) with ESMTP id j97K72919696;
+        Fri, 7 Oct 2005 22:07:03 +0200 (MEST)
+Received: from [10.2.8.57] ([10.2.8.57])
+          by eu-mail.day.com (Lotus Domino Release 5.0.8)
+          with ESMTP id 2005100722070137:20994 ;
+          Fri, 7 Oct 2005 22:07:01 +0200 
+In-Reply-To: &lt;27b9295f0510070548k6369a510q6e115dc40cdb9413@...&gt;
+References: &lt;di0p58+koii@...&gt; &lt;4344984e.2a360720.55f8.6b40SMTPIN_ADDED@...&gt; &lt;27b9295f0510060553h20ab69aavaca37b607e3cb6d2@...&gt; &lt;1128605468.11460.211.camel@phoenix&gt; &lt;000801c5cad2$e81859a0$0902a8c0@WALDENDESKTOP&gt; &lt;27b9295f0510070548k6369a510q6e115dc40cdb9413@...&gt;
+Mime-Version: 1.0 (Apple Message framework v623)
+Message-Id: &lt;ad4cc3a49e44dbbaaea980cba9758028@...&gt;
+Cc: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Date: Fri, 7 Oct 2005 13:07:02 -0700
+To: Jeoff Wilks &lt;jeoffwilks@...&gt;
+X-Mailer: Apple Mail (2.623)
+X-MIMETrack: Itemize by SMTP Server on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 10/07/2005
+ 10:07:01 PM,
+	Serialize by Router on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 10/07/2005
+ 10:07:02 PM,
+	Serialize complete at 10/07/2005 10:07:02 PM
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] REST requires HTTP or other transports
+X-Yahoo-Group-Post: member; u=175757792; y=Xq-8QEW8C96Wk4wLmRty0L2HCbUL1dsHl3SG_k3zPj5TS2yWN1SK
+X-Yahoo-Profile: roy_fielding
+
+On Oct 7, 2005, at 5:48 AM, Jeoff Wilks wrote:
+
+&gt;  The difference in verbs =
+illustrates the push vs. pull difference. In 
+&gt; fact, Fielding argues in hi=
+s dissertation that push-vs-pull is the key 
+&gt; difference. He also states t=
+hat a push model can not scale to web 
+&gt; levels, though I question this ass=
+ertion.
+
+So would I if that was what I wrote, but it isn&#39;t. Dissertations
+a=
+re a successful walk through a minefield -- summarizing them
+is not.  One o=
+f the professors who signed my dissertation,
+David S. Rosenblum, was workin=
+g at the time on Internet-scale
+event-based notification systems.
+
+   &lt;http=
+://www.ics.uci.edu/~irus/wisen/index-old.html&gt;
+
+You might want to look at R=
+ohit&#39;s dissertation for more exploration.
+   &lt;http://www.ics.uci.edu/~rohit=
+/&gt;
+
+&gt;  &quot;The interaction method of sending representations of resources to 
+=
+&gt; consuming components has some parallels with event-based integration 
+&gt; (=
+EBI) styles. The key difference is that EBI styles are push-based. 
+&gt; The c=
+omponent containing the state (equivalent to an origin server in 
+&gt; REST) i=
+ssues an event whenever the state changes, whether or not any 
+&gt; component =
+is actually interested in or listening for such an event. In 
+&gt; the REST st=
+yle, consuming components usually pull representations. 
+&gt; Although this is=
+ less efficient when viewed as a single client wishing 
+&gt; to monitor a sing=
+le resource, the scale of the Web makes an 
+&gt; unregulated push model infeas=
+ible.&quot;
+&gt;  =A0-5.4 (paragraph 4) - 
+&gt; http://www.ics.uci.edu/~fielding/pubs/=
+dissertation/rest_arch_style.htm
+
+Unregulated push models are infeasible on=
+ the Web.  There needs to
+be something regulating the flow of events, which=
+ means aggregations
+and source-based filtering.  I did not even attempt to =
+address that
+topic because it wasn&#39;t *my* topic.
+
+&gt; For reference/archive d=
+ata, a pull model definitely makes the most 
+&gt; sense. Yet the pull model sh=
+ows cracks when used for real-time 
+&gt; delivery scenarios like RSS.
+
+I think=
+ the key thing that people should learn from my dissertation
+is that princi=
+pled design means thinking about the problem you want
+to solve first, withi=
+n the context you need to solve it, and then
+selectively applying constrain=
+ts to get the properties you want.
+REST was just one example of that method=
+.  A natural &quot;next step&quot;
+would be to look at a different problem (say, ISEN=
+s) and see what
+additional constraints could be added to EBI in order to ma=
+ke it
+more scalable.  I would not start with REST as the basis.
+
+&gt; It seems=
+ to me that you could take all the other benefits of REST 
+&gt; (standardized =
+wire protocol, URIs, distributed caching, limited verb 
+&gt; set) and apply it=
+ to a push model (perhaps over XMPP) and see the end 
+&gt; of problems like th=
+is:
+&gt;
+&gt;  =A0 &quot;...InfoWorld.com now sees a massive surge of RSS newsreader 
+=
+&gt; activity at the top of every hour, presumably because most people 
+&gt; conf=
+igure their newsreaders to wake up at that time to pull their 
+&gt; feeds. If =
+I didn&#39;t know how RSS worked, I would think we were being 
+&gt; slammed by a b=
+unch of zombies sitting on compromised home PCs.&quot;
+&gt;  =A0- http://www.infowo=
+rld.com/article/04/07/16/29OPconnection_1.html
+
+Er, or they could just cont=
+ract with Akamai and they would never
+see any &quot;massive surge&quot;. *shrug*
+
+Pus=
+h models suffer from a major social problem: those that gain the
+most are t=
+he least likely to pay for it.  For example, every news
+service thinks that=
+ they are the center of the universe.  Consider
+what would happen if every =
+blog client received an event whenever
+a story was published that the news =
+service *thinks* is worthy of
+their immediate attention.  We already know w=
+hat happens: SPAM.
+To solve the scalability problem you will first need to =
+regulate
+that social problem, because publishers will not self-regulate.
+
+I=
+t is, however, one heck of a dissertation topic.
+
+Cheers,
+
+Roy T. Fielding =
+                           &lt;http://roy.gbiv.com/&gt;
+Chief Scientist, Day Soft=
+ware              &lt;http://www.day.com/&gt;
+
+

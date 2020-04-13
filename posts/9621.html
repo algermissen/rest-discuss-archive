@@ -1,0 +1,67 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 27854 invoked from network); 18 Aug 2007 20:30:07 -0000
+Received: from unknown (66.218.66.72)
+  by m55.grp.scd.yahoo.com with QMQP; 18 Aug 2007 20:30:07 -0000
+Received: from unknown (HELO sumo.dreamhost.com) (66.33.216.29)
+  by mta14.grp.scd.yahoo.com with SMTP; 18 Aug 2007 20:30:07 -0000
+Received: from spaceymail-a4.g.dreamhost.com (sd-green-bigip-145.dreamhost.com [208.97.132.145])
+	by sumo.dreamhost.com (Postfix) with ESMTP id 16F241B5F42
+	for &lt;rest-discuss@yahoogroups.com&gt;; Sat, 18 Aug 2007 12:01:23 -0700 (PDT)
+Received: from [192.168.0.116] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id 19229161799;
+	Sat, 18 Aug 2007 11:56:20 -0700 (PDT)
+In-Reply-To: &lt;87ir7dsaet.fsf@...&gt;
+References: &lt;46C621E6.9000406@...&gt; &lt;1C730A4A-8091-41E5-849D-6EE06FF56ABE@...&gt; &lt;87ir7dsaet.fsf@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;ACDB3C85-2413-4718-85FE-00FDFD2671AF@...&gt;
+Cc: Scott Chapman &lt;scott_list@...&gt;,
+	rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Sat, 18 Aug 2007 11:56:19 -0700
+To: Berend de Boer &lt;berend@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Work-arounds for RESTful use of unsupported PUT and DELETE?
+X-Yahoo-Group-Post: member; u=175757792; y=HIWPXEpSf53SgyzaCiGWojyW6wHO5nJWzcoMtkzy1tRUW5Z2CFdu
+X-Yahoo-Profile: roy_fielding
+
+On Aug 17, 2007, at 10:02 PM, Berend de Boer wrote:
+&gt; Roy&gt; Untrusted scripts should not be allowed to perform unsafe
+&gt; Roy&gt; actions without user intervention, period. The only reason
+&gt; Roy&gt; POST is allowed (and only to the host where the script came
+&gt; Roy&gt; from, hopefully) is because there is no other method for
+&gt; Roy&gt; sending payload-driven safe queries.
+&gt;
+&gt; So how is sending DELETE over POST any safer than just allowing  
+&gt; DELETE?
+
+Not at all -- it is simply that someone needed POST in spite of the
+known security hole that was created by enabling it, and that point
+of view has prevailed.  The same can&#39;t be said for DELETE.  It is
+really easy to define a rational security model for all of these
+methods -- the hard part is getting all of the browser vendors to
+implement one model.
+
+&gt; Roy&gt; Instead of railing against the browser developers for their
+&gt; Roy&gt; common sense restriction
+&gt;
+&gt; The point is not that they restrict it, but that the implementations
+&gt; don&#39;t fully support the HTTP standard. None of them restricts DELETE
+&gt; or PUT in anyway.
+
+Umm, I remember discussion from 1994 that was specifically about
+restricting methods in HTML.  Why each browser chose to not implement
+certain things is a mystery, but they were certainly aware of the
+methods at that time.  IIRC, they simply had no agreed UI for indicating
+the distinction when the action is selected.  Somebody has to define
+that for them before any such behavior can be standardized.
+
+....Roy
+
+
+

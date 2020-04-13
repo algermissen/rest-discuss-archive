@@ -1,0 +1,65 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 28 Mar 2003 01:32:36 -0000
+Received: (qmail 8801 invoked from network); 28 Mar 2003 01:32:32 -0000
+Received: from unknown (66.218.66.218)
+  by m9.grp.scd.yahoo.com with QMQP; 28 Mar 2003 01:32:32 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta3.grp.scd.yahoo.com with SMTP; 28 Mar 2003 01:32:34 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.8/8.12.8) with ESMTP id h2S0jOt0001065;
+	Thu, 27 Mar 2003 16:45:24 -0800 (PST)
+Date: Thu, 27 Mar 2003 16:45:23 -0800
+Subject: Re: [rest-discuss] messaging (was Anyone interested)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;Yannick Loiseau&quot; &lt;loiseau@...&gt;
+In-Reply-To: &lt;000e01c2f478$0b2c4a20$5708738d@...&gt;
+Message-Id: &lt;8F81D75F-60B6-11D7-B7C3-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; Here are some variant protocols that I&#39;ve thought about (see attached 
+&gt; file).
+
+Nice diagram.
+
+&gt; Which seems the best to you ?
+
+II, except that if the user agent wants to see a list of messages since
+a given time (as opposed to all messages), then it should use a query
+on inbox, for example:
+
+     GET /host/address/inbox/?since=&quot;{server-provided date of last 
+retrieval}&quot;
+
+Likewise, it is wise to define names within that space that represent
+variations on the mailbox itself, so that someone can implement
+fetchmail.  E.g.,
+
+     GET /host/address/inbox/all
+     DELETE /host/address/inbox/range?message=1-234
+
+The most important thing to remember is that the names used by a
+REST-based server do not need to reflect how the resources are
+implemented.  The client must remain completely ignorant of the
+implementation.
+
+Note the use of /host/address above -- you should anticipate that
+a single server might be used to handle messages for different MX
+authorities and each authority will have its own way of assigning
+mailbox accounts, so you want an unambiguous resource namespace.
+It should not rely on things like the HTTP Host header field
+because you don&#39;t want to limit the mailbox server to be on the
+same IP address as the primary MX name.
+
+....Roy
+
+
+

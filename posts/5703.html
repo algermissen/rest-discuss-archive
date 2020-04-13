@@ -1,0 +1,92 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 13897 invoked from network); 17 Mar 2006 02:22:28 -0000
+Received: from unknown (66.218.67.34)
+  by m27.grp.scd.yahoo.com with QMQP; 17 Mar 2006 02:22:28 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta8.grp.scd.yahoo.com with SMTP; 17 Mar 2006 02:22:28 -0000
+Received: from wsip-70-183-59-151.oc.oc.cox.net ([70.183.59.151] helo=[10.2.8.57])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1FK4bj-0006fO-Vu; Thu, 16 Mar 2006 18:22:28 -0800
+In-Reply-To: &lt;FFEBDEC4-2972-455A-8B36-5C42765BE794@...&gt;
+References: &lt;44186DDD.6010305@...&gt; &lt;c70bc85d0603151212k49cd0459md00991b5bd464110@...&gt; &lt;4419FF52.1080007@...&gt; &lt;FFEBDEC4-2972-455A-8B36-5C42765BE794@...&gt;
+Mime-Version: 1.0 (Apple Message framework v746.3)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;877783E8-D833-4B0B-BDCE-8AACB4935D94@...&gt;
+Cc: Jonathan Arkell &lt;yahoo@...&gt;,
+ rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Thu, 16 Mar 2006 18:22:24 -0800
+To: Dr. Ernie Prabhakar &lt;drernie@...&gt;
+X-Mailer: Apple Mail (2.746.3)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] uFormats applied to the URI
+X-Yahoo-Group-Post: member; u=175757792; y=jfCT3tN93SdRoIBTqtiz3smKX-EtwQFSr5e7gdxbpiMUgqEACWJY
+X-Yahoo-Profile: roy_fielding
+
+On Mar 16, 2006, at 4:26 PM, Dr. Ernie Prabhakar wrote:
+
+&gt; Hi Jonathan,
+&gt;
+&gt; Is a cowpie the opposite of a cowpath?  If so, then I think the  
+&gt; &#39;Opaque URI&#39; meme qualifies as one, and you just stepped in it. :-)
+&gt;
+&gt; Here&#39;s what Roy Fielding had to say on the topic, and I considered  
+&gt; it important enough to add to the microformats-rest wiki:
+&gt;
+&gt; http://microformats.org/wiki/rest/opacity
+&gt;
+&gt; Sounds like you should join us there. ;-)
+&gt;
+&gt; http://microformats.org/discuss/mail/microformats-rest/
+&gt;
+&gt; The key, as I believe Jon Hanna said, is to make sure that clients  
+&gt; do not HAVE to know the URI&#39;s internal structure, but that doesn&#39;t  
+&gt; mean that *you* can&#39;t do MORE if you have appropriate  
+&gt; understanding. And if enough people share that understanding --  
+&gt; like a microformat -- there&#39;s nothing to prevent you from taking  
+&gt; advantage of that.  As long as you don&#39;t do something that makes  
+&gt; life harder for -other- people...
+
+Er, not quite.  The key is that the server is free to tell the client
+that there does exist structure in a given URI-space, and then the
+client is free to make use of that knowledge in future requests.
+That is how server-side imagemaps worked -- HTML says that the src
+URI is structured such that appending &quot;?X,Y&quot; to that URI, where
+X and Y are non-negative integers, corresponds to points on a map
+that can respond to future GET requests.
+
+Thus, one way for the server to tell the client that a given URI
+is structured is to provide the URI in a standard element of a
+standard media type that has been defined as such.  Another is to
+include the URI in a response header field.
+
+Note, however, that I am also one of the creators of the robots.txt
+standard.  That particular scenario requires that the spider find out
+the constraints on a site prior to the very first access of a real
+hypertext link.  It is too late to obtain that information by
+looking at header fields after a normal request is made.  Adding a
+new method to HTTP was out of the question because it would have
+to be deployed before it could be used [OPTIONS could fulfill that
+purpose today, 12 years after robots.txt was defined].  Adding fields
+to DNS wasn&#39;t an option back then, either.  Reserving /robots.txt
+remains the best option given the alternatives available.
+
+Note, however, that no other &quot;reserved URI&quot; features have the same
+requirements as spiders, so it is still true that favicon and pics
+chose the wrong solution.
+
+....Roy
+
+

@@ -1,0 +1,61 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 6990 invoked from network); 15 Jun 2010 09:01:21 -0000
+X-Received: from unknown (98.137.34.44)
+  by m11.grp.re1.yahoo.com with QMQP; 15 Jun 2010 09:01:21 -0000
+X-Received: from unknown (HELO spaceymail-a2.g.dreamhost.com) (208.113.200.5)
+  by mta1.grp.sp2.yahoo.com with SMTP; 15 Jun 2010 09:01:21 -0000
+X-Received: from [192.168.1.66] (99-21-208-82.lightspeed.irvnca.sbcglobal.net [99.21.208.82])
+	by spaceymail-a2.g.dreamhost.com (Postfix) with ESMTP id B9E01EE3E0;
+	Tue, 15 Jun 2010 02:01:04 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1078)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;hv714h+1tm0@...&gt;
+Date: Tue, 15 Jun 2010 02:01:04 -0700
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: quoted-printable
+Message-Id: &lt;847BB586-01D3-4543-BC2B-DA50536AF6E0@...&gt;
+References: &lt;hv714h+1tm0@...&gt;
+To: wahbedahbe &lt;andrew.wahbe@...&gt;
+X-Mailer: Apple Mail (2.1078)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: Which status code to return for DELETE if parent resource is not found?
+X-Yahoo-Group-Post: member; u=175757792; y=jUS04y9zi2UtZqVMPtS4UzRCNVOekImGXu4wrEd4e0KSD0X4k6st
+X-Yahoo-Profile: roy_fielding
+
+On Jun 14, 2010, at 9:55 PM, wahbedahbe wrote:
+&gt; I&#39;m with you that the clie=
+nt should definitely be written this way. At the same time though, while th=
+e server has many options, it isn&#39;t free to return absolutely anything no m=
+atter what happened to the request. Otherwise the response code and the cli=
+ent&#39;s mapping of it to a disposition are meaningless.
+
+Insanity is a relati=
+ve thing.  Servers like to provide useful
+services, so they tend to provide=
+ sane responses to sane requests,
+but they will also lie to a client that t=
+hey suspect is evil
+(such as a DoS attacker or misbehaving robot).  I didn&#39;=
+t say
+that the server will return any status code -- I just said that
+the c=
+lient needs to handle any status code.
+
+The problem with providing a specif=
+ic list of status codes to
+give is that there are many orthogonal errors th=
+at might be
+indicated (e.g., 401) and the set of status codes itself is
+ext=
+ensible.  Besides, it just leads to poor assumptions on
+the part of clients=
+.
+
+....Roy
+
+
+

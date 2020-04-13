@@ -1,0 +1,45 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 50332 invoked from network); 25 May 2004 23:21:47 -0000
+Received: from unknown (66.218.66.217)
+  by m22.grp.scd.yahoo.com with QMQP; 25 May 2004 23:21:47 -0000
+Received: from unknown (HELO sna-027.wakasoft.com) (65.208.153.194)
+  by mta2.grp.scd.yahoo.com with SMTP; 25 May 2004 23:21:47 -0000
+Received: from gbiv.com (localhost [127.0.0.1])
+	by sna-027.wakasoft.com (8.12.9/8.12.9) with ESMTP id i4PNGmcn001500;
+	Tue, 25 May 2004 16:16:49 -0700 (PDT)
+Date: Tue, 25 May 2004 16:16:47 -0700
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v553)
+Cc: Walden Mathews &lt;walden@...&gt;, rest-discuss@yahoogroups.com
+To: lucas@...
+In-Reply-To: &lt;Pine.NEB.4.58.0405251605030.4706@...&gt;
+Message-Id: &lt;9862BC60-AEA1-11D8-BD6E-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.553)
+X-eGroups-Remote-IP: 65.208.153.194
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] error numbers
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+&gt; A practical problem, which incidentally shows how little REST is used 
+&gt; for
+&gt; web services: most apache configurations have ErrorDocument setups 
+&gt; which
+&gt; make it impossible (or very hard) to use the response body to add
+&gt; specificity to error responses.
+
+Generally speaking, if a person isn&#39;t capable of setting the
+configuration file for their own web space, they aren&#39;t capable of
+running a bidirectional application in that space either.
+Apache httpd configuration defaults to read-only hypertext, but
+that doesn&#39;t prevent anyone from overriding those defaults for
+any set of URIs on the server, including those for ErrorDocument.
+
+....Roy
+
+
+

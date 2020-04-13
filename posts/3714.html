@@ -1,0 +1,152 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 41430 invoked from network); 1 Jul 2003 17:30:50 -0000
+Received: from unknown (66.218.66.216)
+  by m12.grp.scd.yahoo.com with QMQP; 1 Jul 2003 17:30:50 -0000
+Received: from unknown (HELO mac.wakasoft.com) (212.249.34.130)
+  by mta1.grp.scd.yahoo.com with SMTP; 1 Jul 2003 17:30:49 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id h61HQ2iC007814;
+	Tue, 1 Jul 2003 10:26:02 -0700 (PDT)
+Date: Tue, 1 Jul 2003 10:26:01 -0700
+Subject: Re: [rest-discuss] cgi generating HTML,  do you have a REST example ?
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: rest-discuss@yahoogroups.com
+To: Tyler Close &lt;tyler@...&gt;
+In-Reply-To: &lt;E19XNGF-0003n8-00@canteen&gt;
+Message-Id: &lt;15FF6C10-ABE9-11D7-A7D0-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+
+On Tuesday, July 1, 2003, at 08:41  AM, Tyler Close wrote:
+
+&gt; On Tuesday 01 July 2003 11:33, Roy T. Fielding wrote:
+&gt;&gt;&gt; I am going to make an argument otherwise.
+&gt;&gt;&gt;
+&gt;&gt;&gt; In section 5.2.1.1 of your dissertation, you open with:
+&gt;&gt;&gt;
+&gt;&gt;&gt; &quot;The key abstraction of information in REST is a resource. Any
+&gt;&gt;&gt; information that can be named can be a resource: ...&quot;
+&gt;&gt;&gt;
+&gt;&gt;&gt; Using an ACL means that the information cannot be named using a
+&gt;&gt;&gt; URI (assuming you do not wish to abdicate your entire user
+&gt;&gt;&gt; account).
+&gt;&gt;
+&gt;&gt; The URI identifies the resource, not the information that is
+&gt;&gt; sent in response to a GET on that resource.
+&gt;
+&gt; I used the term &quot;information&quot; because that is the term you used in
+&gt; the quoted section of your dissertation.
+
+It isn&#39;t the *only* information in REST.  The identified information
+is an abstraction. If I have a link to
+
+    http://bigbank.com/services/myaccount
+
+then it is identifying the same abstraction regardless of the number
+of different users that might receive different bytes in response
+to successfully authenticating and accessing that resource via GET.
+
+&gt;
+&gt;&gt; As such, I don&#39;t
+&gt;&gt; understand what you mean by abdicating the user account.
+&gt;
+&gt; In the original email, you wrote:
+&gt;
+&gt;&gt; No, that is not against REST principles.  Access control and
+&gt;&gt; authorization
+&gt;&gt; are the normal way of doing user-specific services.
+&gt;
+&gt; If HTTP Auth is used to make a user-specific service, the
+&gt; resulting &quot;resource&quot; is named using the combination of the URI
+&gt; and the username + password. The URI alone cannot be used to name
+&gt; the &quot;resource&quot;. This means the &quot;resource&quot; is not a real resource.
+&gt; It is not part of the global URI namespace.
+
+I think you need to go back and figure out what &quot;resource&quot; means
+instead of assuming that it is the information resulting from
+a request.
+
+&gt; If the user were willing to abdicate their entire user account,
+&gt; they could use the &lt;userinfo&gt; part of the URI syntax to include
+&gt; their username + password in the URI. I am assuming that this is
+&gt; not a viable option.
+
+Right, it isn&#39;t.  But do you see why the URI supplied above is not
+user-specific even though its response may be?  Likewise, the URI
+
+    http://bigbank.com/services/account/1234565432
+
+is not user-specific even if only one user in the universe has
+access rights to GET responses on that URI.
+
+&gt; As a simple demonstration of this, note that it not feasible for
+&gt; you to create hyperlinks to any of the &quot;resources&quot; in your online
+&gt; bank account. This is true despite the fact that you have access
+&gt; to these &quot;resources&quot;, using a normal WWW client. The failure of
+&gt; this application to obey REST design principles has prevented the
+&gt; user from sharing information in the normal WWW way.
+
+No, that isn&#39;t true in general -- it depends entirely upon how the
+app UI was designed.  Most such systems use a frame or an appserver
+session that hides the URI; that isn&#39;t RESTful, but it has nothing
+to so with the access control part.
+
+&gt;&gt;&gt;  Therefore, this information is not a resource.
+&gt;&gt;
+&gt;&gt; It isn&#39;t.  The mapping defined by the origin server is the resource.
+&gt;&gt; A server can and will take into account the entire request when
+&gt;&gt; determining which representation should be sent in response to
+&gt;&gt; a request, just as it does so for determining whether the response
+&gt;&gt; should be 200 or 401.
+&gt;
+&gt; The &quot;resource&quot; that is the user-specific resource is not a
+&gt; resource. You seem to be saying that it is RESTful for the origin
+&gt; server to say the resource is the conglomeration of all user&#39;s
+&gt; user-specific resources. If you take this stance, you diminish the
+&gt; power of REST, since the web of resources is central to REST.
+&gt; Making everything one big resource defeats this.
+
+It doesn&#39;t defeat anything that wasn&#39;t already defeated by the
+nature of the application: the page cannot be placed in a
+shared cached.
+
+The purpose of REST is to model how the Web is supposed to work.
+If I were to take the stance that access control doesn&#39;t fit the
+REST model, then it wouldn&#39;t be the right model.  User-specific
+responses via access control are no different than negotiated
+response by conneg, except that access-controlled resources
+default to not-shared-cacheable.
+
+&gt; This argument is closely related to the REST argument against
+&gt; using proprietary identifiers inside the body of a request. The
+&gt; REST view is that the URI is *THE* identifier. This is necessary
+&gt; to enable hyperlinks.
+
+The URI is still *THE* identifier.  It identifies the same thing
+regardless of who uses the URI.  But that has only an indirect
+relation to the information returned in response to GET on that
+resource.  If the application wishes to provide an account-specific
+URI, such as the second one above, then it can certainly choose
+to do so via a redirect after the initial access control exchange.
+However, that doesn&#39;t make it any more (or less) RESTful.
+
+A related example is
+
+     file://localhost/etc/host
+
+What is that resource?  If you think it is the file on your own
+Unix-based system, you would be mistaken.  URIs identify interfaces,
+not implementations.
+
+....Roy
+
+
+

@@ -1,0 +1,131 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 74280 invoked from network); 11 Apr 2006 19:41:02 -0000
+Received: from unknown (66.218.66.217)
+  by m32.grp.scd.yahoo.com with QMQP; 11 Apr 2006 19:41:02 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta2.grp.scd.yahoo.com with SMTP; 11 Apr 2006 19:41:02 -0000
+Received: from wsip-70-183-59-151.oc.oc.cox.net ([70.183.59.151] helo=[10.2.8.57])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1FTOj4-0003eB-8z; Tue, 11 Apr 2006 12:40:34 -0700
+In-Reply-To: &lt;443BFCCB.9040406@...&gt;
+References: &lt;e1fhc4+1q6v@...&gt;	&lt;87mzesp92d.fsf@...&gt;	&lt;443BD49E.8080808@...&gt; &lt;87r744t5wr.fsf@...&gt; &lt;443BFCCB.9040406@...&gt;
+Mime-Version: 1.0 (Apple Message framework v749.3)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;0D24C73A-CE63-44EE-BDAD-C285D953390E@...&gt;
+Cc: Nic &lt;nferrier@...&gt;,
+ rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Tue, 11 Apr 2006 12:40:33 -0700
+To: Elias Sinderson &lt;elias@...&gt;
+X-Mailer: Apple Mail (2.749.3)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:12:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] WebDAV = REST?   (was:  Getting problem in ...)
+X-Yahoo-Group-Post: member; u=175757792; y=4_Gxg_xYtGfov--q3c6zlUucezMWxkkvDy_PgySDs6CbB1HL-uO_
+X-Yahoo-Profile: roy_fielding
+
+On Apr 11, 2006, at 12:00 PM, Elias Sinderson wrote:
+&gt;&gt; &lt;Nic&gt; I strongly disagree that this is the case. I don&#39;t believe  
+&gt;&gt; WEBDAV methods are necessary or even advisable for REST based  
+&gt;&gt; apps. &lt;/Nic&gt;
+&gt;&gt;
+&gt; Ah, the slings and arrows, fantastic!  :-)  So, you are certainly
+&gt; entitled to your opinion, and others theirs. I&#39;m well aware that
+&gt; crusades can be difficult... Let&#39;s take a closer look at this issue
+&gt; together then.
+&gt;
+&gt; First, I&#39;ll note that there is no mention in Fieldings&#39;  
+&gt; dissertation of
+&gt; which specific methods are necessary, sufficient or even desireable  
+&gt; for
+&gt; a REST application to support. There is, however, the constraint that
+&gt; REST resources support a uniform interface. HTTP simply happens to be
+&gt; /an implementation/, albeit the most widely deployed and, some would
+&gt; argue, the best available.  ;-)  REST is no more defined by GET, PUT,
+&gt; POST and DELETE than it is by the FOO, BAR, BAZ and BLAH methods of  
+&gt; some
+&gt; other implementation. To take your position to the extreme, someone  
+&gt; may
+&gt; just as well state that REST is solely defined by GET and POST...
+
+That is correct.  My work distinguished between the REST architectural
+style and any particular instantiation of that style (URI, HTTP, etc.).
+This is undoubtedly a pain in the ass for folks who just want an
+acronym for good webarch design.
+
+&gt; IMHO, necessity has very little to do with the issue, otherwise one  
+&gt; may
+&gt; just as well tunnel all of your application semantics through POST and
+&gt; be done with it. (Oh, wait, that&#39;s SOAP over HTTP!) It is not the
+&gt; /necessity/ of DELETE, for example, that makes it a good idea, it&#39;s
+&gt; simply that if everyone implemented their own DELETE via POST we would
+&gt; soon find ourselves back in fragmented API land. Clearly, the same can
+&gt; be said of PUT (and some do). Similarly, metadata properties  
+&gt; associated
+&gt; with a resource may be set and read via POST, resources could be moved
+&gt; and copied about via POST and so on. The fact remains, however, that
+&gt; there are standardized protocol methods that have been defined for  
+&gt; these
+&gt; common operations. Further, these methods have been defined within the
+&gt; HTTP framework as extensions to HTTP itself -- they are intended to  
+&gt; play
+&gt; nicely together.
+
+Sometimes.  PROP* methods conflict with REST because they prevent
+important resources from having URIs and effectively double the
+number of methods for no good reason.  Both Henrik and I argued
+against those methods at the time.  It really doesn&#39;t matter
+how uniform they are because they break other aspects of the
+overall model, leading to further complications in versioning
+(WebDAV versioning is hopelessly complicated), access control
+(WebDAV ACLs are completely wrong for HTTP), and just about every
+other extension to WebDAV that has been proposed.
+
+&gt; In designing RESTful applications, I believe that one must remain
+&gt; cognizant of the implications associated with how application  
+&gt; behaviors
+&gt; are realized through HTTP. Sure, you can tunnel anything you want
+&gt; through POST, even things that have been defined as other methods,  
+&gt; but I
+&gt; think it undermines the &#39;interface genericity&#39; constraint somewhat as
+&gt; you are no longer interacting with the resource you want to, e.g.,
+&gt; delete or move, but an arbiter who then does the delete or move for  
+&gt; you.
+&gt;
+&gt; It is unclear to me why someone would advocate the use of DELETE (over
+&gt; POST as DELETE) but caution against the use of MOVE and am curious  
+&gt; as to
+&gt; your statement regarding the advisability of using WebDAV (or other?)
+&gt; methods for REST applications. Could you elaborate more on this  
+&gt; point? I
+&gt; won&#39;t discount the constraints that may be imposed by a given  
+&gt; business,
+&gt; economic or political reality, but am for more interested in  
+&gt; discussing
+&gt; the architectural and systems engineering constraints.
+
+The problem with MOVE is that it is actually an operation on two
+independent namespaces (the source collection and destination
+collection).  The user must have permission to remove from the
+source collection and add to the destination collection, which
+can be a bit of a problem if they are in different authentication
+realms.  COPY has a similar problem, but at least in that case
+only one namespace is modified.  I don&#39;t think either of them map
+very well to HTTP.
+
+Tease: Any method in waka can have 0|1|2|N-arguments.
+
+....Roy
+
+

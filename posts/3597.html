@@ -1,0 +1,54 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 18 Apr 2003 00:28:23 -0000
+Received: (qmail 35398 invoked from network); 18 Apr 2003 00:28:22 -0000
+Received: from unknown (66.218.66.216)
+  by m15.grp.scd.yahoo.com with QMQP; 18 Apr 2003 00:28:22 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta1.grp.scd.yahoo.com with SMTP; 18 Apr 2003 00:28:22 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.8/8.12.8) with ESMTP id h3I0UBdl004610;
+	Thu, 17 Apr 2003 17:30:11 -0700 (PDT)
+Date: Thu, 17 Apr 2003 17:30:10 -0700
+Subject: Re: [rest-discuss] REST, HTTP, Sessions and Cookies
+Content-Type: text/plain; delsp=yes; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss@yahoogroups.com
+To: Mark Baker &lt;distobj@...&gt;
+In-Reply-To: &lt;20030416234117.A16737@...&gt;
+Message-Id: &lt;E99CFC71-7134-11D7-98CB-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+On Wednesday, April 16, 2003, at 08:41  PM, Mark Baker wrote:
+&gt; Oi, LOGIN was a terrible example.  I didn&#39;t think it through.
+&gt;
+&gt; What I was trying to learn by asking was this; what am I constrained
+&gt; from doing with the application-state-on-the-client constraint, that  
+&gt; I&#39;m
+&gt; not already constrained from doing by the
+&gt; all-necessary-info-in-the-message constraint?
+
+Oh, I see what you mean.  If you look back in my dissertation,
+
+http://www.ics.uci.edu/~fielding/pubs/dissertation/ 
+net_arch_styles.htm#sec_3_4_3
+http://www.ics.uci.edu/~fielding/pubs/dissertation/ 
+rest_arch_style.htm#sec_5_1_3
+
+you will notice that there is only one constraint: communication must
+be stateless in nature.  The remainder of the description is simply
+explaining the properties induced by that constraint and the effect it
+has on architectures based on that style.
+
+In other words, they are just two sides of the same coin.
+
+....Roy
+
+
+

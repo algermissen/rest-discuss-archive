@@ -1,0 +1,77 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 64165 invoked from network); 4 Oct 2003 02:40:17 -0000
+Received: from unknown (66.218.66.172)
+  by m16.grp.scd.yahoo.com with QMQP; 4 Oct 2003 02:40:17 -0000
+Received: from unknown (HELO fed1mtao03.cox.net) (68.6.19.242)
+  by mta4.grp.scd.yahoo.com with SMTP; 4 Oct 2003 02:40:17 -0000
+Received: from mac.wakasoft.com ([68.5.5.20]) by fed1mtao03.cox.net
+          (InterMail vM.5.01.06.05 201-253-122-130-105-20030824) with ESMTP
+          id &lt;20031004024013.OFOC23864.fed1mtao03.cox.net@...&gt;;
+          Fri, 3 Oct 2003 22:40:13 -0400
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id h942Rf3d000599;
+	Fri, 3 Oct 2003 19:27:42 -0700 (PDT)
+Date: Fri, 3 Oct 2003 19:27:41 -0700
+Subject: Re: [rest-discuss] REST&#39;s Definition of Resource (fwd)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: algermissen@...
+In-Reply-To: &lt;3F7D25ED.CA90F6F7@...&gt;
+Message-Id: &lt;54144E92-F612-11D7-81BC-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt;&gt; Suppose the HTML snippet:
+&gt;&gt;
+&gt;&gt; &lt;p&gt;
+&gt;&gt;   Professor &lt;a 
+&gt;&gt; href=&quot;http://www.gseis.ucla.edu/faculty/pages/svenonius.html&quot;&gt;
+&gt;&gt;   Elaine Svenonious&lt;/a&gt; is the author of several papers, ....
+&gt;&gt; &lt;/p&gt;
+&gt;
+&gt; Why does REST &#39;allow&#39; the interpretation that the author uses the URI 
+&gt; to
+&gt; identify a resource that &#39;is&#39; the person Elaine Svenonious?
+
+Because REST doesn&#39;t interpret hypertext -- people do.
+
+&gt; The person &quot;Elaine Svenonious&quot; is not directly addressable (in the 
+&gt; sense
+&gt; that it
+&gt; does not have a location) and allowing a URI to identify it implies 
+&gt; (IMHO) the
+&gt; use of URIs as names (which I thought was purely an RDF/Semantic Web 
+&gt; issue).
+
+No.  All URIs are names.  Some URIs also contain what might be viewed as
+an address involving multiple indirect mappings, and very few URIs
+contain a directly addressed maping (e.g., file://127.0.0.1/).
+&quot;http&quot; URIs, in particular, have at least one mandatory indirect
+mapping, which makes them capable of referencing any concept.
+
+&gt; Hmm, propably my non-understanding can also be expressed like this:
+&gt; How can an architectural style for distributed systems use object 
+&gt; references
+&gt; (here URIs) as object references AND names for abstract concepts?
+
+Because they are not object references -- they reference resources.
+BTW, it is a style for network-based systems -- &quot;distributed&quot; means
+something else.
+
+&gt; [You just cannot reference an asbtract concept directly, you can only 
+&gt; refer
+&gt; to it by name.]
+
+You cannot access an HTTP-based resource directly, either.
+
+....Roy
+
+
+

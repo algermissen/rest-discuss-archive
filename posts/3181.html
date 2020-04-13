@@ -1,0 +1,90 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_3_0); 8 Jan 2003 00:29:29 -0000
+Received: (qmail 331 invoked from network); 8 Jan 2003 00:29:23 -0000
+Received: from unknown (66.218.66.217)
+  by m8.grp.scd.yahoo.com with QMQP; 8 Jan 2003 00:29:23 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta2.grp.scd.yahoo.com with SMTP; 8 Jan 2003 00:29:22 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.2/8.12.2) with ESMTP id h0808JgY001360;
+	Tue, 7 Jan 2003 16:08:19 -0800 (PST)
+Date: Tue, 7 Jan 2003 16:08:19 -0800
+Subject: Re: [rest-discuss] ReST and Representing Mailboxes
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss@yahoogroups.com
+To: &quot;S. Alexander Jacobson&quot; &lt;alex@...&gt;
+In-Reply-To: &lt;Pine.WNT.4.43.0301071258370.860-100000@fanatic&gt;
+Message-Id: &lt;4AC36A23-229D-11D7-AB84-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+On Tuesday, January 7, 2003, at 10:20  AM, S. Alexander Jacobson wrote:
+&gt; Isn&#39;t the whole point of REST that URIs should be
+&gt; opaque when describing a web service?
+
+No, the point of REST is to model a Web service.  It wouldn&#39;t be 
+complete
+if it neglected to include query parameters.  However, it works best 
+when
+query parameters are only used read-only and result in a list of
+metadata and specific resource identifiers.  You can then do more 
+complex
+operations on those identifiers.
+
+&gt; Regarding what I am trying to do, I want to expose
+&gt; a mailfolder via HTTP.  Three things may happen
+&gt; to this mailfolder:
+&gt;
+&gt; * The server may choose to move attachments to
+&gt;    external URLs
+&gt; * The server may change those external URLs
+&gt; * New messages may be added to the folder
+&gt; Note: Messages will not be deleted from the folder.
+&gt;
+&gt; I want clients:
+&gt; 1. to be able to rertrieve the entire folder
+&gt; 2. to be able to retreive only messages that have
+&gt;    been added to the folder without retrieving
+&gt;    already received messages whose representations
+&gt;    have changed
+&gt;
+&gt; I would like to have a large number of anonymous
+&gt; clients so I don&#39;t want to force the server to
+&gt; maintain a state for each client (as required by
+&gt; &#39;mark and move&#39; servers).
+
+So, you are talking netnews, not mail.  That means the client has to
+keep a list of read messages, not the server, and the list should be
+by ordered number (the easiest choice given what you describe and
+how all news readers work).
+
+&gt; My proposed solution is to return
+&gt; multipart/byteranges as a response to queries with
+&gt; etags.  I suppose I could also return any diff
+&gt; format, but I&#39;m not aware of one that is
+&gt; particularly better suited to this problem than
+&gt; multipart/byteranges.
+&gt;
+&gt; Is the consensus that this is HTTP-OK, and if so
+&gt; what is the correct status code to return?
+
+No, it is not HTTP okay because you allow the server to change the
+file.  Neither etag nor byteranges will work.  In any case, this design
+would tie the client implementation to the server storage 
+implementation,
+which is just a bad idea in general.  You should separate the two and
+think of each message as a resource within a collection (the mailbox).
+The client will then have to remember what has been read if they
+wish to selectively retrieve messages.
+
+....Roy
+
+
+

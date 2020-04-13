@@ -1,0 +1,88 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 82511 invoked from network); 21 Feb 2010 19:45:24 -0000
+X-Received: from unknown (98.137.34.45)
+  by m10.grp.re1.yahoo.com with QMQP; 21 Feb 2010 19:45:24 -0000
+X-Received: from unknown (HELO spaceymail-a1.g.dreamhost.com) (208.113.200.5)
+  by mta2.grp.sp2.yahoo.com with SMTP; 21 Feb 2010 19:45:24 -0000
+X-Received: from [192.168.1.66] (99-21-208-82.lightspeed.irvnca.sbcglobal.net [99.21.208.82])
+	by spaceymail-a1.g.dreamhost.com (Postfix) with ESMTP id D879780785;
+	Sun, 21 Feb 2010 11:44:56 -0800 (PST)
+Mime-Version: 1.0 (Apple Message framework v1077)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;20100221040839.673f4865.eric@...&gt;
+Date: Sun, 21 Feb 2010 11:44:57 -0800
+Cc: Robert Brewer &lt;fumanchu@...&gt;,
+	Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Message-Id: &lt;ED1EEAA9-EC08-4183-810A-4B43AA968131@...&gt;
+References: &lt;hlbgc5+krnh@...&gt; &lt;20100215232457.a7bc29ae.eric@...&gt; &lt;28F51815-0B8D-4873-BCF4-827A9C7D2D6D@...&gt; &lt;20100217133410.34b1a952.eric@...&gt; &lt;7B44855B-5ACA-4C70-998A-A2F58CAACCF3@...&gt; &lt;581bf6161002171422he42b5ci8c182a9d6a14c067@...&gt; &lt;20100217185144.c33c7b2c.eric@...&gt; &lt;F1962646D3B64642B7C9A06068EE1E6418B437@...&gt; &lt;CDAB4E8C-1F06-4CDA-AD31-B1E13095A79C@...&gt; &lt;20100221040839.673f4865.eric@...&gt;
+To: Eric J.Bowman &lt;eric@...&gt;
+X-Mailer: Apple Mail (2.1077)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Content Negotiation
+X-Yahoo-Group-Post: member; u=175757792; y=BO024us6VnkkJ5mnQlCv38Gr0IiU-vz2Jzx5Q-hYqhi5QbsZvBBa
+X-Yahoo-Profile: roy_fielding
+
+On Feb 21, 2010, at 3:08 AM, Eric J. Bowman wrote:
+
+&gt; &quot;Roy T. Fielding&quot; wrote:
+&gt; 
+&gt;&gt; On Feb 18, 2010, at 10:21 AM, Robert Brewer wrote:
+&gt;&gt;&gt; Eric J. Bowman wrote:
+&gt;&gt;&gt;&gt; I contend that the format of a representation is part of a
+&gt;&gt;&gt;&gt; system&#39;s hierarchical data.  The proof is right there in curl,
+&gt;&gt;&gt;&gt; which sees no hierarchy when it&#39;s saving &#39;resource&#39; and
+&gt;&gt;&gt;&gt; &#39;resource.1&#39; to disk, while obviously recognizing .pdf
+&gt;&gt;&gt;&gt; and .html as part of a hierarchy of representations, whether
+&gt;&gt;&gt;&gt; by direct dereferencing or by presence in a Content-Location
+&gt;&gt;&gt;&gt; response header.
+&gt;&gt;&gt; 
+&gt;&gt;&gt; That&#39;s an odd way to look at it. The &quot;format of a representation
+&gt;&gt;&gt; is part of a system&#39;s hierarchical data&quot; if and only if the path
+&gt;&gt;&gt; portion of the URI contains information to that effect. If not,
+&gt;&gt;&gt; it doesn&#39;t. The fact that some domains specifically do this does
+&gt;&gt;&gt; not require them all to do so. Curl is suboptimal in this respect
+&gt;&gt;&gt; since it does not differentiate responses based on the query
+&gt;&gt;&gt; string component.
+&gt;&gt; 
+&gt;&gt; More to the point, one implementation doesn&#39;t &quot;prove&quot; anything.
+&gt; 
+&gt; Let&#39;s not miss the forest for the trees, here.  When I use curl as an
+&gt; example, it&#39;s because what I&#39;m pointing out is accepted behavior that&#39;s
+&gt; uniform amongst many clients (in this case, I&#39;ve never heard anybody say
+&gt; libcurl&#39;s URI parser is bugged or broken).
+
+Does it work for your use case?  No.  Then it is bugged or broken.
+
+It is accepted behavior that many clients ignore the media type when
+handling text/plain content.  Is that bugged or broken?  Yes.
+
+Browsers also typically respect content-disposition, if provided,
+since their save operation occurs after reading the message,
+whereas command-line tools do not.
+
+There are many known problems in existing tools that the authors
+refuse to fix because the fix would be incompatible with existing
+output.  If you don&#39;t like curl&#39;s behavior, use wget (which does
+save the query info as the filename).
+
+Regardless, it is a fact that the distinction between path and
+query in the URI syntax has nothing to do with how a service
+is implemented or whether a given representation of a resource
+can be saved as a file.  Likewise, the only relevant distinction
+between file extensions and query-based media-type indicators
+is that the latter are too long and far more likely to cause
+undesirable cache impacts (many general-purpose caches refuse
+to store responses that look like queries because, historically,
+they tend to have lower hit rates than simple paths).  That&#39;s
+why I always prefer extensions.
+
+Neither choice has anything to do with REST.
+
+....Roy
+
+

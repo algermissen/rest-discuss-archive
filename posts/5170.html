@@ -1,0 +1,90 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 64159 invoked from network); 20 Jul 2005 16:02:54 -0000
+Received: from unknown (66.218.66.216)
+  by m27.grp.scd.yahoo.com with QMQP; 20 Jul 2005 16:02:54 -0000
+Received: from unknown (HELO picanmix.dev.day.com) (212.249.34.130)
+  by mta1.grp.scd.yahoo.com with SMTP; 20 Jul 2005 16:02:53 -0000
+Received: from eu-mail.day.com (eu-mail.dev.day.com [10.0.0.30])
+        by picanmix.dev.day.com (DAY) with ESMTP id j6KG2jQ10116;
+        Wed, 20 Jul 2005 18:02:45 +0200 (MEST)
+Received: from [127.0.0.1] ([10.0.0.4])
+          by eu-mail.day.com (Lotus Domino Release 5.0.8)
+          with ESMTP id 2005072018024385:21044 ;
+          Wed, 20 Jul 2005 18:02:43 +0200 
+In-Reply-To: &lt;87r7dtzh9t.fsf@...&gt;
+References: &lt;E1DvCsS-0003xm-VV@...&gt; &lt;87zmshzn5h.fsf@...&gt; &lt;6d9aba60dceb07065a39599a0c6653ca@...&gt; &lt;87r7dtzh9t.fsf@...&gt;
+Mime-Version: 1.0 (Apple Message framework v622)
+Message-Id: &lt;2c4d3347ac41b1c9744573216416afff@...&gt;
+Cc: &quot;Justin T. Sampson&quot; &lt;justin@...&gt;, rest-discuss@yahoogroups.com
+Date: Wed, 20 Jul 2005 09:02:54 -0700
+To: Nic Ferrier &lt;nferrier@...&gt;
+X-Mailer: Apple Mail (2.622)
+X-MIMETrack: Itemize by SMTP Server on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 07/20/2005
+ 06:02:44 PM,
+	Serialize by Router on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 07/20/2005
+ 06:02:45 PM,
+	Serialize complete at 07/20/2005 06:02:45 PM
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-eGroups-Msg-Info: 1:12:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Switching content type
+X-Yahoo-Group-Post: member; u=175757792; y=feqkLiSSgoPfxe3L9aVWngkM92cEjzEGnrhRIhGt1l6-v8eIOdHH
+X-Yahoo-Profile: roy_fielding
+
+On Jul 20, 2005, at 7:25 AM, Nic Ferrier wrote:
+
+&gt; When you PUT the server could use the content-type to decide what
+&gt; representation is to be edited.
+&gt;
+&gt; I don&#39;t understand why you class that as gymnastics.
+
+Because I&#39;ve written HTTP clients and HTTP servers.
+
+If the server assumes that every content type is a variant of
+a single resource instead of a representation, then clients are
+unable to replace an HTML representation with an XML representation.
+
+In order for the client to present an accurate user interface
+for authoring a negotiated resource, it would have to know all of
+the potential media types that might be representations for a given
+resource. Not just the ones that are valid now, but all of those
+that might ever be valid.
+
+In contrast, if you design the system such that negotiated URIs
+cannot be authored (they redirect using 300 instead), then the
+client doesn&#39;t need to know in advance how the resource is
+implemented.  If the server receives an XML replacement for a
+negotiated URI, it can redirect to the media-specific URI for XML.
+If the server receives the same for a non-negotiated URI, it can
+simply replace the current representation and respond with 200.
+
+That way, the client gets informed of the URIs for the other
+specific resources that it might need to author or delete.
+
+Note that there is yet another resource in effect here, and
+that is the one that tells the server how to map each resource
+to a set of representations.  That can be authored as well
+if we give it a URI of its own.
+
+&gt; Doing it this way gives the server the chance to say: sorry, that
+&gt; representation isn&#39;t supported by me (if the user submitted something
+&gt; un-indexable perhaps).
+
+Why would anyone want such a feature?
+
+&gt; Of course, I&#39;d be pretty annoyed if I&#39;d just typed war and peace into
+&gt; a text box and the server said that.
+
+I&#39;d be pretty annoyed by the text box. ;-)  HTML forms are not a
+good editing environment and HTTP certainly isn&#39;t limited to them.
+MS Word writes directly to web folders which is just another
+HTTP client library (with bugs).
+
+....Roy
+
+
+

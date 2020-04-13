@@ -1,0 +1,285 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 26731 invoked from network); 10 Apr 2006 20:56:29 -0000
+Received: from unknown (66.218.67.36)
+  by m35.grp.scd.yahoo.com with QMQP; 10 Apr 2006 20:56:29 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta10.grp.scd.yahoo.com with SMTP; 10 Apr 2006 20:56:29 -0000
+Received: from wsip-70-183-59-151.oc.oc.cox.net ([70.183.59.151] helo=[10.2.8.57])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1FT3Qs-0003m5-FH; Mon, 10 Apr 2006 13:56:23 -0700
+In-Reply-To: &lt;7BFF457F-A795-438E-85D3-72B7EBA4672C@...&gt;
+References: &lt;ab76badc0604060919h7d4f8604t927f7d41b17c1d08@...&gt; &lt;3f1451f50604061944p3b090f52mda8a133e6ac51d49@...&gt; &lt;ab76badc0604070121w2466160bw70ff988d51bf036c@...&gt; &lt;57A27523-4584-4CD8-852D-ECFE49E38089@...&gt; &lt;ab76badc0604070935o7cf7b1ddw9b1417587effa81e@...&gt; &lt;F4CEBC6C-E73B-4A0C-9228-40783D0181C4@...&gt; &lt;ab76badc0604080822h37c48fcfq5db030441acc884@...&gt; &lt;7BFF457F-A795-438E-85D3-72B7EBA4672C@...&gt;
+Mime-Version: 1.0 (Apple Message framework v749.3)
+Content-Type: text/plain; charset=ISO-8859-1; delsp=yes; format=flowed
+Message-Id: &lt;725B39AF-51C1-4CF3-8C42-B93B4482BE74@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: quoted-printable
+Date: Mon, 10 Apr 2006 13:56:17 -0700
+To: Bill Venners &lt;bv-svp@...&gt;
+X-Mailer: Apple Mail (2.749.3)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:12:0:0
+From: Roy T. Fielding &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Request Header vs. Query String
+X-Yahoo-Group-Post: member; u=175757792; y=n0xhtCzYX8Wlv-bDn0PhCv1YFkyAsB_gaWsAXWWopzCXFW1qVC3Y
+X-Yahoo-Profile: roy_fielding
+
+On Apr 10, 2006, at 12:48 PM, Bill Venners wrote:
+&gt; On Apr 8, 2006, at 8:22=
+ AM, Sandeep Shetty wrote:
+&gt;
+&gt;&gt;&gt; If so, I agree with that, though I am lean=
+ing away from most content
+&gt;&gt;&gt; negotiation anyway. For usability reasons, I=
+ think an article
+&gt;&gt;&gt; translated into different languages should each have =
+a different URI
+&gt;&gt;&gt; for each language. Likewise for usability I think the P=
+DF form of an
+&gt;&gt;&gt; article should have a different URI from the HTML form. I=
+ do think
+&gt;&gt;&gt; content negotiation would be OK for things like deciding betw=
+een GIF
+&gt;&gt;&gt; and PNF for an image, i.e., for forms of content that are
+&gt;&gt;&gt; &quot;=
+commodities&quot; or very substitutable.
+&gt;&gt;
+&gt;&gt; I know what you mean especially f=
+rom an usability perspective given
+&gt;&gt; the current state of affairs [3] but =
+there is a cost involved in  
+&gt;&gt; doing
+&gt;&gt; this as you might end up fragment=
+ing your resource space. Say one of
+&gt;&gt; the articles on your website was abo=
+ut an &quot;Interview with Mr. Foo  
+&gt;&gt; Bar&quot;
+&gt;&gt; and you had two versions of it, =
+one in English
+&gt;&gt; (http://artima.com/articles/en/interview-with-foo-bar.htm=
+l) and
+&gt;&gt; another in French
+&gt;&gt; (http://artima.com/articles/fr/interview-wit=
+h-foo-bar.html). Now
+&gt;&gt; suppose this article is viewed a lot by your Englis=
+h speaking  
+&gt;&gt; audience
+&gt;&gt; and they happen to point to it from various pla=
+ces on the web, you  
+&gt;&gt; end
+&gt;&gt; up undervaluing the French version which is=
+ actually the same
+&gt;&gt; resource. Apart from this, request-headers give us a =
+standard way to
+&gt;&gt; parametrize the request and get to the different represe=
+ntations
+&gt;&gt; whereas buy putting this information in the URI in a non-standa=
+rd way
+&gt;&gt; makes its harder to get to the other representations.
+&gt;&gt;
+&gt;&gt; Examp=
+le:
+&gt;&gt;
+&gt;&gt; http://artima.com/articles/interview-with-foo-bar
+&gt;&gt; Accept: text=
+/html
+&gt;&gt;
+&gt;&gt; By changing the Accept header to application/pdf like so
+&gt;&gt;
+&gt;&gt; =
+http://artima.com/articles/interview-with-foo-bar
+&gt;&gt; Accept: application/pd=
+f
+&gt;&gt;
+&gt;&gt; a client can easily get to the other format. Similarly, if the Fren=
+ch
+&gt;&gt; speaking reader visits the site he is automatically (provided his
+&gt;&gt; =
+browser is setup properly) presented the french version of the
+&gt;&gt; article. =
+If this was not the case and since the French version was
+&gt;&gt; undervalued (d=
+ue to the lack of links pointing to it), he might have
+&gt;&gt; ended up finding =
+the English version through a search engine and then
+&gt;&gt; would have to choos=
+e (using a non-standard way) the French version.
+&gt;&gt;
+&gt;&gt; [1] http://www.ics.u=
+ci.edu/~fielding/pubs/dissertation/
+&gt;&gt; evaluation.htm#sec_6_2_1
+&gt;&gt; [2] http=
+://www.w3.org/TR/2004/REC-webarch-20041215/#URI-persistence
+&gt;&gt; [3] http://s=
+andeep.shetty.in/2006/04/browserland-http.html
+&gt;&gt;
+&gt; What you describe sound=
+ to me like the approach envisioned by the
+&gt; HTTP designers when they desig=
+ned content negotiation, and in Roy
+&gt; Fielding&#39;s dissertation when he discu=
+sses REST. I would contest your
+&gt; statement, &quot;a client can easily get to th=
+e other format,&quot; and suggest
+&gt; that is the main usability problem with cont=
+ent negotiation as
+&gt; envisioned in the HTTP spec and REST.
+
+Whoa, I think t=
+his is a case of reading too much into my dissertation.
+The sites that I pr=
+oduce *always* separate languages into separate
+URI trees.  Day Software&#39;s =
+Communiqu=E9 product specializes in  
+multilingual
+sites and defaults to se=
+parate trees. E.g., if you follow a link to
+
+    http://www.day.com/
+
+then =
+the site will redirect according to the user&#39;s preference to one of
+
+    ht=
+tp://www.day.com/site/en/index.html
+    http://www.day.com/site/de/index.ht=
+ml
+
+and those pages, in turn, link to all three.  We are a Swiss company an=
+d
+experts at multilingual sites.
+
+In general, I avoid content negotiation w=
+ithout redirects like the
+plague because of its effect on caching.
+
+Now, se=
+ction 6.2.1 does not say that content negotiation should be
+used all the ti=
+me.  It says
+
+    The definition of resource in REST is based on a simple p=
+remise:
+    identifiers should change as infrequently as possible. Because
+=
+    the Web uses embedded identifiers rather than link servers, authors
+   =
+ need an identifier that closely matches the semantics they intend by
+    a=
+ hypermedia reference, allowing the reference to remain static even
+    tho=
+ugh the result of accessing that reference may change over time.
+    REST a=
+ccomplishes this by defining a resource to be the semantics of
+    what the=
+ author intends to identify, rather than the value  
+corresponding
+    to t=
+hose semantics at the time the reference is created. It is then
+    left to=
+ the author to ensure that the identifier chosen for a
+    reference does i=
+ndeed identify the intended semantics.
+
+In practice, multilingual sites rar=
+ely place equivalent content in
+multiple languages on negotiated URIs witho=
+ut an explicit redirect.
+Aside from the fact that Accept-Charset is rarely =
+configured properly,
+the fact is that different languages do not produce eq=
+uivalents.
+There are hundreds of nuances, colloquialisms, and shared social=
+
+norms that simply do not translate.  We encourage resource owners
+to only =
+use true content negotiation (without redirects) when the
+only difference b=
+etween formats is mechanical in nature.
+
+&gt; The situation with HTML and PDF =
+representations of an article, which
+&gt; you also described, is similar. Alth=
+ough je ne parle pas Francais, I
+&gt; do use both PDF and HTML, so I can use m=
+yself as an example user. I
+&gt; prefer HTML for on screen reading, but PDF fo=
+r printing. For longer
+&gt; written works--article length and longer--I prefer=
+ to print and read
+&gt; on paper. I have printed Roy Fielding&#39;s thesis out, fo=
+r example. I
+&gt; would have preferred to actually get a PDF version of that t=
+hesis for
+&gt; printing, but I didn&#39;t see one.
+
+Huh, that is getting to be a F=
+AQ.  I have no idea why people can&#39;t see
+the second and third link on the t=
+op page
+
+    http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
+
+th=
+at point to the two PDF editions.  *shrug*
+
+&gt; Some things that I can imagin=
+e doing as-envisioned content
+&gt; negotiation on are things that really are i=
+nformation commodities
+&gt; from the perspective of the user, such as PNG and =
+GIF. Either one you
+&gt; send should provide the user with the same experience=
+, and the user
+&gt; probably doesn&#39;t care which one the browser uses to constr=
+uct the
+&gt; image it displays. So here it seems fine to me to do content
+&gt; ne=
+gotiation as envisioned by HTTP. Note that in this case, what you
+&gt; are rea=
+lly negotiating with is the user agent, not the user.
+&gt;
+&gt; One place I&#39;m not=
+ sure which way to go is with a version of a URI fit
+&gt; for small screens, s=
+uch as Blackberries. I could just adjust the page
+&gt; when I guess from the r=
+equest that they are on a small screen, or I
+&gt; could include a link to a sm=
+all screen version. But that would really
+&gt; mean there&#39;s two different sets=
+ of pages, one for desktop computers
+&gt; and laptops, and one for mobile devi=
+ces. I haven&#39;t figured out what
+&gt; to do in this case, but I think that allo=
+wing access from mobile
+&gt; devices will be important, and suspect that just =
+sending the same
+&gt; thing to big and small screens won&#39;t make users happy. I=
+ welcome
+&gt; suggestions.
+
+Mobile devices usually have a different set of int=
+eresting
+transitions (links), different artwork, and often different conten=
+t.
+I usually treat them the same way as different languages.  Note that,
+li=
+ke the home page above, the &quot;cool URI&quot; entry points that get
+published on o=
+ther sites/email/papers are all negotiated, but result
+in a redirect to the=
+ language+device view of preference.
+
+....Roy
+

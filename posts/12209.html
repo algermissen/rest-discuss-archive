@@ -1,0 +1,53 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 13854 invoked from network); 7 Mar 2009 18:22:30 -0000
+X-Received: from unknown (69.147.108.200)
+  by m8.grp.re1.yahoo.com with QMQP; 7 Mar 2009 18:22:30 -0000
+X-Received: from unknown (HELO spaceymail-a7.g.dreamhost.com) (208.113.200.5)
+  by mta1.grp.re1.yahoo.com with SMTP; 7 Mar 2009 18:22:30 -0000
+X-Received: from [192.168.0.132] (ip72-211-202-154.oc.oc.cox.net [72.211.202.154])
+	by spaceymail-a7.g.dreamhost.com (Postfix) with ESMTP id EED8E142AC;
+	Sat,  7 Mar 2009 10:22:29 -0800 (PST)
+In-Reply-To: &lt;241DE537-10C2-43D3-A681-636DE3F05CF6@...&gt;
+References: &lt;241DE537-10C2-43D3-A681-636DE3F05CF6@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;AD3247AA-7145-407B-AE3F-CE16E3DB3C08@...&gt;
+Cc: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Sat, 7 Mar 2009 10:22:26 -0800
+To: Stefan Tilkov &lt;stefan.tilkov@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] HTTP and Statelessness
+X-Yahoo-Group-Post: member; u=175757792; y=1OlJo-cvV3r_-HbC4-sYIYTGlyjaMeRQ6-TVacRLjPAYILvw4wPn
+X-Yahoo-Profile: roy_fielding
+
+On Mar 7, 2009, at 6:20 AM, Stefan Tilkov wrote:
+
+&gt; Out of historical interest, I&#39;m trying to find out the motivation
+&gt; behind trying to add stateful communication to HTTP (in the form of
+&gt; cookies, URL rewriting and similar approaches).
+&gt;
+&gt; In hindsight, trying to make HTTP stateful seems to be such an
+&gt; obviously bad idea that I wonder whether I&#39;m just blind, or whether
+&gt; there really were no good reasons.
+&gt;
+&gt; Any pointers, or historical recollections, would be appreciated.
+&gt;
+
+See Brian Behlendorf&#39;s early proposal for a State header field
+(mostly to keep track of netnews-style articles read) and later
+discussion of Netscape Cookies, both on www-talk archives.
+
+There were also a lot of contemporaneous complaints about
+statelessness with regards to gateways, particularly of the
+screen-scraping kind interfacing with old mainframe apps.
+
+....Roy
+
+
+

@@ -1,0 +1,75 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 92093 invoked from network); 23 Jan 2007 00:35:02 -0000
+Received: from unknown (66.218.67.34)
+  by m40a.grp.scd.yahoo.com with QMQP; 23 Jan 2007 00:35:02 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta8.grp.scd.yahoo.com with SMTP; 23 Jan 2007 00:35:02 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.55])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1H99ch-00033N-Bl; Mon, 22 Jan 2007 16:34:51 -0800
+In-Reply-To: &lt;DAB6DB43-B20E-42A1-B1A5-944166761857@...&gt;
+References: &lt;6fb173f50701221429h4caa3defx97140396792a0ee2@...&gt; &lt;ep3er6+fag6@...&gt; &lt;6fb173f50701221459x60e8e8cbncfed32001c84bb8f@...&gt; &lt;8541AD6B-2790-481A-A929-243D88123885@...&gt; &lt;DAB6DB43-B20E-42A1-B1A5-944166761857@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;10AD7146-C41E-49E4-AE6F-989F0A015700@...&gt;
+Cc: &quot;Alan Dean&quot; &lt;alan.dean@...&gt;,
+ rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Mon, 22 Jan 2007 16:34:48 -0800
+To: Bill Venners &lt;bv-svp@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: ETag and PUT
+X-Yahoo-Group-Post: member; u=175757792; y=HsS5jz0PP6NNZIbapo25ZprgN_d8h8DO8juB9Ep--Y7TfBfw2bkN
+X-Yahoo-Profile: roy_fielding
+
+On Jan 22, 2007, at 4:11 PM, Bill Venners wrote:
+
+&gt; Hi Roy,
+&gt;
+&gt; On Jan 22, 2007, at 3:59 PM, Roy T. Fielding wrote:
+&gt;
+&gt;&gt; On Jan 22, 2007, at 2:59 PM, Alan Dean wrote:
+&gt;&gt;&gt; I have to admit it seems odd to send an ETag along with a response
+&gt;&gt;&gt; marked no-cache, but it is permitted by the spec if you wish to  
+&gt;&gt;&gt; do so.
+&gt;&gt;
+&gt;&gt; ETag is not an entity-header. ETag provides information about the
+&gt;&gt; resource, not the current message, so it is orthogonal to cache
+&gt;&gt; control.
+&gt;&gt;
+&gt; Hmm. How else might an ETag be used other than determining if a  
+&gt; cached entity is still current?
+
+The ETag *header field* is a response header.  The entity-tag value
+contained within that header field may be used in *later* requests
+for cache-related conditionals, like If-None-Match and If-Match.
+
+The entity tag is actually metadata about the internal resource
+mapping on the server -- it does not necessarily reflect anything
+about the content (other than the premise that the value must
+change whenever the content is changed).  That is why it doesn&#39;t
+matter which status code is used or what content is supplied in
+the response message, since the Etag is referring to the mapping
+operation rather than the content of *this* message.  Hence, the
+ETag provided in a 201 response must be the entity-tag of the
+mapping result after completing the resource-changing operation.
+
+It is a tricky thing to understand, and the spec does a poor job
+of explaining it.
+
+....Roy
+
+

@@ -1,0 +1,97 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 9 Apr 2003 21:08:32 -0000
+Received: (qmail 50788 invoked from network); 9 Apr 2003 21:08:31 -0000
+Received: from unknown (66.218.66.217)
+  by m7.grp.scd.yahoo.com with QMQP; 9 Apr 2003 21:08:31 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta2.grp.scd.yahoo.com with SMTP; 9 Apr 2003 21:08:30 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.8/8.12.8) with ESMTP id h39LAVdl002959;
+	Wed, 9 Apr 2003 14:10:31 -0700 (PDT)
+Date: Wed, 9 Apr 2003 14:10:30 -0700
+Subject: Re: [rest-discuss] DELETE container?
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;S. Alexander Jacobson&quot; &lt;alex@...&gt;
+In-Reply-To: &lt;Pine.WNT.4.53.0304091023460.2928@philo&gt;
+Message-Id: &lt;B2155961-6ACF-11D7-AC5C-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; I think the general question here is what are the
+&gt; standard ReST semantics for container.  It feels
+&gt; like we loop through this periodically on this
+&gt; list but never resolve it generically.  Here are
+&gt; the questions that should be in the FAQ (I don&#39;t
+&gt; know the answers).
+
+Well, for one, it is REST -- not ReST.  I like uniformity in some
+things.
+
+&gt; 1. How do you create a container?
+&gt;   Do we use the WebDAV MKCOL method?
+&gt;   Do we PUT a content-type that is, by definition,
+&gt;    a container e.g. text/xml+rss or multipart/mixed?
+
+Theoretically, you simply PUT something that needs containment,
+as evidenced by the slash in the path.  However, most webdav
+implementers believed that a collection should exist prior to
+a PUT within it, since that makes it easier to catch user mistakes
+such as mistyping a long URI.  Hence, MKCOL.
+
+REST will happily accept either alternative, providing that the
+method is standardized (has the same meaning) for all resources
+(even if some may not allow it).
+
+&gt; 2. How do we add things to the container?
+&gt;   Do we rely on directory structure and just do
+&gt;    a PUT /collection/item?
+
+If you know that item os the name you want, yes.
+
+&gt;   Do we POST /collection and get back a 201 CREATED?
+
+If you don&#39;t know what the name should be, yes.
+
+&gt; 3. How do we specify the order of items in a collection?
+&gt;   If we do this by POSTing to the collection, how
+&gt;   do we disambiguate between an add-to-collection
+&gt;   POST and an &quot;order-by&quot; POST.
+
+Order is a property of the collection representation.
+
+&gt; 4. How do you DELETE a non-empty container and its contents?
+&gt;   My answer: DELETE /container
+
+That is certainly how the user agent would express the semantic.
+The server might tell you to delete the children first.
+
+&gt; 5. How do you DELETE a non-empty container and not
+&gt;   its contents?
+&gt;   My answer: Make it a container of links (see #4)
+
+Move the contents first.
+
+&gt; 6. How do you DELETE only the contents of a container?
+&gt;   My answer: Either iterate through the contents
+&gt;   and DELETE individually or DELETE the container
+&gt;   and then create it again but then see #1
+
+If you delete the container, it may have adverse effects on other
+links.  For example, if the server automatically maintains links,
+then you should not delete the container unless you want all of
+those links to go away.  So, delete each resource individually.
+
+BTW, why do you switch from &quot;collection&quot; to &quot;container&quot;?
+
+....Roy
+
+
+

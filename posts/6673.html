@@ -1,0 +1,63 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 46714 invoked from network); 19 Oct 2006 20:36:45 -0000
+Received: from unknown (66.218.67.35)
+  by m26.grp.scd.yahoo.com with QMQP; 19 Oct 2006 20:36:45 -0000
+Received: from unknown (HELO fed1rmmtao03.cox.net) (68.230.241.36)
+  by mta9.grp.scd.yahoo.com with SMTP; 19 Oct 2006 20:36:45 -0000
+Received: from fed1rmimpo01.cox.net ([70.169.32.71])
+          by fed1rmmtao03.cox.net
+          (InterMail vM.6.01.06.01 201-2131-130-101-20060113) with ESMTP
+          id &lt;20061019203553.UYQJ2704.fed1rmmtao03.cox.net@...&gt;;
+          Thu, 19 Oct 2006 16:35:53 -0400
+Received: from [192.168.0.133] ([70.187.176.185])
+	by fed1rmimpo01.cox.net with bizsmtp
+	id cLbf1V00940NznJ0000000
+	Thu, 19 Oct 2006 16:35:39 -0400
+In-Reply-To: &lt;c70bc85d0610190626u2291f8b2gebe3fe0b034a7686@...&gt;
+References: &lt;eh6g2t+7csg@...&gt; &lt;c70bc85d0610190626u2291f8b2gebe3fe0b034a7686@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;36DC557D-B5C5-44F5-BA3A-70FAFF4733DD@...&gt;
+Cc: nrmehta &lt;nrmehta@...&gt;,
+ rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Thu, 19 Oct 2006 13:36:08 -0700
+To: Mark Baker &lt;distobj@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] URL aliasing
+X-Yahoo-Group-Post: member; u=175757792; y=S9H9_UFg57QQK_XAgTJOWoLES-UakexwmyqBw-GzDbNHEPSZmnX6
+X-Yahoo-Profile: roy_fielding
+
+On Oct 19, 2006, at 6:26 AM, Mark Baker wrote:
+&gt; On 10/18/06, nrmehta &lt;nrmehta@...&gt; wrote:
+&gt; &gt; What is the essential difference between
+&gt; &gt;
+&gt; &gt; /something
+&gt; &gt;
+&gt; &gt; and
+&gt; &gt;
+&gt; &gt; /something/
+&gt; &gt;
+&gt; &gt; I understand that the URI spec considers these as different
+&gt; &gt; identifiers. Can someone illuminate the rationale behind this?
+&gt;
+&gt; I&#39;d expect because it simplifies handling relative references if
+&gt; hierarchy is explicitly indicated. After all, &quot;foo&quot; resolved relative
+&gt; to the former would-be-URI is &quot;/foo&quot;, while &quot;/something/foo&quot; to the
+&gt; latter.
+
+And access control might be different.  Note that access control
+might be enforced anywhere in the request chain, not just at the
+origin server (which might theoretically know what the difference
+is between those two resources).  Even proxy choices can be based
+on URI paths.
+
+....Roy
+
+
+

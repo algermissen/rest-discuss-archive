@@ -1,0 +1,68 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 24306 invoked from network); 5 Feb 2004 05:02:06 -0000
+Received: from unknown (66.218.66.172)
+  by m18.grp.scd.yahoo.com with QMQP; 5 Feb 2004 05:02:06 -0000
+Received: from unknown (HELO bsl-540.wakasoft.com) (65.208.153.194)
+  by mta4.grp.scd.yahoo.com with SMTP; 5 Feb 2004 05:02:06 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by bsl-540.wakasoft.com (8.12.9/8.12.9) with ESMTP id i1552nQt005059;
+	Wed, 4 Feb 2004 21:02:49 -0800 (PST)
+Date: Wed, 4 Feb 2004 21:02:48 -0800
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v553)
+Cc: &quot;rest-discuss&quot; &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;Donald Strong&quot; &lt;dstrong@...&gt;
+In-Reply-To: &lt;EMEAICAGOPOIIFJNPBHJAEPOCEAA.dstrong@...&gt;
+Message-Id: &lt;8B14DBA8-5798-11D8-B337-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.553)
+X-eGroups-Remote-IP: 65.208.153.194
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Restful URIs
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+X-eGroups-Rocket-Track: 1: 100 ; SERVER=66.218.86.250
+
+&gt; Why is there a preference, within the REST community, for URIs of the 
+&gt; form
+&gt;
+&gt;     http://university.edu/ws/student/001
+&gt;
+&gt; rather than this form?
+&gt;
+&gt;     http://university.edu/ws/student?id=001
+&gt;
+&gt; Is there a specification that mandates the former or is it simply 
+&gt; consensus
+&gt; within the group that the former is &quot;more RESTful&quot; than the latter?
+
+There are several reasons.  The first is simply practical: many
+caches do not cache responses to requests that contain what appears
+to be query information, since there is usually less of a chance
+of a future hit on the same query.  Server-side caches can optimize
+around that for their own common queries, but they have no way of
+changing the intermediaries.
+
+The second reason is that path is a hierarchical name space, unlike
+the query.  If you are using hierarchical tools to manipulate
+hierarchical spaces, it is best to avoid escaping from the hierarchy
+in arbitrary ways.  A hierarchy is, after all, simply a pre-established
+query with a defined order among elements.
+
+The third reason is that there is only one query portion of a URI.
+If you use it for silly reasons, then it won&#39;t be as useful for
+actual queries (user-driven options).
+
+I am sure there are other reasons -- those are just off the top of
+my head.  There are also implementation-specific reasons, such as
+more predefined options in Apache for handling requests in the path,
+resulting in more efficient handling of blobs of data that are stored
+as simple files.
+
+....Roy
+
+
+

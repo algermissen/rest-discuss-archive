@@ -1,0 +1,94 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 87146 invoked from network); 9 Jun 2009 17:34:38 -0000
+X-Received: from unknown (69.147.108.200)
+  by m1.grp.re1.yahoo.com with QMQP; 9 Jun 2009 17:34:38 -0000
+X-Received: from unknown (HELO spaceymail-a3.g.dreamhost.com) (208.113.200.5)
+  by mta1.grp.re1.yahoo.com with SMTP; 9 Jun 2009 17:34:38 -0000
+X-Received: from [10.0.0.125] (bsl-rtr.day.com [62.192.10.254])
+	by spaceymail-a3.g.dreamhost.com (Postfix) with ESMTP id 9C4C2194E71;
+	Tue,  9 Jun 2009 10:34:17 -0700 (PDT)
+In-Reply-To: &lt;343ecb3e0906090918vfc07c42m42fa76094f3d67b4@...&gt;
+References: &lt;4A2548FE.8090105@...&gt; &lt;343ecb3e0906020907m29d998c5kecd3e953da7b6cf9@...&gt; &lt;CA83CFE5-5F4D-40A3-A096-AF0815A0E73D@...&gt; &lt;343ecb3e0906070529h727aad91l4b4037c1bb430ed@...&gt; &lt;BB5BDB5C-D2FA-4666-B9AA-4D5ACD33E42D@...&gt; &lt;343ecb3e0906090627w1f53a39eqefdd58c90e55a439@...&gt; &lt;DED65368-D967-42F7-9445-46984B315BDD@...&gt; &lt;22823145-45B6-4648-973E-CF771C60B9D2@...&gt; &lt;343ecb3e0906090918vfc07c42m42fa76094f3d67b4@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;8FEA472D-696B-4744-AA14-F44086DBF4D4@...&gt;
+Cc: REST-Discuss Discussion Group &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Tue, 9 Jun 2009 19:34:16 +0200
+To: Bob Haugen &lt;bob.haugen@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] rest transactions
+X-Yahoo-Group-Post: member; u=175757792; y=_LtCuRBJ7QywH_GyIQ7TjNMEA159Dzu6cdqKSI5rjJOR-_ytfB95
+X-Yahoo-Profile: roy_fielding
+
+On Jun 9, 2009, at 6:18 PM, Bob Haugen wrote:
+&gt; On Tue, Jun 9, 2009 at 10:11 AM, Roy T. Fielding&lt;fielding@...&gt;  
+&gt; wrote:
+&gt; &gt; If you find yourself in need of a distributed transaction
+&gt; &gt; protocol, then how can you possibly say that your architecture
+&gt; &gt; is based on REST? I
+&gt;
+&gt; P.S. In this previous message to this group:
+&gt; http://tech.groups.yahoo.com/group/rest-discuss/message/4150
+&gt; You appeared to be saying something different:
+&gt;
+&gt; &quot;This topic has come up a few times on webdav and http-wg lists.
+&gt; The transaction is a resource, but the relationship between it and
+&gt; the requested resource can be accomplished via a header field that
+&gt; defines each request as a sequenced resource within a hierarchical
+&gt; transaction. In other words, ask the server for a transaction begin,
+&gt; send the URI it gives the client in each request as a header field
+&gt; with a request number appended to it, and finally abort or commit
+&gt; the transaction as a final request to the transaction&#39;s URI. That&#39;s
+&gt; basically how I did it for the still-vapor waka protocol.&quot;
+&gt;
+&gt; Do I misunderstand?
+&gt;
+
+No, I just found it to be useless for REST.  It might still
+be needed for non-RESTful use of the same protocols.
+
+I tried out the above and then simplified it out of the protocol.
+
+My thinking is that the above exchange is equivalent to the
+server providing an independent set of resources to the client
+(i.e., any state-changing actions by the client are automatically
+isolated by being in a client-specific workspace) and then the
+commit is just another button on a web page (or the equivalent
+typed element/relation in your favorite media type).  The problem
+is therefore teaching the client which action to select, not
+what transaction protocol to be aware of.
+
+&gt; By the way, that&#39;s not the design I have in mind, but I&#39;d like to
+&gt; understand it better.
+&gt;
+
+So would I.
+
+&gt; The use cases I have in mind all involve B2B automated
+&gt; order-fulfillment and related scenarios.
+&gt;
+
+Yep, multiparty contract agreement?  I know of many scenarios
+in which the resources depend on some sort of transaction-like
+semantics on the back-end because they are dealing with multiple
+parties.  I don&#39;t know of any where the client needs to be aware
+of it.
+
+The same is generally true of ACID database transactions --
+all of the work is done on the servers, with the client&#39;s
+awareness limited to the commit/cancel decision (or fail).
+Where REST differs is that the client can&#39;t make arbitrary
+changes to the database, so there is no need for a REST
+client to be aware of the begin-transaction semantic.
+
+At least that&#39;s my theory -- it could be wrong,
+
+....Roy
+
+

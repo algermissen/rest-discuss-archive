@@ -1,0 +1,56 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 63531 invoked from network); 4 Jul 2003 16:15:48 -0000
+Received: from unknown (66.218.66.217)
+  by m3.grp.scd.yahoo.com with QMQP; 4 Jul 2003 16:15:48 -0000
+Received: from unknown (HELO mac.wakasoft.com) (212.249.34.130)
+  by mta2.grp.scd.yahoo.com with SMTP; 4 Jul 2003 16:15:47 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id h64GDsiC001262
+	for &lt;rest-discuss@yahoogroups.com&gt;; Fri, 4 Jul 2003 09:13:55 -0700 (PDT)
+Date: Fri, 4 Jul 2003 18:13:53 +0200
+Subject: Re: [rest-discuss] Identification of resources
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+To: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+In-Reply-To: &lt;20030704105948.Y1116@...&gt;
+Message-Id: &lt;81BF6E3C-AE3A-11D7-B57A-000393753936@...&gt;
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+Crikey, you guys are getting all mixed up.  REST is defined by
+my dissertation.  REST is not defined by the TAG discussion or
+the W3C&#39;s Webarch document or TimBL&#39;s design notes.  REST is an
+architectural style, not the Web architecture.  Please try
+to keep the terminology consistent.
+
+REST does not claim that all important resources must have identifiers.
+REST merely requires that actions be applied to an identified resource,
+and that identification be in the form of a resource identifier (rather
+than, for example, a sequence of events).  Obviously, if you do not
+have an identifier for a given resource, then you cannot interact
+with it directly in REST, which means you can&#39;t do things like share
+that specific resource with others or use the URI alone as some form
+of audit reference (you can&#39;t do that anyway -- you need all of the
+information that typically gets stored in a logfile, including time,
+method, authentication token, etc.).
+
+That does not in any way imply that all resources are direct or,
+conversely, that you cannot have an effect on resources via indirect
+actions under the control of the origin server.  Yes, there are
+trade-offs between the two, and I personally prefer that multi-valued
+resource identifiers always result in a redirection to the more
+specific resource before further actions take place, but both are
+fully equal parts of the REST model.  They allow interaction to be
+vague when specificity is neither desired nor needed, and particularly
+when a component has yet to determine the specific URI.
+
+....Roy
+
+
+

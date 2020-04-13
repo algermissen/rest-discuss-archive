@@ -1,0 +1,47 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 5059 invoked from network); 30 Mar 2009 06:27:18 -0000
+X-Received: from unknown (69.147.108.202)
+  by 98.137.34.37 with QMQP; 30 Mar 2009 06:27:18 -0000
+X-Received: from unknown (HELO spaceymail-a6.g.dreamhost.com) (208.113.200.5)
+  by mta3.grp.re1.yahoo.com with SMTP; 30 Mar 2009 06:27:18 -0000
+X-Received: from [192.168.0.132] (ip72-211-202-154.oc.oc.cox.net [72.211.202.154])
+	by spaceymail-a6.g.dreamhost.com (Postfix) with ESMTP id CB7A6CA7CA;
+	Sun, 29 Mar 2009 23:26:59 -0700 (PDT)
+In-Reply-To: &lt;20090329192702.fb53ef3f.eric@...&gt;
+References: &lt;e78bdbc00902240738v484d6e94h4449eb0b67a28d2e@...&gt; &lt;20090329192702.fb53ef3f.eric@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;4D8B163D-30EA-4D00-A961-89F138DBE0BA@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Sun, 29 Mar 2009 23:26:59 -0700
+To: Eric J.Bowman &lt;eric@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] An approach to deleting multiple resources use one DELETE
+X-Yahoo-Group-Post: member; u=175757792; y=yAQEPz7qjIydA4U6Zezp9t5CUduzik0gZOc5CuOMjn2i6G93oDuQ
+X-Yahoo-Profile: roy_fielding
+
+On Mar 29, 2009, at 6:27 PM, Eric J. Bowman wrote:
+&gt; Let&#39;s try to get back to the fundamentals here. Does anyone seriously
+&gt; disagree with this statement of mine?
+&gt;
+&gt; The REST approach to having a client request the deletion of all  
+&gt; members
+&gt; of a collection, is for the server to instruct the client to call the
+&gt; DELETE method of each member resource in turn.
+&gt;
+
+No, that is only one of many ways.  The most common is to define a
+resource that has the semantics of all members of the collection
+and apply DELETE to that one resource.  The simplest is to just
+delete the collection.
+
+....Roy
+
+
+

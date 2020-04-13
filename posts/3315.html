@@ -1,0 +1,53 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_3_0); 22 Jan 2003 22:31:49 -0000
+Received: (qmail 28054 invoked from network); 22 Jan 2003 22:31:49 -0000
+Received: from unknown (66.218.66.218)
+  by m9.grp.scd.yahoo.com with QMQP; 22 Jan 2003 22:31:49 -0000
+Received: from unknown (HELO mac.wakasoft.com) (68.4.74.14)
+  by mta3.grp.scd.yahoo.com with SMTP; 22 Jan 2003 22:31:49 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.2/8.12.2) with ESMTP id h0MMD54v007894;
+	Wed, 22 Jan 2003 14:13:05 -0800 (PST)
+Date: Wed, 22 Jan 2003 14:13:04 -0800
+Subject: Re: [rest-discuss] REST Resource Discovery
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: &quot;rest-discuss&quot; &lt;rest-discuss@yahoogroups.com&gt;,
+   &quot;Jeffrey Winter&quot; &lt;JeffreyWinter@...&gt;
+To: &quot;Seairth Jacobs&quot; &lt;seairth@...&gt;
+In-Reply-To: &lt;008601c2c25a$ac04dc00$a800a8c0@SeairthA31&gt;
+Message-Id: &lt;ADB7643D-2E56-11D7-BEAC-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; MessageTrue.  However, I feel that the caching limitation only applies 
+&gt; to
+&gt; intermediaries.  Otherwise, the verb would be practically useless.  You
+&gt; could certainly use a 303 as well, but the only advantage I see to 
+&gt; that is
+&gt; allowing intermediaries to cache the response.
+&gt;
+&gt; Hey, Roy:  if you happen to read this, what is your take on this?  Is
+&gt; OPTIONS supposed to be non-cachable for everyone or just 
+&gt; intermediaries?
+
+It is only non-cacheable by default.  Use cache-control to change that.
+
+The Web had a notion of external links, but nobody could agree on the
+HTTP syntax so it didn&#39;t make the cut.  WebDAV added properties.
+
+Adding a new header field to every GET response would increase latency
+for no benefit to the common case and only marginal benefit to the
+applications being discussed.  It is therefore more efficient to have
+the client request that information only when it is desired.
+
+....Roy
+
+
+

@@ -1,0 +1,75 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 52495 invoked from network); 25 Oct 2004 22:23:26 -0000
+Received: from unknown (66.218.66.166)
+  by m19.grp.scd.yahoo.com with QMQP; 25 Oct 2004 22:23:26 -0000
+Received: from unknown (HELO picanmix.dev.day.com) (212.249.34.130)
+  by mta5.grp.scd.yahoo.com with SMTP; 25 Oct 2004 22:23:26 -0000
+Received: from eu-mail.day.com (eu-mail.dev.day.com [10.0.0.30])
+        by picanmix.dev.day.com (DAY) with ESMTP id i9PMNKI12315;
+        Tue, 26 Oct 2004 00:23:23 +0200 (MEST)
+Received: from [10.2.8.58] ([10.2.8.58])
+          by eu-mail.day.com (Lotus Domino Release 5.0.8)
+          with ESMTP id 2004102600161519:595776 ;
+          Tue, 26 Oct 2004 00:16:15 +0200 
+In-Reply-To: &lt;015a01c4ba30$253da510$0200a8c0@MarkDesktop&gt;
+References: &lt;00d401c4ba08$571c1760$0200a8c0@MarkDesktop&gt; &lt;20041025004113.GC14710@...&gt; &lt;015a01c4ba30$253da510$0200a8c0@MarkDesktop&gt;
+Mime-Version: 1.0 (Apple Message framework v619)
+Message-Id: &lt;6546972C-26D3-11D9-BBD4-000393753936@...&gt;
+Cc: rest discuss &lt;rest-discuss@yahoogroups.com&gt;
+Date: Mon, 25 Oct 2004 15:15:36 -0700
+To: &quot;R. Mark Volkmann&quot; &lt;mark@...&gt;
+X-Mailer: Apple Mail (2.619)
+X-MIMETrack: Itemize by SMTP Server on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 10/26/2004
+ 12:16:15 AM,
+	Serialize by Router on eu-mail/Day(Release 5.0.8 |June 18, 2001) at 10/26/2004
+ 12:23:24 AM,
+	Serialize complete at 10/26/2004 12:23:24 AM
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-eGroups-Remote-IP: 212.249.34.130
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] fact check
+X-Yahoo-Group-Post: member; u=175757792
+X-Yahoo-Profile: roy_fielding
+
+On Oct 24, 2004, at 6:15 PM, R. Mark Volkmann wrote:
+&gt;&gt; On Sun, Oct 24, 2004 at 03:30:44PM -0500, R. Mark Volkmann wrote:
+&gt;&gt;
+&gt;&gt;&gt; REST doesn&#39;t mandate the use of XML for the content of request and
+&gt;&gt;&gt; response
+&gt;&gt;&gt; messages, but XML is the most common data representation used in
+&gt;&gt;&gt; messages.
+&gt;&gt;
+&gt;&gt; Not by a long shot.  I&#39;d expect that HTML is far and away the most
+&gt;&gt; popular format.  RSS is probably the most popular XML based format,
+&gt;&gt; but way behind HTML.
+&gt;
+&gt; Maybe I should clarify that I&#39;m looking at REST from the standpoint of 
+&gt; being
+&gt; an alternative to SOAP, not as a way of constructing a web app. In that
+&gt; setting it seems much more desirable for a REST service to return XML 
+&gt; than
+&gt; HTML, correct?
+
+It depends on the consuming application.  In any case, REST is an
+architectural style and SOAP is a protocol, so you can build REST-based
+applications using SOAP.  You will have to be more specific, such as
+REST-based HTTP applications versus RPC-based SOAP applications.
+
+&gt; I assumed that using REST as an alternative to SOAP was the most 
+&gt; common use
+&gt; of REST. Is that wrong?
+
+Completely wrong -- hypertext browsing on the Web is the most common
+use of REST-based applications.  The only reason that SOAP even enters
+the discussion is because some people tried to fix the major problems
+with SOAP that caused its resources to be unusable on the Web, and
+when they did so they used REST as the basis of their arguments.
+
+....Roy
+
+
+

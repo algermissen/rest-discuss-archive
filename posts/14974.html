@@ -1,0 +1,54 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 8180 invoked from network); 3 Mar 2010 02:02:51 -0000
+X-Received: from unknown (98.137.34.44)
+  by m2.grp.sp2.yahoo.com with QMQP; 3 Mar 2010 02:02:51 -0000
+X-Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.113.200.5)
+  by mta1.grp.sp2.yahoo.com with SMTP; 3 Mar 2010 02:02:51 -0000
+X-Received: from rtf.corp.day.com (wsip-98-189-13-228.oc.oc.cox.net [98.189.13.228])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id 071FB1613E7;
+	Tue,  2 Mar 2010 18:02:51 -0800 (PST)
+Mime-Version: 1.0 (Apple Message framework v1077)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;266623.59751.qm@...&gt;
+Date: Tue, 2 Mar 2010 18:02:49 -0800
+Cc: REST-Discuss Group Discussion &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Message-Id: &lt;6B4C5A62-6C31-4B77-BCBF-DE55CBA2F012@...&gt;
+References: &lt;343ecb3e1003020406h7acf12fauc8139094a754d423@...&gt; &lt;266623.59751.qm@...&gt;
+To: Bob Haugen &lt;bob.haugen@...&gt;
+X-Mailer: Apple Mail (2.1077)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] The farmer in the dell
+X-Yahoo-Group-Post: member; u=175757792; y=VgTAE3Kkdq_y8rlky-1RU1Ks_tzARK76a1DRN-pz58k_i8-PICq4
+X-Yahoo-Profile: roy_fielding
+
+Now now, Bob -- stop toying with the kids.  Phil told me back
+in the eBuilt days (2000) that you were an expert in inventory
+control programs for ERP, so I expect you know the answer to that
+problem better than I do.
+
+REST does not have a solution to distributed (more than one
+central server) transaction problems, other than to use
+server-side intermediaries to change the problem itself.
+REST doesn&#39;t even try to solve that problem, since it is
+behind the server interface.
+
+IIRC, the multi-market problem is known to be intractable
+even for strict transaction protocols.  We end up doing the
+same thing that everyone else does, which is to use journaling
+of orders and either compensating transactions or strict
+separation of inventory between sites (with periodic rebalancing
+of inventory as stocks decrease).  I think the farmer could
+be provided with a RESTful application for tracking and
+rebalancing inventory across multiple sites, but I wouldn&#39;t
+call that a RESTful solution to the inventory problem itself.
+It just works well enough to keep the farmer happy.
+
+....Roy
+
+
+

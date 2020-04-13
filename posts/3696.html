@@ -1,0 +1,62 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_6); 22 May 2003 21:57:53 -0000
+Received: (qmail 5099 invoked from network); 22 May 2003 21:57:53 -0000
+Received: from unknown (66.218.66.218)
+  by m1.grp.scd.yahoo.com with QMQP; 22 May 2003 21:57:53 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta3.grp.scd.yahoo.com with SMTP; 22 May 2003 21:57:53 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.8) with ESMTP id h4MM0gpA015678;
+	Thu, 22 May 2003 15:00:42 -0700 (PDT)
+Date: Thu, 22 May 2003 15:00:41 -0700
+Subject: Re: [rest-discuss] Missing REST constraint?
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: rest-discuss@yahoogroups.com
+To: Mark Baker &lt;distobj@...&gt;
+In-Reply-To: &lt;20030522125854.C4091@...&gt;
+Message-Id: &lt;D48244AF-8CA0-11D7-959D-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; It seems that when you take all the REST constraints as a whole, that
+&gt; there is nothing which constrains that all &quot;give me a representation
+&gt; of this resource&quot; requests use the same semantic (i.e.  GET in HTTP).
+&gt; Tim talks about this[1] as one of his &quot;axioms&quot;.
+
+I think it is important to differentiate between things that the
+architectural style does not allow (constraints) and things that
+it allows but assumes nobody will do.  Tim has a lot of axioms
+that are, at best, personal preferences for a rational universe.
+Universality is one of them -- the principle that doing it well
+enough in one place suggests that nobody else should duplicate
+the same functionality, since duplication can be harmful.
+
+&gt; The &quot;uniform interface&quot; constraint doesn&#39;t appear to cover it, as there
+&gt; may exist many different uniform semantics as part of a single 
+&gt; interface
+&gt; which could mean &quot;give me a representation&quot; (&quot;RETRIEVE&quot;, &quot;SNARF&quot;,
+&gt; &quot;GRAB&quot;, etc..).  I can&#39;t see how any of the other constraints would
+&gt; prevent this either.
+&gt;
+&gt; Surely I&#39;m missing something here.  Thoughts?  Roy (when you have time 
+&gt; -
+&gt; no urgency)?
+&gt;
+&gt;  [1] http://www.w3.org/DesignIssues/Axioms.html#GET2
+
+Nope, that&#39;s about right.  Should the architectural style prevent
+people from shooting themselves in the foot, or simply note the
+advantages of using one verb for each meaning?  I don&#39;t have an
+answer to that one.
+
+....Roy
+
+
+

@@ -1,0 +1,67 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 72477 invoked from network); 2 Sep 2012 03:56:12 -0000
+X-Received: from unknown (98.137.35.161)
+  by m8.grp.sp2.yahoo.com with QMQP; 2 Sep 2012 03:56:12 -0000
+X-Received: from unknown (HELO homiemail-a27.g.dreamhost.com) (208.97.132.202)
+  by mta5.grp.sp2.yahoo.com with SMTP; 2 Sep 2012 03:56:12 -0000
+X-Received: from homiemail-a27.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a27.g.dreamhost.com (Postfix) with ESMTP id F3F4459805F;
+	Sat,  1 Sep 2012 20:55:15 -0700 (PDT)
+X-Received: from [192.168.1.84] (99-21-208-82.lightspeed.irvnca.sbcglobal.net [99.21.208.82])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: fielding@...)
+	by homiemail-a27.g.dreamhost.com (Postfix) with ESMTPSA id BFA65598057;
+	Sat,  1 Sep 2012 20:55:15 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1278)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;50424D55.1080503@...&gt;
+Date: Sat, 1 Sep 2012 20:55:21 -0700
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;,
+ Jan Algermissen &lt;jan.algermissen@...&gt;,
+ Paul Cohen &lt;pacoispaco@...&gt;
+Content-Transfer-Encoding: quoted-printable
+Message-Id: &lt;FEA195E1-50CC-41C8-A12C-33F214E9F4D4@...&gt;
+References: &lt;CAA1Y72H_PU305hm7A7WDXHnemNoeG1X88E8-4ujf2c1cpzoafQ@...&gt; &lt;106829B4-ED94-4591-8E78-98BF8BB8EEE1@...&gt; &lt;50424D55.1080503@...&gt;
+To: Erik Wilde &lt;dret@...&gt;
+X-Mailer: Apple Mail (2.1278)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Link relation for adding a resource
+X-Yahoo-Group-Post: member; u=175757792; y=pZL5huFlTQaanCmD7gpDEPtNQhcA_wTu8GdH5XSEeLS3CZVChS2Q
+X-Yahoo-Profile: roy_fielding
+
+On Sep 1, 2012, at 11:00 AM, Erik Wilde wrote:
+&gt; On 2012-09-01 05:44 , Jan =
+Algermissen wrote:
+&gt;&gt; On Aug 31, 2012, at 6:07 PM, Paul Cohen wrote:
+&gt;&gt;&gt; I =
+would like to define, in JSON, a link that provides a way to add a
+&gt;&gt;&gt; new =
+resource to a collection of resources.
+&gt;&gt; HTTP POST has that semantic alrea=
+dy, there is no need to use a link relation for that.
+&gt; 
+&gt; why do you think=
+ POST has create semantics? POST does not have any 
+&gt; semantics other than =
+doing something non-safe non-idempotent.
+
+The original definition of POST w=
+as the same as NNTP: post an article
+to a group (where group is the contain=
+er identified by the target URI).
+Hence, create a new resource under the ta=
+rget and respond with its
+new URI in Location.
+
+POST has strayed quite a bi=
+t since then.
+
+....Roy
+
+
+

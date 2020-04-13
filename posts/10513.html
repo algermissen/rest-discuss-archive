@@ -1,0 +1,46 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 45788 invoked from network); 20 Mar 2008 07:56:08 -0000
+X-Received: from unknown (66.218.67.96)
+  by m44.grp.scd.yahoo.com with QMQP; 20 Mar 2008 07:56:08 -0000
+X-Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.113.200.5)
+  by mta17.grp.scd.yahoo.com with SMTP; 20 Mar 2008 07:56:08 -0000
+X-Received: from [192.168.0.160] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id 1F6D9161A0F;
+	Thu, 20 Mar 2008 00:56:08 -0700 (PDT)
+In-Reply-To: &lt;e3f21b1a0803181752n42788984u307d4631f4e983e5@...&gt;
+References: &lt;fro2hj+p2p1@...&gt; &lt;e3f21b1a0803181752n42788984u307d4631f4e983e5@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;EB5B588A-0E2F-4AEE-BB58-7502859A6EE7@...&gt;
+Cc: &quot;Ebenezer Ikonne&quot; &lt;amaeze@...&gt;,
+	rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Thu, 20 Mar 2008 00:56:03 -0700
+To: Subbu Allamaraju &lt;subbu.allamaraju@...&gt;
+X-Mailer: Apple Mail (2.753)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Request sent with POST
+X-Yahoo-Group-Post: member; u=175757792; y=BgWrK62OHbtRl9pO0mmf7tYUN8ASlrjcO0_gc_MiVfnjrUHN9HPy
+X-Yahoo-Profile: roy_fielding
+
+On Mar 18, 2008, at 5:52 PM, Subbu Allamaraju wrote:
+
+&gt; With both POST and PUT what is sent in the request is an &quot;entity&quot;  
+&gt; and not a representation.
+
+That is incorrect.  The &quot;entity&quot; in HTTP messages is just a
+representation as payload.  A POST entity is usually a representation
+of an input form, though it may be other things (an appendage, a new
+atom entry, etc.).  A PUT entity is a representation of the intended
+result state for the requested resource.  Likewise, the entity within
+a response is always a representation of something -- that something
+can be determined by the looking at the status code.
+
+....Roy
+
+
+

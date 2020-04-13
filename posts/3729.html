@@ -1,0 +1,97 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 48110 invoked from network); 3 Jul 2003 09:21:27 -0000
+Received: from unknown (66.218.66.218)
+  by m4.grp.scd.yahoo.com with QMQP; 3 Jul 2003 09:21:27 -0000
+Received: from unknown (HELO mac.wakasoft.com) (212.249.34.130)
+  by mta3.grp.scd.yahoo.com with SMTP; 3 Jul 2003 09:21:27 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.9/8.12.9) with ESMTP id h639LBiC000932;
+	Thu, 3 Jul 2003 02:21:11 -0700 (PDT)
+Date: Thu, 3 Jul 2003 11:21:10 +0200
+Subject: Re: [rest-discuss] URIs are RESTful
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v552)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;S. Alexander Jacobson&quot; &lt;alex@...&gt;
+In-Reply-To: &lt;Pine.WNT.4.53.0307021121470.1320@philo&gt;
+Message-Id: &lt;AF71EF59-AD37-11D7-86A8-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.552)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; You all appear to be arguing for or against one of
+&gt; these positions, but it is not clear which.
+
+Not really.  I was arguing against a claim that simply is not
+true about REST.
+
+&gt; Here is an example to clarify this distinction.
+&gt; The choice is between
+&gt;
+&gt; (1) CookieBank uses cookies or auth to provide
+&gt; access to a customer payment at URL:
+&gt;
+&gt;   http://CookieBank.com/accounts/payments/12
+
+That is not a likely scenario.  Applications working within an
+account context will typically use a company-unique payment ID or
+one that is account-specific.  A more realistic example is the &quot;top&quot;
+page, which is often made account-generic specifically because
+the company wants customers to bookmark a single URI for the
+initial access point.  It is not identified with an account
+number because the user is going to choose from their accounts
+after visiting that page.
+
+&gt; (2) RestBank tops CookieBank by making URIs for
+&gt; specific payments visible in the &quot;Location&quot; bar
+&gt; so users can forward them to others:
+&gt;
+&gt;   http://RestBank.com/accounts/user123/payments/12
+
+The purpose would be for auditing, not sharing transactions.
+
+&gt; My opinion:
+&gt;
+&gt; REST and Authentication are orthogonal, but that
+&gt; people frequently abuse authentication to make it
+&gt; unrestful.  So, RESTAuthenticateBank is RESTful,
+&gt; but CookieBank is not.
+
+Authentication is orthogonal.  Cookies are also orthogonal when
+they are simply used for content negotiation or authentication.
+However, Cookie authentication is not allowed in REST because it
+lacks visibility, which causes security problems because the other
+components don&#39;t know it is sensitive information.
+
+If the semantics of the request is determined by the contents of
+authentication or cookies, then that in non-RESTful.  All of the
+examples I used were requests with the semantics determined entirely
+by the URI and only the response content determined by the request
+metadata. That is why the exchange remains RESTful, because the URI
+is universally applicable (means the same thing) for other users
+even though the content exchanged will be user-specific.  Likewise,
+a user-specific URI that is access-controlled for a single user
+is universally applicable even if the rest of the universe is denied
+access -- the semantics are clear from the request method and URI.
+
+&gt; CookieBank WOULD be restful if it sent a
+&gt; content-location header that specified the URI of
+&gt; the underlying resource.
+
+No, content-location was an attempt to set the base URI for
+embedded relative URIs, but it has not been implemented sufficiently
+to make it useful for even that purpose.  It cannot be used to
+compensate for multi-semantic URIs, such as a single URI being
+used for many different types of request via POST, because
+visibility of those actions must occur in the request (prior
+to the response being generated).
+
+....Roy
+
+
+

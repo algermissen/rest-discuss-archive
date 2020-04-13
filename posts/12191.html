@@ -1,0 +1,67 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 50257 invoked from network); 5 Mar 2009 01:14:22 -0000
+X-Received: from unknown (66.218.67.97)
+  by m8.grp.re1.yahoo.com with QMQP; 5 Mar 2009 01:14:22 -0000
+X-Received: from unknown (HELO spaceymail-a7.g.dreamhost.com) (208.113.200.5)
+  by mta18.grp.scd.yahoo.com with SMTP; 5 Mar 2009 01:14:22 -0000
+X-Received: from [10.2.8.56] (wsip-70-183-62-251.oc.oc.cox.net [70.183.62.251])
+	by spaceymail-a7.g.dreamhost.com (Postfix) with ESMTP id 0D85B14283;
+	Wed,  4 Mar 2009 17:14:22 -0800 (PST)
+In-Reply-To: &lt;55c60e370903040331t11a7cb00kb2f789076698959b@...&gt;
+References: &lt;55c60e370903021409h6f20476fw2e80696ac319ec36@...&gt; &lt;C0E0681F-6E67-4807-8DB0-262952DD3AAA@...&gt; &lt;55c60e370903021440s6ec8b31brd0f6f2a8d1e586e5@...&gt; &lt;F34A1426-6D78-4028-963F-59FED327499A@...&gt; &lt;55c60e370903030611n207729cfxc825965af9308ae0@...&gt; &lt;26EE4D7D-112E-4C23-8EEA-1362ED6768A6@...&gt; &lt;55c60e370903040331t11a7cb00kb2f789076698959b@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;75DEECDF-F8DB-431E-B6D3-E2D4FD8E2557@...&gt;
+Cc: Rest List &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Wed, 4 Mar 2009 17:14:35 -0800
+To: Solomon Duskis &lt;sduskis@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] This is REST
+X-Yahoo-Group-Post: member; u=175757792; y=PBkz8quYtOJRpDogTL04hZQzUbMqPSoxrdiW5F42BrGMdv_XTQzh
+X-Yahoo-Profile: roy_fielding
+
+On Mar 4, 2009, at 3:31 AM, Solomon Duskis wrote:
+&gt; Thank you very much for the clarification.
+&gt;
+&gt; If I understand correctly, the single bookmark constraint means  
+&gt; that any initial access to the REST system must allow  
+&gt; discoverability to every accessible part of the system through some  
+&gt; degree of linkage sepration.  There is some path from every point A  
+&gt; to point B and back again.  There&#39;s some way to discover the entire  
+&gt; system using any entry point.
+&gt;
+
+No.  This is an application of computers to do something useful,
+not a math problem or a reachability analysis.  Any given client
+might only be able to reach 1% of a system and still be successful
+at doing what they wanted to do.  The simplest example of that is
+a system using authentication and role-based access control.
+
+In any case, this line of thought is missing the point of REST.
+If the application state is entirely defined by the client&#39;s
+workspace (set of representations) and all possible transitions
+away from that state are presented in those representations,
+then the potential size of the overall system is irrelevant.
+Each state can be considered independently.  That is fundamental
+to the use of state machines to simplify the understanding of
+complex systems.
+
+The client only needs to know what it has in that workspace,
+at that time, and so any pre-definition of URI layout or
+WSDL-like service semantics is an absolute waste of time as
+far as a RESTful architecture is concerned.  External artifacts
+might help the developers communicate about or improve the design
+of their system, just as readable URIs will help a human user
+understand where they are in a hypertext user-interface, but
+those external artifacts must not have a role in the runtime
+architecture if the system is truly hypertext-driven.
+
+....Roy
+
+

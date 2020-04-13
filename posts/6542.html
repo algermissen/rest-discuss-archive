@@ -1,0 +1,87 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 35646 invoked from network); 28 Aug 2006 23:28:09 -0000
+Received: from unknown (66.218.66.217)
+  by m36.grp.scd.yahoo.com with QMQP; 28 Aug 2006 23:28:09 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta2.grp.scd.yahoo.com with SMTP; 28 Aug 2006 23:28:09 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.74])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1GHqXa-0007B7-KB; Mon, 28 Aug 2006 16:29:14 -0700
+In-Reply-To: &lt;W5301310197134821156554587@...&gt;
+References: &lt;W5301310197134821156554587@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;94980746-7AC7-49A9-9867-F696C118062B@...&gt;
+Cc: &quot;Walden Mathews&quot; &lt;waldenm@...&gt;,
+ rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Mon, 28 Aug 2006 16:27:58 -0700
+To: eric@...
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Resources as Orange Apples
+X-Yahoo-Group-Post: member; u=175757792; y=AktszjDaxrZxcpZakJoBC_dr0y2GKtnLXT3nDSXp_Afbgwqgu9u6
+X-Yahoo-Profile: roy_fielding
+
+On Aug 25, 2006, at 6:09 PM, Eric J. Bowman wrote:
+&gt; The basic concept I am trying to portray is that a resource is a  
+&gt; set, in fact
+&gt; that is what Dr. Fielding&#39;s dissertation calls it:
+&gt;
+&gt; &quot;[A] resource... maps to a set of entities...&quot;
+
+The correct quote is
+
+&quot;a resource R is a temporally varying membership function MR(t), which
+  for time t maps to a set of entities, or values, which are equivalent.
+  The values in the set may be resource representations and/or resource
+  identifiers.&quot;
+
+A resource is a membership function. A membership function is not a set.
+The value of that function for a given time t is a set.  The resource is
+the continuity of those values over time, not the value at any given
+instant in time.
+
+Your analogy starts off on the wrong foot by talking about resources
+in terms of how they might be implemented (a box of apples).
+
+A better framework for an analogy is a double-sided wall of pigeon-hole
+boxes, with doors, a button, and a label per box on each side.  The
+client side of the wall can only see the labels on their own side.
+The server side of the wall can only see the labels on their own side.
+When the client pushes a button, the button on the opposite side  
+lights up.
+The server side then opens their door, places something corresponding to
+their server-side label in the hole, and closes their door -- causing  
+the
+corresponding client-side button to light up. The client then opens the
+door, grabs what was placed in the hole, and closes their door.   
+Finally,
+the client decides whether or not to change the label on their side of
+the door based on what was received when the button was pushed.  The
+client has no idea what is behind the door or how the holes get filled.
+
+&quot;client&quot; and &quot;server&quot; are only used here for a directional sense, so
+variations an be made for writing (e.g., the client could place
+something in the hole first and then push the button, or there
+could be more than one type of button, etc.).
+
+Now you can add apples and oranges to that framework and make an
+analogy.
+
+
+....Roy
+
+

@@ -1,0 +1,45 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 35354 invoked from network); 14 Jun 2010 23:34:51 -0000
+X-Received: from unknown (98.137.34.46)
+  by m10.grp.re1.yahoo.com with QMQP; 14 Jun 2010 23:34:51 -0000
+X-Received: from unknown (HELO spaceymail-a7.g.dreamhost.com) (208.113.200.5)
+  by mta3.grp.sp2.yahoo.com with SMTP; 14 Jun 2010 23:34:51 -0000
+X-Received: from di-524.corp.day.com (wsip-98-189-13-228.oc.oc.cox.net [98.189.13.228])
+	by spaceymail-a7.g.dreamhost.com (Postfix) with ESMTP id 4696B1536E;
+	Mon, 14 Jun 2010 16:34:51 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1078)
+Content-Type: text/plain; charset=us-ascii
+In-Reply-To: &lt;20100614172604.ee188850.eric@...&gt;
+Date: Mon, 14 Jun 2010 16:34:50 -0700
+Cc: Etan Wexler &lt;yahoo.com@...&gt;, rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Message-Id: &lt;BD25B511-4FE0-4FA5-A90C-13655477B6B8@...&gt;
+References: &lt;hv5h7j+80ct@...&gt; &lt;AANLkTilPr4aylV-gkrGXGy_7tfyJz888_7GgyOw8O1sn@...&gt; &lt;20100614172604.ee188850.eric@...&gt;
+To: Eric J.Bowman &lt;eric@...&gt;
+X-Mailer: Apple Mail (2.1078)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Which status code to return for DELETE if parent resource is not found?
+X-Yahoo-Group-Post: member; u=175757792; y=0vG8ckGQ4GHZU8e-NzZx4s2ANmkjXgy_9939bMroPrTEuBggnN66
+X-Yahoo-Profile: roy_fielding
+
+On Jun 14, 2010, at 4:26 PM, Eric J. Bowman wrote:
+
+&gt; Etan Wexler wrote:
+&gt; &gt;
+&gt; &gt; Why should an origin server respond to a &quot;DELETE&quot; request with the
+&gt; &gt; status code &quot;404&quot;?
+&gt; &gt;
+&gt; 
+&gt; If the target URI of the DELETE request is nonexistent, then there&#39;s no
+&gt; resource to delete, and the proper response status is 404 to reflect
+&gt; that. 410 is also acceptable, if the resource has already been deleted.
+
+A resource is never deleted.  The current representation is deleted.
+
+....Roy
+
+

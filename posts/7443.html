@@ -1,0 +1,104 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 92028 invoked from network); 4 Jan 2007 22:17:28 -0000
+Received: from unknown (66.218.66.166)
+  by m22.grp.scd.yahoo.com with QMQP; 4 Jan 2007 22:17:28 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta5.grp.scd.yahoo.com with SMTP; 4 Jan 2007 22:17:28 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.55])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1H2avE-0002Cd-AF; Thu, 04 Jan 2007 14:18:52 -0800
+In-Reply-To: &lt;060501c72fd4$c67de4a0$2102fea9@...&gt;
+References: &lt;060501c72fd4$c67de4a0$2102fea9@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;797BC3DE-A059-414C-ACC6-50E7B2D3F4A6@...&gt;
+Cc: &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Thu, 4 Jan 2007 14:16:58 -0800
+To: &quot;Mike Schinkel&quot; &lt;mikeschinkel@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: Request for feedback: REST for the Rest of Us
+X-Yahoo-Group-Post: member; u=175757792; y=oCBKo45KlHVD_0_8VojRS6BG24ywAaaQ3iD1Z9eIwYQUMHG8Q1XE
+X-Yahoo-Profile: roy_fielding
+
+On Jan 3, 2007, at 11:48 PM, Mike Schinkel wrote:
+
+&gt; Roy T. Fielding wrote:
+&gt; &gt; The resource in HTTP is the mapping from the entire identifier
+&gt; &gt; (including scheme, authority, path, and query) to a set of values.
+&gt; &gt; For two resources to be the same, they must map to the same set
+&gt; &gt; of values for all time. There is no way to determine that by
+&gt; &gt; inspecting the identifiers, aside from scheme-defined equivalence.
+&gt;
+&gt; I think I get what you are saying, but I want to be sure. Basically  
+&gt; you are
+&gt; saying that each of the following URLs point to a DIFFERENT  
+&gt; resource as far
+&gt; as REST is concerned, correct:
+
+No.  Why would I have said &quot;For two resources to be the same, ...&quot; if
+I thought that changing a URI always resulted in different resources?
+They might be different resources, the client generally won&#39;t be able
+to figure that out, so the only safe assumption is that they are
+different resources until stated otherwise by the server.
+
+This is Web Architecture.  Resources are an abstraction -- a source of
+goodness as perceived by the person who linked to that resource that
+is in the form of a value-giver over time.  There are no resources on
+the Web -- only senders and receivers of representations that have
+the effect of evaluating a resource mapping at invocation time,
+thereby becoming &quot;the resource&quot; as we perceive it over time even
+though we all know it is just a finite data server at any single
+point in time.
+
+The ultimate goal is to choose the one true identifier that will
+always map to the intended resource, such that the link author (and
+the millions of people who subsequently copy or bookmark that link)
+never have to change the link. Of course, we rarely achieve the
+ultimate goal the first time, and sometimes there are many paths to
+the ultimate goal that get explored along the way, and sometimes
+people move the goal posts.
+
+If there are many URIs for a given resource, the best implementation
+is for all of the other URIs to redirect to the one URI that is
+deemed to be &quot;best&quot; for the resource&#39;s unique semantics.  The reason
+for that is not REST or Web Architecture (though both are specifically
+designed to enable it): the reason is network economics as expressed
+by power laws, Metcalfe&#39;s law, PageRank, and a hundred other
+restatements of the factors that place value on social networks.
+
+REST works because it makes absolutely no attempt to understand
+what the resource is, how it might be implemented, or the scope of
+how it will change over time.  It eliminates the semantic burden of
+understanding by focusing only on the interface as a means of hiding
+knowledge from the other side, yet communicating all that needs to
+be said in the same way that two people communicate -- tossing
+representations across the gap with a relatively small number of
+pitch inflections to indicate what is expected in return.  In short,
+REST doesn&#39;t care what the resource is or how many URIs identify
+the same resource, because to care would require understanding that
+would lead to coupling which is more dangerous than inefficiency.
+
+Such communication theory is a lot more abstract than REST, REST is
+a lot more abstract than Web Architecture (URI, HTTP, HTML, ...),
+and Web Architecture is somewhat more abstract than any current
+implementation of that architecture (Apache httpd, Mozilla Firefox,
+etc.).  And yet they all need to influence each other, in various
+ways, when we attempt to design changes to a living system.
+
+....Roy
+
+

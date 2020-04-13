@@ -1,0 +1,92 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 52544 invoked from network); 6 May 2008 21:57:20 -0000
+X-Received: from unknown (66.218.67.97)
+  by m46.grp.scd.yahoo.com with QMQP; 6 May 2008 21:57:20 -0000
+X-Received: from unknown (HELO spaceymail-a3.g.dreamhost.com) (208.113.200.5)
+  by mta18.grp.scd.yahoo.com with SMTP; 6 May 2008 21:57:20 -0000
+X-Received: from [192.168.0.160] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a3.g.dreamhost.com (Postfix) with ESMTP id 6D73D195506;
+	Tue,  6 May 2008 14:57:20 -0700 (PDT)
+In-Reply-To: &lt;ecf35a1b0805060106m53866c46pa57b54df470c6152@...&gt;
+References: &lt;A3B97F07-C699-4A9A-8C49-581B3AECDF56@...&gt; &lt;ecf35a1b0805060106m53866c46pa57b54df470c6152@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;37967628-D7FA-4643-9CE8-646B7C45598D@...&gt;
+Cc: &quot;Rest List&quot; &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Tue, 6 May 2008 14:57:15 -0700
+To: dev &lt;dev.akhawe@...&gt;
+X-Mailer: Apple Mail (2.753)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] REST is not just file storage
+X-Yahoo-Group-Post: member; u=175757792; y=plp213K5nnt4FNzKDDA6uoORAkNxkseFRtEP_dJX7q7xBiZhQB_W
+X-Yahoo-Profile: roy_fielding
+
+On May 6, 2008, at 1:06 AM, dev wrote:
+&gt; &gt;want to know how to do everything in a PUT or DELETE instead of
+&gt; &gt;any of the other HTTP methods. That is wrong. That is thinking
+&gt; &gt;HTTP is just a &quot;Save as...&quot; dialog.
+&gt;
+&gt; At first I thought that using non-standard methods like PATCH would be
+&gt; wrong as it wouldn&#39;t allow for serendipitous reuse.
+&gt;
+
+Serendipitous reuse comes from providing a URI for everything that is
+of value as a resource (even when that value is not used by your own
+application).  As long as you are using GET for retrieval, then reuse
+will be there.  POST can be used in serendipitous ways as well, but
+there are no special tricks in HTTP that make POST actions any more or
+less reusable than any form of RPC/RMI -- we simply rely on the
+media type telling us where to POST to describe the service on the fly
+(late-binding is always better than compiled contracts because any
+late binding can self-identify its own expected &quot;contract&quot;).
+More importantly, it is very hard to see that it is safe to reuse
+a POST in unforeseen ways, whereas that is required of GET.
+
+Even when POST is used to perform the equivalent of GET, for whatever
+crazy reason, it can be compensated somewhat by responding to the POST
+with 303 or 201 + Location, or simply by limiting the 200 response
+content to a list of references to reusable resources.
+
+PUT, DELETE, and PATCH are essentially editing operations on the
+mapping from URI to representation.  In many cases, those will translate
+down to what is essentially file-like CRUD operations, but only for
+a very small subset of resources.  If you think of it in MVC terms,
+then those operations should only be active when M=V.  It is the
+application&#39;s job to determine when M=V; i.e., which models are
+capable of being edited by representation exchange, which models can
+be edited by indirect action on some other resource(s) (e.g., edit
+links in Atom or wiki post forms on pages), and which models can&#39;t
+be edited at all via HTTP.
+
+In any case, there are plenty of RESTful services that do nothing
+but GET and POST.  The key is how those methods are used, not what
+methods are used.  To give a specific example, what makes a wiki
+more or less RESTful is almost always determined by how it (ab)uses
+GET and sessions -- whether it uses PUT or POST for editing pages
+is sugar topping in comparison.
+
+&gt; But what you are
+&gt; saying is using non-standard methods is fine as long as there is an
+&gt; engine which can tell the client what to do next. That engine should
+&gt; support introspection via GET. Is this correct ?
+&gt;
+
+I wouldn&#39;t go as far as saying all &quot;non-standard methods&quot; are fine.
+The methods still need to be standardized in order for intermediaries
+to take part in the conversation and for generic clients to know how
+to follow the instructions.  The methods still need to be resource- 
+neutral
+in terms of semantics.  However, for actions that do not benefit
+from intermediaries (non-retrieval actions), the focus of REST is to
+make the results visible as reusable resources after the action is
+complete rather than worry too much about the standard-ness of any
+non-GET method name.
+
+....Roy
+
+

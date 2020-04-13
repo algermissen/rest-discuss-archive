@@ -1,0 +1,107 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 16 Apr 2003 02:41:04 -0000
+Received: (qmail 43198 invoked from network); 16 Apr 2003 02:40:59 -0000
+Received: from unknown (66.218.66.218)
+  by m8.grp.scd.yahoo.com with QMQP; 16 Apr 2003 02:40:59 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta3.grp.scd.yahoo.com with SMTP; 16 Apr 2003 02:40:59 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.8/8.12.8) with ESMTP id h3G1U6dl003772;
+	Tue, 15 Apr 2003 18:30:06 -0700 (PDT)
+Date: Tue, 15 Apr 2003 18:30:05 -0700
+Subject: Re: [rest-discuss] DELETE container?
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss &lt;rest-discuss@yahoogroups.com&gt;
+To: &quot;S. Alexander Jacobson&quot; &lt;alex@...&gt;
+In-Reply-To: &lt;Pine.WNT.4.53.0304121942010.7500@philo&gt;
+Message-Id: &lt;F3A80363-6FAA-11D7-831E-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+On Sunday, April 13, 2003, at 11:28  AM, S. Alexander Jacobson wrote:
+&gt; The question here is whether the availability of
+&gt; HTTP resources are dependent or independent on
+&gt; resources higher than them in the HTTP URI path
+&gt; hierarchy.  e.g. whether:
+&gt;
+&gt;   DELETE /parent
+&gt;
+&gt; implies anything about how the server should then
+&gt; respond to:
+&gt;
+&gt;   GET /parent/child
+
+/parent is not an ancestor resource.  /parent/ is.
+
+&gt; RFC2396 says:
+&gt;   URI that are hierarchical in nature use the
+&gt;   slash &quot;/&quot; character for separating
+&gt;   hierarchical components. For some file systems,
+&gt;   a &quot;/&quot; character (used to denote the hierarchical
+&gt;   structure of a URI) is the delimiter used to
+&gt;   construct a file name hierarchy, and thus the URI
+&gt;   path will look similar to a file pathname.
+&gt;   This does NOT imply that the resource is a file
+&gt;   or that the URI maps to an actual filesystem pathname.
+&gt;
+&gt; So the semantics of the hierarchical relationship
+&gt; are dependent on the scheme (or perhaps even the
+&gt; implementation) and are not specified by RFC2396.
+
+No, the slash character is not dependent on the scheme.  It is not
+allowed to appear in any URI that does not treat the slash as being a
+hierarchical separator.  That includes &quot;http&quot; URIs.
+
+&gt; RFC 2616 (HTTP), says:
+&gt;
+&gt;   As far as HTTP is concerned, Uniform Resource
+&gt;   Identifiers are simply formatted strings which
+&gt;   identify--via name, location, or any other
+&gt;   characteristic--a resource.
+
+which says nothing about this discussion.
+
+&gt; Since RFC2616 makes no specific reference to
+&gt; resource hierarchies or containers, this language
+&gt; would imply that hierarchy means very little in
+&gt; HTTP and therefore the default assumption for HTTP
+&gt; should be Resource Independence.
+
+Huh?  HTTP is dependent on RFC 2396.  Every restriction in 2396
+is an absolute requirement on 2616.
+
+&gt; Roy argues that it is the Implementor&#39;s Choice;
+&gt; that resource dependence is up to the implementor.
+
+No, I did not.  What I said was that making assumptions about the
+implementation is strictly not allowed in REST.  Therefore, much
+of what you were arguing simply does not apply.
+
+&gt; If the resource is defined as a container of
+&gt; addressable elements, DELETEing the resource would
+&gt; DELETE its contents.  OTOH, if the resource is
+&gt; defined to be a collection, DELETEing the resource
+&gt; would affect only those applications that view the
+&gt; other resources as a collection.
+
+No, that is completely confused.  The method defines what the user
+agent intends in regards to the identifier name space.  How the server
+accomplishes that is none of the user agent&#39;s business.  DELETE&#39;ing
+a hierarchical ancestor is a request to delete the entire name space.
+There is no other choice.  The only issue is whether a server should
+require that the child name space be empty before allowing the DELETE
+to succeed, and that choice is left to the server.  The client must
+be prepared to handle a 4xx response.  The server cannot respond with
+a 2xx response unless the entire name space is deleted.
+
+....Roy
+
+
+

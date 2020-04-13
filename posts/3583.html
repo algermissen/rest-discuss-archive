@@ -1,0 +1,105 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_6_5); 16 Apr 2003 03:34:12 -0000
+Received: (qmail 57180 invoked from network); 16 Apr 2003 03:34:11 -0000
+Received: from unknown (66.218.66.217)
+  by m11.grp.scd.yahoo.com with QMQP; 16 Apr 2003 03:34:11 -0000
+Received: from unknown (HELO mac.wakasoft.com) (64.60.92.50)
+  by mta2.grp.scd.yahoo.com with SMTP; 16 Apr 2003 03:34:11 -0000
+Received: from apache.org (localhost [127.0.0.1])
+	by mac.wakasoft.com (8.12.8/8.12.8) with ESMTP id h3G3a0dl003876;
+	Tue, 15 Apr 2003 20:36:00 -0700 (PDT)
+Date: Tue, 15 Apr 2003 20:36:00 -0700
+Subject: Re: [rest-discuss] REST, HTTP, Sessions and Cookies
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v551)
+Cc: rest-discuss@yahoogroups.com
+To: Mark Baker &lt;distobj@...&gt;
+In-Reply-To: &lt;20030412233819.F5021@...&gt;
+Message-Id: &lt;8A92F49B-6FBC-11D7-831E-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.551)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+
+&gt; Any application of cookies breaks REST, because they are by definition
+&gt; stateful, and all REST interactions are stateless.  That doesn&#39;t mean
+&gt; they don&#39;t have their uses, of course.  But there other ways of doing
+&gt; &quot;sessions&quot; statelessly, and doing them statefully is not REST.
+
+That concept tends to be a little confusing, partly because HTTP,
+like many network protocols, has a notion of stateless interactions
+that only refers to having all of the information needed to
+understand each request inside the request or defined by universal
+standard.  REST goes further and constrains application state
+(not resource state) to be held on the client.  It is hard to
+describe without further defining what &quot;application&quot; means, but
+we can think of it as the context between user agent requests:
+the server cannot be aware of any such context and still be REST.
+
+This is also what allows individual pages to be bookmarked and
+shared with others, but that&#39;s a longer story.
+
+The purpose of statelessness is to prevent partial failures and
+allow for substrate independence (e.g., load-balanced gateways
+managing the traffic for many servers).  Cookies don&#39;t
+necessarily break that because they are inside the request,
+unless developers make the mistake of defining the cookie such
+that it varies by gateway.
+
+Most of the problems with cookies are due to breaking visibility,
+which impacts caching and the hypertext application engine, but
+even worse is its use for authentication, as evidenced by the
+cross-site-scripting security holes in sites that use it.
+It ends up being a weird trade-off of security versus efficiency.
+
+Using cookies is more efficient than authentication because the
+server (and intermediaries) will simply ignore cookies for the
+vast majority of URI (e.g., inline images).  That allows everything
+except the pages that set cookies to be cacheable, and those are
+typically non-cacheable pages in any case.  However, using cookies
+in that fashion means the server is relying on security by obscurity
+to associate the client&#39;s stored cookie with the application state
+(attackers ability to guess the cookie or obtain it illegitimately
+via XSS).  Likewise, keeping state in the cookie means that the
+URIs can be independent of the user state, but doing that messes-up
+the client&#39;s understanding of state as presented by the hypertext
+engine: it breaks the &quot;back&quot; button.
+
+Unfortunately, cookies were not presented for discussion by the
+community until after they had been deployed and announced as one
+of Netscape&#39;s infamous &quot;extensions&quot;.  If they had, then it is more
+likely that HTML would have been extended to indicate selectable
+items, and browsers could then have developed a client-side
+market basket that is more reliable and subject to a fancier UI.
+Doing that now is simply a chicken-and-egg problem: browers won&#39;t
+bother til there is user demand for the feature, and sites won&#39;t
+offer it as an option until browsers implement it consistently.
+Java was supposed to solve that problem, but Sun screwed that up.
+
+Cookies that simply store a reference to server-maintained state
+do violate REST&#39;s constraint on state being stored on the client,
+rather than the server, for scalability.  The effect of violating
+that constraint can be seen on any site that uses client-sessions
+on the back-end, such as is common in J2SE.  Such sites are usually
+several orders of magnitude less scalable than REST-based
+applications, but some folks still prefer it for &quot;personalization&quot;.
+My experience has been that this is the number one cause of failed
+website applications: reliance on server-side sessions.
+
+BTW, &quot;personalization&quot; can be defined as deliberately trading off
+scalability for customized content.  The advertising folks who took
+over the Web design space in 1996 claimed that this was a necessity,
+often making it a core component of third-party &quot;evaluations&quot; of
+website usability, but if you actually go and talk to the customers
+using those sites you will find that they hate it with a passion.
+Amazon is the only site that did it well, and it continues to cost
+them a fortune in back-end costs.
+
+....Roy
+
+
+

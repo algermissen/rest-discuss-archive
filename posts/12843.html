@@ -1,0 +1,51 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 49928 invoked from network); 9 Jun 2009 17:40:06 -0000
+X-Received: from unknown (69.147.108.202)
+  by m1.grp.sp2.yahoo.com with QMQP; 9 Jun 2009 17:40:06 -0000
+X-Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.113.200.5)
+  by mta3.grp.re1.yahoo.com with SMTP; 9 Jun 2009 17:40:06 -0000
+X-Received: from [10.0.0.125] (bsl-rtr.day.com [62.192.10.254])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id 35C9EF610E;
+	Tue,  9 Jun 2009 10:39:57 -0700 (PDT)
+In-Reply-To: &lt;C8C9798E-DF76-401C-AA78-24C39A6A4B74@...&gt;
+References: &lt;4A2548FE.8090105@...&gt; &lt;343ecb3e0906020907m29d998c5kecd3e953da7b6cf9@...&gt; &lt;CA83CFE5-5F4D-40A3-A096-AF0815A0E73D@...&gt; &lt;343ecb3e0906070529h727aad91l4b4037c1bb430ed@...&gt; &lt;BB5BDB5C-D2FA-4666-B9AA-4D5ACD33E42D@...&gt; &lt;343ecb3e0906090627w1f53a39eqefdd58c90e55a439@...&gt; &lt;DED65368-D967-42F7-9445-46984B315BDD@...&gt; &lt;22823145-45B6-4648-973E-CF771C60B9D2@...&gt; &lt;C8C9798E-DF76-401C-AA78-24C39A6A4B74@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;108C6D7A-AA89-4A59-81F0-08ECE3BBCA4C@...&gt;
+Cc: REST-Discuss Discussion Group &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Tue, 9 Jun 2009 19:40:00 +0200
+To: Stefan Tilkov &lt;stefan.tilkov@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] rest transactions
+X-Yahoo-Group-Post: member; u=175757792; y=NxHdeakloTd2smJs_TJQ6kIrgJLRa6IlmWJ3hnPLplM9XjOxb14x
+X-Yahoo-Profile: roy_fielding
+
+On Jun 9, 2009, at 6:23 PM, Stefan Tilkov wrote:
+&gt; Apologies for picking just one fragment from your reply, but It  
+&gt; seems to me that the question is whether the way this
+&gt;
+&gt; On 09.06.2009, at 17:11, Roy T. Fielding wrote:
+&gt;
+&gt;&gt; a TM-style
+&gt;&gt; manager resource that tells all of the other services to commit
+&gt;&gt; the associated changes to a more persistent or public set of
+&gt;&gt; resources
+&gt;
+&gt; is done is worth being standardized.
+
+Maybe, but it is behind the resource interface.  It is some other
+architecture which can (and should) be allowed to change over time
+without impacting the RESTful part of the system.  [It might even be
+another RESTful architecture behind the interface -- the point is
+we don&#39;t know and cannot make any client assumptions based on it.]
+
+....Roy
+
+
+

@@ -1,0 +1,82 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 3855 invoked from network); 3 Oct 2006 02:43:11 -0000
+Received: from unknown (66.218.66.217)
+  by m26.grp.scd.yahoo.com with QMQP; 3 Oct 2006 02:43:11 -0000
+Received: from unknown (HELO scorpio.lunarpages.com) (209.200.229.70)
+  by mta2.grp.scd.yahoo.com with SMTP; 3 Oct 2006 02:43:11 -0000
+Received: from wsip-70-183-62-251.oc.oc.cox.net ([70.183.62.251] helo=[10.2.8.53])
+	by scorpio.lunarpages.com with esmtpa (Exim 4.52)
+	id 1GUaF1-0006zk-Q3; Mon, 02 Oct 2006 19:42:43 -0700
+In-Reply-To: &lt;4521A1D6.2050809@...&gt;
+References: &lt;a373dc740609252215t7873f84eof0ddd6fb334959af@...&gt; &lt;490201DC-8CD9-4192-A5D3-D061D982A8B5@...&gt; &lt;a373dc740609281244h1ad3b271s2599871582034dbb@...&gt; &lt;1159599633.7305.35.camel@...&gt; &lt;EDE8063D-534B-426B-A42F-CC3930858FB8@...&gt; &lt;87y7s0e9ig.fsf@...&gt; &lt;F04F5B63-4792-44F2-B588-133CE745562A@...&gt; &lt;87ven4e194.fsf@...&gt; &lt;20C6ED3C-96BA-4E9D-AFB1-A197FC9F2307@...&gt; &lt;871wprekax.fsf@...&gt; &lt;08B17E09-3057-4A1C-B0C8-C5CF2183D48D@...&gt; &lt;4521A1D6.2050809@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;D7047087-B79F-45AA-BFF6-C0D7F0A6AFE2@...&gt;
+Cc: REST Discuss &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Mon, 2 Oct 2006 19:42:03 -0700
+To: Duncan Cragg &lt;rest-discuss@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - scorpio.lunarpages.com
+X-AntiAbuse: Original Domain - yahoogroups.com
+X-AntiAbuse: Originator/Caller UID/GID - [0 0] / [47 12]
+X-AntiAbuse: Sender Address Domain - gbiv.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Seeking feedback on the Blinksale API
+X-Yahoo-Group-Post: member; u=175757792; y=IyJYX1fQzvSRK4PUH_Vk6IzO8tDXSCzeewblml-TY4n7ZCWfli6D
+X-Yahoo-Profile: roy_fielding
+
+On Oct 2, 2006, at 4:33 PM, Duncan Cragg wrote:
+
+&gt; Clearly there&#39;s a difference between a header declaring the type of  
+&gt; stuff being transferred and the schema of that stuff, but once  
+&gt; you&#39;ve got up to XML, surely it&#39;s safe to transfer over from  
+&gt; Content-Type to (explicit or implicit) schema?
+
+No.  What is the content difference between an archived invoice and
+an invoice that I expect you to pay right now?  There shouldn&#39;t be any.
+The difference should be expressed in the action (method) and the
+metadata (media type), not by changing the content.  That is only  
+possible
+in a system that alters the media type based on the reason the  
+content is
+being viewed (i.e., the resource), which in turn is only possible if
+we don&#39;t rely on a single meaningless media type for message exchanges.
+
+&gt; What problems does it cause with intermediaries to only specify the  
+&gt; low-level types (say, charset and the fact that it&#39;s XML)?
+
+Intermediaries cannot find the schema inside an XML body fast enough
+to keep up with Internet-scale systems, and even if they could that
+is not sufficient information to tell the system how the sender intended
+the message to be interpreted.  The media type tells the recipient how
+the sender expects it to be processed, not just what the format is.
+
+&gt; Indeed, what problems does it cause with a consumer of the XML,  
+&gt; assuming they can spot the schema on the first line and/or figure  
+&gt; out what they&#39;ve got by a little scanning around the elements?
+
+Because if one component believes that &quot;text/xml&quot; messages are safe
+and another component believes that &quot;text/xml&quot; messages should be
+treated like a dynamic invocation interface, then the only way to
+prevent a security hole is to block all XML content.  We have to all
+agree that &quot;text/xml&quot; will be processed in a specific, safe manner,
+and some dangerous stuff can be related to &quot;application/flash+xml&quot;
+and other specific media types.
+
+That way we can make a conscious decision to block dangerous content
+only when it is used in a dangerous way.  (Some people will block all
+dangerous content anyway, but that is a separate issue.)
+
+....Roy
+
+
+

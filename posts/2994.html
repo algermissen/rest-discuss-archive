@@ -1,0 +1,82 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+Received: (qmail 68753 invoked from network); 6 Dec 2002 02:53:07 -0000
+Received: from unknown (66.218.66.216)
+  by m11.grp.scd.yahoo.com with QMQP; 6 Dec 2002 02:53:07 -0000
+Received: from unknown (HELO n17.grp.scd.yahoo.com) (66.218.66.72)
+  by mta1.grp.scd.yahoo.com with SMTP; 6 Dec 2002 02:53:06 -0000
+X-eGroups-Return: fielding@...
+Received: from [66.218.67.165] by n17.grp.scd.yahoo.com with NNFMP; 06 Dec 2002 02:53:04 -0000
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (EGP: mail-8_2_3_0); 6 Dec 2002 02:30:29 -0000
+Received: (qmail 34934 invoked from network); 6 Dec 2002 02:30:29 -0000
+Received: from unknown (66.218.66.216)
+  by m1.grp.scd.yahoo.com with QMQP; 6 Dec 2002 02:30:29 -0000
+Received: from unknown (HELO dhcp-sna-67.wakasoft.com) (64.60.92.50)
+  by mta1.grp.scd.yahoo.com with SMTP; 6 Dec 2002 02:30:27 -0000
+Received: from dhcp-sna-67.day.com (localhost.day.com [127.0.0.1] (may be forged))
+	by localhost.wakasoft.com (8.12.4/8.12.4) with ESMTP id gB62D2Bf002887;
+	Thu, 5 Dec 2002 18:13:02 -0800 (PST)
+Date: Thu, 5 Dec 2002 18:12:35 -0800
+Subject: Re: [rest-discuss] Another REST vs. SOAP article
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Mime-Version: 1.0 (Apple Message framework v482)
+Cc: Paul Prescod &lt;paul@...&gt;, &lt;tlainevool@...&gt;,
+   rest-discuss@yahoogroups.com
+To: =?ISO-8859-1?Q?Bill_de_h=D3ra?= &lt;dehora@...&gt;
+In-Reply-To: &lt;3DEF9F5D.1030508@...&gt;
+Message-Id: &lt;2F7F72C4-08C0-11D7-8D69-000393753936@...&gt;
+Content-Transfer-Encoding: 7bit
+X-Mailer: Apple Mail (2.482)
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+X-Yahoo-Group-Post: member; u=131511758
+X-Yahoo-Profile: roy_fielding
+X-eGroups-Approved-By: gonga_thrash &lt;distobj@...&gt; via web; 06 Dec 2002 02:53:00 -0000
+
+&gt; I suspect that the problem you have with the services style is that
+&gt; it constitutes a collection of antipatterns for distributed OOP. If
+&gt; so, let&#39;s document what the risks of that style are.
+
+Ick, terminology is being misused.  OOP is a programming structure
+paradigm dependent on such things as classes and inheritance.  There
+is no such thing as distributed OOP.  Object-based systems is what you
+get when you take OOD and distribute the objects.  It is called
+object-based (instead of object-oriented) because we are talking
+about architecture, rather than source code structure, and architecture
+doesn&#39;t have classes and inheritance.
+
+&gt; Communicating
+&gt; to the OOP world through patterns/antipatterns is a great way to
+&gt; make the case for the REST style - with the added bonus the claims
+&gt; for REST will seem less grand.
+
+That is difficult to do.  The OOPSLA community took the architectural
+concept of patterns and expanded it into anything with a recipe for
+implementation.  I use the original notion of patterns, which came
+from Alexander watching human behavior as people live/work/move within
+a space.  The closest analogy in computing is how data moves within an
+architecture.  In other words, I do explain REST as a pattern, but
+what people call patterns now is tuned more for programming idioms
+rather than understanding system behavior.
+
+Architectural styles and architectural patterns are fairly consistent,
+but as you noted the purpose of REST is to force the developer into a
+less object-specific architecture, which is contrary to most of the
+OOD patterns.  Whether that is good or bad depends on what is
+being implemented.
+
+
+Cheers,
+
+Roy T. Fielding, Chief Scientist, Day Software
+                  2 Corporate Plaza, Suite 150
+                  Newport Beach, CA 92660-7929   fax:+1.949.644.5064
+                  (roy.fielding@...) &lt;http://www.day.com/&gt;
+
+                  Co-founder, The Apache Software Foundation
+                  (fielding@...)  &lt;http://www.apache.org/&gt;
+
+
+
+

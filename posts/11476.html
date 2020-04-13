@@ -1,0 +1,54 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 43347 invoked from network); 9 Nov 2008 18:09:26 -0000
+X-Received: from unknown (66.218.67.96)
+  by m36.grp.scd.yahoo.com with QMQP; 9 Nov 2008 18:09:26 -0000
+X-Received: from unknown (HELO spaceymail-a4.g.dreamhost.com) (208.113.200.5)
+  by mta17.grp.scd.yahoo.com with SMTP; 9 Nov 2008 18:09:26 -0000
+X-Received: from [172.16.148.232] (adsl-068-016-134-023.sip.msy.bellsouth.net [68.16.134.23])
+	by spaceymail-a4.g.dreamhost.com (Postfix) with ESMTP id 86B6B1614F8;
+	Sun,  9 Nov 2008 10:09:25 -0800 (PST)
+In-Reply-To: &lt;799330c30811090759j99359f6i1d2f7017274e90d5@...&gt;
+References: &lt;gf3ads+adqc@...&gt; &lt;F3191E8B-0F74-495E-A636-37CC5A34DAC1@...&gt; &lt;799330c30811081311m387ea757g6d559cc60983cb4c@...&gt; &lt;F627EA52-BFBB-4422-835A-BAF07B2F08B8@...&gt; &lt;799330c30811081417i4ffbc024v5733371fd231f127@...&gt; &lt;4916928E.90604@...&gt; &lt;799330c30811090619s5e17291fq68718f4d5e40856c@...&gt; &lt;799330c30811090759j99359f6i1d2f7017274e90d5@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753.1)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;E7F4C13B-4AA8-49FD-A3FB-68182A520A34@...&gt;
+Cc: &quot;Rest List&quot; &lt;rest-discuss@yahoogroups.com&gt;
+Content-Transfer-Encoding: 7bit
+Date: Sun, 9 Nov 2008 12:09:28 -0600
+To: Alan Dean &lt;alan.dean@...&gt;
+X-Mailer: Apple Mail (2.753.1)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] &quot;Seaparating REST Facts from Fallacies&quot;
+X-Yahoo-Group-Post: member; u=175757792; y=BX9FO885n4z0mWwtofXo9vGM6C_9VdGAr8-LnrFaHwSirw-S0aEJ
+X-Yahoo-Profile: roy_fielding
+
+On Nov 9, 2008, at 9:59 AM, Alan Dean wrote:
+&gt; Roy specifies that the outcomes of the optional Caching constraint  
+&gt; are:
+&gt; - degraded reliability
+&gt; - reduced average latency
+&gt; - improved efficiency
+&gt; - improved scalability
+&gt;
+&gt; If Caching is not employed, these outcomes are not present.
+&gt;
+
+These are not all-or-nothing properties.  For example, there is caching
+on the user agent with authentication (default is private, not no-cache)
+and only one of the representations need be access-controlled; anything
+it refers to (stylesheets, images, javascript, etc.) could be on  
+separate
+servers with public access.
+
+What we lose with authentication is shared caching of the authenticated
+representations.  That may reduce scalability, but it doesn&#39;t remove
+it altogether.
+
+....Roy
+
+
+

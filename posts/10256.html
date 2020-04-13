@@ -1,0 +1,116 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 17372 invoked from network); 18 Jan 2008 00:12:14 -0000
+X-Received: from unknown (66.218.67.96)
+  by m49.grp.scd.yahoo.com with QMQP; 18 Jan 2008 00:12:14 -0000
+X-Received: from unknown (HELO spaceymail-a3.g.dreamhost.com) (208.113.200.5)
+  by mta17.grp.scd.yahoo.com with SMTP; 18 Jan 2008 00:12:14 -0000
+X-Received: from [10.0.0.106] (h-72-245-155-3.nycmny83.covad.net [72.245.155.3])
+	by spaceymail-a3.g.dreamhost.com (Postfix) with ESMTP id A5BA919542A;
+	Thu, 17 Jan 2008 16:12:12 -0800 (PST)
+In-Reply-To: &lt;799330c30801170515q261381a1m8d7e12336e41acb1@...&gt;
+References: &lt;fml42g+u0js@...&gt; &lt;e78bdbc00801160835v60d28bcdt258924bc25f76fcb@...&gt; &lt;2fa554470801170321s650a8c7cp120b2859413e2a3d@...&gt; &lt;2fa554470801170403o44da1a23ief262ee6e0262d4c@...&gt; &lt;799330c30801170515q261381a1m8d7e12336e41acb1@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753)
+Content-Type: text/plain; charset=ISO-8859-1; delsp=yes; format=flowed
+Message-Id: &lt;2854A32D-A144-478C-9D22-94DAD5C5A1B7@...&gt;
+Cc: =?ISO-8859-1?Q? &quot;Ant=F3nio_Mota&quot; ?= &lt;amsmota@...&gt;,
+	rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: quoted-printable
+Date: Thu, 17 Jan 2008 16:12:11 -0800
+To: Alan Dean &lt;alan.dean@...&gt;
+X-Mailer: Apple Mail (2.753)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Resources and State
+X-Yahoo-Group-Post: member; u=175757792; y=gL1pGqTO74PtFjH9Qrzgg0hAUdvaGPRrvGXZZexb3N3IGgkPH9pM
+X-Yahoo-Profile: roy_fielding
+
+On Jan 17, 2008, at 5:15 AM, Alan Dean wrote:
+&gt; On 1/17/08, Ant=F3nio Mota =
+&lt;amsmota@...&gt; wrote:
+&gt; &gt;
+&gt; &gt; I can&#39;t quite grasp the concept of &quot;virt=
+ual state machine&quot;,  
+&gt; probably because i don&#39;t have a mathematical backgr=
+ound.
+&gt;
+&gt; Danny Ayers has this really simple example to illustrate the stat=
+e
+&gt; machine of a lamp:
+&gt;
+&gt; http://dannyayers.com/engine-of-state/on
+&gt;
+&gt; Ala=
+n
+&gt;
+
+Umm, no, that is a very simple example of two web pages with links
+to =
+each other.  It doesn&#39;t actually &quot;do&quot; anything.  The comments are
+right -- =
+if it were an application, then there would be one resource
+and the hyperte=
+xt would tell you how to change its state (not just
+the browser&#39;s view).
+
+A=
+n application is something a user wants to do with computers.
+&quot;Writing a me=
+mo&quot; is an application.  Microsoft Word is a software
+system for writing mem=
+os (among other things).  Google Docs is a
+network-based software system fo=
+r writing memos (among other things).
+
+&quot;Buying stuff&quot; is another applicatio=
+n.  Amazon is a network-based
+software system for buying stuff.  You get th=
+e idea ... a
+network-based application is something a user wants to do
+with=
+ computers that needs (for whatever reason) to be network-based.
+It can be =
+as simple as reading a book, or as complex as ordering
+parts for a Boeing 7=
+67.  And let&#39;s not forget that there are
+many network-based applications fo=
+r which REST is not likely
+to be a good design (an alarm monitoring system =
+would be one
+example -- it may have RESTful components, such as a status vi=
+ew,
+but it would be silly to restrict the sensors to a pull-based
+interacti=
+on just out of architectural purity).
+
+Application state in REST is what mo=
+st distributed systems would
+call session state or transaction state, depen=
+ding on which end
+of the system is being talked about.  However, we can&#39;t c=
+all it
+session state because then networking folks assume the communication=
+
+is session-scoped, and we can&#39;t call it transaction state because
+then dat=
+abase folks assume we are talking about back-end ACID.
+Let&#39;s face it, there=
+ are very few ways to describe anything in
+computer science that hasn&#39;t alr=
+eady been used in a slightly
+different fashion.  Application state is a goo=
+d term to describe
+what really matters to the user.
+
+Danny&#39;s pages are not =
+an application.  That is, unless your
+application happens to *be* making RD=
+F assertions.  For that
+purpose, having two different resources with singul=
+ar states
+might be a useful thing.
+
+....Roy
+

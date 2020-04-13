@@ -1,0 +1,69 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+X-Received: (qmail 43218 invoked from network); 28 Dec 2007 20:56:55 -0000
+X-Received: from unknown (66.218.67.95)
+  by m55.grp.scd.yahoo.com with QMQP; 28 Dec 2007 20:56:55 -0000
+X-Received: from unknown (HELO spaceymail-a3.g.dreamhost.com) (208.113.200.5)
+  by mta16.grp.scd.yahoo.com with SMTP; 28 Dec 2007 20:56:55 -0000
+X-Received: from [192.168.0.160] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a3.g.dreamhost.com (Postfix) with ESMTP id 431581953FB;
+	Fri, 28 Dec 2007 12:56:54 -0800 (PST)
+In-Reply-To: &lt;e5c6ecab0712280837x86463ccg92f7e192112c4156@...&gt;
+References: &lt;e5c6ecab0712272320s3da54fp6f03a00303cb0c17@...&gt; &lt;20071228160847.GA15252@klangraum&gt; &lt;e5c6ecab0712280837x86463ccg92f7e192112c4156@...&gt;
+Mime-Version: 1.0 (Apple Message framework v753)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: &lt;F35FE2E4-1C21-482C-A68A-1CC9FC5AAD74@...&gt;
+Cc: rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Fri, 28 Dec 2007 12:56:48 -0800
+To: Daniel Yokomizo &lt;daniel.yokomizo@...&gt;
+X-Mailer: Apple Mail (2.753)
+X-eGroups-Msg-Info: 1:12:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] Re: Idempotency of PUT when using IF-MATCH
+X-Yahoo-Group-Post: member; u=175757792; y=MVYApzN4rkntNNFAD5WD5Q-uOztvrUELZfmt0uu51GA5Ng4-7ya4
+X-Yahoo-Profile: roy_fielding
+
+On Dec 28, 2007, at 8:37 AM, Daniel Yokomizo wrote:
+&gt; On Dec 28, 2007 4:08 PM, Aristotle Pagaltzis &lt;pagaltzis@...&gt; wrote:
+&gt; &gt; * Daniel Yokomizo &lt;daniel.yokomizo@...&gt; [2007-12-28 14:30]:
+&gt; &gt; &gt; 1. Client A sents PUT ... (IF-MATCH: &quot;XXX&quot;) ... FOO ...
+&gt; &gt; &gt; 2. Server process the request and sends the new ETag: YYY
+&gt; &gt; &gt; 3. Client B sents PUT ... (IF-MATCH: &quot;YYY&quot;) ... BAR
+&gt; &gt; &gt; 4. Server process the request and sends the new ETag: ZZZ
+&gt; &gt; &gt; 5. Client A retries the first PUT (network problems, double  
+&gt; submit, it
+&gt; &gt; &gt; doesn&#39;t matter) sends ETag: YYY
+&gt; &gt;
+&gt; &gt; I don&#39;t understand this sequence. You say the client sends ETag
+&gt; &gt; XXX in step #1, but when it retries the request in step #5, it
+&gt; &gt; sends ETag YYY. Did you make a typo somewhere or did you omit
+&gt; &gt; things from your timeline?
+&gt;
+&gt; Ops, it&#39;s a typo indeed. It should be ETag XXX. I hope this clears
+&gt; remaining confusion for everyone. It&#39;s supposed to be a simple retry
+&gt; of the first PUT, (e.g. client A
+&gt; never saw the response and want to ensure everything is fine). In the
+&gt; meantime Client B saw A&#39;s changes (because he has the unforgeable YYY
+&gt; ETag) and submits it&#39;s own changes.
+&gt;
+
+In that case, client A definitely wants to receive the 412, since
+otherwise it will never know about client B&#39;s changes.
+
+A more interesting question is whether the spec over-constrains the
+case where a PUT is successful but tried again.  In other words, should
+the server be allowed to accept the PUT if the etag differs but the
+current state matches what is being PUT?  Subversion handles such
+cases nicely because it is common for two developers to patch the
+same bugs.  I think the &quot;MUST respond with 412&quot; is yet another case
+of a bogus requirement being added in 2616.
+
+Note: this is an HTTP spec issue, not a REST issue.
+
+....Roy
+
+
+

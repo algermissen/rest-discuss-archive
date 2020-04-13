@@ -1,0 +1,70 @@
+<html><pre>
+Return-Path: &lt;fielding@...&gt;
+X-Sender: fielding@...
+X-Apparently-To: rest-discuss@yahoogroups.com
+Received: (qmail 24917 invoked from network); 26 Apr 2007 20:20:27 -0000
+Received: from unknown (66.218.66.71)
+  by m51.grp.scd.yahoo.com with QMQP; 26 Apr 2007 20:20:27 -0000
+Received: from unknown (HELO spaceymail-a3.g.dreamhost.com) (208.97.132.66)
+  by mta13.grp.scd.yahoo.com with SMTP; 26 Apr 2007 20:20:27 -0000
+Received: from [192.168.0.133] (ip72-211-200-45.oc.oc.cox.net [72.211.200.45])
+	by spaceymail-a3.g.dreamhost.com (Postfix) with ESMTP id 34AD4195159;
+	Thu, 26 Apr 2007 13:20:15 -0700 (PDT)
+In-Reply-To: &lt;99EF10B7-A924-4072-9E6D-2694CC00C999@...&gt;
+References: &lt;f0nrf7+esac@...&gt; &lt;99EF10B7-A924-4072-9E6D-2694CC00C999@...&gt;
+Mime-Version: 1.0 (Apple Message framework v752.2)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: &lt;C805802C-38C6-491E-8349-C034E3871CE5@...&gt;
+Cc: siefert.david &lt;siefert.david@...&gt;,
+	rest-discuss@yahoogroups.com
+Content-Transfer-Encoding: 7bit
+Date: Thu, 26 Apr 2007 13:20:13 -0700
+To: Chris Burdess &lt;dog@...&gt;
+X-Mailer: Apple Mail (2.752.2)
+X-eGroups-Msg-Info: 1:0:0:0
+From: &quot;Roy T. Fielding&quot; &lt;fielding@...&gt;
+Subject: Re: [rest-discuss] client-stateless-server
+X-Yahoo-Group-Post: member; u=175757792; y=AlRPnubLXC0L9WyqEFRSgQBMq3irKbByuxoGQ5FA-1DQ4ePwIcXy
+X-Yahoo-Profile: roy_fielding
+
+
+On Apr 26, 2007, at 2:30 AM, Chris Burdess wrote:
+&gt; There&#39;s a bit of confusion here about the notion of state. It&#39;s OK
+&gt; for the server to have state, and for that state to be updated as a
+&gt; result of requests, in fact it&#39;s quite normal. The issue in a REST
+&gt; design is about application state and its relation to scalability,
+&gt; specifically that if a server is required to store transactional
+&gt; state that associates multiple request/response pairs with one
+&gt; another in a state machine, as with many Internet protocols like IMAP
+&gt; or FTP, it has a negative effect on scalability and limits the number
+&gt; of potential clients that can be served. Therefore in a REST system
+&gt; (e.g. HTTP) all this transactional state is made available in each
+&gt; request. For non-application functionality, it&#39;s OK for the client
+&gt; and the server to share a secret, like the authenticated user&#39;s
+&gt; passphrase. But generally, the plan is to expose any data related to
+&gt; application functionality as a resource, identified as a URL, and
+&gt; describe the application as a set of operations that transfer data
+&gt; representing that resource to and from the server. So you wouldn&#39;t
+&gt; design a shopping cart using a shared secret, e.g. a cookie that
+&gt; holds an opaque identifier that identifies a record in some database
+&gt; accessible to the server; you&#39;d design it as a shopping-cart resource
+&gt; that you can GET with its URL to see the current state of it
+&gt; (assuming you have the authorisation to do so), and POST to with a
+&gt; new item to be added to it, etc.
+
+Right, but only if you want such state to persist for a user.
+
+The best way to do a shopping cart RESTfully is to use standard mark-up
+to describe items that can be purchased and allow the user agent
+to &quot;move&quot; items from whatever page they happen to be looking at
+into their own browser&#39;s virtual cart.  The mark-up can describe
+where to go for check-out, and the cart could contain items from
+many different merchants.  In other words, all of the state remains
+on the client.  The reason we don&#39;t do it that way now is partly
+because shops don&#39;t believe in waiting for standard media types
+to be updated, and partly because Netscape became gun-shy after
+the response to their early HTML extensions.
+
+....Roy
+
+
